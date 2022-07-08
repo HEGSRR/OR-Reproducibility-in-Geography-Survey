@@ -3,9 +3,23 @@
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\usepackage{natbib}% Citation support using natbib.sty
-\bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
+\usepackage{natbib}
+\bibliographystyle{chicago}
+\setcitestyle{authoryear,open={(},close={)}}
 \renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
@@ -44,7 +58,7 @@ Reproducible Research, Epistemology, Geographic Research Methods
 
 \maketitle
 
-\section{Introduction}
+\section*{Introduction}
 Since the 1600s, replication has been a defining characteristic of the scientific method and an essential tool of researchers working to remove errors from our understanding of phenomena. 
 \citet{nosek2020} broadly define a replication as any study that has at least one outcome that would be considered to be diagnostic evidence of a claim from prior research.
 More frequently, replication is defined along two axes that help to distinguish the type of diagnostic evidence a study will provide and the function or purpose it is intended to serve. 
@@ -61,6 +75,108 @@ While a replication or reproduction can never provide conclusive evidence for or
 If a well-executed, high-quality replication or reproduction recreates the result of an original study, we are apt to increase our confidence in the original findings. 
 If a finding cannot be recreated, it reduces our confidence in the original result and suggests that our current understanding of the system being studied or our methods of testing that system are insufficient.
 
-\section{Prior Survey Research on Reproducible Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Prior Survey Research on Reproducible Research}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Data and Methods}
+Complete documentation of the procedures and materials used in this study are available through the Survey of Reproducibility in Geographic Research Repository (\citet{Kedron_Holler_Bardin_Hilgendorf_2022} - \url{https://osf.io/5yeq8/}) hosted by the Open Science Framework (OSF). 
+Before the start of data collection, we registered a preanalysis plan for the survey with OSF Registries (\citet{Kedron_Survey_PAP} - \url{https://osf.io/6zjcp}). 
+We amended that plan at the close of data collection to reflect a change in stopping rule we used to end the survey. 
+
+The survey was conducted under the approval and supervision of the Arizona State Institutional Review Board - \textit{STUDY00014232}.
+All approved documentation, study protocols, and consent materials are available through the above repository.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Survey Design}
+Our target population of interest is researchers who have recently published in the field of geography. 
+We followed a 4-step procedure to create a sampling frame for our survey that captures this diverse population of researchers and the approaches they use when studying geography. 
+
+First, beginning at the publication level, we identified journals indexed as either geography or physical geography by the \href{https://access.clarivate.com/}{Web of Science's Journal Citation Reports} that also had a 5-year impact factor greater than 1.5.
+From those journals, we created a database of all articles published between 2017 and 2021.  
+
+Second, we used Arizona State University's institutional subscription to the \href{https://www.scopus.com/home.uri}{Scopus Database} to extract journal information (e.g., subject area, ranking), article information (e.g., abstract, citation counts), and author information (e.g., corresponding status, email) for each publication. 
+Because our intention is to capture individuals actively publishing new geographic research, we retained publications indexed by Scopus as \textit{document type = "Article"} and removed all other publication types (e.g., editorials, book reviews) from our article database. 
+We also removed articles with missing authorship information. 
+
+Third, we next moved to the author level to create a condensed list of corresponding authors. 
+We chose to focus on corresponding authors for two reasons. 
+(1) Corresponding authorship is one indicator of the level of involvement an individual had in a given work. 
+While imperfect, it was the best available indicator in the Scopus database as across journals there is no commonly adopted policy for declarations of author work (e.g., CRediT Statements).
+(2) Scopus maintains email contact information for all corresponding authors, which gave us a means of contacting researchers in our sampling frame.
+Scopus also maintains a unique identifier for each author (author-id) across time, which allowed us to identify authors across publications. 
+
+Fourth, we associated each corresponding author with their contact email address and deduplicated to create a single record for each corresponding author. 
+To maximize our chance or response, we retained the latest available contact information for each author by sorting the initial list by author-id and publication year (descending) and keeping the latest available entry for each author-id. 
+For authors who had two or more distinct emails in the latest year of publication, we deduplicated by giving a ranked preference to .edu, .gov, and then .org extensions.
+
+Applying these criteria yielded a sampling frame of 29,828 authors. 
+On average, these authors published 2.7 articles in top geography journals between 2017 and 2021. 
+Roughly one-third (33 percent) were most recently a corresponding author for an article published in a general geography journal. 
+A similar proportion (32 percent) were most recently a corresponding author for an article published in an earth sciences journal, and smaller proportions in the social sciences and cultural geography (20 percent and 16 percent, respectively).
+
+The survey instrument used in this study is available through the Survey of Reproducibility in Geographic Research Repository.
+The survey consists of 23 questions that assess (i) perceptions of the reproducibility of geographic research, (ii) familiarity and use of reproducible research practices, and (iii) beliefs about barriers to reprodicibility. 
+Survey questions were developed following a review of prior reproducibility surveys \citep[e.g.,][]{fanelli2009many,baker20161, konkol2019} and our own reading of recurring issues in the reproducibility literature. 
+Because this survey had not been previously fielded, we pilot tested the instrument with a subset of \textit{n}=19 graduate students and geography faculty with differing levels of experience, topical focus, and methodological background. 
+After pilot testing we removed these individuals from our sampling frame to ensure they would not be included in our final sample.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Data Collection}
+We used a digital form of the Tailored Design Method \citep{dillman2014internet} to survey geographic researchers between May 17 and June 10, 2022.
+A simple random sample of 2,000 researchers was drawn without replacement from our sampling frame, and those researchers were invited via email to participate in the online survey. 
+Researchers received their initial invitation on May 17, 2022. 
+Two reminder emails were sent to researchers that had not yet completed the survey on May 26 and May 31, 2022.
+
+Participation in the survey was entirely voluntary. 
+Each researcher that opted to participate in the survey was provided with IRB approved consent documentation and linked to the internet survey instrument. 
+Participants were also given the option to enter a random prize draw. 
+The total possible compensation a participant was eligible to receive was 90 US dollars, awarded as a prepaid credit card.
+Three prize winners were selected at random from those electing to enter the prize draw at the end of the data collection period.
+
+The online survey was administered through \href{https://www.qualtrics.com/}{Qualtrics}. 
+Each question on the survey was presented as a unique page. 
+Adaptive questioning, conditionally displaying items based on responses to other items, was used to reduce the number of complexity of questions.
+Participating researchers had the option to exit and re-enter the survey and were also able to review and/or change their answers using a back button as they progressed through the survey.
+
+At the end of the data collection period, responses were checked for completeness and coded using the reporting standards of the American Association For Public Opinion Research \citep{aaporstandards}.
+Responses were downloaded from Qualtrics, anonymized, and stored in a password-protected databases.
+We used a unique key to link this data with participant information (e.g., citation history) stored in separate database for our statistical analyses. 
+To preserve participant privacy that connection was severed at the end of our analysis and we have only shared the anonymized response file through our public repository. 
+As a result some of the result presented below cannot be directly replicated. 
+We have indicated throughout our results section which analysis can and cannot be replicated using the data files and code share through our public repository. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Statistical Analyses}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Response Rates}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgement(s)}
+We thank Tyler Hoffman for providing technical assistance in the development and execution of a set of trial queries using the Scopus API.
+
+\section*{Funding}
+This material is based on work supported by the National Science Foundation under Grant No. \textbf{BCS-2049837}.
+
+\section*{Notes on contributor(s)}
+\textbf{Kedron:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Supervision, Project Administration, Funding Acquisition. \textbf{Holler:} Conceptualization, Methodology, Data Curation, Writing - Review and Editing, Funding Acquisition. \textbf{Bardin:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Data Curation, Software.
+
+\newpage
+\bibliography{references}
+
+\newpage
+\noindent PETER KEDRON is an Associate Professor in the School of Geographical Science and Urban Planning and core faculty member in the Spatial Analysis Research Center (SPARC) at Arizona State University, Tempe, AZ, 85283, US. Email: Peter.Kedron@asu.edu. His research interests include spatial analysis, geographic information science, economic geography, and the accumulation of knowledge about geographic phenomena. \\  
+  
+\noindent JOSEPH HOLLER is an Assistant Professor of Geography at Middlebury College, Middlebury, VT, 05753, US. Email: \\
+  
+\noindent SARAH BARDIN is a PhD candidate ...
 
 \end{document}
