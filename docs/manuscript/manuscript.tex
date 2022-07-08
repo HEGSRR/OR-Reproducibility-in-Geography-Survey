@@ -21,6 +21,11 @@
 \titleformat*{\section}{\Large\bfseries}
 \titleformat*{\subsection}{\large\bfseries}
 
+\usepackage{endnotes}
+\let\footnote=\endnote
+\usepackage{etoolbox}
+\patchcmd{\enoteformat}{1.8em}{0pt}{}{}
+
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -34,6 +39,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
 \newtheorem{notation}{Notation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -49,15 +55,20 @@
 \maketitle
 
 \begin{abstract}
-This template is for authors who are preparing a manuscript for a Taylor \& Francis journal using the \LaTeX\ document preparation system and the \texttt{interact} class file, which is available via selected journals' home pages on the Taylor \& Francis website.
+While the number of reproduction and replication studies undertaken in the social and behavioural sciences continues to rise, such studies have not yet become commonplace in geography. 
+Existing attempts to reproduce geographic research suggest that many studies cannot be fully reproduced, or are simply missing components needed to attempt a reproduction. 
+Despite this suggestive evidence, we have not yet systematically assessed geographers' perceptions of reproducibility, the use of reproducible research practices across the discipline's diverse research traditions, or identified the factors that have kept geographers from conducting more reproduction studies.
+This study addresses each of these questions by surveying active geographic researchers selected using probability sampling techniques from a rigorously constructed sampling frame.
+We find ...
+CONClUSION...
+
 \end{abstract}
 
 \begin{keywords}
 Reproducible Research, Epistemology, Geographic Research Methods
 \end{keywords}
 
-\maketitle
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Introduction}
 Since the 1600s, replication has been a defining characteristic of the scientific method and an essential tool of researchers working to remove errors from our understanding of phenomena. 
 \citet{nosek2020} broadly define a replication as any study that has at least one outcome that would be considered to be diagnostic evidence of a claim from prior research.
@@ -75,9 +86,20 @@ While a replication or reproduction can never provide conclusive evidence for or
 If a well-executed, high-quality replication or reproduction recreates the result of an original study, we are apt to increase our confidence in the original findings. 
 If a finding cannot be recreated, it reduces our confidence in the original result and suggests that our current understanding of the system being studied or our methods of testing that system are insufficient.
 
+\begin{itemize}
+    \item Attempting reproductions
+    \item Attempting reproductions in geography
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Prior Survey Research on Reproducible Research}
+\begin{itemize}
+    \item Reproducibility surveys
+    \item the problems with these surveys
+    \item reproducibilty surveys in geography
+    \item how they fall prey to the same problems
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,8 +165,9 @@ Participating researchers had the option to exit and re-enter the survey and wer
 
 At the end of the data collection period, responses were checked for completeness and coded using the reporting standards of the American Association For Public Opinion Research \citep{aaporstandards}.
 Responses were downloaded from Qualtrics, anonymized, and stored in a password-protected databases.
-We used a unique key to link this data with participant information (e.g., citation history) stored in separate database for our statistical analyses. 
-To preserve participant privacy that connection was severed at the end of our analysis and we have only shared the anonymized response file through our public repository. 
+We used a unique key to link this data with participant information (e.g., citation history) stored in a separate database during our statistical analyses. 
+To preserve participant privacy that connection was severed at the end of our analysis.
+We have only shared the anonymized response file through our public repository. 
 As a result some of the result presented below cannot be directly replicated. 
 We have indicated throughout our results section which analysis can and cannot be replicated using the data files and code share through our public repository. 
 
@@ -155,8 +178,18 @@ We have indicated throughout our results section which analysis can and cannot b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Results}
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Response Rates}
+A total of \textit{n}=215 of the authors we contacted completed the online survey with information sufficient for analysis. The contact rate for the survey was 13.9 percent, the response rate was 10.8 percent, yielding a cooperation rate of 77.6 percent. The refusal rate was 3.1 percent.\endnote{All outcome rates are reported using \citet{aaporstandards} standards. The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}   
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Discussion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conclusion}
+
+
+\theendnotes
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -168,6 +201,8 @@ This material is based on work supported by the National Science Foundation unde
 
 \section*{Notes on contributor(s)}
 \textbf{Kedron:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Supervision, Project Administration, Funding Acquisition. \textbf{Holler:} Conceptualization, Methodology, Data Curation, Writing - Review and Editing, Funding Acquisition. \textbf{Bardin:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Data Curation, Software.
+
+
 
 \newpage
 \bibliography{references}
