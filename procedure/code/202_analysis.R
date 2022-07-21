@@ -9,7 +9,7 @@ library(tidyverse)
 survey_resp <- read.csv(here("data","derived","private","hegsrr_analysis_reprod.csv"))
 
 #- Define variable lists -#
-demo <- c("Q1", "Q2", "Q3", "Q18", "Q19", "Q20", "Q21", "Q22")
+demo <- c("Q1", "Q2", "Q3","Q4","Q5", "Q18", "Q19", "Q20", "Q21", "Q22")
 
 practice <- c("Q7a","Q7a_1","Q7a_3", 
               "Q7b","Q7b_1",
@@ -58,21 +58,21 @@ for (i in all_vars){
 #-Q3-#
 for (i in numeric_vars){
   mytable <- table(raw_filtered[[i]],raw_filtered$Q3)
-  xtab <-  round(prop.table(mytable) * 100,2) 
+  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
   write.csv(xtab, here("results","tables","Field",paste0("Q4_Xtab_",i, ".csv", sep = "")))
 }
 
 #-Q4-#
 for (i in numeric_vars){
   mytable <- table(raw_filtered[[i]],raw_filtered$Q4)
-  xtab <-  round(prop.table(mytable) * 100,2) 
+  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
   write.csv(xtab, here("results","tables","Method",paste0("Q4_Xtab_",i, ".csv", sep = "")))
 }
 
 #-Q5-#
 for (i in numeric_vars){
   mytable <- table(raw_filtered[[i]],raw_filtered$Q5)
-  xtab <-  round(prop.table(mytable) * 100,2) 
+  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
   write.csv(xtab, here("results","tables","Familiarity",paste0("Q5_Xtab_",i, ".csv", sep = "")))
 }
 
@@ -80,9 +80,7 @@ for (i in numeric_vars){
 #-Age-#
 for (i in numeric_vars){
   mytable <- table(raw_filtered[[i]],raw_filtered$Q1)
-  xtab <-  round(prop.table(mytable) * 100,2) 
+  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
   write.csv(xtab, here("results","tables","Age",paste0("Age_Xtab_",i, ".csv", sep = "")))
 }
 
-
-colnames(raw_filtered)[94]
