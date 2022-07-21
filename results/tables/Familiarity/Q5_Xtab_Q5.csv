@@ -1,0 +1,5 @@
+"","Not at all","Somewhat","To a great extent","Very little"
+"Not at all",100,0,0,0
+"Somewhat",0,100,0,0
+"To a great extent",0,0,100,0
+"Very little",0,0,0,100
