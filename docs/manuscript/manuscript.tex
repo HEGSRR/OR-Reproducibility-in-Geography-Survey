@@ -86,20 +86,42 @@ While a replication or reproduction can never provide conclusive evidence for or
 If a well-executed, high-quality replication or reproduction recreates the result of an original study, we are apt to increase our confidence in the original findings. 
 If a finding cannot be recreated, it reduces our confidence in the original result and suggests that our current understanding of the system being studied or our methods of testing that system are insufficient.
 
-\begin{itemize}
-    \item Attempting reproductions
-    \item Attempting reproductions in geography
-\end{itemize}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Prior Survey Research on Reproducible Research}
-\begin{itemize}
-    \item Reproducibility surveys
-    \item the problems with these surveys
-    \item reproducibilty surveys in geography
-    \item how they fall prey to the same problems
-\end{itemize}
+There are several ways to assess the reproducibility of research.
+The most direct approach is to simply conduct a study that follows the methods of an existing study and then compare the results of the new study to the results of the old study. 
+The direct approach can be implemented in two ways: as a one-to-one comparison, in which as single reproduction is used to assess the results and inferences of one prior study; or as a many-to-one comparison, in which teams of researchers attempt multiple reproductions and make a set of comparisons and collective assessment of one prior study \citep{NASEM2019}.
+Published reproductions of both forms are becoming increasingly common in many disciplines with researchers generally only able to partially reproduce study results, often observing small effect sizes \citep[e.g.,][]{begley2012raise, camerer2016evaluating, camerer2018evaluating, wagenmakers2016registered}.  
+
+Such published reproductions have not yet become common in geography. 
+The small number of studies that have attempted assess the reproducibility of geographic research by reproducing existing work suggest that many studies cannot be fully reproduced \citep{Kedron2021ssrn, nust2018, ostermann2021}, or are simply missing components needed to attempt a reproduction \citep{Kedron_VijayanRP, konkol2019, ostermann2021}.
+For example, as part of an ongoing research initiative of the Association of Geographic Information Laboratories in Europe, a group of researchers annually attempts to reproduce the computational results of submissions to that association's annual meeting \citep{Nust_AGILE_2020, Nust2021AGILE, Nust_AGILE_2022}. In published reports the researchers document whether the study could be reproduced and record factors that hindered reproduction such as the accessibility of data, code, and computational environment.
+\citet{konkol2019} similarly attempted computational reproduction of 41 open-access research papers that used spatial methods.
+Focusing their analysis on the execution of code and the similarity of figures, the authors found that 39 of the papers had coding issues that hindered reproduction and that 47 percent of the figures they reproduce deviated from the original result in a significant way. 
+
+
+To date, the researchers attempting these reproductions have also emphasized the computational reproducibility of geographic research ahead of other dimensions. 
+
+
+While these and similar efforts have produced useful guidelines \citep{hofer2019reproducible, wilson2021} and moved forward the development of the computational and institutional infrastructure \citep{nust2019, nust2021} needed to foster reproducibility in the field, they have not assessed the use of reproducible research practices across the disciplines diverse research traditions, or identified what has barred geographers from conducting more reproduction studies. 
+
+The root of the problem is that the direct approach to assessing reproducibility presents a trade off. 
+The careful reproduction of a study can provide rich evidence about that particular study, but offers at best limited evidence about the validity of other studies or the prevalence of the research practices observed.
+For example, if a reproduction identified a flaw in the design of a study that impacted the results of that study it would be reasonable to be concerned that observing the same flaw in other studies could impact the results of those studies.
+However, until other studies are gathered and checked we would know how common the flaw is, or whether or not it impacts other studies in a similar way. 
+
+\subsection{Indirect}
+Another approach to understanding the reproducibility of research is to survey active researchers about their perceptions of reproducibility and their own research practices.
+Researcher surveys provide indirect measurements of reproducibility that offer  
+
+\subsubsection{Geog Indirect}
+For example, \citet{ostermann2017} use a literature review of volunteered geographic information research publications to assess computational reproducibility based on availability of original data, metadata, source code, or pseudocode.
+
+\subsubsection{common problems of surveys}
+While these surveys are suggestive of reproducibility concerns across the sciences, they share a set of common methodological problems. 
+First, many prior surveys have used non-systematic sampling methods to draw data from non-representative, self-selected populations (e.g., professional association memberships), and/or use non-probability sampling schemes, which collectively limits our ability to draw generalizable conclusion or make inferences about specific sub-fields \citep{NASEM2019}.
+Prior surveys also commonly failed to systematically report survey details (e.g., response rate) needed to assess and address potential bias. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,7 +157,7 @@ To maximize our chance or response, we retained the latest available contact inf
 For authors who had two or more distinct emails in the latest year of publication, we deduplicated by giving a ranked preference to .edu, .gov, and then .org extensions.
 
 Applying these criteria yielded a sampling frame of 29,828 authors. 
-On average, these authors published 2.7 articles in top geography journals between 2017 and 2021. 
+On average, these authors published 2.7 articles in geography journals meeting our criteria between 2017 and 2021. 
 Roughly one-third (33 percent) were most recently a corresponding author for an article published in a general geography journal. 
 A similar proportion (32 percent) were most recently a corresponding author for an article published in an earth sciences journal, and smaller proportions in the social sciences and cultural geography (20 percent and 16 percent, respectively).
 
@@ -187,7 +209,7 @@ A total of \textit{n}=215 of the authors we contacted completed the online surve
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusion}
-
+A standing question is how should geographic research approaches be designed to efficiently generate reliable knowledge.
 
 \theendnotes
 
