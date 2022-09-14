@@ -6,7 +6,7 @@ library(tidyverse)
 #- PERFORM DESCRIPTIVE ANALYSIS -#
 #-                              -#
 #--------------------------------#
-survey_resp <- read.csv(here("data","derived","private","hegsrr_analysis_reprod.csv"))
+survey_resp <- read.csv(here("data","derived","public","hegsrr_analysis_reprod.csv"))
 
 #- Define variable lists -#
 demo <- c("Q1", "Q2", "Q3","Q4","Q5", "Q18", "Q19", "Q20", "Q21", "Q22")

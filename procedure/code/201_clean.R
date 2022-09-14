@@ -29,8 +29,12 @@ raw_filtered <- raw %>% filter(disposition_final %in% c("1.1","1.2") & Q1 != "Un
 col_names <- sapply(raw_filtered, function(col) length(unique(col)) < 6)
 raw_filtered[ , col_names] <- lapply(raw_filtered[ , col_names] , factor)
 raw_filtered <- raw_filtered[c(1:98)]
-             
-write.csv(raw_filtered, here("data","derived","private","hegsrr_analysis_reprod.csv"))
+
+#Short-term code to output file for interim review; to be updated later
+drop.cols <- c("LocationLatitude","LocationLongitude","AuthID","X.y")
+raw_filtered <- raw_filtered %>% select(-one_of(drop.cols))
+  
+write.csv(raw_filtered, here("data","derived","public","hegsrr_analysis_reprod.csv"))
 
 
 
