@@ -84,3 +84,20 @@ for (i in numeric_vars){
   write.csv(xtab, here("results","tables","Age",paste0("Age_Xtab_",i, ".csv", sep = "")))
 }
 
+ftable(data = survey_resp, Q3 ~ Q5)
+
+ftable(data = survey_resp, Q4 ~ Q5)
+
+# how did folks define "reproducibility" ?
+temp <- survey_resp %>% select(Q3, Q4, Q5, Q6) %>% filter(Q5 != "Not at all") %>% arrange(Q5, Q4)
+temp %>% write.csv(here("results", "tables", "definitions.csv"))
+
+
+temp <- survey_resp %>% filter(Q5 == "Somewhat") %>% select(Q6)
+# greatly familiar?
+temp <- survey_resp %>% filter(Q5 == "To a great extent") %>% select(Q6)
+
+
+
+
+
