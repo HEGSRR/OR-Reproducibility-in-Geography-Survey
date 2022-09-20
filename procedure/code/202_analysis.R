@@ -89,15 +89,19 @@ ftable(data = survey_resp, Q3 ~ Q5)
 ftable(data = survey_resp, Q4 ~ Q5)
 
 # how did folks define "reproducibility" ?
-temp <- survey_resp %>% select(Q3, Q4, Q5, Q6) %>% filter(Q5 != "Not at all") %>% arrange(Q5, Q4)
-temp %>% write.csv(here("results", "tables", "definitions.csv"))
+survey_resp %>% select(Q3, Q4, Q5, Q6) %>%
+  filter(Q5 != "Not at all") %>%
+  arrange(Q5, Q4) %>%
+  write.csv(here("results", "tables", "definitions.csv"))
 
+# convert extent questions into factors
+extent <- c("To a great extent", "Somewhat", "Very little", "Not at all", "")
+extentQs <- c("Q5", "Q7a","Q7b", "Q7c", "Q7d", "Q7e")
+survey_resp[extentQs] <- lapply(survey_resp[extentQs], factor, levels=extent, ordered = TRUE)
 
-temp <- survey_resp %>% filter(Q5 == "Somewhat") %>% select(Q6)
-# greatly familiar?
-temp <- survey_resp %>% filter(Q5 == "To a great extent") %>% select(Q6)
-
-
+# convert agree questions into factors
+agree <- c("Strongly disagree", "Disagree", "Agree", "Strongly agree", "")
+agreeQs <- c()
 
 
 
