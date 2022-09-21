@@ -1,6 +1,7 @@
 library(here)
 library(tidyverse)
 
+
 #--------------------------------#
 #-                              -#
 #- PERFORM DESCRIPTIVE ANALYSIS -#
@@ -94,14 +95,68 @@ survey_resp %>% select(Q3, Q4, Q5, Q6) %>%
   arrange(Q5, Q4) %>%
   write.csv(here("results", "tables", "definitions.csv"))
 
-# convert extent questions into factors
-extent <- c("To a great extent", "Somewhat", "Very little", "Not at all", "")
-extentQs <- c("Q5", "Q7a","Q7b", "Q7c", "Q7d", "Q7e")
-survey_resp[extentQs] <- lapply(survey_resp[extentQs], factor, levels=extent, ordered = TRUE)
+##### FACTOR MANAGEMENT #####
+# if anyone can compress all of this into a function that uses a table of 
+# questions & ordered responses, by all means...
 
-# convert agree questions into factors
-agree <- c("Strongly disagree", "Disagree", "Agree", "Strongly agree", "")
-agreeQs <- c()
+# Simplify sub-field labels
+values <- c("Human geography",
+            "Physical geography, earth and environmental sciences",
+            "Nature and society",
+            "Geographic methods, GIS, spatial statistics")
+survey_resp$Q3 <- factor(survey_resp$Q3, levels=values)
+values <- c("Human", "Physical", "Nature/Society", "Methods")
+levels(survey_resp$Q3) <- values
 
+# convert extent questions into ordered factors
+values <- c("To a great extent", "Somewhat", "Very little", "Not at all", "")
+questions <- c("Q5", "Q7a","Q7b", "Q7c", "Q7d", "Q7e")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# convert frequency questions into ordered factors
+values <- c("Always", "Most of the time", "Some of the time", "Rarely", "Never", "")
+questions <- c("Q7a_1", "Q7a_3", "Q7b_1", "Q7c_1", "Q7c_2", "Q7c_3", "Q7d_1", "Q7d_2", "Q7e_1")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# convert agree questions into ordered factors
+values <- c("Strongly disagree", "Disagree", "Agree", "Strongly agree", "Don't know", "")
+questions <- c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5", "Q8_6")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# convert yes/no questions into ordered factors
+values <- c("Yes", "No", "Don't Know", "")
+questions <- c("Q9_1", "Q9_2", "Q9_3", "Q9_4", "Q9_5", "Q9_6", "Q9_7")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# convert proportion questions into ordered factors
+values <- c("All", "Some", "None", "Don't Know", "")
+questions <- c("Q11_1", "Q11_2", "Q11_3")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# convert yes/no proportion questions into ordered factors
+values <- c("Yes, all", "Yes, some", "No", "Did not attempt", "")
+questions <- c("Q12_1", "Q12_2", "Q12_3", "Q12_4")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# convert frequency questions into ordered factors
+values <- c("Frequently", "Occasionally", "Rarely", "Never", "")
+questions <- c("Q14_1", "Q14_2", "Q14_3", "Q14_4", "Q14_5", "Q14_6", "Q14_7", "Q14_8", "Q14_9", "Q14_10", "Q14_11", "Q14_12")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# convert importance questions into ordered factors
+values <- c("Very important", "Somewhat important", "Somewhat not important", "Not important", "")
+questions <- c("Q17_1", "Q17_2", "Q17_3", "Q17_4", "Q17_5", "Q17_6", "Q17_7", "Q17_8", "Q17_9", "Q17_10")
+survey_resp[questions] <- lapply(survey_resp[questions], factor, levels=values, ordered = TRUE)
+
+# check data types for the full survey
+sapply(survey_resp, class)
+
+saveRDS(survey_resp, here("data", "derived", "public", "survey_resp.RDS"))
+survey_resp <- readRDS(here("data", "derived", "public", "survey_resp.RDS"))
+
+# need to convert:
+# Q7a_2 into four binary variables
+# Q13_1_! and Q13_2_1 into numeric
+# 
 
 
