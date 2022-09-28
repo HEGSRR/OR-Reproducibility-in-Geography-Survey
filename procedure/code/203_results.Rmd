@@ -11,135 +11,234 @@ library(here)
 library(tidyverse)
 ```
 
-## R Markdown
+## Reproducibility Survey Results
 
-Abstract...
+First, load the pre-processed data.
 
 ```{r load}
 survey_resp <- readRDS(here("data", "derived", "public", "survey_resp.RDS"))
 summary(survey_resp)
 ```
 
+### What research methods does each sub-field use?
+
+The methods and statistics subfield primarily uses quantitative methods, and secondarily uses mixed methods.
+The physical geography subfield uses quantitative and mixed methods, likely including qualitative researcher
+interpretations as "mixed methods".
+The human geography and nature/society subfields use qualitative, quantitative and mixed methods, with the majority preferring qualitative or mixed methods.
+
 ```{r sub-fields-by-methods}
 # crosstab sub-fields and methods
-ftable(data = survey_resp, Q4 ~ Q3)
+addmargins(table(survey_resp$Q4, survey_resp$Q3))
 ```
 
-```{r familiarity-by-subfield-and-method}
-# crosstab familiarity with sub-fields and methods
-ftable(data = survey_resp, Q5 ~ Q3 + Q4)
-```
+### How familiar is each subfield with the term "reproducibility"?
+
+Physical and Methods subfields are more familiar with the
+term "reproducibility" than the Nature/Society or Human subfields.
 
 ```{r familiarity-by-subfield}
+addmargins(table(survey_resp$Q5, survey_resp$Q3))
+```
 
-# calculate familiarity with reproducible practices
-survey_resp <- survey_resp %>% mutate(familiar = as.numeric(Q7a) + 
-                                        as.numeric(Q7b) + as.numeric(Q7c) +
-                                        as.numeric(Q7d) + as.numeric(Q7e))
+### How familiar is each method with the term "reproducibility"?
 
-# summarize and ANOVA familiarity with practices by subfield
+Quantitative and Mixed Methods researchers are more familiar with the
+term "reproducibility" than qualitative researchers.
+
+```{r familiarity-by-methods}
+addmargins(table(survey_resp$Q5, survey_resp$Q4))
+```
+
+### How do geographers define reproducibility?
+
+The following code creates a results table, `definitions.csv`, organizing
+definitions by researcher's self-reported familiarity with the term reproducibility
+and their preferred methodology (quant, qual, or mixed).
+
+We can see a trend where the more familiar a researcher is with the term "reproducibility", 
+the more likely they are to report a definition consistent with the NASEM.
+The less familiar a researcher is, the more likely they are to report a definition
+consistent with "replication", whereby different data may be used and results are 
+expected to be similar, but not identical, to the original results.
+
+```{r define-reproducibility}
+# how did folks define "reproducibility" ?
+survey_resp %>% select(Q3, Q4, Q5, Q6) %>%
+  filter(Q5 != "Not at all") %>%
+  arrange(Q5, Q4) %>%
+  write.csv(here("results", "tables", "definitions.csv"))
+```
+
+
+### How familiar is each subfield with reproducible research practices?
+
+The following analysis aggregates familiarity with several different research 
+practices into a single indicator, including:
+1. use of open source software,
+2. research notebooks (lab, field, or computational),
+3. data sharing,
+4. code sharing, and 
+5. pre-analysis research protocol registration.
+
+Familiarity is measured from 1 (not at all) to 4 (to a great extent) for each
+research practice, resulting in possible scores from 5 (not familiar with any practice)
+to 20 (greatly familiar with every practice).
+
+The methods and physical geography subfields report the most familiarity with
+reproducible research practices, followed by nature/society and lastly human geography.
+
+```{r familiarity-by-subfield}
 group_by(survey_resp, Q3) %>%
   summarise(
     count = n(),
-    mean = mean(familiar, na.rm = TRUE),
-    sd = sd(familiar, na.rm = TRUE)
+    mean = round(mean(familiar, na.rm = TRUE),2),
+    sd = round(sd(familiar, na.rm = TRUE),2)
   )
 ```
+
+There are significant differences between subfields with regards to familiarity with reproducible research practices.
 
 ```{r familiarity-by-subfield-anova}
 aov(familiar ~ Q3, data=survey_resp) %>% summary()
 ```
 
+## Does familiarity with practices translate into applying them to research?
 
-#### Summarize reproducible research practices ####
-# there must be a prettier option for a crosstabulation with marginal sums!
+### Do researchers familiar with open source software use it in research?
 
-summary(survey_resp$Q7a)
-summary(survey_resp$Q7a_1)
-ftable(data = survey_resp, Q7a_1 ~ Q7a)
-summary(survey_resp$Q7a_3)
-ftable(data = survey_resp, Q7a_3 ~ Q7a)
-# FAMILIARITY with open source software outstrips USE of open source software
-# and of documenting the computational environment
-# low percentage of researchers "always" share information about computational environment
+Although a majority of researchers are familiar with open source software, they
+less frequently use the software for research.
 
-summary(survey_resp$Q7b)
-summary(survey_resp$Q7b_1)
-ftable(data = survey_resp, Q7b_1 ~ Q7b)
-# FAMILIARITY with notebooks also outstrips their USE 
-# less than 17% of researchers always use notebooks (lab, field, or computational)
-# less than 40% use them most of the time
+```{r open-source-use}
+addmargins(table(survey_resp$Q7a, survey_resp$Q7a_1))
+```
 
-summary(survey_resp$Q7c)
-summary(survey_resp$Q7c_1)
-ftable(data = survey_resp, Q7c_1 ~ Q7c)
-summary(survey_resp$Q7c_2)
-ftable(data = survey_resp, Q7c_2 ~ Q7c)
-summary(survey_resp$Q7c_3)
-ftable(data = survey_resp, Q7c_3 ~ Q7c)
-# most researchers are familiar with sharing/archiving data, but still only 16%
-# report always doing so
-# use of DOIs is inconsistent and use of metadata is rare
+### What do researchers use open source software for?
 
-summary(survey_resp$Q7d)
-summary(survey_resp$Q7d_1)
-ftable(data = survey_resp, Q7d_1 ~ Q7d)
-summary(survey_resp$Q7d_2)
-ftable(data = survey_resp, Q7d_2 ~ Q7d)
-# most researchers are at least somewhat familiar with sharing code or scripts
-# but less than 40% actually do so all or most of the time
-# and only 14% use version control software some or most of the time
+```{r open-source-use}
 
-summary(survey_resp$Q7e)
-summary(survey_resp$Q7e_1)
-ftable(data = survey_resp, Q7e_1 ~ Q7e)
-# familiarity with pre-analysis plan registration is rare:
-# 48% of respondents have no familiarity
-# only 6 respondents reported using pre-analysis registrations all or most of the time
+## variables not ready for analysis
 
-# In Sum, most geographers are at least somewhat familiar with open source software,
-# data sharing, and code sharing.
-# there are large gaps in implementation across all practices
-# some practices are practically unknown in geography, including metadata, 
-# version control software, and pre-analysis plan registration.
+```
 
+### Do researchers familiar with open source software share the computational environment?
 
-##### Summarize Beliefs #####
+Although a majority of researchers are familiar with open source software, they
+less frequently share the details of the computational environment used in their
+research.
 
+```{r environment-share}
+addmargins(table(survey_resp$Q7a, survey_resp$Q7a_3))
+```
+
+### Do researchers familiar with research notbooks use them in their research?
+
+FAMILIARITY with notebooks exceeds their use in research. 
+Less than 17% of researchers always use notebooks (lab, field, or computational)
+Less than 40% use them most of the time.
+If researchers are at best somewhat familiar with notebooks, then they only
+use them some of the time.
+
+```{r notebook-use}
+addmargins(table(survey_resp$Q7b, survey_resp$Q7b_1))
+```
+
+### Do researchers familiar with sharing data do so in their research?
+
+Very few researchers always share their data, and familiarity with sharing
+data exceeds the frequency with which researchers do so.
+
+```{r data-share}
+addmargins(table(survey_resp$Q7c, survey_resp$Q7c_1))
+```
+
+Even for those sharing data most of the time, they do not necessarily use
+digital object identifiers (DOIs) to persistently link to the data.
+
+```{r doi}
+addmargins(table(survey_resp$Q7c, survey_resp$Q7c_2))
+```
+
+And an even larger number of researchers rarely if ever document spatial metadata
+for the data that they are sharing, nullifying its usefulness for others.
+Just 16% of researchers report always documenting spatial metadata.
+
+```{r metadata}
+addmargins(table(survey_resp$Q7c, survey_resp$Q7c_3))
+```
+
+### Do researchers familiar with sharing code do so in their research?
+
+Most researchers are at least somewhat familiar with sharing code or scripts,
+but less than 40% actually do so all or most of the time
+
+```{r share-code}
+addmargins(table(survey_resp$Q7d, survey_resp$Q7d_1))
+```
+
+Only 14% use version control software some or most of the time
+
+```{r version-control}
+addmargins(table(survey_resp$Q7d, survey_resp$Q7d_2))
+```
+
+### Do researchers familiar with pre-analysis planning register pre-analysis plans for their research?
+
+Only 52% of respondents have any familiarity with pre-analysis plans, and of those
+just 6 researchers register plans all or or most of the time.
+
+```{r pre-analysis}
+addmargins(table(survey_resp$Q7e, survey_resp$Q7e_1))
+```
+
+In Sum, most geographers are at least somewhat familiar with open source software,
+data sharing, and code sharing.
+there are large gaps in implementation across all practices
+some practices are practically unknown in geography, including metadata, 
+version control software, and pre-analysis plan registration.
+
+# Beliefs about Reproducibility
+
+```{r beliefs-summary}
 survey_resp %>% select(starts_with("Q8")) %>% summary()
+```
 
-# calculate familiarity with reproducible practices
-survey_resp <- survey_resp %>% mutate(belief = as.numeric(Q8_1) + 
-                                        (4 - as.numeric(Q8_2)) + 
-                                        as.numeric(Q8_3) +
-                                        as.numeric(Q8_4) + 
-                                        as.numeric(Q8_5) +
-                                        (4 - as.numeric(Q8_6))
-                                      )
-# a majority of geographers believe a failed reproduction does not disprove
-# the original study, and geographers are split on whether it detracts from
-# the original study's validity
-# the most agreement is for students attempting reproductions as part of training
 
+A majority of geographers believe a failed reproduction does not disprove the original study,
+and geographers are split on whether it detracts from the original study's validity.
+The most agreement is for students attempting reproductions as part of training
+
+```{r beliefs-stats}
 survey_resp %>% select(starts_with("Q8")) %>% lapply(as.numeric) %>% lapply(summary, na.rm=TRUE)
-# we can see that in aggregate, geographers do not tend to strongly agree or disagree
-# with beliefs about reproducibility
-# most in favor of students conducting replications, and reproducibility contributing
-# to credibility, and even some degree of compatibility with epistemology in the field
-# however geographers are, on average, neutral about loss of validity for failed reproductions
-# or loss of trust for studies without available data. 
-# we disagree with a failed reproduction falsifying the original study.
+```
 
+we can see that in aggregate, geographers do not tend to strongly agree or disagree
+with beliefs about reproducibility
+most in favor of students conducting replications, and reproducibility contributing
+to credibility, and even some degree of compatibility with epistemology in the field
+however geographers are, on average, neutral about loss of validity for failed reproductions
+or loss of trust for studies without available data. 
+we disagree with a failed reproduction falsifying the original study.
 
-# summarize and ANOVA beliefs with practices by subfield
+# Do subfields vary in their aggregate beliefs about reproducibility?
+
+There are differences in aggregate beliefs about the role of 
+reproducibility between the four subfields, with physical holding strongest affirmative
+beliefs, then methods, nature/society, and human geography
+
+```{r beliefs-stats-by-subfield}
 group_by(survey_resp, Q3) %>%
   summarise(
     count = n(),
     mean = mean(belief, na.rm = TRUE),
     sd = sd(belief, na.rm = TRUE)
   )
+```
 
+The differences are statistically significant.
+
+```{r beliefs-anova}
 aov(belief ~ Q3, data=survey_resp) %>% summary()
-# again, significant differences in aggregate beliefs about the role of 
-# reproducibility in subfields, with physical holding strongest affirmative
-# beliefs, then methods, nature/society, and human geography
+```
+

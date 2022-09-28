@@ -86,13 +86,6 @@ for (i in numeric_vars){
 }
 
 
-
-# how did folks define "reproducibility" ?
-survey_resp %>% select(Q3, Q4, Q5, Q6) %>%
-  filter(Q5 != "Not at all") %>%
-  arrange(Q5, Q4) %>%
-  write.csv(here("results", "tables", "definitions.csv"))
-
 ##### FACTOR MANAGEMENT #####
 # if anyone can compress all of this into a function that uses a table of 
 # questions & ordered responses, by all means...
@@ -181,143 +174,29 @@ survey_resp[questions] <- lapply(survey_resp[questions],
 # check data types for the full survey
 sapply(survey_resp, class)
 
-# save revised survey data
-saveRDS(survey_resp, here("data", "derived", "public", "survey_resp.RDS"))
+##### Calculate Aggregate Indicators #####
 
-# optionally, load revised survey data
-survey_resp <- readRDS(here("data", "derived", "public", "survey_resp.RDS"))
-
-
-##### SUMMARIZING RESULTS #####
-
-# Summarize the survey data
-summary(survey_resp)
-
-
-
-# need to convert:
-# Q7a_2 into four binary variables
-# Q13_1_! and Q13_2_1 into numeric
-# consider coding Q7 frequency questions as "never" if they skipped the question because
-# of no familiarity
-
-# crosstab sub-fields and methods
-ftable(data = survey_resp, Q4 ~ Q3)
-
-# crosstab familiarity with sub-fields and methods
-ftable(data = survey_resp, Q5 ~ Q3 + Q4)
-
-# calculate familiarity with reproducible practices
+# familiarity with reproducible practices
 survey_resp <- survey_resp %>% mutate(familiar = as.numeric(Q7a) + 
                                         as.numeric(Q7b) + as.numeric(Q7c) +
                                         as.numeric(Q7d) + as.numeric(Q7e))
 
-# summarize and ANOVA familiarity with practices by subfield
-group_by(survey_resp, Q3) %>%
-  summarise(
-    count = n(),
-    mean = mean(familiar, na.rm = TRUE),
-    sd = sd(familiar, na.rm = TRUE)
-  )
-
-aov(familiar ~ Q3, data=survey_resp) %>% summary()
-# there are significant differences between sub-fields, with Methods / Spatial
-# analysis and Phsycial geography both more familiar than nature/society or
-# human geography
-
-# calculate use of reproducible practices
-# not meaningful until we replace NA with 0 for respondents that skipped Q
-# due to lack of familiarity
-
-#### Summarize reproducible research practices ####
-# there must be a prettier option for a crosstabulation with marginal sums!
-
-summary(survey_resp$Q7a)
-summary(survey_resp$Q7a_1)
-ftable(data = survey_resp, Q7a_1 ~ Q7a)
-summary(survey_resp$Q7a_3)
-ftable(data = survey_resp, Q7a_3 ~ Q7a)
-# FAMILIARITY with open source software outstrips USE of open source software
-# and of documenting the computational environment
-# low percentage of researchers "always" share information about computational environment
-
-summary(survey_resp$Q7b)
-summary(survey_resp$Q7b_1)
-ftable(data = survey_resp, Q7b_1 ~ Q7b)
-# FAMILIARITY with notebooks also outstrips their USE 
-# less than 17% of researchers always use notebooks (lab, field, or computational)
-# less than 40% use them most of the time
-
-summary(survey_resp$Q7c)
-summary(survey_resp$Q7c_1)
-ftable(data = survey_resp, Q7c_1 ~ Q7c)
-summary(survey_resp$Q7c_2)
-ftable(data = survey_resp, Q7c_2 ~ Q7c)
-summary(survey_resp$Q7c_3)
-ftable(data = survey_resp, Q7c_3 ~ Q7c)
-# most researchers are familiar with sharing/archiving data, but still only 16%
-# report always doing so
-# use of DOIs is inconsistent and use of metadata is rare
-
-summary(survey_resp$Q7d)
-summary(survey_resp$Q7d_1)
-ftable(data = survey_resp, Q7d_1 ~ Q7d)
-summary(survey_resp$Q7d_2)
-ftable(data = survey_resp, Q7d_2 ~ Q7d)
-# most researchers are at least somewhat familiar with sharing code or scripts
-# but less than 40% actually do so all or most of the time
-# and only 14% use version control software some or most of the time
-
-summary(survey_resp$Q7e)
-summary(survey_resp$Q7e_1)
-ftable(data = survey_resp, Q7e_1 ~ Q7e)
-# familiarity with pre-analysis plan registration is rare:
-# 48% of respondents have no familiarity
-# only 6 respondents reported using pre-analysis registrations all or most of the time
-
-# In Sum, most geographers are at least somewhat familiar with open source software,
-# data sharing, and code sharing.
-# there are large gaps in implementation across all practices
-# some practices are practically unknown in geography, including metadata, 
-# version control software, and pre-analysis plan registration.
-
-
-##### Summarize Beliefs #####
-
-survey_resp %>% select(starts_with("Q8")) %>% summary()
-
-# calculate familiarity with reproducible practices
+# beliefs about role of reproducibility in scholarship
 survey_resp <- survey_resp %>% mutate(belief = as.numeric(Q8_1) + 
                                         (4 - as.numeric(Q8_2)) + 
                                         as.numeric(Q8_3) +
                                         as.numeric(Q8_4) + 
                                         as.numeric(Q8_5) +
                                         (4 - as.numeric(Q8_6))
-                                      )
-# a majority of geographers believe a failed reproduction does not disprove
-# the original study, and geographers are split on whether it detracts from
-# the original study's validity
-# the most agreement is for students attempting reproductions as part of training
-
-survey_resp %>% select(starts_with("Q8")) %>% lapply(as.numeric) %>% lapply(summary, na.rm=TRUE)
-# we can see that in aggregate, geographers do not tend to strongly agree or disagree
-# with beliefs about reproducibility
-# most in favor of students conducting replications, and reproducibility contributing
-# to credibility, and even some degree of compatibility with epistemology in the field
-# however geographers are, on average, neutral about loss of validity for failed reproductions
-# or loss of trust for studies without available data. 
-# we disagree with a failed reproduction falsifying the original study.
+)
 
 
-# summarize and ANOVA beliefs with practices by subfield
-group_by(survey_resp, Q3) %>%
-  summarise(
-    count = n(),
-    mean = mean(belief, na.rm = TRUE),
-    sd = sd(belief, na.rm = TRUE)
-  )
 
-aov(belief ~ Q3, data=survey_resp) %>% summary()
-# again, significant differences in aggregate beliefs about the role of 
-# reproducibility in subfields, with physical holding strongest affirmative
-# beliefs, then methods, nature/society, and human geography
+# save derived pre-processed survey data
+saveRDS(survey_resp, here("data", "derived", "public", "survey_resp.RDS"))
+
+# need to convert:
+# Q7a_2 into four binary variables
+# Q13_1_! and Q13_2_1 into numeric
+# consider coding Q7 frequency questions as "never" if they skipped the question because
+# of no familiarity
