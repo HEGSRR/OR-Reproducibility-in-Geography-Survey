@@ -2,18 +2,22 @@ library(here)
 library(tidyverse)
 
 
-hegs_repro <- read.csv(here("data","raw","private","HEGS-Reproducibility_2022_22_06.csv"))
-head(hegs_repro$StartDate)
+raw_rpr_responses <- readRDS(here("data","raw","private","raw_rpr_responses.rds"))
+  head(raw_rpr_responses)
+  str(raw_rpr_responses)
 
-hegs_repro = hegs_repro[-1,]
-hegs_repro = hegs_repro[-1,] # drop first two rows from data as these contain variable labels
-head(hegs_repro$StartDate)
-
-hegs_deidentified <- hegs_repro %>% 
+hegs_rpr_deidentified <- raw_rpr_responses %>% 
                       select(-c(RecipientLastName, 
                                 RecipientFirstName, 
                                 RecipientEmail,
-                                IPAddress))
+                                IPAddress,
+                                Status,
+                                ExternalReference,
+                                LocationLatitude,
+                                LocationLongitude,
+                                DistributionChannel,
+                                UserLanguage))
 
-write.csv(hegs_deidentified, here("data","raw","deidentified","hegsrr_raw_reprod.csv"))
+saveRDS(hegs_rpr_deidentified, here("data","raw","public","raw_hegs_rpr.rds"))
+
                         
