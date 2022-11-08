@@ -70,38 +70,46 @@ Reproducible Research, Epistemology, Geographic Research Methods
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Introduction}
-Since the 1600s, replication has been a defining characteristic of the scientific method and an essential tool of researchers working to remove errors from our understanding of phenomena. 
-\citet{nosek2020} broadly define a replication as any study that has at least one outcome that would be considered to be diagnostic evidence of a claim from prior research.
-More frequently, replication is defined along two axes that help to distinguish the type of diagnostic evidence a study will provide and the function or purpose it is intended to serve. 
-First, it is common to distinguish whether a replication study used the same data as the original study, or if new data were collected and analyzed. 
-Second, it is helpful to identify whether a replication is focused on the question of whether the specific results of the original study can be reobserved, or whether the conclusions drawn from the original study are robust to changes in procedure or context.
 
-When a researcher asks whether the same data and procedures can be used to generate the same results as an original study the central purpose of their study is verification.
-If the researcher uses the original data, but introduces procedural differences they think may effect the original result they pursue a reanalysis designed to determine whether the original reasoning was somehow erroneous. 
-Both of these approaches to replication assess the internal validity of research and are more commonly referred to as reproductions.
-If the researcher tries to follow the procedures of an original study, but collects new data, the purpose shifts to evaluating the external validity of the original result by retesting it under new conditions.
-This approach is commonly referred to as replication. 
-
-While a replication or reproduction can never provide conclusive evidence for or against a finding, either type of study can be informative. 
-If a well-executed, high-quality replication or reproduction recreates the result of an original study, we are apt to increase our confidence in the original findings. 
-If a finding cannot be recreated, it reduces our confidence in the original result and suggests that our current understanding of the system being studied or our methods of testing that system are insufficient.
-
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Assessing the Reproducibility of Research}
-The reproducibility of research can be assessed directly or indirectly \citep{NASEM2019}. 
+The reproducibility of research can be assessed directly or indirectly. 
+In a direct assessment of reproducibility, an independent team(s) of researchers repeats the analytical steps of a previous study using the same data and then evaluates the consistency of the two sets of results\footnote{Insert paragraph on the difficulty of developing in using consistency criteria}.
+By contrast, during an indirect assessment of reproducibility, a research team gathers information about the transparency of a study and the availability of the research components (e.g., data and code) needed to recreate that study, but does not directly attempt to recreate the results. 
+Indirect assessments also often take the form of surveys in which researchers are asked about their research practices, incentives, and motivations. 
 
-In a direct assessment of reproducibility 
-Indirect reproducibility assessments
+Direct and indirect reproducibility assessments present a trade off between the depth and breadth of evaluation.  
+A direct assessment that carefully reproduces a study can provide insight into how a particular study was conducted and why a consistent result could, or could not, be obtained.  
+However, such assessments are resource and time intensive, which makes them difficult to scale to a large number of studies. 
+Constrained to a limited number of studies, direct assessments offer only suggestive evidence about the reproducibility of unevaluated studies and the prevalence of reproducible research practices. 
+In contrast, comparatively less resource intensive indirect assessments that catalog reproducible research practices can be more easily scaled.
+By evaluating many studies, indirect assessments provide evidence of how common reproducible research practices are and, by extension, how reproducible work in a field of study is likely to be.
+The trade off being that indirect assessments do not offer as detailed a look into why a particular result in a specific instance could, or could not, be obtained.
 
-The most direct approach is to simply conduct a study that follows the methods of an existing study and then compare the results of the new study to the results of the old study. 
+The available body of direct and indirect reproducibility assessments currently provides 
 
-\subsection*{Direct Reproducibility Assessments}
-Direct reproducibility assessments can be implemented in two ways: as a one-to-one comparison, in which a single reproduction is used to assess the results and inferences of one prior study; or as a many-to-one comparison, in which teams of researchers attempt multiple parallel reproductions and make a set of comparisons and a collective assessment of one prior study.
-Published reproductions of both forms are increasingly common in many disciplines \citep[e.g.,][]{begley2012raise, camerer2016evaluating, camerer2018evaluating, wagenmakers2016registered}. 
-However, the researchers conducting those studies have generally only able to partially reproduce study results, often observing small effect sizes.  
+insufficient evidence to conclusively evaluate the reproducibility of scientific research generally, or disciplinary research specifically \citep{NASEM2019}.
+This knowledge gap exists in part because while available evidence consistently suggests that inadequate record keeping, opaque reporting, and unavailable research components are drivers of research irreproducibility, how common these practices are remains unclear. 
+We have been unable to estimate the prevalence and impact of these practices because indirect assessments have used non-probability based sampling methods to draw data from non-representative, self-selected populations (e.g., professional association memberships).
 
-Such published reproductions have not yet become common in geography. 
+Prior surveys have also commonly failed to systematically report the methodological details (e.g., response rate) needed to assess and address potential bias. 
+
+Surveys of researchers working across the sciences suggest that the majority of scientists have either not tried, or tried and failed to reproduce another scientist's work \citep{baker20161, boulbes2018survey}. 
+Perceptions on the cause of irreproducibility range from natural variation to fraud \citep{ranstam2000fraud, anderson2007normative, baker20161}, with an estimated 33 percent of researchers admitting to some form of questionable research practices \citep{fanelli2009many}.  
+Researchers also appear to support a broad range of solutions to the challenge of irreproducibility including improved training in research design and statistics and better research mentoring and supervision \citep{baker20161}. 
+
+
+
+\subsection*{Assessing the Reproducibility of Geographic Research}
+Direct and indirect assessments of research reproducibility 
+
+Geographic researchers are beginning to address these questions by conducting direct and indirect assessments of the reproducibility of geographic research. 
+However, only a small number of such studies currently exist resulting in a similarly limited set of evidence about reprodubibility within the discipline. 
+
+
+There is reason to believe that each of these factors is present in geography, but limited evidence because published reproductions have not yet become common in geography. 
 The small number of studies that have attempted to assess the reproducibility of geographic research by recreating existing work suggest that many studies cannot be fully reproduced \citep{Kedron2021ssrn, nust2018, ostermann2021}, or are simply missing components needed to attempt a reproduction \citep{Kedron_VijayanRP, konkol2019, ostermann2021}.
 For example, \citet{ostermann2021}'s attempt to reproduce the computational analyses of 75 papers published in the GIScience conference series found that most results could not be reproduced, or could only be reproduced with significant effort. 
 A related effort to reproduce 31 papers published in the conference series of the Association of Geographic Information Laboratories in Europe \citep{Nust_AGILE_2020, Nust2021AGILE, Nust_AGILE_2022} similarly identified the inaccessibility of data, code, and information about the computational environment as key barriers to recreating results. 
@@ -111,26 +119,6 @@ Moving past the question of whether the computational results of a study can be 
 While this form of the direct approach to reproduction opens a new door to the critical evaluation of geographic research, it primarily provides evidence about a particular research study and the phenomenon that study investigates. 
 Similarly, while computationally focused reproductions have produced useful guidelines \citep{hofer2019reproducible, wilson2021} and moved forward the development of the computational and institutional infrastructure \citep{Kedron_Holler_Bardin_Hilgendorf_2022, nust2019, nust2021,}\textbf{ADD SHAOWEN} needed to foster reproducibility in the field, they have not yet assessed the use of reproducible research practices across the disciplines diverse research traditions, or identified the factors that have barred geographers from adopting practices that foster reproducibility or from conducting more reproduction studies. 
 
-The root of the problem is that the direct approach to assessing reproducibility presents a trade off. 
-The careful reproduction of a study can provide rich evidence about that particular study, but offers at best suggestive evidence about the validity of other studies or the prevalence of the research practices observed.
-For example, if a reproduction identified a flaw in the design of a study that impacted the results of that study it would be reasonable to be concerned that observing the same flaw in other studies could impact the results of those studies.
-However, until other studies are gathered and checked we would not know how common the flaw is, or if it impacts other studies in a similar way. 
-
-\subsection*{Indirect Reproducibility Assessments}
-Indirect reproducibility assessments are one way to address this breadth problem. 
-During  the indirect approach to reproducibility assessment a researcher gathers information about the transparency and availability of information needed to attempt reproduction and the 
-
-An alternative approach to understanding the reproducibility of research is to survey active researchers about their perceptions of reproducibility and their own research practices.
-Researcher surveys measure reproducibility indirectly by gathering information about research transparency and researcher practices and motivationsthat 
-
-
-can be used to understand how common certain practices are and what motivates those practices.
-
-Surveys of researchers working across the sciences suggest that the majority of scientists have either not tried, or tried and failed to reproduce another scientist's work \citep{baker20161, boulbes2018survey}. 
-Perceptions on the cause of irreproducibility range from natural variation to fraud \citep{ranstam2000fraud, anderson2007normative, baker20161}, with an estimated 33 percent of researchers admitting to some form of questionable research practices \citep{fanelli2009many}.  
-Researchers also appear to support a broad range of solutions to the challenge of irreproducibility including improved training in research design and statistics and better research mentoring and supervision \citep{baker20161}. 
-
-\subsubsection{Geog Indirect}
 To date only a handful studies have tried to indirectly measure the reproducibility of geographic research.
 In a survey of participants from the 2016 European Geosciences Union General Assembly, \citet{konkol2019} assessed the frequency with which researchers published their work in ways that enabled computational reproducibility. 
 Those authors found that only 33 percent of respondents included links to the data used in their analyses and only 12 percent provided their analytical code. 
@@ -138,11 +126,13 @@ The authors also found that only seven percent of respondents ever attempted to 
 For example, \citet{ostermann2017} use a literature review of volunteered geographic information research publications to assess computational reproducibility based on availability of original data, metadata, source code, or pseudocode.
 Remote Sensing survey.
 
-\subsubsection{common problems of surveys}
-While these surveys are suggestive of reproducibility concerns across the sciences, they share a set of common methodological problems. 
-First, many prior surveys have used non-systematic sampling methods to draw data from non-representative, self-selected populations (e.g., professional association memberships), and/or use non-probability sampling schemes, which collectively limits our ability to draw generalizable conclusion or make inferences about specific sub-fields \citep{NASEM2019}.
-Prior surveys also commonly failed to systematically report survey details (e.g., response rate) needed to assess and address potential bias. 
-To make sound conclusions about the extent of irreproducibility in geography, we need to not only gather additional evidence, we need to do so in a manner consistent with the best practices for survey research \citep[see][]{dillman2014internet, aapor}.
+\subsubsection*{Research Summary to Transition}
+The evidence available from direct and indirect assessments of reproducibility suggests that studies are often not reproducible because researchers do provide the information or materials others need to recreate their work. 
+
+
+
+However, may of our indirect assessment are on shaky methodological grounds and we have not studied this in geography. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
