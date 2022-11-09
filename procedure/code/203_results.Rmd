@@ -16,7 +16,7 @@ library(tidyverse)
 First, load the pre-processed data.
 
 ```{r load}
-survey_resp <- readRDS(here("data", "derived", "public", "survey_resp.RDS"))
+survey_resp <- readRDS(here("data","derived","public","analysis_hegs_rpr.rds"))
 summary(survey_resp)
 ```
 
@@ -29,7 +29,7 @@ The human geography and nature/society subfields use qualitative, quantitative a
 
 ```{r sub-fields-by-methods}
 # crosstab sub-fields and methods
-addmargins(table(survey_resp$Q4, survey_resp$Q3))
+addmargins(table(survey_resp$Q3_recoded, survey_resp$Q4))
 ```
 
 ### How familiar is each subfield with the term "reproducibility"?
@@ -38,7 +38,7 @@ Physical and Methods subfields are more familiar with the
 term "reproducibility" than the Nature/Society or Human subfields.
 
 ```{r familiarity-by-subfield}
-addmargins(table(survey_resp$Q5, survey_resp$Q3))
+addmargins(table(survey_resp$Q5, survey_resp$Q3_recoded))
 ```
 
 ### How familiar is each method with the term "reproducibility"?
@@ -64,7 +64,7 @@ expected to be similar, but not identical, to the original results.
 
 ```{r define-reproducibility}
 # how did folks define "reproducibility" ?
-survey_resp %>% select(Q3, Q4, Q5, Q6) %>%
+survey_resp %>% select(Q3_recoded, Q4, Q5, Q6) %>%
   filter(Q5 != "Not at all") %>%
   arrange(Q5, Q4) %>%
   write.csv(here("results", "tables", "definitions.csv"))
@@ -89,7 +89,7 @@ The methods and physical geography subfields report the most familiarity with
 reproducible research practices, followed by nature/society and lastly human geography.
 
 ```{r familiarity-by-subfield}
-group_by(survey_resp, Q3) %>%
+group_by(survey_resp, Q3_recoded) %>%
   summarise(
     count = n(),
     mean = round(mean(familiar, na.rm = TRUE),2),
@@ -100,7 +100,7 @@ group_by(survey_resp, Q3) %>%
 There are significant differences between subfields with regards to familiarity with reproducible research practices.
 
 ```{r familiarity-by-subfield-anova}
-aov(familiar ~ Q3, data=survey_resp) %>% summary()
+aov(familiar ~ Q3_recoded, data=survey_resp) %>% summary()
 ```
 
 ## Does familiarity with practices translate into applying them to research?
