@@ -111,18 +111,11 @@ table(toupper(int_hegs_rpr$Q16_5_TEXT))
 #      - every researchers should have this goal in mind as an ethical requirement, and it should be a requirement  at least 
 #           where there is public funding (which is the case in a lot of priva
 #      - Whoever wants to test a given case.
+#      - don't know                  [SHOULD WE CHANGE THIS TO NA?]
+#      - see earlier comment.        [SHOULD WE CHANGE THIS TO NA?]
 
-don't know
-see earlier comment.
-
-
-
-
-
-Everyone       [NEED TO RECODE ALL Q16 SERIES]      
-All of the above, especially the PI, but also researchers who attempt to reproduce.       [NEED TO RECODE ALL Q16 SERIES] 
-Researchers (scientist, students, post doc, Principle investigator, etc)  who are producing the data should be ethical enough to produce  reproducible data [NEED TO RECODE Q16_1]
-
+# Everyone       [NEED TO RECODE ALL Q16 SERIES]      
+# All of the above, especially the PI, but also researchers who attempt to reproduce.   [NEED TO RECODE ALL Q16 SERIES] 
 
 #----------------------------------------------------------#
 
@@ -130,7 +123,54 @@ Researchers (scientist, students, post doc, Principle investigator, etc)  who ar
 
 #----------------------------------------------------------#
 
+#- Recode NA values due to skip logic in Q7a_2 series to never
 
+                                        #- if any of the Q7a_2 series is not missing, then recode each variable to 0 
+int_hegs_rpr <- int_hegs_rpr %>% mutate(Q7a_2_1 = ifelse(is.na(Q7a_2_1) & (!is.na(Q7a_2_2) | !is.na(Q7a_2_3) | !is.na(Q7a_2_4)), 0, Q7a_2_1),
+                                        Q7a_2_2 = ifelse(is.na(Q7a_2_2) & (!is.na(Q7a_2_1) | !is.na(Q7a_2_3) | !is.na(Q7a_2_4)), 0, Q7a_2_2),
+                                        Q7a_2_3 = ifelse(is.na(Q7a_2_3) & (!is.na(Q7a_2_2) | !is.na(Q7a_2_1) | !is.na(Q7a_2_4)), 0, Q7a_2_3),
+                                        Q7a_2_4 = ifelse(is.na(Q7a_2_4) & (!is.na(Q7a_2_2) | !is.na(Q7a_2_3) | !is.na(Q7a_2_1)), 0, Q7a_2_4),
+
+                                        #- if Q7a == 4 or Q7a_1 == 5, then recode each variable to 0                                         
+                                        Q7a_2_1 = ifelse(as.numeric(Q7a) == 4 | as.numeric(Q7a_1) == 5,0,Q7a_2_1),
+                                        Q7a_2_2 = ifelse(as.numeric(Q7a) == 4 | as.numeric(Q7a_1) == 5,0,Q7a_2_2),
+                                        Q7a_2_3 = ifelse(as.numeric(Q7a) == 4 | as.numeric(Q7a_1) == 5,0,Q7a_2_3),
+                                        Q7a_2_4 = ifelse(as.numeric(Q7a) == 4 | as.numeric(Q7a_1) == 5,0,Q7a_2_4))
+
+int_hegs_rpr %>% select(c(Q7a, Q7a_1, Q7a_2_1, Q7a_2_2, Q7a_2_3, Q7a_2_4)) 
+int_hegs_rpr %>% select(c(Q7a, Q7a_1, Q7a_2_1, Q7a_2_2, Q7a_2_3, Q7a_2_4)) %>% filter(is.na(Q7a_2_1))
+#in 6 cases, respondents indicated that they use open source software 
+#but did NOT specify in which parts of the research process they use open source software
+
+
+#- Recode NA values due to skip logic in Q7 series to never
+int_hegs_rpr <- int_hegs_rpr %>% mutate(Q7a_1 = as.factor(ifelse(as.numeric(Q7a) == 4, 5, Q7a_1)),
+                                        Q7a_3 = as.factor(ifelse(as.numeric(Q7a) == 4 | as.numeric(Q7a_1) == 5, 5, Q7a_3)),
+                                        Q7b_1 = as.factor(ifelse(as.numeric(Q7b) == 4, 5, Q7b_1)),
+                                        Q7c_1 = as.factor(ifelse(as.numeric(Q7c) == 4, 5, Q7c_1)),
+                                        Q7c_2 = as.factor(ifelse(as.numeric(Q7c) == 4 | as.numeric(Q7c_1) == 5, 5, Q7c_2)),
+                                        Q7c_3 = as.factor(ifelse(as.numeric(Q7c) == 4, 5, Q7c_3)),
+                                        Q7d_1 = as.factor(ifelse(as.numeric(Q7d) == 4, 5, Q7d_1)),
+                                        Q7d_2 = as.factor(ifelse(as.numeric(Q7d) == 4 | as.numeric(Q7d_1) == 5, 5, Q7d_2)),
+                                        Q7e_1 = as.factor(ifelse(as.numeric(Q7e) == 4, 5, Q7e_1)))
+
+#- Apply value labels to recoded Q7 series
+q7_varnames <- c("Q7a_1", "Q7a_3", "Q7b_1", "Q7c_1", "Q7c_2", "Q7c_3", "Q7d_1", "Q7d_2", "Q7e_1")
+int_hegs_rpr[q7_varnames] <- lapply(int_hegs_rpr[q7_varnames], factor,
+                                    levels = c(1, 2, 3, 4, 5, 6),
+                                    labels = c("Always",
+                                               "Most of the time",
+                                               "Some of the time",
+                                               "Rarely",
+                                               "Never",
+                                               "NA"))
+
+#check recoding of values
+head(int_hegs_rpr %>% select(c(Q7a,Q7a_1,Q7a_3)))
+head(int_hegs_rpr %>% select(c(Q7b,Q7b_1)))
+head(int_hegs_rpr %>% select(c(Q7c,Q7c_1,Q7c_2, Q7c_3)))
+head(int_hegs_rpr %>% select(c(Q7d,Q7d_1,Q7d_2)))
+head(int_hegs_rpr %>% select(c(Q7e,Q7e_1)))
 
 #----------------------------------------------------------#
 
@@ -170,8 +210,4 @@ summary(int_hegs_rpr$Q13_2)
 #--------------------------------#
 
 saveRDS(int_hegs_rpr, here("data","derived","public","analysis_hegs_rpr.rds"))
-
-
-
-
 
