@@ -12,7 +12,7 @@ rpr_survey_id <- dlgInput("Survey ID:","SV_e2Id3c5vvtqtazI")$res
 # find URL in the address bar while you're logged into your Qualtrics projects
 
 qualtrics_api_credentials(api_key = qualtrics_key, 
-                          base_url = qualtrics_url, # e.g. "middlebury.az1.qualtrics.com"
+                          base_url = qualtrics_url,
                           install = TRUE,
                           overwrite = TRUE)
 
