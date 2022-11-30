@@ -85,37 +85,31 @@ table(int_hegs_rpr$Q19_recoded,toupper(int_hegs_rpr$Q19))
 
 #---------------------------------------------------------------------------------------------------------------------------
 
-##Unsure how to backcode the Q16 series of variables
 int_hegs_rpr %>% filter(!is.na(Q16_5)) %>% select(c(Q16_1,Q16_2,Q16_3,Q16_4,Q16_5_TEXT)) 
+int_hegs_rpr %>% filter(!is.na(Q16_5_TEXT)) %>% select(c(Q16_5_TEXT)) 
 
-int_hegs_rpr %>% filter(!is.na(Q16_5)) %>% select(c(Q16_5_TEXT)) 
-table(toupper(int_hegs_rpr$Q16_5_TEXT))
+int_hegs_rpr %>% filter(!is.na(Q16_5_TEXT)) %>% select(c(Q16_1,Q16_2,Q16_3,Q16_4,Q16_5, Q16_5_TEXT)) 
+Q16_all_coauths <- c("all co-authors on a publication","All researchers on the team",
+                 "Students and first authors", "co-investigators",
+                 "Researchers (scientist, students, post doc, Principle investigator, etc)  who are producing the data should be ethical enough to produce  reproducible data")
+Q16_none <- c("Nobody?","Noone","Question assumes that reproducibility should be enforced - dont agree")
+Q16_dk   <- c("don't know","see earlier comment.")
+Q16_all  <- "All of the above, especially the PI, but also researchers who attempt to reproduce. They must adapt models, methods and other elements for research to be reproducible in diverse contexts. This is paradoxical but mostly true."
 
-# Should we create an "all co-authors option"; many of these "other" responses also checked Principal investigator of the study
-#      - all co-authors on a publication
-#      - All researchers on the team 
-#      - Students and first authors  
-#      - Researchers (scientist, students, post doc, Principle investigator, etc)  who are producing the data should be ethical enough to produce  reproducible data
-#      - co-investigators 
+int_hegs_rpr <- int_hegs_rpr %>% 
+                    mutate(Q16_6 = as.numeric(Q16_5_TEXT %in% Q16_all_coauths),
+                           Q16_7 = as.numeric(Q16_5_TEXT %in% Q16_none),
+                           Q16_5 = ifelse(Q16_5_TEXT %in% Q16_all_coauths | Q16_5_TEXT %in% Q16_none | Q16_5_TEXT %in% Q16_dk
+                                         | Q16_5_TEXT %in% Q16_all, NA, Q16_5),
+                           Q16_1 = ifelse(!is.na(Q16_1),1,0),
+                           Q16_2 = ifelse(!is.na(Q16_2),1,0),
+                           Q16_3 = ifelse(!is.na(Q16_3),1,0),
+                           Q16_4 = ifelse(!is.na(Q16_4),1,0),
+                           Q16_5 = ifelse(!is.na(Q16_5),1,0)) %>%
+                    mutate_at(c("Q16_1", "Q16_2", "Q16_3", "Q16_4"),
+                              ~ ifelse(Q16_5_TEXT %in% Q16_all, 1, .))
 
-# Should we create a "no one" option
-#      - Nobody?
-#      - Noone
-#      -  Question assumes that reproducibility should be enforced - dont agree
-
-#Responses that should likely continue to be coded as "other"
-#      - Lab technician
-#      - first-author                [IS THIS DISTINCT ENOUGH FROM PRINCIPAL INVESTIGATOR OF THE STUDY?]
-#      - Supervisors of PhDs         [IS THIS DISTINCT ENOUGH FROM PRINCIPAL INVESTIGATOR OF THE STUDY?]
-#      - Researcher's institution should provide more incentives to consider reproducibility
-#      - every researchers should have this goal in mind as an ethical requirement, and it should be a requirement  at least 
-#           where there is public funding (which is the case in a lot of priva
-#      - Whoever wants to test a given case.
-#      - don't know                  [SHOULD WE CHANGE THIS TO NA?]
-#      - see earlier comment.        [SHOULD WE CHANGE THIS TO NA?]
-
-# Everyone       [NEED TO RECODE ALL Q16 SERIES]      
-# All of the above, especially the PI, but also researchers who attempt to reproduce.   [NEED TO RECODE ALL Q16 SERIES] 
+int_hegs_rpr %>% filter(!is.na(Q16_5_TEXT)) %>% select(c(Q16_1,Q16_2,Q16_3,Q16_4,Q16_5,Q16_6,Q16_7, Q16_5_TEXT)) 
 
 #----------------------------------------------------------#
 
