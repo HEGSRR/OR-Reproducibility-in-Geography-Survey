@@ -24,13 +24,17 @@ rpr_survey_metadata <- metadata(rpr_survey_id)
 # get data frame with four columns with question ID, name, text and required 
 rpr_survey_questions <- survey_questions(rpr_survey_id)
 
+# remove html formatting from questions
+rpr_survey_questions <- rpr_survey_questions %>% 
+  mutate(question = gsub("<(.*?)>","",question))
+
 # get survey responses as data frame - ordinal responses are ordered factors
 rpr_responses <- fetch_survey(rpr_survey_id)
 
-# Save permenant raw files and associated documentation for archvial purposes
+# Save permanent raw files and associated documentation for archival purposes
 saveRDS(rpr_responses, here("data","raw","private","raw_rpr_responses.rds"))
-saveRDS(rpr_survey_questions, here("data","raw","private","raw_rpr_survey_questions.rds"))
-saveRDS(rpr_survey_metadata, here("data","raw","private","raw_rpr_survey_metadata.rds"))
+saveRDS(rpr_survey_questions, here("data","raw","public","raw_rpr_survey_questions.rds"))
+saveRDS(rpr_survey_metadata, here("data","raw","public","raw_rpr_survey_metadata.rds"))
 
 
 # De-identify file to create public raw version
