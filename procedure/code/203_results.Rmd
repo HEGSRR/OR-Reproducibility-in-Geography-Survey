@@ -228,7 +228,7 @@ reproducibility between the four subfields, with physical holding strongest affi
 beliefs, then methods, nature/society, and human geography
 
 ```{r beliefs-stats-by-subfield}
-group_by(survey_resp, Q3) %>%
+group_by(survey_resp, Q3_recoded) %>%
   summarise(
     count = n(),
     mean = mean(belief, na.rm = TRUE),
@@ -239,6 +239,6 @@ group_by(survey_resp, Q3) %>%
 The differences are statistically significant.
 
 ```{r beliefs-anova}
-aov(belief ~ Q3, data=survey_resp) %>% summary()
+aov(belief ~ Q3_recoded, data=survey_resp) %>% summary()
 ```
 
