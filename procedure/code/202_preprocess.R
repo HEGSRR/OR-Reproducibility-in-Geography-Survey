@@ -245,9 +245,112 @@ t1flex(Q4_table8) %>%
 #- Summary Table for Results Section -#
 
 #- Summary measure on familiarity, practices, and barriers
-#------- Familiarity : threshold is "somewhat"
-#------- Practices :   threshold is "most of the time"
-#------- Barriers :    threshold is "occasionally"
+#------- Familiarity : threshold is "somewhat"  (Q7a + Q7b + Q7c + Q7d + Q7e)
+#------- Practices :   threshold is "most of the time" (Q7a_1 + Q7b_1 + Q7c_1 + Q7d_1 + Q7e_1)
+#------- Barriers :    threshold is "occasionally"  (Q14_1 + Q14_2 + Q14_3 + Q14_4 + Q14_5)
+
+table(survey_resp$Q14_1)
+levels(survey_resp$Q7a_1)
+survey_resp <- survey_resp %>% mutate(#RECODE FAMILIARITY VARIABLES
+                                      Q7a_bin = as.numeric(as.character(recode(Q7a, "To a great extent" = "1",
+                                                                               "Somewhat" = "1",
+                                                                               .default = "0"))),
+                                      Q7b_bin = as.numeric(as.character(recode(Q7b, "To a great extent" = "1",
+                                                                               "Somewhat" = "1",
+                                                                               .default = "0"))),
+                                      Q7c_bin = as.numeric(as.character(recode(Q7c, "To a great extent" = "1",
+                                                                               "Somewhat" = "1",
+                                                                               .default = "0"))),
+                                      Q7d_bin = as.numeric(as.character(recode(Q7d, "To a great extent" = "1",
+                                                                                "Somewhat" = "1",
+                                                                                .default = "0"))),
+                                      Q7e_bin = as.numeric(as.character(recode(Q7e, "To a great extent" = "1",
+                                                                               "Somewhat" = "1",
+                                                                               .default = "0"))),
+                                      #RECODE PRACTICES VARIABLES
+                                      Q7a_1_bin = as.numeric(as.character(recode(Q7a_1, "Always" = "1",
+                                                                               "Most of the time" = "1",
+                                                                               .default = "0"))),
+                                      Q7b_1_bin = as.numeric(as.character(recode(Q7b_1, "Always" = "1",
+                                                                               "Most of the time" = "1",
+                                                                               .default = "0"))),
+                                      Q7c_1_bin = as.numeric(as.character(recode(Q7c_1, "Always" = "1",
+                                                                               "Most of the time" = "1",
+                                                                               .default = "0"))),
+                                      Q7d_1_bin = as.numeric(as.character(recode(Q7d_1, "Always" = "1",
+                                                                               "Most of the time" = "1",
+                                                                               .default = "0"))),
+                                      Q7e_1_bin = as.numeric(as.character(recode(Q7e_1, "Always" = "1",
+                                                                               "Most of the time" = "1",
+                                                                               .default = "0"))),
+                                      #RECODE BARRIERS VARIABLES
+                                      Q14_1_bin = as.numeric(as.character(recode(Q14_1, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_2_bin = as.numeric(as.character(recode(Q14_2, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_3_bin = as.numeric(as.character(recode(Q14_3, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_4_bin = as.numeric(as.character(recode(Q14_4, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_5_bin = as.numeric(as.character(recode(Q14_5, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_6_bin = as.numeric(as.character(recode(Q14_6, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_7_bin = as.numeric(as.character(recode(Q14_7, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_8_bin = as.numeric(as.character(recode(Q14_8, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_9_bin = as.numeric(as.character(recode(Q14_9, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_10_bin = as.numeric(as.character(recode(Q14_10, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_11_bin = as.numeric(as.character(recode(Q14_11, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))),
+                                      Q14_12_bin = as.numeric(as.character(recode(Q14_12, "Frequently" = "1",
+                                                                                 "Occasionally" = "1",
+                                                                                 .default = "0"))))
+table(survey_resp$Q7b,survey_resp$Q7b_bin) #check that recoding worked properly
+table(survey_resp$Q7b_1,survey_resp$Q7b_1_bin)
+table(survey_resp$Q14_1,survey_resp$Q14_1_bin)
+
+# Summary measures
+survey_resp <- survey_resp %>% mutate(familiar  = Q7a_bin + Q7b_bin + Q7c_bin + Q7d_bin + Q7e_bin,
+                                      practices = Q7a_1_bin + Q7b_1_bin + Q7c_1_bin + Q7d_1_bin + Q7e_1_bin,
+                                      barriers = Q14_1_bin + Q14_2_bin + Q14_3_bin + Q14_4_bin + Q14_5_bin + Q14_6_bin
+                                      + Q14_7_bin + Q14_8_bin + Q14_9_bin + Q14_10_bin + Q14_11_bin + Q14_12_bin)
+table(survey_resp$familiar)
+table(survey_resp$practices)
+table(survey_resp$barriers)
+
+
+table1::label(survey_resp$familiar) <-  "Familiarity with reproducible practices"
+table1::label(survey_resp$practices) <- "Experience with reproducible practices"
+table1::label(survey_resp$barriers) <-  "Barriers to reproducibility"
+
+Q3_table9 <- table1::table1(~familiar + practices + barriers| Q3_recoded, data = survey_resp)
+Q4_table9 <- table1::table1(~familiar + practices + barriers | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table9 , here("results","tables","Table9_Master_Table_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table9 , here("results","tables","Table9_Master_Table_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table9) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table9_Master_Table_discipline.docx"))
+
+t1flex(Q4_table9) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table9_Master_Table_method.docx"))
+
 
 #-------
 
@@ -315,10 +418,9 @@ for (i in numeric_vars){
 
 ##### Calculate Aggregate Indicators #####
 
-# familiarity with reproducible practices
-survey_resp <- survey_resp %>% mutate(familiar = as.numeric(Q7a) + 
-                                        as.numeric(Q7b) + as.numeric(Q7c) +
-                                        as.numeric(Q7d) + as.numeric(Q7e))
+
+
+
 
 # beliefs about role of reproducibility in scholarship
 survey_resp <- survey_resp %>% mutate(belief = as.numeric(Q8_1) + 
