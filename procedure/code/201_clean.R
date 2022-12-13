@@ -1,5 +1,5 @@
 # list of required packages
-packages = c("here","tidyverse")
+packages = c("here","tidyverse","table1")
 
 # load and install required packages
 package.check <- lapply(
@@ -33,13 +33,12 @@ int_hegs_rpr <- raw_hegs_rpr %>% filter(Progress > 70 & Q1 != "Under 18")
 table(toupper(int_hegs_rpr$Q3_5_TEXT))
 
 #-Open response areas of specialization to recode-#
-hum_list  <- c("ECONOMIC GEOGRAPHY","POLITICAL GEOGRAPHY", "POLITICAL SCIENCE", "SOCIO-ANTHROPOLOGY",
+hum_list  <- c("ECONOMIC GEOGRAPHY","POLITICAL GEOGRAPHY", "POLITICAL SCIENCE", "SOCIO-ANTHROPOLOGY", "MOBILITIES",
               "SOCIOLOGY","TRANSPORT GEOGRAPHY","TRANSPORTATION","TRANSPORTATION ENGINEERING", "URBAN GEOGRAPHY")
 
-phys_list <- c("PALEOBOTANY","PALEOCLIMATOLOGY")
+phys_list <- c("BIOGEOGRAPHY","PALEOBOTANY","PALEOCLIMATOLOGY")
 
-nat_list  <- c("BIOGEOGRAPHY","CITY PLANNING, SUSTAINABILITY TRANSFORMATIONS","ENVIRONMENTAL ARCHAEOLOGY","ARCHAEOLOGY",
-              "MOBILITIES")
+nat_list  <- c("CITY PLANNING, SUSTAINABILITY TRANSFORMATIONS","ENVIRONMENTAL ARCHAEOLOGY","ARCHAEOLOGY")
 
 gis_list  <- c("GEOSPATIAL INFORMATION SCIENCE", "SPATIAL ECONOMETRICS", "CARTOGRAPHY","REMOTE SENSING",
               "REMOTE SENSING OF ENVIRONMENT")
@@ -49,10 +48,10 @@ int_hegs_rpr <- int_hegs_rpr %>%
                                         ifelse(toupper(Q3_5_TEXT) %in% phys_list, 2, 
                                             ifelse(toupper(Q3_5_TEXT) %in% nat_list, 3, 
                                                    ifelse(toupper(Q3_5_TEXT) %in% gis_list, 4, Q3))))))
-levels(int_hegs_rpr$Q3_recoded) <- c("Human geography", 
-                                     "Physical geography, earth and environmental sciences",
-                                     "Nature and society", 
-                                     "Geographic methods, GIS, spatial statistics",
+levels(int_hegs_rpr$Q3_recoded) <- c("Human", 
+                                     "Physical",
+                                     "Nature/society", 
+                                     "Methods",
                                      "Other",
                                      "NA")
 
@@ -196,6 +195,70 @@ table(int_hegs_rpr$Q13_2_1, int_hegs_rpr$Q13_2, useNA = "always")
 
 summary(int_hegs_rpr$Q13_1)
 summary(int_hegs_rpr$Q13_2)
+
+
+#----------------------------------------------------------#
+
+#- Convert character to ordered factors-#
+
+#----------------------------------------------------------#
+# convert agree questions into ordered factors
+values <- c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
+questions <- c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5", "Q8_6")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude=c("", "Don't Know"))
+
+# convert yes/no questions into ordered factors
+values <- c("Yes", "No", "Don't Know")
+questions <- c("Q9_1", "Q9_2", "Q9_3", "Q9_4", "Q9_5", "Q9_6", "Q9_7")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert proportion questions into ordered factors
+values <- c("All", "Some", "None", "Don't Know")
+questions <- c("Q11_1", "Q11_2", "Q11_3")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert yes/no proportion questions into ordered factors
+values <- c("Yes, all", "Yes, some", "No", "Did not attempt")
+questions <- c("Q12_1", "Q12_2", "Q12_3", "Q12_4")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert frequency questions into ordered factors
+values <- c("Frequently", "Occasionally", "Rarely", "Never")
+questions <- c("Q14_1", "Q14_2", "Q14_3", "Q14_4", "Q14_5", "Q14_6", "Q14_7", "Q14_8", "Q14_9", "Q14_10", "Q14_11", "Q14_12")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert importance questions into ordered factors
+values <- c("Very important", "Somewhat important", "Somewhat not important", "Not important")
+questions <- c("Q17_1", "Q17_2", "Q17_3", "Q17_4", "Q17_5", "Q17_6", "Q17_7", "Q17_8", "Q17_9", "Q17_10")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+
+# check data types for the full survey
+sapply(survey_resp, class)
 
 #--------------------------------#
 
