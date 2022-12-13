@@ -30,6 +30,7 @@ The human geography and nature/society subfields use qualitative, quantitative a
 ```{r sub-fields-by-methods}
 # crosstab sub-fields and methods
 addmargins(table(survey_resp$Q3_recoded, survey_resp$Q4))
+
 ```
 
 ### How familiar is each subfield with the term "reproducibility"?

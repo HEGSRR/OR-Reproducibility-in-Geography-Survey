@@ -1,6 +1,7 @@
 library(here)
 library(tidyverse)
-
+library(table1)
+library(flextable)
 
 #--------------------------------#
 #-                              -#
@@ -8,6 +9,251 @@ library(tidyverse)
 #-                              -#
 #--------------------------------#
 survey_resp <- readRDS(here("data","derived","public","analysis_hegs_rpr.rds"))
+
+#-----------------------#
+#-- Cross tabulations --#
+#-----------------------#
+
+#- Table 1) Summary Characteristics of Respondents -#
+
+table1::label(survey_resp$Q3_recoded) <- "Subdiscipline"
+table1::label(survey_resp$Q4)         <- "Methods"
+table1::label(survey_resp$Q18)        <- "Size of lab"
+table1::label(survey_resp$Q19)        <- "Title"
+table1::label(survey_resp$Q20)        <- "Gender"
+table1::label(survey_resp$Q1)         <- "Age"
+
+Q3_table1 <- table1::table1(~Q4 + Q18 + Q19 + Q20 + Q1  | Q3_recoded, data = survey_resp)
+Q4_table1 <- table1::table1(~Q3_recoded + Q18 + Q19 + Q20 + Q1  | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table1 , here("results","tables","Table1_Summary_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table1 , here("results","tables","Table1_Summary_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table1) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table1_Summary_discipline.docx"))
+
+t1flex(Q4_table1) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table1_Summary_method.docx"))
+
+#---------------------------------------------------------------------------------------
+#- Table 2) Definitions of Reproducibility -#
+table(survey_resp$Q17_1)
+table1::label(survey_resp$Q5) <- "Familiarity with reproducibility"
+
+Q3_table2 <- table1::table1(~Q5  | Q3_recoded, data = survey_resp)
+Q4_table2 <- table1::table1(~Q5  | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table2 , here("results","tables","Table2_Familiarity_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table2 , here("results","tables","Table2_Familiarity_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table2) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table2_Familiarity_discipline.docx"))
+
+t1flex(Q4_table2) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table2_Familiarity_method.docx"))
+
+#---------------------------------------------------------------------------------------
+#- Table 3) Importance of Reproducibility (Q17 and Q8) -#
+
+table1::label(survey_resp$Q8_1) <- "Failing to reproduce a result often means the original finding is false"
+table1::label(survey_resp$Q8_2) <- "Failing to reproduce a result rarely detracts from the validity of the original study"
+table1::label(survey_resp$Q8_3) <- "If a researcher does not share the data used in their study, I trust the results less"
+table1::label(survey_resp$Q8_4) <- "It is important for students to attempt reproductions as part of their training"
+table1::label(survey_resp$Q8_5) <- "To be credible, research must be reproducible"
+table1::label(survey_resp$Q8_6) <- "Reproducibility is incompatible with the epistemologies within my subfield"
+
+Q3_table3a <- table1::table1(~Q8_1 + Q8_2 +  Q8_3 +  Q8_4 +  Q8_5 +  Q8_6 | Q3_recoded, data = survey_resp)
+Q4_table3a <- table1::table1(~Q8_1 + Q8_2 +  Q8_3 +  Q8_4 +  Q8_5 +  Q8_6  | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table3a , here("results","tables","Table3a_Credibility_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table3a , here("results","tables","Table3a_Credibility_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table3a) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table3a_Credibility_discipline.docx"))
+
+t1flex(Q4_table3a) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table3a_Credibility_method.docx"))
+
+
+table1::label(survey_resp$Q17_1) <- "Validating research findings"
+table1::label(survey_resp$Q17_2) <- "Reducing the risk of errors in the research process"
+table1::label(survey_resp$Q17_3) <- "Increasing trust in study results"
+table1::label(survey_resp$Q17_4) <- "Preventing duplication of efforts in future research projects"
+table1::label(survey_resp$Q17_5) <- "Establishing credibility of research in geography"
+table1::label(survey_resp$Q17_6) <- "Establishing credibility of research in your primary subfield"
+table1::label(survey_resp$Q17_7) <- "Communicating research to academics"
+table1::label(survey_resp$Q17_8) <- "Communicating research to practitioners"
+table1::label(survey_resp$Q17_9) <- "Training geography students"
+table1::label(survey_resp$Q17_10) <- "Meta-analyses"
+
+Q3_table3b <- table1::table1(~Q17_1 + Q17_2 +  Q17_3 +  Q17_4 +  Q17_5 +  Q17_6 + Q17_7 + Q17_8 + Q17_9 + Q17_10 | Q3_recoded, data = survey_resp)
+Q4_table3b <- table1::table1(~Q17_1 + Q17_2 +  Q17_3 +  Q17_4 +  Q17_5 +  Q17_6 + Q17_7 + Q17_8 + Q17_9 + Q17_10  | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table3b , here("results","tables","Table3b_Importance_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table3b , here("results","tables","Table3b_Importance_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table3b) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table3b_Importance_discipline.docx"))
+
+t1flex(Q4_table3b) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table3b_Importance_method.docx"))
+
+#---------------------------------------------------------------------------------------
+#- Table 4) Proportion of Reproducible Research (Q13) -#
+table1::label(survey_resp$Q13_1) <- "Percentage of published results that are reproducible: Geography"
+table1::label(survey_resp$Q13_2) <- "Percentage of published results that are reproducible: Subfield"
+
+Q3_table4 <- table1::table1(~Q13_1 + Q13_2 | Q3_recoded, data = survey_resp)
+Q4_table4 <- table1::table1(~Q13_1 + Q13_2  | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table4 , here("results","tables","Table4_PublishedResults_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table4 , here("results","tables","Table4_PublishedResults_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table4) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table4_PublishedResults_discipline.docx"))
+
+t1flex(Q4_table4) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table4_PublishedResults_method.docx"))
+
+#---------------------------------------------------------------------------------------
+#- Table 5) Practices (Q7) -#
+table1::label(survey_resp$Q7a) <- "Familiarity with open source software"
+table1::label(survey_resp$Q7b) <- "Familiarity with lab, field, or computational notebooks"
+table1::label(survey_resp$Q7c) <- "Familiarity with sharing or archiving data"
+table1::label(survey_resp$Q7d) <- "Familiarity with publicly sharing code or scripts"
+table1::label(survey_resp$Q7e) <- "Familiarity with pre-registering research designs or protocols"
+
+Q3_table5 <- table1::table1(~Q7a + Q7b + Q7c + Q7d + Q7e | Q3_recoded, data = survey_resp)
+Q4_table5 <- table1::table1(~Q7a + Q7b + Q7c + Q7d + Q7e | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table5 , here("results","tables","Table5_PracticeFam_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table5 , here("results","tables","Table5_PracticeFam_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table5) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table5_PracticeFam_discipline.docx"))
+
+t1flex(Q4_table5) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table5_PracticeFam_method.docx"))
+
+
+#---------------------------------------------------------------------------------------
+#- Table 6) Practices  (Q7 Frequency and Q9) -#
+table1::label(survey_resp$Q7a_1) <- "Frequency of using open source software"
+table1::label(survey_resp$Q7b_1) <- "Frequency of using lab, field, or computational notebooks"
+table1::label(survey_resp$Q7c_1) <- "Frequency of using sharing or archiving data"
+table1::label(survey_resp$Q7d_1) <- "Frequency of using publicly sharing code or scripts"
+table1::label(survey_resp$Q7e_1) <- "Frequency of using pre-registering research designs or protocols"
+
+Q3_table6a <- table1::table1(~Q7a_1 + Q7b_1 + Q7c_1 + Q7d_1 + Q7e_1 | Q3_recoded, data = survey_resp)
+Q4_table6a <- table1::table1(~Q7a_1 + Q7b_1 + Q7c_1 + Q7d_1 + Q7e_1 | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table6a , here("results","tables","Table6a_PracticeFreq_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table6a , here("results","tables","Table6a_PracticeFreq_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table6a) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table6a_PracticeFreq_discipline.docx"))
+
+t1flex(Q4_table6a) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table6a_PracticeFreq_method.docx"))
+
+
+
+table1::label(survey_resp$Q9_1) <- "Thought about the reproducibility of your research"
+table1::label(survey_resp$Q9_2) <- "Spoke with colleagues about reproducibility"
+table1::label(survey_resp$Q9_3) <- "Questioned the reproducibility of published research"
+table1::label(survey_resp$Q9_4) <- "Published original data with your study"
+table1::label(survey_resp$Q9_5) <- "Published code and/or protocols with your study"
+table1::label(survey_resp$Q9_6) <- "Considered reproducibility while peer reviewing a grant or publication"
+table1::label(survey_resp$Q9_7) <- "Attempted to reproduce your own or someone else's research"
+
+Q3_table6b <- table1::table1(~Q9_1 + Q9_2 + Q9_3 + Q9_4 + Q9_5 + Q9_6 + Q9_7 | Q3_recoded, data = survey_resp)
+Q4_table6b <- table1::table1(~Q9_1 + Q9_2 + Q9_3 + Q9_4 + Q9_5 + Q9_6 + Q9_7 | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table6b , here("results","tables","Table6b_Practices_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table6b , here("results","tables","Table6b_Practices_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table6b) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table6b_Practices_discipline.docx"))
+
+t1flex(Q4_table6b) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table6b_Practices_method.docx"))
+
+#---------------------------------------------------------------------------------------
+#- Table 7) Characteristics of those who conducted reproductions and (Q11 Q12) -#
+
+table1::label(survey_resp$Q11_1) <- "Proportion of results: Identically reproduce"
+table1::label(survey_resp$Q11_2) <- "Proportion of results: Partially reproduce"
+table1::label(survey_resp$Q11_3) <- "Proportion of results: Fail to reproduce"
+table1::label(survey_resp$Q12_1) <- "Ability to access the original study's data"
+table1::label(survey_resp$Q12_2) <- "Ability to access the original study's code or analytic procedures"
+table1::label(survey_resp$Q12_3) <- "Ability to recreate the computational environment (hardware, software, etc.)"
+table1::label(survey_resp$Q12_4) <- "Ability to submit your findings for publication"
+
+Q3_table7 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 | Q3_recoded, data = survey_resp)
+Q4_table7 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table7 , here("results","tables","Table7_RPAttempts_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table7 , here("results","tables","Table7_RPAttempts_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table7) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_discipline.docx"))
+
+t1flex(Q4_table7) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_method.docx"))
+
+#---------------------------------------------------------------------------------------
+#- Table 8) Barriers -#
+table1::label(survey_resp$Q14_1) <- "Fraud (e.g., fabricated or falsified results)"
+table1::label(survey_resp$Q14_2) <- "Pressure to publish for career advancement"
+table1::label(survey_resp$Q14_3) <- "Insufficient oversight or mentoring"
+table1::label(survey_resp$Q14_4) <- "Lack of publishing raw data"
+table1::label(survey_resp$Q14_5) <- "Lack of publishing research protocols or computer code"
+table1::label(survey_resp$Q14_6) <- "Lack of publishing full results"
+table1::label(survey_resp$Q14_7) <- "Differences in the software processing environment"
+table1::label(survey_resp$Q14_8) <- "Use of proprietary data or software"
+table1::label(survey_resp$Q14_9) <- "Complexity and variability of geographic systems"
+table1::label(survey_resp$Q14_10) <- "Random effects"
+table1::label(survey_resp$Q14_11) <- "Insufficient documentation about study data (metadata)"
+table1::label(survey_resp$Q14_12) <- "Researcher positionality"
+
+Q3_table8 <- table1::table1(~Q14_1 + Q14_2 + Q14_3 + Q14_4 + Q14_5 + Q14_6 + Q14_7 + Q14_8 + 
+                              Q14_9 + Q14_10 + Q14_11 + Q14_12 | Q3_recoded, data = survey_resp)
+Q4_table8 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 | Q4, data = survey_resp)
+
+# Output tables using write table and flextable
+write.table(Q3_table8 , here("results","tables","Table8_Barriers_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table8 , here("results","tables","Table8_Barriers_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table8) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table8_Barriers_discipline.docx"))
+
+t1flex(Q4_table8) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table8_Barriers_method.docx"))
+
+
+
+#---------------------------------------------------------------------------------------
+#- Summary Table for Results Section -#
+
+#- Summary measure on familiarity, practices, and barriers
+#------- Familiarity : threshold is "somewhat"
+#------- Practices :   threshold is "most of the time"
+#------- Barriers :    threshold is "occasionally"
+
+#-------
+
+#-- co-occurence table of barriers mentioned
+
+
 
 #- Define variable lists -#
 demo <- c("Q1", "Q2", "Q3_recoded","Q4","Q5", "Q18", "Q19", "Q20")
@@ -48,9 +294,7 @@ for (i in all_vars){
   write.csv(table_all, here("results","tables","Freqs",paste0("Freq_",i, ".csv", sep = "")))
 }
 
-#-----------------------#
-#-- Cross tabulations --#
-#-----------------------#
+
 #-Q3-#
 for (i in numeric_vars){
   mytable <- table(survey_resp[[i]],survey_resp$Q3_recoded)
@@ -65,116 +309,9 @@ for (i in numeric_vars){
   write.csv(xtab, here("results","tables","Method",paste0("Q4_Xtab_",i, ".csv", sep = "")))
 }
 
-#-Q5-#
-for (i in numeric_vars){
-  mytable <- table(survey_resp[[i]],survey_resp$Q5)
-  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
-  write.csv(xtab, here("results","tables","Familiarity",paste0("Q5_Xtab_",i, ".csv", sep = "")))
-}
 
 
 
-
-
-#PRETTY SURE WE CAN DELETE ALL CODE AFTER THIS POINT, BUT NEED TO DOUBLE CHECK#
-
-
-
-#-Age-#
-for (i in numeric_vars){
-  mytable <- table(survey_resp[[i]],survey_resp$Q1)
-  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
-  write.csv(xtab, here("results","tables","Age",paste0("Age_Xtab_",i, ".csv", sep = "")))
-}
-
-
-##### FACTOR MANAGEMENT #####
-# if anyone can compress all of this into a function that uses a table of 
-# questions & ordered responses, by all means...
-
-# Simplify sub-field labels
-values <- c("Human geography",
-            "Physical geography, earth and environmental sciences",
-            "Nature and society",
-            "Geographic methods, GIS, spatial statistics")
-survey_resp$Q3 <- factor(survey_resp$Q3, levels=values)
-values <- c("Human", "Physical", "Nature/Society", "Methods")
-levels(survey_resp$Q3) <- values
-
-# convert extent questions into ordered factors
-values <- c("Not at all", "Very little", "Somewhat", "To a great extent")
-questions <- c("Q5", "Q7a","Q7b", "Q7c", "Q7d", "Q7e")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert frequency questions into ordered factors
-values <- c("Never", "Rarely", "Some of the time", "Most of the time", "Always")
-questions <- c("Q7a_1", "Q7a_3", "Q7b_1", "Q7c_1", "Q7c_2", "Q7c_3", "Q7d_1", "Q7d_2", "Q7e_1")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert agree questions into ordered factors
-values <- c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
-questions <- c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5", "Q8_6")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude=c("", "Don't Know"))
-
-# convert yes/no questions into ordered factors
-values <- c("Yes", "No", "Don't Know")
-questions <- c("Q9_1", "Q9_2", "Q9_3", "Q9_4", "Q9_5", "Q9_6", "Q9_7")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert proportion questions into ordered factors
-values <- c("All", "Some", "None", "Don't Know")
-questions <- c("Q11_1", "Q11_2", "Q11_3")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert yes/no proportion questions into ordered factors
-values <- c("Yes, all", "Yes, some", "No", "Did not attempt")
-questions <- c("Q12_1", "Q12_2", "Q12_3", "Q12_4")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert frequency questions into ordered factors
-values <- c("Frequently", "Occasionally", "Rarely", "Never")
-questions <- c("Q14_1", "Q14_2", "Q14_3", "Q14_4", "Q14_5", "Q14_6", "Q14_7", "Q14_8", "Q14_9", "Q14_10", "Q14_11", "Q14_12")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert importance questions into ordered factors
-values <- c("Very important", "Somewhat important", "Somewhat not important", "Not important")
-questions <- c("Q17_1", "Q17_2", "Q17_3", "Q17_4", "Q17_5", "Q17_6", "Q17_7", "Q17_8", "Q17_9", "Q17_10")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# check data types for the full survey
-sapply(survey_resp, class)
 
 ##### Calculate Aggregate Indicators #####
 
@@ -193,12 +330,3 @@ survey_resp <- survey_resp %>% mutate(belief = as.numeric(Q8_1) +
 )
 
 
-
-# save derived pre-processed survey data
-saveRDS(survey_resp, here("data", "derived", "public", "survey_resp.RDS"))
-
-# need to convert:
-# Q7a_2 into four binary variables
-# Q13_1_! and Q13_2_1 into numeric
-# consider coding Q7 frequency questions as "never" if they skipped the question because
-# of no familiarity
