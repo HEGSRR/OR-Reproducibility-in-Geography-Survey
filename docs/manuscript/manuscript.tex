@@ -144,9 +144,10 @@ However, may of our indirect assessment are on shaky methodological grounds and 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Data and Methods}
-Complete documentation of the procedures and materials used in this study are available through the Survey of Reproducibility in Geographic Research Repository (\citet{Kedron_Holler_Bardin_Hilgendorf_2022} - \url{https://osf.io/5yeq8/}) hosted by the Open Science Framework (OSF). 
+Complete documentation of the procedures and materials used in this study are available through the Survey of Reproducibility in Geographic Research Repository (\citet{Kedron_Holler_Bardin_Hilgendorf_2022} - \url{https://osf.io/5yeq8/}) hosted by the Open Science Framework (OSF).
+That repository connects to a Github repository which hosts the anonymized dataset and code used to create all results and supplemental materials and along with a complete history of their development. 
 Before the start of data collection, we registered a preanalysis plan for the survey with OSF Registries (\citet{Kedron_Survey_PAP} - \url{https://osf.io/6zjcp}). 
-We amended that plan at the close of data collection to reflect a change in stopping rule we used to end the survey. 
+We later amended that plan to reflect a change in stopping rule we used to end the survey and to include additional statistical analyses we conducted after viewing the survey response. 
 
 The survey was conducted under the approval and supervision of the Arizona State Institutional Review Board - \textit{STUDY00014232}.
 All approved documentation, study protocols, and consent materials are available through the above repository.
@@ -212,21 +213,22 @@ As a result some of the result presented below cannot be directly replicated.
 We have indicated throughout our results section which analysis can and cannot be replicated using the data files and code share through our public repository. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Survey Response Demographics}
+A total of \textit{n}=215 of the authors we contacted completed the online survey with information sufficient for analysis. 
+The contact rate for the survey was 13.9 percent, the response rate was 10.8 percent, yielding a cooperation rate of 77.6 percent. 
+The refusal rate was 3.1 percent.\endnote{All outcome rates are reported using \citet{aaporstandards} standards. The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}
+Respondents were predominantly male (65.1\%) and between the ages of 35 and 55 (62.4\%). 
+The majority of respondents were also academics, but were well balanced across career levels as no one category made up more that 30 percent of the sample.
+Respondents were similarly well balanced across the disciplinary subfields - Human Geography (30.7\%), Physical Geography (29.8\%), Nature and Society (10.1\%), Geographic Methods and GISci (28.0\%); and methodological approaches - quantitative (42.2\%), qualitative (18.3\%), and mixed-methods (39.0\%) research.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Statistical Analyses}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Results}
 
-\subsection*{Survey Demographics}
-A total of \textit{n}=215 of the authors we contacted completed the online survey with information sufficient for analysis. The contact rate for the survey was 13.9 percent, the response rate was 10.8 percent, yielding a cooperation rate of 77.6 percent. The refusal rate was 3.1 percent.\endnote{All outcome rates are reported using \citet{aaporstandards} standards. The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.} 
-
-\begin{itemize}
-    \item Include a comparison of sample to the sample frame along the dimensions available from the frame. (Table 0)
-    \item Include a summary of the key in sample characteristics (Table 1?). Rows - Title, Citations (pulled from frame), Gender; cols - methods and subfields. \textcolor{red}{Does this need to be a table? I am not sure any of these demographics really matter to our analysis. That is unless we plan to look at some measure across seniority or 'impact', which we could do.}
-\end{itemize}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Aggregate Measures Along 4-Dimensions}
 This subsection will pivot on Table 9 that has rows representing aggregate measures of 1) definition, 2) Familiarity 3) Experience, 4) Barriers and two groups of columns representing (Quant, Qual, Mixed) and (Human, Physical, GIS/Methods, NS).
 
@@ -237,36 +239,42 @@ This subsection will pivot on Table 9 that has rows representing aggregate measu
     \item Likely need to comment on survey including many reproducible research practices that center on, or are easier to accomplish with, when using quantitative data and methods. This reality may automatically deflate the aggregate measures of certain sub-group. We can use the response to Q8f as a filter to explore this issue. \textcolor{red}{For conclusions - Points to the emphasis on quantitative, particularly computational, focus in the reproducibility literature. Suggests a meed to examine what reproducibility means in the context of geography's qual, NS, and human traditions.} 
 \end{itemize}
 
+%%%%%%%%%%%
 \subsubsection*{Definition of Reproducibility}
 \begin{itemize}
-    \item Self-reported definition (Q6) analysis.
-    \item Interpretations of reproductions (Q8) - focus on Q8a, Q8b, Q8e as these provide the most direct information about how a respondent processes the evidence provided by a reproduction. Match Q8e with 17c, 17e, 17f which are importance questions about credibility. Match Q8b with 17a which are both about validity. 
-    \item Importance of reproducibility (Q17) - Reproducibility was/wasn't seen as important for other goals - error reduction (17b), effort duplication (17d), scientific communication (17g, 17h), training (17i, 8d).
+    \item Self-reported definition (Q6) analysis: Qualitative analysis that will present a typology of definitions by combination of the Q,Q,M and M,P,NS,H splits that match on the 8 category coding of the provided definitions. 
+    \item Interpretations (Q8) and Importance (Q17) of reproductions: Develop a split that distinguishes between Qs that focus on epistemology Q8a+Q8b+Q8f+17a, as these provide the most direct information about how a respondent processes the evidence provided by a reproduction; and Qs that focus on reproducibility as a quality of a study Q8e+Q8c+17c+17e+17f. We will explore how these question groups crosstab with the typologies we draw from Q6. Initial assumption is that many will support reproduction as a study characteristic or label, and less will link it with epistomological function. Examine by subfields and methods, which we expect to align with typologies from Q6. 
+    \item Importance of reproducibility (Q17) - Reproducibility was/wasn't seen as important for other open science goals - error reduction (17b), effort duplication (17d), scientific communication (17g, 17h), training (17i, 8d).
     \item Reproducibility Estimate (Q13) - \textcolor{red}{What is the state of the summaries on this dimension?}
 \end{itemize}
 
+%%%%%%%%%%%
 \subsubsection*{Familiarity with Reproduciblity Practices}
 
-
+%%%%%%%%%%%
 \subsubsection*{Frequency of Reproduciblity Practices}
-
 Q9 will feather in to contextualize the measure
 
+%%%%%%%%%%%
 \subsubsection*{Barriers to Reproduction}
 Discussion of details from Q14
 
-\subsection{Actual Reproductions}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Actual Reproductions}
 Start with the outline of what the population is here because not all respondents answered these questions. Start with descriptives that show this sub-sample of respondents. Summary discussion of Q10-Q12.
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Discussion}
 
+\begin{itemize}
+    \item The reproducibility literature emphasizes quantitative, particularly computational, forms of research. This emphasis necessarily carried over into our survey instrument, which may automatically lower response scores for researchers not working in these areas (e.g., qualitative, human geography). These scores do reflect their present level of understanding, but the practices may not be relevant to their methods or epistomologies. This fact suggests a meed to examine what reproducibility means in the context of geography's qual, NS, and human traditions.
+    \item A standing question is how should geographic research approaches be designed to efficiently generate reliable knowledge.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusion}
-A standing question is how should geographic research approaches be designed to efficiently generate reliable knowledge.
+
 
 \theendnotes
 
