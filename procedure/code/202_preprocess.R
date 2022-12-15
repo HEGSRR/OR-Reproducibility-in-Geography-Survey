@@ -11,69 +11,6 @@ library(officer)
 #--------------------------------#
 survey_resp <- readRDS(here("data","derived","public","analysis_hegs_rpr.rds"))
 
-#----------------------------------------------------------#
-
-#- Convert character to ordered factors-#
-
-#----------------------------------------------------------#
-# convert agree questions into ordered factors
-values <- c("Strongly agree", "Agree", "Disagree","Strongly disagree")
-questions <- c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5", "Q8_6")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude=c("", "Don't Know"))
-
-# convert yes/no questions into ordered factors
-values <- c("Yes", "No", "Don't Know")
-questions <- c("Q9_1", "Q9_2", "Q9_3", "Q9_4", "Q9_5", "Q9_6", "Q9_7")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert proportion questions into ordered factors
-values <- c("All", "Some", "None", "Don't Know")
-questions <- c("Q11_1", "Q11_2", "Q11_3")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert yes/no proportion questions into ordered factors
-values <- c("Yes, all", "Yes, some", "No", "Did not attempt")
-questions <- c("Q12_1", "Q12_2", "Q12_3", "Q12_4")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert frequency questions into ordered factors
-values <- c("Frequently", "Occasionally", "Rarely", "Never")
-questions <- c("Q14_1", "Q14_2", "Q14_3", "Q14_4", "Q14_5", "Q14_6", "Q14_7", "Q14_8", "Q14_9", "Q14_10", "Q14_11", "Q14_12")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-# convert importance questions into ordered factors
-values <- c("Very important", "Somewhat important", "Somewhat not important", "Not important")
-questions <- c("Q17_1", "Q17_2", "Q17_3", "Q17_4", "Q17_5", "Q17_6", "Q17_7", "Q17_8", "Q17_9", "Q17_10")
-survey_resp[questions] <- lapply(survey_resp[questions], 
-                                 factor, 
-                                 levels=values,
-                                 ordered = TRUE,
-                                 exclude="")
-
-
-# check data types for the full survey
-sapply(survey_resp, class)
-
 #Define MS Word table layout options
 sect_properties <- prop_section(
   page_size = page_size(
