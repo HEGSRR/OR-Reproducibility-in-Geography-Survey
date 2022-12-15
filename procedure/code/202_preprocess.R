@@ -2,6 +2,7 @@ library(here)
 library(tidyverse)
 library(table1)
 library(flextable)
+library(officer)
 
 #--------------------------------#
 #-                              -#
@@ -9,6 +10,79 @@ library(flextable)
 #-                              -#
 #--------------------------------#
 survey_resp <- readRDS(here("data","derived","public","analysis_hegs_rpr.rds"))
+
+#----------------------------------------------------------#
+
+#- Convert character to ordered factors-#
+
+#----------------------------------------------------------#
+# convert agree questions into ordered factors
+values <- c("Strongly agree", "Agree", "Disagree","Strongly disagree")
+questions <- c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5", "Q8_6")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude=c("", "Don't Know"))
+
+# convert yes/no questions into ordered factors
+values <- c("Yes", "No", "Don't Know")
+questions <- c("Q9_1", "Q9_2", "Q9_3", "Q9_4", "Q9_5", "Q9_6", "Q9_7")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert proportion questions into ordered factors
+values <- c("All", "Some", "None", "Don't Know")
+questions <- c("Q11_1", "Q11_2", "Q11_3")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert yes/no proportion questions into ordered factors
+values <- c("Yes, all", "Yes, some", "No", "Did not attempt")
+questions <- c("Q12_1", "Q12_2", "Q12_3", "Q12_4")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert frequency questions into ordered factors
+values <- c("Frequently", "Occasionally", "Rarely", "Never")
+questions <- c("Q14_1", "Q14_2", "Q14_3", "Q14_4", "Q14_5", "Q14_6", "Q14_7", "Q14_8", "Q14_9", "Q14_10", "Q14_11", "Q14_12")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+# convert importance questions into ordered factors
+values <- c("Very important", "Somewhat important", "Somewhat not important", "Not important")
+questions <- c("Q17_1", "Q17_2", "Q17_3", "Q17_4", "Q17_5", "Q17_6", "Q17_7", "Q17_8", "Q17_9", "Q17_10")
+survey_resp[questions] <- lapply(survey_resp[questions], 
+                                 factor, 
+                                 levels=values,
+                                 ordered = TRUE,
+                                 exclude="")
+
+
+# check data types for the full survey
+sapply(survey_resp, class)
+
+#Define MS Word table layout options
+sect_properties <- prop_section(
+  page_size = page_size(
+    orient = "landscape",
+    width = 8.3, height = 11.7
+  ),
+  type = "continuous",
+  page_margins = page_mar()
+)
 
 #-----------------------#
 #-- Cross tabulations --#
@@ -31,10 +105,13 @@ write.table(Q3_table1 , here("results","tables","Table1_Summary_discipline.csv")
 write.table(Q4_table1 , here("results","tables","Table1_Summary_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table1) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table1_Summary_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table1_Summary_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table1) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table1_Summary_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table1_Summary_method.docx"),
+               pr_section = sect_properties)
+
 
 #---------------------------------------------------------------------------------------
 #- Table 2) Definitions of Reproducibility -#
@@ -49,10 +126,12 @@ write.table(Q3_table2 , here("results","tables","Table2_Familiarity_discipline.c
 write.table(Q4_table2 , here("results","tables","Table2_Familiarity_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table2) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table2_Familiarity_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table2_Familiarity_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table2) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table2_Familiarity_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table2_Familiarity_method.docx"),
+               pr_section = sect_properties)
 
 #---------------------------------------------------------------------------------------
 #- Table 3) Importance of Reproducibility (Q17 and Q8) -#
@@ -72,10 +151,12 @@ write.table(Q3_table3a , here("results","tables","Table3a_Credibility_discipline
 write.table(Q4_table3a , here("results","tables","Table3a_Credibility_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table3a) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table3a_Credibility_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table3a_Credibility_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table3a) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table3a_Credibility_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table3a_Credibility_method.docx"),
+               pr_section = sect_properties)
 
 
 table1::label(survey_resp$Q17_1) <- "Validating research findings"
@@ -97,10 +178,12 @@ write.table(Q3_table3b , here("results","tables","Table3b_Importance_discipline.
 write.table(Q4_table3b , here("results","tables","Table3b_Importance_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table3b) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table3b_Importance_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table3b_Importance_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table3b) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table3b_Importance_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table3b_Importance_method.docx"),
+               pr_section = sect_properties)
 
 #---------------------------------------------------------------------------------------
 #- Table 4) Proportion of Reproducible Research (Q13) -#
@@ -115,10 +198,12 @@ write.table(Q3_table4 , here("results","tables","Table4_PublishedResults_discipl
 write.table(Q4_table4 , here("results","tables","Table4_PublishedResults_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table4) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table4_PublishedResults_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table4_PublishedResults_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table4) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table4_PublishedResults_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table4_PublishedResults_method.docx"),
+               pr_section = sect_properties)
 
 #---------------------------------------------------------------------------------------
 #- Table 5) Practices (Q7) -#
@@ -136,10 +221,12 @@ write.table(Q3_table5 , here("results","tables","Table5_PracticeFam_discipline.c
 write.table(Q4_table5 , here("results","tables","Table5_PracticeFam_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table5) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table5_PracticeFam_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table5_PracticeFam_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table5) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table5_PracticeFam_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table5_PracticeFam_method.docx"),
+               pr_section = sect_properties)
 
 
 #---------------------------------------------------------------------------------------
@@ -158,10 +245,12 @@ write.table(Q3_table6a , here("results","tables","Table6a_PracticeFreq_disciplin
 write.table(Q4_table6a , here("results","tables","Table6a_PracticeFreq_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table6a) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table6a_PracticeFreq_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table6a_PracticeFreq_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table6a) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table6a_PracticeFreq_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table6a_PracticeFreq_method.docx"),
+               pr_section = sect_properties)
 
 
 
@@ -181,10 +270,12 @@ write.table(Q3_table6b , here("results","tables","Table6b_Practices_discipline.c
 write.table(Q4_table6b , here("results","tables","Table6b_Practices_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table6b) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table6b_Practices_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table6b_Practices_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table6b) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table6b_Practices_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table6b_Practices_method.docx"),
+               pr_section = sect_properties)
 
 #---------------------------------------------------------------------------------------
 #- Table 7) Characteristics of those who conducted reproductions and (Q11 Q12) -#
@@ -205,10 +296,12 @@ write.table(Q3_table7 , here("results","tables","Table7_RPAttempts_discipline.cs
 write.table(Q4_table7 , here("results","tables","Table7_RPAttempts_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table7) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table7) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_method.docx"),
+               pr_section = sect_properties)
 
 #---------------------------------------------------------------------------------------
 #- Table 8) Barriers -#
@@ -234,10 +327,12 @@ write.table(Q3_table8 , here("results","tables","Table8_Barriers_discipline.csv"
 write.table(Q4_table8 , here("results","tables","Table8_Barriers_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table8) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table8_Barriers_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table8_Barriers_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table8) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table8_Barriers_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table8_Barriers_method.docx"),
+               pr_section = sect_properties)
 
 
 
@@ -346,89 +441,12 @@ write.table(Q3_table9 , here("results","tables","Table9_Master_Table_discipline.
 write.table(Q4_table9 , here("results","tables","Table9_Master_Table_method.csv"), col.names = T, row.names=F, append= T, sep=',')
 
 t1flex(Q3_table9) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table9_Master_Table_discipline.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table9_Master_Table_discipline.docx"),
+               pr_section = sect_properties)
 
 t1flex(Q4_table9) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table9_Master_Table_method.docx"))
+  save_as_docx(path = here("results","tables","MSWord","Table9_Master_Table_method.docx"),
+               pr_section = sect_properties)
 
-
-#-------
-
-#-- co-occurence table of barriers mentioned
-
-
-
-#- Define variable lists -#
-demo <- c("Q1", "Q2", "Q3_recoded","Q4","Q5", "Q18", "Q19", "Q20")
-
-practice <- c("Q7a","Q7a_1", "Q7a_3", 
-              "Q7b","Q7b_1",
-              "Q7c","Q7c_1","Q7c_2","Q7c_3",
-              "Q7d","Q7d_1","Q7d_2",
-              "Q7e","Q7e_1")
-
-importance <- c("Q13_1", "Q13_2",
-                "Q17_1", "Q17_2", "Q17_3", "Q17_4",
-                "Q17_5", "Q17_6", "Q17_7", "Q17_8",
-                "Q17_9", "Q17_10")
-
-barriers <- c("Q14_1", "Q14_2", "Q14_3", "Q14_4", 
-              "Q14_5", "Q14_6", "Q14_7", "Q14_8",
-              "Q14_9", "Q14_10", "Q14_11", "Q14_12",
-              "Q16", "Q19_9_TEXT", "Q20_5_TEXT", "Q21_7_TEXT")
-
-numeric_vars <- c(demo, practice, importance)
-
-
-char_vars <- c("Q6", "Q7a_2", "Q12a", 
-               "Q13_1_1", "Q13_2_1", "Q15", "Q16_5_TEXT",
-               "Q17a")
-
-all_vars <- c(numeric_vars, char_vars)
-
-#-----------------#  
-#-- Frequencies --#
-#-----------------#
-for (i in all_vars){
-  Frequency <-  (table(survey_resp[[i]]))
-  Percentage <- prop.table(Frequency) * 100 
-  table_all <- rbind(Frequency, Percentage)
-  print(table_all)
-  write.csv(table_all, here("results","tables","Freqs",paste0("Freq_",i, ".csv", sep = "")))
-}
-
-
-#-Q3-#
-for (i in numeric_vars){
-  mytable <- table(survey_resp[[i]],survey_resp$Q3_recoded)
-  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
-  write.csv(xtab, here("results","tables","Field",paste0("Q3_Xtab_",i, ".csv", sep = "")))
-}
-
-#-Q4-#
-for (i in numeric_vars){
-  mytable <- table(survey_resp[[i]],survey_resp$Q4)
-  xtab <-  round(prop.table(mytable, margin = 2) * 100,2) 
-  write.csv(xtab, here("results","tables","Method",paste0("Q4_Xtab_",i, ".csv", sep = "")))
-}
-
-
-
-
-
-##### Calculate Aggregate Indicators #####
-
-
-
-
-
-# beliefs about role of reproducibility in scholarship
-survey_resp <- survey_resp %>% mutate(belief = as.numeric(Q8_1) + 
-                                        (4 - as.numeric(Q8_2)) + 
-                                        as.numeric(Q8_3) +
-                                        as.numeric(Q8_4) + 
-                                        as.numeric(Q8_5) +
-                                        (4 - as.numeric(Q8_6))
-)
 
 
