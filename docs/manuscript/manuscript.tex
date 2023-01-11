@@ -39,6 +39,10 @@
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
 \newtheorem{notation}{Notation}
+
+\usepackage{tabularx}
+\usepackage{booktabs,caption}
+\usepackage{threeparttable}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -140,6 +144,13 @@ The evidence available from direct and indirect assessments of reproducibility s
 
 However, may of our indirect assessment are on shaky methodological grounds and we have not studied this in geography. 
 
+\begin{description}
+\setlength{\itemindent}{0ex}
+    \item[\textbf{(Q1)}] How do geographic researchers define reproduciblity?
+    \item[\textbf{(Q2)}] How familiar are geographic researchers with different reproducible research practices?
+    \item[\textbf{(Q3)}] How often do geographic researchers use different reproducibile research practices when conducting their own studies? 
+    \item[\textbf{(Q4)}] What factors hinder the reproduction of geographic research?
+\end{description}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -214,16 +225,33 @@ We have indicated throughout our results section which analysis can and cannot b
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Survey Response Demographics}
-A total of \textit{n}=215 of the authors we contacted completed the online survey with information sufficient for analysis. 
+A total of \textit{n}=218 of the authors we contacted completed the online survey with information sufficient for analysis. 
 The contact rate for the survey was 13.9 percent, the response rate was 10.8 percent, yielding a cooperation rate of 77.6 percent. 
 The refusal rate was 3.1 percent.\endnote{All outcome rates are reported using \citet{aaporstandards} standards. The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}
 Respondents were predominantly male (65.1\%) and between the ages of 35 and 55 (62.4\%). 
 The majority of respondents were also academics, but were well balanced across career levels as no one category made up more that 30 percent of the sample.
 Respondents were similarly well balanced across the disciplinary subfields - Human Geography (30.7\%), Physical Geography (29.8\%), Nature and Society (10.1\%), Geographic Methods and GISci (28.0\%); and methodological approaches - quantitative (42.2\%), qualitative (18.3\%), and mixed-methods (39.0\%) research.
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Statistical Analyses}
+\newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Statistical Methods}
+We conduct two statistical analyses of the survey response. 
+First, we use descriptive statistical summaries to address our four questions about how geographic researchers define reproducibility, their familiarity and experience with reproducible research practice, and the barriers to reproducibility they perceive in the discipline. 
+To assess the familiarity of geographic researchers with reproducible and open science research practices, we created a single aggregate variable by recoding and then summing these measures. 
+This procedure produced a single aggregate variable with a minimum value of 0 and a maximum value of 5. 
+
+
+
+We also examine group-wise differences in each aggregated measure by disciplinary subfield and methodological approach to identify variation across the discipline's many traditions.
+This analysis is based on our full sample (\textit{n}=218), but excludes 29 participants who did not provide complete responses to the relevant survey questions.
+
+Second, we conduct an analysis of the experience of geographic researchers who have attempted reproductions of prior work. 
+We examine what motivates geographic researchers to attempt to reproduce another study and how successful researcher attempting reproductions were at recreating existing results. 
+We also investigate why
+
+The full methodological details of our statistical analyses, and a complete history of our response coding a variable construction is included in the Github repository linked to OSF repository that accompanies this paper.
+All of the results presented in this paper can be reproduced using the materials in that repository.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Results}
@@ -231,6 +259,61 @@ Respondents were similarly well balanced across the disciplinary subfields - Hum
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Aggregate Measures Along 4-Dimensions}
 This subsection will pivot on Table 9 that has rows representing aggregate measures of 1) definition, 2) Familiarity 3) Experience, 4) Barriers and two groups of columns representing (Quant, Qual, Mixed) and (Human, Physical, GIS/Methods, NS).
+
+\begin{table}[h]
+    \centering
+    \begin{threeparttable}
+    \caption{Descriptive summary of survey results}
+    \begin{tabular}{l c c c c c c c c c c}
+         \hline
+                    & \multicolumn{4}{1}{Subfield}  & & \multicolumn{3}{1}{Approach} & & \\
+         Measure    & HU & PH & NS & GIS            & & QNT & QUL & MIX              & & Overall \\
+         \hline
+         Definition  &  & & & & & & & & & \\
+         Familiarity &  \begin{tabular}[c]{@{}c@{}}2.35\\ (1.36)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}3.71\\ (0.98)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}2.28\\ (1.76)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}3.97\\ (0.86)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}3.75\\ (0.98)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}1.75\\ (1.30)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}3.56\\ (1.22)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}3.26\\ (1.36)\end{tabular}\\
+         
+         Experience  &  \begin{tabular}[c]{@{}c@{}}0.60\\ (0.80)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}2.06\\ (1.18)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}1.18\\ (0.96)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}1.85\\ (1.38)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}1.63\\ (1.32)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}0.48\\ (0.68)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}1.69\\ (1.24)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}1.44\\ (1.28)\end{tabular}\\
+         
+         Barriers    &  \begin{tabular}[c]{@{}c@{}}7.32\\ (3.57)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}8.31\\ (3.00)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}7.44\\ (3.20)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}9.31\\ (2.79)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}8.78\\ (2.80)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}5.97\\ (3.83)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}8.58\\ (2.96)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}8.20\\ (3.24)\end{tabular}\\
+                     & & & & & & & & & &\\
+         N           & 67 & 65 & 22 & 61 & & 92 & 40 & 85 & & 218 \\
+         Missing     & 14 & 4  & 4  & 6  & & 6 & 9 & 14 & & 29 \\
+        \hline
+    \end{tabular}
+    \begin{tablenotes}
+        \footnotesize
+        \item \textit{HU} Human Geography, \textit{PH} Physical Geography, \textit{NS} Nature and Society, \textit{GIS} GIScience and Methods; \textit{QNT} Quantitative, \textit{QUL} Qualitative, \textit{MIX} Mixed Methods.
+    \end{tablenotes}
+    \label{tab:overview}
+    \end{threeparttable}
+\end{table}
 
 \begin{itemize}
     \item Overall story is that collectively geographers are aware of reproducible research practices, but don't have a matching amount of direct experience using those practices. There are also many perceived barriers to conducting reproducible research.
