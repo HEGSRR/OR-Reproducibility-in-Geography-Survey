@@ -164,7 +164,7 @@ The survey was conducted under the approval and supervision of the Arizona State
 All approved documentation, study protocols, and consent materials are available through the above repository.
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Survey Design}
+\subsection*{Sampling Frame}
 Our target population of interest is researchers who have recently published in the field of geography. 
 We followed a 4-step procedure to create a sampling frame for our survey that captures this diverse population of researchers and the approaches they use when studying geography. 
 
@@ -191,6 +191,7 @@ On average, these authors published 2.7 articles in geography journals meeting o
 Roughly one-third (33 percent) were most recently a corresponding author for an article published in a general geography journal. 
 A similar proportion (32 percent) were most recently a corresponding author for an article published in an earth sciences journal, and smaller proportions in the social sciences and cultural geography (20 percent and 16 percent, respectively).
 
+\subsection*{Survey Instrument}
 The survey instrument used in this study is available through the Survey of Reproducibility in Geographic Research Repository.
 The survey consists of 23 questions that assess (i) perceptions of the reproducibility of geographic research, (ii) familiarity and use of reproducible research practices, and (iii) beliefs about barriers to reprodicibility. 
 Survey questions were developed following a review of prior reproducibility surveys \citep[e.g.,][]{fanelli2009many,baker20161, konkol2019} and our own reading of recurring issues in the reproducibility literature. 
@@ -224,20 +225,11 @@ As a result some of the result presented below cannot be directly replicated.
 We have indicated throughout our results section which analysis can and cannot be replicated using the data files and code share through our public repository. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Survey Response Demographics}
-A total of \textit{n}=218 of the authors we contacted completed the online survey with information sufficient for analysis. 
-The contact rate for the survey was 13.9 percent, the response rate was 10.8 percent, yielding a cooperation rate of 77.6 percent. 
-The refusal rate was 3.1 percent.\endnote{All outcome rates are reported using \citet{aaporstandards} standards. The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}
-Respondents were predominantly male (65.1\%) and between the ages of 35 and 55 (62.4\%). 
-The majority of respondents were also academics, but were well balanced across career levels as no one category made up more that 30 percent of the sample.
-Respondents were similarly well balanced across the disciplinary subfields - Human Geography (30.7\%), Physical Geography (29.8\%), Nature and Society (10.1\%), Geographic Methods and GISci (28.0\%); and methodological approaches - quantitative (42.2\%), qualitative (18.3\%), and mixed-methods (39.0\%) research.
-
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Statistical Methods}
-We conduct two statistical analyses of the survey response. 
-First, we used descriptive statistical summaries of the participant response to address our four questions about how geographic researchers define reproducibility, their familiarity and experience with reproducible research practice, and the barriers to reproducibility they perceive in the discipline.
+\subsection*{Analytical Approach}
+We conduct two statistical analyses of the survey response
+\endnote{The full methodological details of our statistical analyses, and a complete history of our response coding a variable construction is included in the Github repository linked to OSF repository that accompanies this paper.
+All of the results presented in this paper can be independently reproduced using the materials in that repository.}.
+First, we used descriptive statistical summaries of the participant response to address how geographic researchers define reproducibility, their familiarity and experience with reproducible research practice, and the barriers to reproducibility they perceive in the discipline.
 For each question, we created a single variable that aggregates a participant's response across a subset of survey questions related to that issue.
 
 We measured each participant's definition of reproducibility relative to the definition provided by the \citet{NASEM2019}. 
@@ -252,22 +244,30 @@ This \textit{Barriers} variable ranges from 0-12.
 
 
 We also examine group-wise differences in each aggregated measure by disciplinary subfield and methodological approach to identify variation across the discipline's many traditions.
-This analysis is based on our full sample (\textit{n}=218), but excludes 29 participants who did not provide complete responses to the relevant survey questions.
 
 Second, we conduct an analysis of the experience of geographic researchers who have attempted reproductions of prior work. 
-A total of \textit{n}=102 of the authors we contacted reported attempting to reproduce a prior study. 
 We examine what motivates geographic researchers to attempt to reproduce another study and how successful researcher attempting reproductions were at recreating existing results. 
 We also investigate why researchers were unable to reproduce results.
 
-The full methodological details of our statistical analyses, and a complete history of our response coding a variable construction is included in the Github repository linked to OSF repository that accompanies this paper.
-All of the results presented in this paper can be reproduced using the materials in that repository.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Results}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Survey Response Demographics}
+A total of \textit{n}=218 of the authors we contacted completed the online survey with information sufficient for analysis. 
+The contact rate for the survey was 13.9 percent, the response rate was 10.8 percent, yielding a cooperation rate of 77.6 percent. 
+The refusal rate was 3.1 percent.
+\endnote{All outcome rates are reported using \citet{aaporstandards} standards. 
+The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}
+Respondents were predominantly male (65.1\%) and between the ages of 35 and 55 (62.4\%). 
+The majority of respondents were also academics, but were well balanced across career levels as no one category made up more that 30 percent of the sample.
+Respondents were similarly well balanced across the disciplinary subfields - human geography (30.7\%), physical geography (29.8\%), nature and society (10.1\%), geographic methods and GIScience (28.0\%); and methodological approaches - quantitative (42.2\%), qualitative (18.3\%), and mixed-methods (39.0\%) research.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Aggregate Measures Along 4-Dimensions}
-This subsection will pivot on Table 9 that has rows representing aggregate measures of 1) definition, 2) Familiarity 3) Experience, 4) Barriers and two groups of columns representing (Quant, Qual, Mixed) and (Human, Physical, GIS/Methods, NS).
+Of our 218 respondents, \textit{$n_{1}$}=217 (99.5\%) provided information sufficient for our first analysis of geographic researchers' understanding and perception of reproducibility.
 
 \begin{table}[h]
     \centering
@@ -352,7 +352,11 @@ The purpose is to enrich the overall picture by identifying differences within t
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Actual Reproductions}
-A total of \textit{n}=102 of the authors we contacted reported attempting to reproduce a prior study.
+A total of \textit{$n_{2}$}=102 (46.7\%) of the authors that responded to our survey reported attempting to reproduce a study in the past two years.
+This subset of participants formed the basis for our second analysis of researcher practices and experiences when attempting reproductions.
+Reproduction attempts were predominantly made by geographic researchers that self-identified as working in physical geography (42.2\%) and geographic methods and GIScience (35.3\%).
+Respondents attempting reproductions were also focused on quantitative (52.0\%) and mixed-methods (46.1\%) approaches. 
+Only two respondents that self-identified as qualitative researchers attempted to reproduce a study in the past two years.
 
 Start with the outline of what the population is here because not all respondents answered these questions. Start with descriptives that show this sub-sample of respondents. Summary discussion of Q10-Q12.
 
