@@ -229,25 +229,31 @@ We have indicated throughout our results section which analysis can and cannot b
 We conduct two statistical analyses of the survey response
 \endnote{The full methodological details of our statistical analyses, and a complete history of our response coding a variable construction is included in the Github repository linked to OSF repository that accompanies this paper.
 All of the results presented in this paper can be independently reproduced using the materials in that repository.}.
-First, we used descriptive statistical summaries of the participant response to address how geographic researchers define reproducibility, their familiarity and experience with reproducible research practice, and the barriers to reproducibility they perceive in the discipline.
-For each question, we created a single variable that aggregates a participant's response across a subset of survey questions related to that issue.
+First, we create descriptive statistical summaries of the participant response to address how geographic researchers define reproducibility, their familiarity and experience with reproducible research practice, and the barriers to reproducibility they perceive in the discipline.
+Each of these topics is linked to a subset of survey questions, which we examine individually.
+As a summary measure for each topic, we created a single variable that aggregates individual responses to the subset of questions linked to that topic.
+Each of these measures is described below.
 
-We measured each participant's definition of reproducibility relative to the definition provided by the \citet{NASEM2019}. 
-Before being provided a standardized definition, each participant was asked to provide their own definition of reproducibility. 
-We coded these text responses along four dimensions of data, procedure, result, and context similarity.  
-To assess researcher familiarity with reproducible practices, we created a single variable, \textit{Familiarity}, that counts the number of practices a researcher was 'somewhat' or 'very' familiar with.
-To assess researcher experience with reproducible practices, we created a single variable, \textit{Experience}, that counts the number of practices a researcher use 'most of the time' or 'always' when conducting their own research. 
-Our \textit{Familiarity} and \textit{Experience} variables both range from 0-5. 
-We similarly created a single measure, \textit{Barriers} that counts the number of factors a researcher believe 'frequently' or 'occasionally' contributed to a lack of reproducibility. 
-This \textit{Barriers} variable ranges from 0-12.
+We measured the similarity of each participant's definition of reproducibility relative to the definition of adopted by the \citet{NASEM2019}. 
+The NASEM defines reproducibile research as having four characteristics --- same data, same procedure, same results, same context.
+Before being provided this standardized definition, each participant was asked to provide their own definition of reproducibility.
+Two of the authors independently coded these text responses for the presence/absence of each of the four characteristics included in the NASEM definition.
+Disagreements were resolved through discussion between the two authors. 
+As a final check, the third author reviewed the final list in light of the four dimensions.
+The coded response for each participant was then summed across the four characteristics creating the variable, \textit{DEF} with domain [0---no characteristics shared, 4---all characteristics shared].
 
+We measured participant familiarity and experience with five reproduciblity enhancing research practices --- open source software, research notebooks, data sharing, code sharing, and pre-registration. 
+We created a summary measure of research familiarity, \textit{f}, with these practices by summing the number of reproducible and open science practices a researcher was 'somewhat' or 'very' familiar with.
+To assess researcher experience with reproducible practices, we similarly created a summary variable, \textit{p}, that counts the number of reproducible practices a researcher uses 'most of the time' or 'always' when conducting their own research. 
+Both \textit{f} and \textit{p} have domains [0,5]. 
+Finally, we created a variable, \textit{b}, that counts the number of factors a researcher believe 'frequently' or 'occasionally' contributed to a lack of reproducibility in the discipline. 
+This variable aggregated participant response across 12 questions and ranges and has domain [0,12].
+Given the topical and epistemological variation that exists among geographic researchers, we also examined group-wise differences in each aggregated measure by disciplinary subfield and methodological approach.
 
-
-We also examine group-wise differences in each aggregated measure by disciplinary subfield and methodological approach to identify variation across the discipline's many traditions.
-
-Second, we conduct an analysis of the experience of geographic researchers who have attempted reproductions of prior work. 
-We examine what motivates geographic researchers to attempt to reproduce another study and how successful researcher attempting reproductions were at recreating existing results. 
+Second, we conducted an analysis of the experience of geographic researchers who have attempted reproductions of prior work. 
+We examine what motivates geographic researchers to attempt to reproductions and how successful researchers attempting reproductions were at recreating existing results. 
 We also investigate why researchers were unable to reproduce results.
+ADD DETAILS ABOUT HOW WE ANALYZE.
 
 
 
@@ -267,7 +273,8 @@ Respondents were similarly well balanced across the disciplinary subfields - hum
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Aggregate Measures Along 4-Dimensions}
-Of our 218 respondents, \textit{$n_{1}$}=217 (99.5\%) provided information sufficient for our first analysis of geographic researchers' understanding and perception of reproducibility.
+A primary aim of our survey was to establish the current level of knowledge and experience geographic researchers have with reproducibility and reproducibility enhancing research practices.
+Table 1 presents our summary measures for each topic, as well as those measures by subgroup.
 
 \begin{table}[h]
     \centering
@@ -276,10 +283,10 @@ Of our 218 respondents, \textit{$n_{1}$}=217 (99.5\%) provided information suffi
     \begin{tabular}{l c c c c c c c c c c}
          \hline
                     & \multicolumn{4}{1}{Subfield}  & & \multicolumn{3}{1}{Approach} & & \\
-         Measure    & HU & PH & NS & GIS            & & QNT & QUL & MIX              & & Overall \\
+         Measure    & HU & PH & NS & MT            & & QN & QL & MX              & & Overall \\
          \hline
-         Definition  &  & & & & & & & & & \\
-         Familiarity &  \begin{tabular}[c]{@{}c@{}}2.35\\ (1.36)\end{tabular} & 
+         \textit{DEF}: Definition   &  & & & & & & & & & \\
+         Familiarity (\textit{f}) &  \begin{tabular}[c]{@{}c@{}}2.35\\ (1.36)\end{tabular} & 
                         \begin{tabular}[c]{@{}c@{}}3.71\\ (0.98)\end{tabular} & 
                         \begin{tabular}[c]{@{}c@{}}2.28\\ (1.76)\end{tabular} &
                         \begin{tabular}[c]{@{}c@{}}3.97\\ (0.86)\end{tabular} &
@@ -290,7 +297,7 @@ Of our 218 respondents, \textit{$n_{1}$}=217 (99.5\%) provided information suffi
                         &
                         \begin{tabular}[c]{@{}c@{}}3.26\\ (1.36)\end{tabular}\\
          
-         Experience  &  \begin{tabular}[c]{@{}c@{}}0.60\\ (0.80)\end{tabular} & 
+         Experience (\textit{p}) &  \begin{tabular}[c]{@{}c@{}}0.60\\ (0.80)\end{tabular} & 
                         \begin{tabular}[c]{@{}c@{}}2.06\\ (1.18)\end{tabular} & 
                         \begin{tabular}[c]{@{}c@{}}1.18\\ (0.96)\end{tabular} &
                         \begin{tabular}[c]{@{}c@{}}1.85\\ (1.38)\end{tabular} &
@@ -301,7 +308,7 @@ Of our 218 respondents, \textit{$n_{1}$}=217 (99.5\%) provided information suffi
                         &
                         \begin{tabular}[c]{@{}c@{}}1.44\\ (1.28)\end{tabular}\\
          
-         Barriers    &  \begin{tabular}[c]{@{}c@{}}7.32\\ (3.57)\end{tabular} & 
+         Barriers (\textit{b})   &  \begin{tabular}[c]{@{}c@{}}7.32\\ (3.57)\end{tabular} & 
                         \begin{tabular}[c]{@{}c@{}}8.31\\ (3.00)\end{tabular} & 
                         \begin{tabular}[c]{@{}c@{}}7.44\\ (3.20)\end{tabular} &
                         \begin{tabular}[c]{@{}c@{}}9.31\\ (2.79)\end{tabular} &
@@ -318,17 +325,38 @@ Of our 218 respondents, \textit{$n_{1}$}=217 (99.5\%) provided information suffi
     \end{tabular}
     \begin{tablenotes}
         \footnotesize
-        \item \textit{HU} Human Geography, \textit{PH} Physical Geography, \textit{NS} Nature and Society, \textit{GIS} GIScience and Methods; \textit{QNT} Quantitative, \textit{QUL} Qualitative, \textit{MIX} Mixed Methods.
+        \item \textit{HU} Human Geography, \textit{PH} Physical Geography, \textit{NS} Nature and Society, \textit{MT} GIScience and Methods; \textit{QN} Quantitative, \textit{QL} Qualitative, \textit{MX} Mixed Methods.
     \end{tablenotes}
     \label{tab:overview}
     \end{threeparttable}
 \end{table}
 
+%%%%%%%%%%%
+\subsubsection*{Reproducible Research Practices and Barriers to Reproducibility}
+Geographic researchers are on average familiar with multiple reproducible research practices ($\overline{f}=3.26$), but reported limited use of these practices in their own work ($\overline{p}=1.44$).
+More than half of all researchers reported familiarity with with data sharing (86.7\%), open source software (85.3\%), field and lab notebooks (67.0\%), and code sharing (59.2\% ).
+However, while familiar with these practice, a far smaller number of researchers reported using these practices regularly in their own work. 
+Less than half of the researchers surveyed reported sharing their data (44.5\%), using open source software (38.1\%), or using field or lab notebooks to record their work (40.0\%), or sharing their code (18.8\%) most or all of the time. 
+Only a small subset of researchers reported familiarity with the pre-registration of research designs and protocols (27.5\%), or regular use of this practice (2.7\%).
+
+Researcher familiarity and use of reproducible research practices also varied by disciplinary subfield and methodological approach. 
+Researchers that identified as physical geographers ($\overline{f_{PH}}=3.71$) or methodologists and GIScientists ($\overline{f_{MT}}=3.97$) reported being familiar with more reproducible researcher practices than human  geographers ($\overline{f_{HU}}=2.35$) and those focused on nature and society ($\overline{f_{NS}}=2.28$).
+Researcher practices similarly diverged by subfield, but no subset of researchers reported using on average more than two of these practices regularly in their work.  
+When grouped by methodological approach, Quantitative and mixed-methods researchers reported substantially greater familiarity ($\overline{f_{QN}}=3.75$, $\overline{f_{MX}}=3.56$) and use ($\overline{p_{QN}}=1.63$, $\overline{p_{MX}}=1.69$) of reproducible researcher practices than qualitative researchers ($\overline{f_{QL}}=1.75$, $\overline{p_{QL}}=0.48$).
+
+Differences in practice familiarity and use across subfields and approaches were greatest for practices more typical of quantitative workflows. 
+For example, quantitiative and mixed-methods researchers reported familiarity with open source software (QNT=96.7\%, MIX=89.5\%) and code sharing (QNT=81.5\%, MIX=55.7\%).
+In contrast, a smaller percentage of qualitative researchers reported familiarity with these same practices (OS=52.5\%, Code=12.5\%).
+
+Even among quantitiative and mixed-methods researchers familiarity with reproducible research practices did not translate into regular use of those practices.
+For example, just over half of quantitative (51.2\%) and mixed-methods (51.8\%) researchers reported sharing their data most of the time.
+Less than a third of these researchers reported sharing their code most of the time. 
+These rates were lower for qualitative geographers, of which only a small subset reported using open source software (10.0\%) or field notes (20.0\%), or sharing data (12.5\%) and code (5.0\%) most of the time.
+
+
 \begin{itemize}
-    \item Overall story is that collectively geographers are aware of reproducible research practices, but don't have a matching amount of direct experience using those practices. There are also many perceived barriers to conducting reproducible research.
-    \item High - Low gradient across all aggregate measures from Quant-MM-Qual.
-    \item High - Low familiarity gradient Method-Physs-NS-H
-    \item Likely need to comment on survey including many reproducible research practices that center on, or are easier to accomplish with, when using quantitative data and methods. This reality may automatically deflate the aggregate measures of certain sub-group. We can use the response to Q8f as a filter to explore this issue. \textcolor{red}{For conclusions - Points to the emphasis on quantitative, particularly computational, focus in the reproducibility literature. Suggests a meed to examine what reproducibility means in the context of geography's qual, NS, and human traditions.} 
+    \item Use Q9 to contextualize the frequency measure.
+    \item Use details from Q14 to enrich the discussion of barriers
 \end{itemize}
 
 %%%%%%%%%%%
@@ -339,15 +367,6 @@ Coded definitions are relative to the NASEM definition. The NASEM state SAME dat
     \item Interpretations (Q8) and Importance (Q17) of reproductions: Develop a split that distinguishes between Qs that focus on epistemology Q8a+Q8b+Q8f+17a, as these provide the most direct information about how a respondent processes the evidence provided by a reproduction; and Qs that focus on reproducibility as a quality of a study Q8e+Q8c+17c+17e+17f. We will explore how these question groups crosstab with the typologies we draw from Q6. Initial assumption is that many will support reproduction as a study characteristic or label, and less will link it with epistomological function. Examine by subfields and methods, which we expect to align with typologies from Q6. 
     \item Importance of reproducibility (Q17) - Reproducibility was/wasn't seen as important for other open science goals - error reduction (17b), effort duplication (17d), scientific communication (17g, 17h), training (17i, 8d).
     \item Reproducibility Estimate (Q13) - \textcolor{red}{What is the state of the summaries on this dimension?}
-\end{itemize}
-
-%%%%%%%%%%%
-\subsubsection*{Reproducible Research Practices and Barriers to Reproducibility}
-This will be a discussion of how subfields differ on the specific questions used to create the aggregate variables presented above. 
-The purpose is to enrich the overall picture by identifying differences within the aggregate measures.
-\begin{itemize}
-    \item Use Q9 to contextualize the frequency measure.
-    \item Use details from Q14 to enrich the discussion of barriers
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -365,13 +384,16 @@ Start with the outline of what the population is here because not all respondent
 \section*{Discussion}
 
 \begin{itemize}
-    \item The reproducibility literature emphasizes quantitative, particularly computational, forms of research. This emphasis necessarily carried over into our survey instrument, which may automatically lower response scores for researchers not working in these areas (e.g., qualitative, human geography). These scores do reflect their present level of understanding, but the practices may not be relevant to their methods or epistomologies. This fact suggests a meed to examine what reproducibility means in the context of geography's qual, NS, and human traditions.
+    \item The reproducibility literature emphasizes quantitative, particularly computational, forms of research. This emphasis necessarily carried over into our survey instrument, which may automatically lower response scores for researchers not working in these areas (e.g., qualitative, human geography). This reality may automatically deflate the aggregate measures of certain sub-group. We can use the response to Q8f as a filter to explore this issue. These scores do reflect their present level of understanding, but the practices may not be relevant to their methods or epistomologies. This fact suggests a meed to examine what reproducibility means in the context of geography's qual, NS, and human traditions.
     \item A standing question is how should geographic research approaches be designed to efficiently generate reliable knowledge.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusion}
 
+\begin{itemize}
+    \item Overall story is that collectively geographers are aware of reproducible research practices, but don't have a matching amount of direct experience using those practices. There are also many perceived barriers to conducting reproducible research.
+\end{itemize}
 
 \theendnotes
 
