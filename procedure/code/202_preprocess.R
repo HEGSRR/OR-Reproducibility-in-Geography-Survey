@@ -257,7 +257,8 @@ table1::label(survey_resp$Q14_12) <- "Researcher positionality"
 
 Q3_table8 <- table1::table1(~Q14_1 + Q14_2 + Q14_3 + Q14_4 + Q14_5 + Q14_6 + Q14_7 + Q14_8 + 
                               Q14_9 + Q14_10 + Q14_11 + Q14_12 | Q3_recoded, data = survey_resp)
-Q4_table8 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 | Q4, data = survey_resp)
+Q4_table8 <- table1::table1(~Q14_1 + Q14_2 + Q14_3 + Q14_4 + Q14_5 + Q14_6 + Q14_7 + Q14_8 + 
+                              Q14_9 + Q14_10 + Q14_11 + Q14_12 | Q4, data = survey_resp)
 
 # Output tables using write table and flextable
 write.table(Q3_table8 , here("results","tables","Table8_Barriers_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
