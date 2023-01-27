@@ -267,7 +267,12 @@ sapply(int_hegs_rpr, class)
 
 saveRDS(int_hegs_rpr, here("data","derived","public","analysis_hegs_rpr.rds"))
 
-#-Export open response definitions to .csv for further coding
+#-Export open response definitions and reproductions to .csv for further coding
 analysis_Q6_coding <- int_hegs_rpr %>% select(c(ResponseId,Q3_recoded,Q4,Q6))
-
 write.csv(analysis_Q6_coding,here("data","derived","public","analysis_Q6_coding.csv"))
+
+analysis_Q10_coding  <- int_hegs_rpr %>% 
+                  filter(Q9_7 == "Yes") %>% 
+                  select(c(ResponseId,Q3_recoded,Q4,Q10))
+write.csv(analysis_Q10_coding,here("data","derived","public","analysis_10_coding.csv"))
+
