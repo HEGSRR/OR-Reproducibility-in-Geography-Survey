@@ -82,36 +82,37 @@ Reproducibility as a characteristic of a study that lends it credibility v. Repr
 \section*{Assessing the Reproducibility of Research}
 The reproducibility of research can be assessed directly or indirectly. 
 In a direct assessment of reproducibility, an independent team(s) of researchers repeats the analytical steps of a previous study using the same data and then evaluates the consistency of the two sets of results\footnote{Insert paragraph on the difficulty of developing in using consistency criteria}.
-By contrast, during an indirect assessment of reproducibility, a research team gathers information about the transparency of a study and the availability of the research components (e.g., data and code) needed to recreate that study, but does not directly attempt to recreate the results. 
-Indirect assessments also often take the form of surveys in which researchers are asked about their research practices, incentives, and motivations. 
+Direct reproducibility assessments aim to establish whether the data and analysis presented in support of a result do in fact support that result.
+By contrast, indirect assessments of reproducibility aim to establish whether study data and procedures are presented with sufficient transparency and clarity that research results could be subjected to a direct assessment. 
+During an indirect assessment of reproducibility, a research team gathers information about the transparency of a study and the availability of the research components (e.g., data and code) needed to recreate that study, but does not directly attempt to recreate the results. 
+Indirect assessments also often take the form of surveys in which researchers are asked about their research practices, incentives, and motivations to measure the transparency and practices of a subset if researchers. 
 
 Direct and indirect reproducibility assessments present a trade off between the depth and breadth of evaluation.  
-A direct assessment that carefully reproduces a study can provide insight into how a particular study was conducted and why a consistent result could, or could not, be obtained.  
+A direct assessment can provide insight into how a particular study was conducted and why a consistent result could, or could not, be obtained.  
 However, such assessments are resource and time intensive, which makes them difficult to scale to a large number of studies. 
 Constrained to a limited number of studies, direct assessments offer only suggestive evidence about the reproducibility of unevaluated studies and the prevalence of reproducible research practices. 
-In contrast, comparatively less resource intensive indirect assessments that catalog reproducible research practices can be more easily scaled.
+In contrast, comparatively less resource intensive indirect assessments that simply catalog reproducible research practices can be more easily scaled.
 By evaluating many studies, indirect assessments provide evidence of how common reproducible research practices are and, by extension, how reproducible work in a field of study is likely to be.
 The trade off being that indirect assessments do not offer as detailed a look into why a particular result in a specific instance could, or could not, be obtained.
 
 Despite their growing number, the available body of direct and indirect reproducibility assessments currently provides insufficient evidence to conclusively evaluate the reproducibility of research generally, or disciplinary research specifically \citep{NASEM2019}.
 This knowledge gap exists because neither direct nor indirect reproducibility assessments have been designed so the results of the sample of studies evaluated can be extended to the population of research as a whole. 
 Reproduction attempts remain relatively rare, and those that do exist \citep[see][]{chang2015economics, moraila2014measuring} have selectively targeted publications in high-impact journals and conference papers series in a limited number of disciplines that are not representative of many forms of research.    
-Indirect reproducibility assessments that catalog the availability of research components similarly focus on conveniently accessible archives, such as conference paper series \citep{gundersen2018state, ostermann2017}, or target specific journals and disciplinary repositories \citep{stodden2018empirical, stodden2018enabling, byrne_2017}.
+Indirect reproducibility assessments similarly focus on conveniently accessible archives, such as conference paper series \citep{gundersen2018state, ostermann2017}, or target specific journals and disciplinary repositories \citep{stodden2018empirical, stodden2018enabling, byrne_2017}.
 These assessments have also tended to focus on evaluating the computational components of research such as data and code availability, as this information is easier to identify and assess at scale when compared to components like field procedures or qualitative analysis that may be included only in text. 
-Surveys of researcher practices and attitudes on reproducibility face similar challenges to their generalizability. 
-Rather than carefully defining researcher populations of interest, prior surveys have drawn data non-randomly from self-selecting populations that are convenient to survey (e.g., members of professional association, conference attendees), but are not necessarily representative of researchers active in a particular field. 
+Surveys of researcher practices and attitudes on reproducibility face similar challenges. 
+Rather than carefully defining researcher populations of interest, existing surveys have drawn data non-randomly from self-selecting populations that are convenient to survey (e.g., members of professional association, conference attendees), but are not necessarily representative of researchers active in a particular field. 
 These surveys have also commonly failed to systematically report the methodological details (e.g., response rate) needed to assess and address potential bias in survey response. 
 
-While it may not be possible to determine the extent of irreproducibility across or within disciplines, it is possible to draw lessons about potential sources of irreproducibility from available studies.
-The evidence available from direct and indirect reproducibility assessments suggests inadequate record keeping, opaque reporting, unavailable research components, and a lack of incentives are important factors contributing to the irreproducibility of research \citep{NASEM2019}. 
+While it may not be possible to determine the extent of irreproducibility across or within disciplines from available studies, it is possible to draw lessons about potential sources of irreproducibility.
+The available evidence suggests inadequate record keeping, opaque reporting, unavailable research components, and a lack of incentives are likely important factors contributing to the irreproducibility of research \citep{NASEM2019}. 
 Prominent attempts to reproduce research in economics \citep{chang2015economics}, computer science \citep{moraila2014measuring}, and psychology \citep{open2015estimating} have all been able to reproduce only a small portion of studies because original authors did not share data or adequate information about their procedures. 
-Systematic reviews of publications in prominent outlets \citep{byrne_2017,stodden2018empirical} suggest these issues are likely widespread, as the majority of articles reviewed did not share data adequate for reproducibility.
-
-Surveys of researchers about reproducibility issues and related research practices paint a similar picture. 
+Systematic reviews of publications in prominent outlets \citep{byrne_2017,stodden2018empirical} suggest these issues are likely widespread, 
+Reproducibility surveys paint a similar picture. 
 Recent surveys suggest that the majority of scientists have either not tried, or tried and failed to reproduce another scientist's work \citep{baker20161, boulbes2018survey}. 
 Moreover, a sizable portion of the researchers responding to these surveys admit to engaging in questionable research practices linked to the publication of false positive results and low reproducibility rates \citep{fanelli2009many, fraser2018questionable}.
-For example, in a survey of 807 ecologists and evolutionary biologists, 64 percent admitted to failing to report non-significant results and 51 percent admitted to presenting unexpected findings as if they been hypothesized from the start of the research \citep{fraser2018questionable}.  
-These findings also match researcher perceptions, which link irreproducibility to causes ranging from natural variation to outright fraud \citep{ranstam2000fraud, anderson2007normative, baker20161}. 
+For example, in a survey of 807 ecologists and evolutionary biologists, 64 percent admitted to failing to report non-significant results and 51 percent admitted to presenting unexpected findings as if they had been hypothesized from the start of the research \citep{fraser2018questionable}.  
+These findings match researcher perceptions, which link irreproducibility to causes ranging from natural variation to outright fraud \citep{ranstam2000fraud, anderson2007normative, baker20161}. 
 
 
 \subsection*{Assessing the Reproducibility of Geographic Research}
@@ -122,7 +123,7 @@ The reproductions that are available within the discipline suggest that many stu
 
 
 For example, \citet{ostermann2021}'s attempt to reproduce the computational analyses of 75 papers published in the GIScience conference series found that most results could not be reproduced, or could only be reproduced with significant effort. 
-A related effort to reproduce 31 papers published in the conference series of the Association of Geographic Information Laboratories in Europe \citep{Nust_AGILE_2020, Nust2021AGILE, Nust_AGILE_2022} similarly identified the inaccessibility of data, code, and information about the computational environment as key barriers to recreating results. 
+A related effort to reproduce 31 papers published in the conference series of the Association of Geographic Information Laboratories in Europe \citep{Nust_AGILE_2020, Nust2021AGILE, Nust_AGILE_2022} identified the inaccessibility of data, code, and information about the computational environment as key barriers to recreating results. 
 \citet{konkol2019}'s attempt to reproduce of 41 geocomputational studies likewise found that 39 of the papers had coding issues that hindered reproduction and that 47 percent of the figures created using the original data and code deviated from the those published in some significant way (e.g., graphs with different curves). 
 
 Moving past the question of whether the computational results of a study can be recreated using the same data and code, a handful of geographic researchers are using the reproduction process as a way of examining not only the execution of a prior study, but its conceptualization and inferences \citep{Kedron_MollaloRP, Kedron_SaffaryRP, Kedron_VijayanRP}. 
@@ -193,8 +194,11 @@ A similar proportion (32 percent) were most recently a corresponding author for 
 
 \subsection*{Survey Instrument}
 The survey instrument used in this study is available through the Survey of Reproducibility in Geographic Research Repository.
-The survey consists of 23 questions that assess (i) perceptions of the reproducibility of geographic research, (ii) familiarity and use of reproducible research practices, and (iii) beliefs about barriers to reprodicibility. 
+The survey consists of 23 questions that assess (i) perceptions of the reproducibility of geographic research, (ii) familiarity and use of reproducible research practices, and (iii) beliefs about barriers to reprodicibility, and (iv) experience conducting independent reproductions. 
 Survey questions were developed following a review of prior reproducibility surveys \citep[e.g.,][]{fanelli2009many,baker20161, konkol2019} and our own reading of recurring issues in the reproducibility literature. 
+All researchers were presented questions about their definition of reproducibility, familiarity with and use of reproducible practices, and perceptions of barriers to reproducibility. 
+However, a subset of researchers that reported attempting to reproduce a study in the past two years were given an additional set of questions about their experience conducting that work.
+
 Because this survey had not been previously fielded, we pilot tested the instrument with a subset of \textit{n}=19 graduate students and geography faculty with differing levels of experience, topical focus, and methodological background. 
 After pilot testing we removed these individuals from our sampling frame to ensure they would not be included in our final sample.
 
@@ -226,35 +230,40 @@ We have indicated throughout our results section which analysis can and cannot b
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Analytical Approach}
-We conduct two statistical analyses of the survey response
-\endnote{The full methodological details of our statistical analyses, and a complete history of our response coding a variable construction is included in the Github repository linked to OSF repository that accompanies this paper.
-All of the results presented in this paper can be independently reproduced using the materials in that repository.}.
+We conduct two statistical analyses of the survey response\endnote{The full methodological details of our statistical analyses, and a complete history of our response coding a variable construction is included in the Github repository linked to OSF repository that accompanies this paper. All of the results presented in this paper can be independently reproduced using the materials in that repository.}.
 First, we create descriptive statistical summaries of the participant response to address how geographic researchers define reproducibility, their familiarity and experience with reproducible research practice, and the barriers to reproducibility they perceive in the discipline.
-Each of these topics is linked to a subset of survey questions, which we examine individually.
-As a summary measure for each topic, we created a single variable that aggregates individual responses to the subset of questions linked to that topic.
-Each of these measures is described below.
+Second, we conducted an analysis of the experience of the subset of geographic researchers who reported attempting independent reproductions of prior work during the last two years that identified what motivated reproduction attempts, how successful those attempts were, and what factors hindered success.
 
-We measured the similarity of each participant's definition of reproducibility relative to the definition of adopted by the \citet{NASEM2019}. 
-The NASEM defines reproducibile research as having four characteristics --- same data, same procedure, same results, same context.
-Before being provided this standardized definition, each participant was asked to provide their own definition of reproducibility.
-Two of the authors independently coded these text responses for the presence/absence of each of the four characteristics included in the NASEM definition.
-Disagreements were resolved through discussion between the two authors. 
-As a final check, the third author reviewed the final list in light of the four dimensions.
-The coded response for each participant was then summed across the four characteristics creating the variable, \textit{DEF} with domain [0---no characteristics shared, 4---all characteristics shared].
+%%%%%%%%%%%
+\subsubsection*{Variable Construction}
+For our first analysis, we constructed summary measures that aggregated researcher responses to questions linked to 1) definitions of reproducibility, 2) familiarity with and 3) use of reproducible research practices, and 4) potential barriers to reproducibility. 
 
-We measured participant familiarity and experience with five reproduciblity enhancing research practices --- open source software, research notebooks, data sharing, code sharing, and pre-registration. 
-We created a summary measure of research familiarity, \textit{f}, with these practices by summing the number of reproducible and open science practices a researcher was 'somewhat' or 'very' familiar with.
-To assess researcher experience with reproducible practices, we similarly created a summary variable, \textit{p}, that counts the number of reproducible practices a researcher uses 'most of the time' or 'always' when conducting their own research. 
+\textit{Definition:} Before providing a common definition, we asked each participant to provide their own definition of reproducibility.
+We measured the similarity of the definition provided by each participant to the definition of adopted by the \citet{NASEM2019}. 
+The NASEM defines reproducibile research as having four characteristics --- same data, same procedure, same results, and same context.
+To make this comparison, two of the authors independently coded the definition provided by each respondent for the presence/absence of each of the four characteristics included in the NASEM definition.
+Disagreements in the assignment of codes were resolved through discussion between the two authors. 
+As a final check, the third author reviewed rectified coding and resolved any remaining disputes.
+To create an aggregate measure of agreement the final coded response for each participant was then summed across the four characteristics, creating definition similarity \textit{d} with domain [0, 4].
+
+\textit{Familiarity and Experience:} We measured participant familiarity and experience with five reproduciblity enhancing research practices; the use of --- open source software, research notebooks, data sharing, code sharing, and pre-registration. 
+We created a summary measure of research familiarity with these practices, \textit{f}, by summing the number of reproducible practices a researcher was 'somewhat' or 'very' familiar with.
+To assess researcher experience with reproducible practices, we created \textit{p}, which counts the number of reproducible practices a researcher reported using 'most of the time' or 'always' when conducting their own research. 
 Both \textit{f} and \textit{p} have domains [0,5]. 
-Finally, we created a variable, \textit{b}, that counts the number of factors a researcher believe 'frequently' or 'occasionally' contributed to a lack of reproducibility in the discipline. 
-This variable aggregated participant response across 12 questions and ranges and has domain [0,12].
-Given the topical and epistemological variation that exists among geographic researchers, we also examined group-wise differences in each aggregated measure by disciplinary subfield and methodological approach.
+
+\textit{Barriers:} Finally, we asked asked respondents to identify how frequently they believe 12 factors contributed to a lack of reproducibility in the discipline. 
+From those responses, we created a summary measure, \textit{b} with domain [0,12], of the number of barriers a researcher believes 'frequently' or 'occasionally' contributed to irreproducibility. 
+
+Our second analysis examines only researchers that reported attempting a reproduction in the past two years. 
+We asked each of these researchers what motivated their reproduction attempt. 
+
+%%%%%%%%%%%
+\subsubsection*{Analytical Methods}
+Given the topical and epistemological variation that exists among geographic researchers, we examined group-wise differences in each aggregated measure by disciplinary subfield and methodological approach.
 
 Second, we conducted an analysis of the experience of geographic researchers who have attempted reproductions of prior work. 
 We examine what motivates geographic researchers to attempt to reproductions and how successful researchers attempting reproductions were at recreating existing results. 
 We also investigate why researchers were unable to reproduce results.
-ADD DETAILS ABOUT HOW WE ANALYZE.
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
