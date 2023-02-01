@@ -18,7 +18,7 @@ implementation of published methods for my own research, no direct reproduction 
 14,R_2rDbqNnByTEM3pH,Methods,Quantitative,NA,5,,,,,,,,,1,
 15,R_3LdVAlBeil1pPkJ,Physical,Mixed Methods,Understand better the local landscape dynamics in the intertropical mountains,4,,,,,,,1,,,
 16,R_1lc9uNrzDev2jbD,Physical,Mixed Methods,To double-check my results before final publication of a paper.,2,1,,1,,,,,,,
-17,R_2ygekBbNQW7Ko6U,Physical,Mixed Methods,"I wanted to see if a statistical model I produced would produce similar outcomes with another researcher's data.  However, the data they published was a mess and not able to be analysed without significant work",3,1,,1,,1,,,,,
+17,R_2ygekBbNQW7Ko6U,Physical,Mixed Methods,"I wanted to see if a statistical model I produced would produce similar outcomes with another researcher's data.  However, the data they published was a mess and not able to be analysed without significant work",3,1,,1,,1,1,,,,
 18,R_1PRX9hoSmJAowNa,Methods,Quantitative,The increase the credibility and applicability of our theories and models.,1,,,,1,,,,,,"is ""our"" the author(s) or the discipline? It could be either 1 or 2"
 19,R_3lXqZe3fUBXVpP8,Human,Qualitative,I have gone from  a one city based study to reproducing the research design over 6 cities in the global south in order to explore comparative urban research,3,,,,,1,1,,,,
 20,R_2aM2dTWmInyaTnE,Methods,Quantitative,NA,5,,,,,,,,,1,
@@ -99,19 +99,19 @@ difficulty in reproduction with timely social research (conditions change) & wit
 87,R_3flPxT4AEmOLOTk,Physical,Quantitative,To make sure that someone else could reproduce my work following the method section published in my work.,2,,,,1,,,,,,
 88,R_3emgvQrP9GpeXiu,Physical,Mixed Methods,"the type and quality of the results obtained, as they would generate important information for the study sites",5,,,,,,,,,1,no idea
 89,R_1flQYKFTsSIMnWO,Physical,Mixed Methods,"We had more data than before, and we wanted to repeat past studies to see results were also reliable.",3,,,,,1,?,,,,may be replicating their own work
-90,R_1IGkerQJY4XYlUV,Methods,Mixed Methods,We sometime want to apply technique or method in related dataset or in other country.,3,,,,,1,,,,,
+90,R_1IGkerQJY4XYlUV,Methods,Mixed Methods,We sometime want to apply technique or method in related dataset or in other country.,3,,,,,,,,1,,
 91,R_10OzPKSFnAj98k3,Physical,Quantitative,I needed to understand the method and ameliorate the working process. The fastest way was to reproduce the published results as described in the publication.,4,,,,,,,1,1,,
 92,R_1hSDRBTL6L3sgdM,Physical,Quantitative,The applicability is based on the skill and material that I have.,5,,,,,,,,,1,no idea
 93,R_116HHN36zSfxViV,Physical,Quantitative,Attempt to understand the phenomenon better,5,,,,,,,,,1,"don't know what to make of this one. Could be replication, could be interest/learning"
 94,R_2BaNI5ghpBAK0h8,Methods,Quantitative,"I did not trust the reproducibility of my own work, so I tried to reproduce it. That failed, so I started over with a colleague who could help make it more reproducible and check the validity of the research.",2,1,,1,1,,,,,,
 95,R_Pwa2G1cjqoIiWqt,Physical,Quantitative,Needing to feel more confident in the results of my research,2,1,,1,,,,,,,
 96,R_2rIKv5rhV8FKofI,Physical,Mixed Methods,"In order to confirm the reliability of the results, make myself and my colleagues more believe in the experimental results",2,1,,,,,,,,,
-97,R_3sanAH0uhIkmQ8e,Methods,Mixed Methods,Test internationally approved methodologies in the context of my country,3,,,,,1,,,,,
+97,R_3sanAH0uhIkmQ8e,Methods,Mixed Methods,Test internationally approved methodologies in the context of my country,3,,,,,1,,,1,,
 98,R_3KrmJgOtvVecPv3,Human,Mixed Methods,Updating my own research based on newly available datasets.,3,,,,,1,1,,,,
 99,R_6fgYRiNY653Zpkt,Physical,Mixed Methods,"I apply standard (reproduced by different colleagues) methods in my research, which I assume or understand is an objective way to answer a common scientific question, such as When did the Patagonian glaciers reach their glacial maximum? This research implies testing former conclusions by providing new data.
 
 
-",,,,,,1,,,,,
+",,,,,,1,,,1,,
 100,R_3n79KR2hYWtXWOB,Human,Mixed Methods,I wanted to learn how the authors used a particular model to use it myself for my own research.,4,,,,,,,1,1,,
 101,R_12JWLXvtUuGpYyo,Methods,Mixed Methods,NA,,,,,,,,,,1,
 102,R_1Ft9Xi9lnM9FSy7,Methods,Quantitative,To test but also learn more deeply about the methods,1,1,1,,,,,1,,,
