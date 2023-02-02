@@ -1,6 +1,6 @@
-,X,ResponseId,Q3_recoded,Q4,Q10,rp_intent,sb_rp_intent,pk_rp_intent,any_diff,no_agreement,consensus,notes,SB_notes,PK_notes,X1.0.verify,X1.1.verify.others.research,X1.2.verify.own.research,X2..open.science...transparency,X3..replication...comparison.of.research,X3.2.replicate.own.research,X4.interest..teach..learn,X4.1.reapply.in.own.research,X5.missing
-1,28,R_0ICyV5xgAsZ2FYl,Physical,Mixed Methods,Regional scale climate is more or less should be reproducible when attempting paleoclimate reconstruction while minor variations can be seen if the resolution of the archive used in the study is higher than the regional based climate we are dealing with...,3,NA,1,1,1,3 to 1,replicating to verify,Unknown,???,NA,NA,NA,NA,1,,NA,NA,NA
-17,3,R_1GHckm3kgFtJOF4,Physical,Quantitative,Testing data derived from different methods is an essential element in overall data quality estimation,3,1,2,1,1,,triangulating methods… reanalysis,Unclear if this is someone else's values or their own,"I would be curious to cross with this respondent's definition, which may give some light on self v. non-self check",NA,NA,NA,NA,1,,NA,NA,NA
+,X,ResponseId,Q3_recoded,Q4,Q10,jh_rp_intent,sb_rp_intent,pk_rp_intent,any_diff,no_agreement,consensus,notes,SB_notes,PK_notes,X1.0.verify,X1.1.verify.others.research,X1.2.verify.own.research,X2..open.science...transparency,X3..replication...comparison.of.research,X3.2.replicate.own.research,X4.interest..teach..learn,X4.1.reapply.in.own.research,X5.missing
+1,28,R_0ICyV5xgAsZ2FYl,Physical,Mixed Methods,Regional scale climate is more or less should be reproducible when attempting paleoclimate reconstruction while minor variations can be seen if the resolution of the archive used in the study is higher than the regional based climate we are dealing with...,3,NA,1,1,1,3,replicating to verify,Unknown,???,NA,NA,NA,NA,1,,NA,NA,NA
+17,3,R_1GHckm3kgFtJOF4,Physical,Quantitative,Testing data derived from different methods is an essential element in overall data quality estimation,3,1,2,1,1,5,triangulating methods… reanalysis,Unclear if this is someone else's values or their own,"I would be curious to cross with this respondent's definition, which may give some light on self v. non-self check",NA,NA,NA,NA,1,,NA,NA,NA
 24,75,R_1LLjsy2CMGvbAsk,Physical,Quantitative,Method development an important part of research project,4,NA,2,1,1,5,assuming too much that they're reproducing to improve their own research? Let's NA this one-- we are just making assumptions,NA,???,NA,NA,NA,NA,NA,,1,1,NA
 26,40,R_1mkpHHDTPvOKbeU,Methods,Quantitative,To double check that the results were consistent,NA,2,1,1,1,5,not clear if it's their own outcome or someone else's,Unclear if this is someone else's values or their own,,1,NA,NA,NA,NA,,NA,NA,NA
 46,76,R_2tEbX7iPgAmMKqp,Methods,Quantitative,to improve over the methods,5,NA,2,1,1,5,a reanalysis? I don't know,NA,,NA,NA,NA,NA,NA,,NA,NA,1
@@ -15,9 +15,9 @@
 96,11,R_urVNTNoFZjaoNHj,Human,Quantitative,Check the sensitivity to different classifications,3,2,1,1,1,3,,Maybe code as replication.,could be of own work though. Cross with def.,NA,NA,NA,NA,1,?,NA,NA,NA
 2,4,R_10JeWlbhc0UXt1U,Methods,Quantitative,"reproduction attempt based on scientific publications without code or data
 implementation of published methods for my own research, no direct reproduction of the initial study",4,4,2,1,0,4,is learning methods to use in own research,NA,,NA,NA,NA,NA,NA,,1,1,NA
-3,41,R_10MI2qrzqp9x8IA,Physical,Mixed Methods,Not sure whether measurement drift was occurring.,2,1,2,1,0,other(1) or self(2)?,seems to be their own?,Unclear if this is someone else's values or their own,,1,NA,1,NA,NA,,NA,NA,NA
+3,41,R_10MI2qrzqp9x8IA,Physical,Mixed Methods,Not sure whether measurement drift was occurring.,2,1,2,1,0,2,seems to be their own?,Unclear if this is someone else's values or their own,,1,NA,1,NA,NA,,NA,NA,NA
 6,93,R_116HHN36zSfxViV,Physical,Quantitative,Attempt to understand the phenomenon better,5,4,4,1,0,4,"don't know what to make of this one. Could be replication, could be interest/learning",NA,,NA,NA,NA,NA,NA,,NA,NA,1
-13,86,R_1cZFDhmTymKxZWU,Human,Quantitative,the results were surprising and as a means of quality control before embarking on further study,1,2,2,1,0,other(1) or self(2)?,not sure if it's their own results or others',NA,could be verify,1,NA,NA,NA,NA,,NA,NA,NA
+13,86,R_1cZFDhmTymKxZWU,Human,Quantitative,the results were surprising and as a means of quality control before embarking on further study,1,2,2,1,0,2,not sure if it's their own results or others',NA,could be verify,1,NA,NA,NA,NA,,NA,NA,NA
 15,89,R_1flQYKFTsSIMnWO,Physical,Mixed Methods,"We had more data than before, and we wanted to repeat past studies to see results were also reliable.",3,3,2,1,0,3,may be replicating their own work,NA,replication?,NA,NA,NA,NA,1,?,NA,NA,NA
 16,102,R_1Ft9Xi9lnM9FSy7,Methods,Quantitative,To test but also learn more deeply about the methods,1,4,4,1,0,4,I also agree with 4,NA,,1,1,NA,NA,NA,,1,NA,NA
 20,80,R_1K9fFIyaTUEieIr,Methods,Quantitative,Obtained larger sample size and higher resolution data. More a case of producing more robust results while also confirming previous findings,3,3,2,1,0,3,may be replicating own or others' research,NA,,NA,NA,NA,NA,1,,NA,NA,NA
@@ -27,89 +27,89 @@ It may be noteworthy that in these cases the source data is the same; only the a
 28,18,R_1PRX9hoSmJAowNa,Methods,Quantitative,The increase the credibility and applicability of our theories and models.,1,2,2,1,0,2,"is ""our"" the author(s) or the discipline? It could be either 1 or 2",NA,???,NA,NA,NA,1,NA,,NA,NA,NA
 29,67,R_1QavRXigWy5kyuF,Physical,Quantitative,I had a study that I had walked away from and wanted to pick back up to publish.,2,2,4,1,0,2,,NA,,1,NA,1,NA,NA,,NA,NA,NA
 31,35,R_232CtupawfIiXtq,Methods,Mixed Methods,Sharing knowledge should not be limited. Reproducibility would have a great impact on science improvements.,2,4,2,1,0,2,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
-32,71,R_24B4AGz95i9JwDW,Nature/society,Qualitative,"I attempted to use a well known mathematical formular to see if I can obtain a quantitative measure of a characteristic in my data, and observe the change of this characteristic. This has been done successfully in by other researchers in my field working in a different part of the world. However, there were several factors that were unique to my dataset, geographical location, which presented a challenge to do this.",4,3,4,1,0,4,"learning to apply the method, but not comparing results (i.e. not replication)",NA,,NA,NA,NA,NA,NA,,NA,1,NA
+32,71,R_24B4AGz95i9JwDW,Nature/society,Qualitative,"I attempted to use a well known mathematical formular to see if I can obtain a quantitative measure of a characteristic in my data, and observe the change of this characteristic. This has been done successfully in by other researchers in my field working in a different part of the world. However, there were several factors that were unique to my dataset, geographical location, which presented a challenge to do this.",4,3,4,1,0,3,"learning to apply the method, but not comparing results (i.e. not replication)",NA,,NA,NA,NA,NA,NA,,NA,1,NA
 37,51,R_2CxC4ddbE0XnGCF,Physical,Quantitative,Wanted more detailed results than provided in manuscript I was reviewing,1,1,4,1,0,1,purpose was review,NA,,1,1,NA,NA,NA,,NA,NA,NA
-38,72,R_2dhEGetlwXFYOTZ,Physical,Quantitative,The quality and originality of the study.,4,1,1,1,0,,doesn't say anything about questioning/reviewing/verifying: but does imply interest in learning due to quality & originality,Unclear.,,NA,NA,NA,NA,NA,,1,NA,NA
+38,72,R_2dhEGetlwXFYOTZ,Physical,Quantitative,The quality and originality of the study.,4,1,1,1,0,5,doesn't say anything about questioning/reviewing/verifying: but does imply interest in learning due to quality & originality,Unclear.,,NA,NA,NA,NA,NA,,1,NA,NA
 54,17,R_2ygekBbNQW7Ko6U,Physical,Mixed Methods,"I wanted to see if a statistical model I produced would produce similar outcomes with another researcher's data.  However, the data they published was a mess and not able to be analysed without significant work",3,3,1,1,0,3,reapplying methods to compare similar outcomes: replication,NA,re-analysis really,1,NA,1,NA,1,,NA,NA,NA
-62,88,R_3emgvQrP9GpeXiu,Physical,Mixed Methods,"the type and quality of the results obtained, as they would generate important information for the study sites",5,2,2,1,0,other(1) or self(2)?,no idea,Unclear if this is someone else's values or their own,,NA,NA,NA,NA,NA,,NA,NA,1
+62,88,R_3emgvQrP9GpeXiu,Physical,Mixed Methods,"the type and quality of the results obtained, as they would generate important information for the study sites",5,2,2,1,0,2,no idea,Unclear if this is someone else's values or their own,,NA,NA,NA,NA,NA,,NA,NA,1
 64,62,R_3g6pPPDUIAGbpyO,Methods,Mixed Methods,Help other researchers test my proposed methods.,2,2,1,1,0,2,self-check / transparency motivation,NA,,NA,NA,NA,1,NA,,NA,NA,NA
 66,43,R_3GiCVlcNYiS7jK0,Physical,Mixed Methods,"This may not fall into the pure idea of reproducibility, but when I find something in the field, I generally wonder if that is a local effect or if it can be spread more broadly. So I will sometimes rerun the experiment in an adjacent area (even just a few km away) to see if the effect is reproducible. If it is, then perhaps the effect is important and/or broadly applicable. If not, then maybe it is just a local effect or even a statistical anomaly.",1,3,3,1,0,3,"ok, it's replication of own work",NA,,1,NA,1,NA,1,1,NA,NA,NA
 69,98,R_3KrmJgOtvVecPv3,Human,Mixed Methods,Updating my own research based on newly available datasets.,3,3,2,1,0,3,,NA,,NA,NA,NA,NA,1,1,NA,NA,NA
 71,15,R_3LdVAlBeil1pPkJ,Physical,Mixed Methods,Understand better the local landscape dynamics in the intertropical mountains,4,4,3,1,0,4,"learning/interest is clearly a goal, but there is nothing to suggest this is through replication",NA,???,NA,NA,NA,NA,NA,,1,NA,NA
-73,36,R_3LX7ytWfSIQqTFL,Physical,Mixed Methods,Investigate alternative data intepretation,1,2,2,1,0,other(1) or self(2)?,,Other,could be verify,NA,NA,NA,NA,1,,NA,NA,NA
+73,36,R_3LX7ytWfSIQqTFL,Physical,Mixed Methods,Investigate alternative data intepretation,1,2,2,1,0,5,,Other,could be verify,NA,NA,NA,NA,1,,NA,NA,NA
 76,54,R_3me5aCWhLQD0aKX,Methods,Quantitative,Verification of a new model on the same data involved reproduction of the original analysis.,3,1,1,1,0,1,,Unclear if this is someone else's values or their own; might also be replication,,NA,NA,NA,NA,1,,NA,NA,NA
 80,24,R_3PRnEpYOyqf5TEY,Physical,Mixed Methods,"1. Interested in research methods;
-2. Doubt about the results.",4,1,1,1,0,both (4) and (1),,Maybe teaching/learning,also learning,1,1,NA,NA,NA,,1,NA,NA
+2. Doubt about the results.",4,1,1,1,0,1,,Maybe teaching/learning,also learning,1,1,NA,NA,NA,,1,NA,NA
 85,97,R_3sanAH0uhIkmQ8e,Methods,Mixed Methods,Test internationally approved methodologies in the context of my country,3,3,4,1,0,4,I can switch this to 4 because it doesn't imply comparison of results,NA,,NA,NA,NA,NA,1,,NA,NA,NA
 88,55,R_7Osv8YXMNHxJFdL,Methods,Quantitative,"Wanting to understand re-use tools/code of others, not so much interest in the actual results applicable for a given geographical area/dataset ( as I am a methodologist)",4,1,4,1,0,4,,NA,,NA,NA,NA,NA,NA,,1,1,NA
 97,49,R_VI8rGnm5bM7h2lX,Physical,Quantitative,Usually I have my students reproduce previous research (e.g. on a simpler configuration) to validate their experimental technique/methods/analysis,4,4,2,1,0,4,they're learning from others; not reproducing their own work to verify it,NA,,NA,NA,NA,NA,NA,,1,NA,NA
-98,46,R_vq3VYpnMKXgksHD,Physical,Quantitative,Uncertainties in the results.,1,2,1,1,0,other(1) or self(2)?,,Unclear if this is someone else's values or their own,,1,NA,NA,NA,NA,,NA,NA,NA
-4,91,R_10OzPKSFnAj98k3,Physical,Quantitative,I needed to understand the method and ameliorate the working process. The fastest way was to reproduce the published results as described in the publication.,4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,1,NA
-5,53,R_10rzTBB9mklhnar,Methods,Mixed Methods,Doubt in the results/interpretations,1,1,1,0,0,,,NA,,1,1,NA,NA,NA,,NA,NA,NA
-7,101,R_12JWLXvtUuGpYyo,Methods,Mixed Methods,NA,NA,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-8,2,R_12mOYxj6HPAHIOU,Methods,Quantitative,To see if what they did made sense.,1,1,1,0,0,,,NA,,1,1,NA,NA,NA,,NA,NA,NA
-9,85,R_12uqEHmk4rA3InB,Nature/society,Mixed Methods,N/A,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+98,46,R_vq3VYpnMKXgksHD,Physical,Quantitative,Uncertainties in the results.,1,2,1,1,0,2,,Unclear if this is someone else's values or their own,,1,NA,NA,NA,NA,,NA,NA,NA
+4,91,R_10OzPKSFnAj98k3,Physical,Quantitative,I needed to understand the method and ameliorate the working process. The fastest way was to reproduce the published results as described in the publication.,4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,1,NA
+5,53,R_10rzTBB9mklhnar,Methods,Mixed Methods,Doubt in the results/interpretations,1,1,1,0,0,1,,NA,,1,1,NA,NA,NA,,NA,NA,NA
+7,101,R_12JWLXvtUuGpYyo,Methods,Mixed Methods,NA,NA,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+8,2,R_12mOYxj6HPAHIOU,Methods,Quantitative,To see if what they did made sense.,1,1,1,0,0,1,,NA,,1,1,NA,NA,NA,,NA,NA,NA
+9,85,R_12uqEHmk4rA3InB,Nature/society,Mixed Methods,N/A,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
 10,10,R_12zf6ZKsCoZUof4,Physical,Quantitative,"'- Interested in the outcomes of a study as they aligned with research I was involved with. 
 - Learning experience. 
-- Teaching.",4,4,4,0,0,,,NA,,NA,NA,NA,NA,1,,1,NA,NA
-11,12,R_1C151ckFQ0fubI0,Physical,Mixed Methods,to understand how well our methods worked,2,2,2,0,0,,,NA,,1,NA,1,NA,NA,,NA,NA,NA
-12,69,R_1CJFpRO1v2PiNSi,Physical,Quantitative,"I was learning a new type of statistical spatial analysis, and attempted to reproduce a result that is published in a high impact journal.",4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
-14,58,R_1exeB5RduG5H4A2,Physical,Quantitative,"suspicion that the study had come to wrong conclusion, i.e. was not reproduceable",1,1,1,0,0,,,NA,,1,1,NA,NA,NA,,NA,NA,NA
-18,92,R_1hSDRBTL6L3sgdM,Physical,Quantitative,The applicability is based on the skill and material that I have.,5,NA,5,0,0,,no idea,Unknown,???,NA,NA,NA,NA,NA,,NA,NA,1
-19,90,R_1IGkerQJY4XYlUV,Methods,Mixed Methods,We sometime want to apply technique or method in related dataset or in other country.,3,3,3,0,0,,,NA,,NA,NA,NA,NA,1,,NA,NA,NA
-21,50,R_1l4WM5gdcrI0efD,Methods,Quantitative,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-22,16,R_1lc9uNrzDev2jbD,Physical,Mixed Methods,To double-check my results before final publication of a paper.,2,2,2,0,0,,,NA,,1,NA,1,NA,NA,,NA,NA,NA
-23,47,R_1LecSobzy2IQZh7,Physical,Quantitative,NA,NA,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-27,79,R_1OlQwzsksCPhfFK,Methods,Quantitative,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-30,5,R_1qbbEWvLKLKk5cO,Methods,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-33,64,R_25AVy1GWOOCIpnH,Human,Quantitative,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-34,59,R_25vjzTPEr14MsOh,Methods,Quantitative,"I have observed an increase in use of ""off-the-shelf"" modeling algorithms that are applied with default settings and without critical examination of associated statistical assumptions.  To avoid this issue in my own research, I've made effort to be more transparent about my own analytical assumptions.",2,2,2,0,0,,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
-35,20,R_2aM2dTWmInyaTnE,Methods,Quantitative,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-36,94,R_2BaNI5ghpBAK0h8,Methods,Quantitative,"I did not trust the reproducibility of my own work, so I tried to reproduce it. That failed, so I started over with a colleague who could help make it more reproducible and check the validity of the research.",2,2,2,0,0,,,NA,,1,NA,1,1,NA,,NA,NA,NA
-39,7,R_2EcnLo1yZr0j9og,Physical,Mixed Methods,"I worked with biologists that showed me the publication categorical: data paper. So, Now, I try always to write my project with a management data file (description of data) to be published as supplementary material or data paper to highlight the discussion of the object studied.",2,2,2,0,0,,,Assumed was talking of own data paper submissions,,NA,NA,NA,1,NA,,NA,NA,NA
-40,37,R_2fBb66i88MJxbBw,Physical,Quantitative,To increase the reliability of my results and their acceptance by my colleagues,2,2,2,0,0,,,NA,,1,NA,1,1,NA,,NA,NA,NA
-41,33,R_2OTGFtc00n3rxeS,Physical,Mixed Methods,The research results of a large number of papers seem to be perfect and do not seem to accord with the facts.,1,1,1,0,0,,,Unclear.,,1,1,NA,NA,NA,,NA,NA,NA
-42,34,R_2qmdq7S2dUyceXc,Physical,Quantitative,"In reviewing I take it as my duty to at least do a plausibilty check on the data published. With my own research, I always try to reproduce the results at least once. But maybe more to check for my own mistakes instead of checking for reproducibility.",1,1,1,0,0,,also 2,NA,self-check also,1,1,1,NA,NA,,NA,NA,NA
-43,14,R_2rDbqNnByTEM3pH,Methods,Quantitative,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+- Teaching.",4,4,4,0,0,4,,NA,,NA,NA,NA,NA,1,,1,NA,NA
+11,12,R_1C151ckFQ0fubI0,Physical,Mixed Methods,to understand how well our methods worked,2,2,2,0,0,2,,NA,,1,NA,1,NA,NA,,NA,NA,NA
+12,69,R_1CJFpRO1v2PiNSi,Physical,Quantitative,"I was learning a new type of statistical spatial analysis, and attempted to reproduce a result that is published in a high impact journal.",4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
+14,58,R_1exeB5RduG5H4A2,Physical,Quantitative,"suspicion that the study had come to wrong conclusion, i.e. was not reproduceable",1,1,1,0,0,1,,NA,,1,1,NA,NA,NA,,NA,NA,NA
+18,92,R_1hSDRBTL6L3sgdM,Physical,Quantitative,The applicability is based on the skill and material that I have.,5,NA,5,0,0,5,no idea,Unknown,???,NA,NA,NA,NA,NA,,NA,NA,1
+19,90,R_1IGkerQJY4XYlUV,Methods,Mixed Methods,We sometime want to apply technique or method in related dataset or in other country.,3,3,3,0,0,3,,NA,,NA,NA,NA,NA,1,,NA,NA,NA
+21,50,R_1l4WM5gdcrI0efD,Methods,Quantitative,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+22,16,R_1lc9uNrzDev2jbD,Physical,Mixed Methods,To double-check my results before final publication of a paper.,2,2,2,0,0,2,,NA,,1,NA,1,NA,NA,,NA,NA,NA
+23,47,R_1LecSobzy2IQZh7,Physical,Quantitative,NA,NA,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+27,79,R_1OlQwzsksCPhfFK,Methods,Quantitative,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+30,5,R_1qbbEWvLKLKk5cO,Methods,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+33,64,R_25AVy1GWOOCIpnH,Human,Quantitative,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+34,59,R_25vjzTPEr14MsOh,Methods,Quantitative,"I have observed an increase in use of ""off-the-shelf"" modeling algorithms that are applied with default settings and without critical examination of associated statistical assumptions.  To avoid this issue in my own research, I've made effort to be more transparent about my own analytical assumptions.",2,2,2,0,0,2,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
+35,20,R_2aM2dTWmInyaTnE,Methods,Quantitative,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+36,94,R_2BaNI5ghpBAK0h8,Methods,Quantitative,"I did not trust the reproducibility of my own work, so I tried to reproduce it. That failed, so I started over with a colleague who could help make it more reproducible and check the validity of the research.",2,2,2,0,0,2,,NA,,1,NA,1,1,NA,,NA,NA,NA
+39,7,R_2EcnLo1yZr0j9og,Physical,Mixed Methods,"I worked with biologists that showed me the publication categorical: data paper. So, Now, I try always to write my project with a management data file (description of data) to be published as supplementary material or data paper to highlight the discussion of the object studied.",2,2,2,0,0,2,,Assumed was talking of own data paper submissions,,NA,NA,NA,1,NA,,NA,NA,NA
+40,37,R_2fBb66i88MJxbBw,Physical,Quantitative,To increase the reliability of my results and their acceptance by my colleagues,2,2,2,0,0,2,,NA,,1,NA,1,1,NA,,NA,NA,NA
+41,33,R_2OTGFtc00n3rxeS,Physical,Mixed Methods,The research results of a large number of papers seem to be perfect and do not seem to accord with the facts.,1,1,1,0,0,1,,Unclear.,,1,1,NA,NA,NA,,NA,NA,NA
+42,34,R_2qmdq7S2dUyceXc,Physical,Quantitative,"In reviewing I take it as my duty to at least do a plausibilty check on the data published. With my own research, I always try to reproduce the results at least once. But maybe more to check for my own mistakes instead of checking for reproducibility.",1,1,1,0,0,1,also 2,NA,self-check also,1,1,1,NA,NA,,NA,NA,NA
+43,14,R_2rDbqNnByTEM3pH,Methods,Quantitative,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
 44,84,R_2rHICzIyu1pRFhk,Human,Mixed Methods,"in the end I was limited due to (financial and time) resources 
-difficulty in reproduction with timely social research (conditions change) & with qualitative research",5,NA,5,0,0,,sounds like a reason not to attempt?,Unknown,,NA,NA,NA,NA,NA,,NA,NA,1
-45,96,R_2rIKv5rhV8FKofI,Physical,Mixed Methods,"In order to confirm the reliability of the results, make myself and my colleagues more believe in the experimental results",2,2,2,0,0,,,Unclear if this is someone else's values or their own,,1,NA,NA,NA,NA,,NA,NA,NA
-47,83,R_2Tw7yeabnrzzEsG,Methods,Quantitative,To learn about the practical implementation of spatial econometrics or spatial statistics.,4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
-48,70,R_2v1CvC90ev2nmg0,Human,Mixed Methods,"Principally as a check on the robustness of my own findings, and to learn the techniques used by other scholars.",2,2,2,0,0,,,NA,,1,NA,1,NA,1,,1,NA,NA
-49,23,R_2VaRq5PbXhScxGp,Methods,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-50,63,R_2VDEmQJYuzV9xbB,Physical,Quantitative,Wanted to double check my own results,2,2,2,0,0,,,NA,,1,NA,1,NA,NA,,NA,NA,NA
-51,27,R_2w7dNdQLcKE3NQq,Physical,Mixed Methods,The results published by the others are inconsistent with mine.,1,1,1,0,0,,,NA,,1,1,NA,NA,1,,NA,NA,NA
-52,1,R_2WCihkFWuowHEm7,Human,Quantitative,Interest,4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
-53,31,R_2Wu0UAmsrkxj3nU,Nature/society,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-55,78,R_2YXiM1GokEmTgad,Methods,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-56,29,R_2zD32klEYXmuGaw,Physical,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-57,9,R_2zpdv830UKWqaaA,Human,Quantitative,It's part of good science.,1,1,1,0,0,,"what is ""good"" science? Verified? Open?",Unsure. Might be something else.,Reading science as standard understanding. ,1,NA,NA,1,NA,,NA,NA,NA
-58,77,R_30qxYYrHpyitVRN,Methods,Quantitative,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-59,45,R_3EaKeUakcDXYUon,Human,Quantitative,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-60,56,R_3Ecz7SpdhM7C3Ub,Nature/society,Mixed Methods,"Reproduction in different conditions and contexts helps to contrast and compare what works most of the time, some of the time, never. When a program such as our gender-sensitive, arts-aware Kool Routes to Schools works in very different schools, in different locations, during normal times, at home during the pandemic, and in public squares and quarantines eased, we could see what elements were important to reinforce. The Arts component became much more central to the program's resilience and to understanding and influencing participants' imaginaries regarding transportation and neighborhood life. In a sense we were ""reproducing"", with important adaptations, Safe Routes to School programs from the Global North (UK, US, Canada). We found very important modifications were central for them to work in the Global South (Chile).",3,3,3,0,0,,,NA,,NA,NA,NA,NA,1,1,NA,NA,NA
-63,87,R_3flPxT4AEmOLOTk,Physical,Quantitative,To make sure that someone else could reproduce my work following the method section published in my work.,2,2,2,0,0,,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
-65,57,R_3G7GPEXtZFPEHKK,Physical,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-67,65,R_3j2HmAKzBB8fxU4,Methods,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+difficulty in reproduction with timely social research (conditions change) & with qualitative research",5,NA,5,0,0,5,sounds like a reason not to attempt?,Unknown,,NA,NA,NA,NA,NA,,NA,NA,1
+45,96,R_2rIKv5rhV8FKofI,Physical,Mixed Methods,"In order to confirm the reliability of the results, make myself and my colleagues more believe in the experimental results",2,2,2,0,0,2,,Unclear if this is someone else's values or their own,,1,NA,1,NA,NA,,NA,NA,NA
+47,83,R_2Tw7yeabnrzzEsG,Methods,Quantitative,To learn about the practical implementation of spatial econometrics or spatial statistics.,4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
+48,70,R_2v1CvC90ev2nmg0,Human,Mixed Methods,"Principally as a check on the robustness of my own findings, and to learn the techniques used by other scholars.",2,2,2,0,0,2,,NA,,1,NA,1,NA,1,,1,NA,NA
+49,23,R_2VaRq5PbXhScxGp,Methods,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+50,63,R_2VDEmQJYuzV9xbB,Physical,Quantitative,Wanted to double check my own results,2,2,2,0,0,2,,NA,,1,NA,1,NA,NA,,NA,NA,NA
+51,27,R_2w7dNdQLcKE3NQq,Physical,Mixed Methods,The results published by the others are inconsistent with mine.,1,1,1,0,0,1,,NA,,1,1,NA,NA,1,,NA,NA,NA
+52,1,R_2WCihkFWuowHEm7,Human,Quantitative,Interest,4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
+53,31,R_2Wu0UAmsrkxj3nU,Nature/society,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+55,78,R_2YXiM1GokEmTgad,Methods,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+56,29,R_2zD32klEYXmuGaw,Physical,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+57,9,R_2zpdv830UKWqaaA,Human,Quantitative,It's part of good science.,1,1,1,0,0,1,"what is ""good"" science? Verified? Open?",Unsure. Might be something else.,Reading science as standard understanding. ,1,NA,NA,1,NA,,NA,NA,NA
+58,77,R_30qxYYrHpyitVRN,Methods,Quantitative,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+59,45,R_3EaKeUakcDXYUon,Human,Quantitative,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+60,56,R_3Ecz7SpdhM7C3Ub,Nature/society,Mixed Methods,"Reproduction in different conditions and contexts helps to contrast and compare what works most of the time, some of the time, never. When a program such as our gender-sensitive, arts-aware Kool Routes to Schools works in very different schools, in different locations, during normal times, at home during the pandemic, and in public squares and quarantines eased, we could see what elements were important to reinforce. The Arts component became much more central to the program's resilience and to understanding and influencing participants' imaginaries regarding transportation and neighborhood life. In a sense we were ""reproducing"", with important adaptations, Safe Routes to School programs from the Global North (UK, US, Canada). We found very important modifications were central for them to work in the Global South (Chile).",3,3,3,0,0,3,,NA,,NA,NA,NA,NA,1,1,NA,NA,NA
+63,87,R_3flPxT4AEmOLOTk,Physical,Quantitative,To make sure that someone else could reproduce my work following the method section published in my work.,2,2,2,0,0,2,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
+65,57,R_3G7GPEXtZFPEHKK,Physical,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+67,65,R_3j2HmAKzBB8fxU4,Methods,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
 68,30,R_3JqhzhJtJOepNLz,Methods,Quantitative,"1. I had to apply an old method to a new study area. To ensure that all the steps and parameters are the same, I reproduced the results for the known study area before trying it on a new area.
 
-2. We had developed a novel data on land cover, which appeared better than the ones already present in the literature. We had reservations about the quality of one of the existing datasets. To rigorously evaluate it under different settings, we reproduced the results using the pre-trained models published by the previous paper.",3,3,3,0,0,,"they're explicitly replicating, which also entails learning the previous study",Maybe verification,self-check also,1,1,NA,NA,1,,1,1,NA
-70,26,R_3L1gKRijWwBksXA,Physical,Quantitative,So my research can be used by other users!,2,2,2,0,0,,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
-74,19,R_3lXqZe3fUBXVpP8,Human,Qualitative,I have gone from  a one city based study to reproducing the research design over 6 cities in the global south in order to explore comparative urban research,3,3,3,0,0,,,NA,,NA,NA,NA,NA,1,1,NA,NA,NA
-75,6,R_3m9aQmWwPcB0bqP,Human,Quantitative,Concerns that I had made errors in the original analysis,2,2,2,0,0,,,NA,,1,NA,1,NA,NA,,NA,NA,NA
-77,73,R_3Mhx0nZGaCTzuBR,Physical,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-78,100,R_3n79KR2hYWtXWOB,Human,Mixed Methods,I wanted to learn how the authors used a particular model to use it myself for my own research.,4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,1,NA
-79,48,R_3P7xxkvazoD4lGM,Human,Mixed Methods,"To ensure both that theories and approaches ""on the books"" were accurate and to establish a baseline for further research either validating or challenging these theories/approaches",1,1,1,0,0,,,NA,,1,1,NA,NA,NA,,NA,NA,NA
-81,13,R_3PS6ZwEUGQGVNbe,Human,Quantitative,As a teaching exercise.,4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
-82,52,R_3qTY9LpuAFOLKij,Methods,Quantitative,"Well, I did a few reproductions as a Reproducibility Committee member of a conference. I thought in reproducing some papers of my interest but never tried (I hope I will do!).",1,1,1,0,0,,"lucky hit on this one! We know they were auditing for open science reproducibility, not research validity",NA,,NA,NA,NA,1,NA,,NA,NA,NA
-83,25,R_3R1pDNGfJNwC5fl,Methods,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-84,82,R_3rY6kwfxVvkjkQi,Methods,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-89,66,R_CkLdmpiBgItyBK9,Physical,Quantitative,In order to understand the described method/technique more fully,4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
-90,39,R_DTpHdZXHWwWdJ2p,Physical,Mixed Methods,questions about the validity of the first outcome.,1,1,1,0,0,,not clear if it's their own outcome or someone else's,Unclear if this is someone else's values or their own,,1,NA,NA,NA,NA,,NA,NA,NA
-91,68,R_pLw2QBTZugAlhQd,Methods,Mixed Methods,NA,5,5,5,0,0,,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
-92,95,R_Pwa2G1cjqoIiWqt,Physical,Quantitative,Needing to feel more confident in the results of my research,2,2,2,0,0,,,NA,,1,NA,1,NA,NA,,NA,NA,NA
-93,44,R_RnoAmAEeFVUsw5b,Human,Mixed Methods,"It is a crucial and often overlooked part of the (social and natural) scientific process. It's also generally under-appreciated, particularly by journal editors. I have tenure now, so I can indulge in these important but under-valued aspects of science.",1,1,1,0,0,,,NA,???,1,1,NA,NA,NA,,NA,NA,NA
-95,42,R_ueuHnSJkLCzi2Ax,Methods,Quantitative,For learning purposes and possibly apply it to my own research.,4,4,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,1,NA
-99,74,R_VVHDE3FvgfGCDIJ,Methods,Quantitative,Try the reported methods in scientific publications.,4,NA,4,0,0,,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
-100,61,R_w4uCS9aOsTiIlX3,Human,Mixed Methods,Some data and methods are important to other researchers. It may be helpful if every researcher shares that own data or methods publicly.,2,2,2,0,0,,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
-101,8,R_WkbjkBHgQBHjN17,Physical,Mixed Methods,One instance is that I tried to reproduce a data set that would show a specific erosional process based on higher resolution datasets.,3,3,3,0,0,,,NA,"Tough one, Discuss",NA,NA,NA,NA,1,,NA,NA,NA
-102,81,R_ZlcSeNvB5mRWGGJ,Methods,Mixed Methods,didn't attempt in the past 2 years,5,5,5,0,0,,,Should be excluded per the question framing,,NA,NA,NA,NA,NA,,NA,NA,1
+2. We had developed a novel data on land cover, which appeared better than the ones already present in the literature. We had reservations about the quality of one of the existing datasets. To rigorously evaluate it under different settings, we reproduced the results using the pre-trained models published by the previous paper.",3,3,3,0,0,3,"they're explicitly replicating, which also entails learning the previous study",Maybe verification,self-check also,1,1,NA,NA,1,,1,1,NA
+70,26,R_3L1gKRijWwBksXA,Physical,Quantitative,So my research can be used by other users!,2,2,2,0,0,2,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
+74,19,R_3lXqZe3fUBXVpP8,Human,Qualitative,I have gone from  a one city based study to reproducing the research design over 6 cities in the global south in order to explore comparative urban research,3,3,3,0,0,3,,NA,,NA,NA,NA,NA,1,1,NA,NA,NA
+75,6,R_3m9aQmWwPcB0bqP,Human,Quantitative,Concerns that I had made errors in the original analysis,2,2,2,0,0,2,,NA,,1,NA,1,NA,NA,,NA,NA,NA
+77,73,R_3Mhx0nZGaCTzuBR,Physical,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+78,100,R_3n79KR2hYWtXWOB,Human,Mixed Methods,I wanted to learn how the authors used a particular model to use it myself for my own research.,4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,1,NA
+79,48,R_3P7xxkvazoD4lGM,Human,Mixed Methods,"To ensure both that theories and approaches ""on the books"" were accurate and to establish a baseline for further research either validating or challenging these theories/approaches",1,1,1,0,0,1,,NA,,1,1,NA,NA,NA,,NA,NA,NA
+81,13,R_3PS6ZwEUGQGVNbe,Human,Quantitative,As a teaching exercise.,4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
+82,52,R_3qTY9LpuAFOLKij,Methods,Quantitative,"Well, I did a few reproductions as a Reproducibility Committee member of a conference. I thought in reproducing some papers of my interest but never tried (I hope I will do!).",1,1,1,0,0,1,"lucky hit on this one! We know they were auditing for open science reproducibility, not research validity",NA,,NA,NA,NA,1,NA,,NA,NA,NA
+83,25,R_3R1pDNGfJNwC5fl,Methods,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+84,82,R_3rY6kwfxVvkjkQi,Methods,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+89,66,R_CkLdmpiBgItyBK9,Physical,Quantitative,In order to understand the described method/technique more fully,4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
+90,39,R_DTpHdZXHWwWdJ2p,Physical,Mixed Methods,questions about the validity of the first outcome.,1,1,1,0,0,1,not clear if it's their own outcome or someone else's,Unclear if this is someone else's values or their own,,1,NA,NA,NA,NA,,NA,NA,NA
+91,68,R_pLw2QBTZugAlhQd,Methods,Mixed Methods,NA,5,5,5,0,0,5,,NA,,NA,NA,NA,NA,NA,,NA,NA,1
+92,95,R_Pwa2G1cjqoIiWqt,Physical,Quantitative,Needing to feel more confident in the results of my research,2,2,2,0,0,2,,NA,,1,NA,1,NA,NA,,NA,NA,NA
+93,44,R_RnoAmAEeFVUsw5b,Human,Mixed Methods,"It is a crucial and often overlooked part of the (social and natural) scientific process. It's also generally under-appreciated, particularly by journal editors. I have tenure now, so I can indulge in these important but under-valued aspects of science.",1,1,1,0,0,1,,NA,???,1,1,NA,NA,NA,,NA,NA,NA
+95,42,R_ueuHnSJkLCzi2Ax,Methods,Quantitative,For learning purposes and possibly apply it to my own research.,4,4,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,1,NA
+99,74,R_VVHDE3FvgfGCDIJ,Methods,Quantitative,Try the reported methods in scientific publications.,4,NA,4,0,0,4,,NA,,NA,NA,NA,NA,NA,,1,NA,NA
+100,61,R_w4uCS9aOsTiIlX3,Human,Mixed Methods,Some data and methods are important to other researchers. It may be helpful if every researcher shares that own data or methods publicly.,2,2,2,0,0,2,,NA,,NA,NA,NA,1,NA,,NA,NA,NA
+101,8,R_WkbjkBHgQBHjN17,Physical,Mixed Methods,One instance is that I tried to reproduce a data set that would show a specific erosional process based on higher resolution datasets.,3,3,3,0,0,3,,NA,"Tough one, Discuss",NA,NA,NA,NA,1,,NA,NA,NA
+102,81,R_ZlcSeNvB5mRWGGJ,Methods,Mixed Methods,didn't attempt in the past 2 years,5,5,5,0,0,5,,Should be excluded per the question framing,,NA,NA,NA,NA,NA,,NA,NA,1
