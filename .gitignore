@@ -15,6 +15,9 @@ data/scratch/**
 ~$*.doc*
 Backup of *.doc*
 
+# Ignore Microsoft Excel temporary file
+~$*.xlsx*
+
 # Ignore common R files
 .Rproj.user
 .Rhistory
