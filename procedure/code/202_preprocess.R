@@ -217,27 +217,56 @@ t1flex(Q4_table6b) %>%
 #---------------------------------------------------------------------------------------
 #- Table 7) Characteristics of those who conducted reproductions and (Q11 Q12) -#
 
-table1::label(survey_resp$Q11_1) <- "Proportion of results: Identically reproduce"
-table1::label(survey_resp$Q11_2) <- "Proportion of results: Partially reproduce"
-table1::label(survey_resp$Q11_3) <- "Proportion of results: Fail to reproduce"
-table1::label(survey_resp$Q12_1) <- "Ability to access the original study's data"
-table1::label(survey_resp$Q12_2) <- "Ability to access the original study's code or analytic procedures"
-table1::label(survey_resp$Q12_3) <- "Ability to recreate the computational environment (hardware, software, etc.)"
-table1::label(survey_resp$Q12_4) <- "Ability to submit your findings for publication"
+reproduction_analysis <- survey_resp %>% filter(consensus %in% c(1,4))
+table(reproduction_analysis$consensus)
 
-Q3_table7 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 | Q3_recoded, data = survey_resp)
-Q4_table7 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 | Q4, data = survey_resp)
+table1::label(reproduction_analysis$Q11_1) <- "Proportion of results: Identically reproduce"
+table1::label(reproduction_analysis$Q11_2) <- "Proportion of results: Partially reproduce"
+table1::label(reproduction_analysis$Q11_3) <- "Proportion of results: Fail to reproduce"
+table1::label(reproduction_analysis$Q12_1) <- "Ability to access the original study's data"
+table1::label(reproduction_analysis$Q12_2) <- "Ability to access the original study's code or analytic procedures"
+table1::label(reproduction_analysis$Q12_3) <- "Ability to recreate the computational environment (hardware, software, etc.)"
+table1::label(reproduction_analysis$Q12_4) <- "Ability to submit your findings for publication"
+table1::label(reproduction_analysis$rp_conservative) <- "Conservative reproduction"
+table1::label(reproduction_analysis$rp_liberal) <- "Liberal reproduction"
+table1::label(survey_resp$Q10_recoded) <- "Reason for reproduction attempt"
+
+rp_table7 <- table1::table1(~Q10_recoded | Q9_7 , data = survey_resp)
+
+Q3_table7 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 + rp_conservative + rp_liberal | Q3_recoded, data = reproduction_analysis)
+Q4_table7 <- table1::table1(~Q11_1 + Q11_2 + Q11_3 + Q12_1 + Q12_2 + Q12_3 + Q12_4 + rp_conservative + rp_liberal  | Q4, data = reproduction_analysis)
+
+
+table7_rp_given_some <- table1::table1(~rp_conservative + rp_liberal + Q11_1 + Q11_2 | access_some_data_code, data = reproduction_analysis)
+table7_rp_given_all <- table1::table1(~rp_conservative + rp_liberal + Q11_1 + Q11_2 | access_all_data_code, data = reproduction_analysis)
+
 
 # Output tables using write table and flextable
-write.table(Q3_table7 , here("results","tables","Table7_RPAttempts_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
-write.table(Q4_table7 , here("results","tables","Table7_RPAttempts_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q3_table7 , here("results","tables","Table7a_RPAttempts_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table7 , here("results","tables","Table7a_RPAttempts_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(table7_rp_given_all , here("results","tables","Table7b_RP_all_data_code.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(table7_rp_given_some, here("results","tables","Table7b_RP_some_data_code.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(rp_table7, here("results","tables","Table7_RP_reasons.csv"), col.names = T, row.names=F, append= T, sep=',')
+
 
 t1flex(Q3_table7) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_discipline.docx"),
+  save_as_docx(path = here("results","tables","MSWord","Table7a_RPAttempts_discipline.docx"),
                pr_section = sect_properties)
 
 t1flex(Q4_table7) %>% 
-  save_as_docx(path = here("results","tables","MSWord","Table7_RPAttempts_method.docx"),
+  save_as_docx(path = here("results","tables","MSWord","Table7a_RPAttempts_method.docx"),
+               pr_section = sect_properties)
+
+t1flex(table7_rp_given_all) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table7b_RP_all_data_code.docx"),
+               pr_section = sect_properties)
+
+t1flex(table7_rp_given_some) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table7b_RP_some_data_code.docx"),
+               pr_section = sect_properties)
+
+t1flex(rp_table7) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table7_RP_reasons.docx"),
                pr_section = sect_properties)
 
 #---------------------------------------------------------------------------------------
@@ -386,5 +415,7 @@ t1flex(Q4_table9) %>%
   save_as_docx(path = here("results","tables","MSWord","Table9_Master_Table_method.docx"),
                pr_section = sect_properties)
 
+
+#---------------------------------------------------------------------------------------
 
 

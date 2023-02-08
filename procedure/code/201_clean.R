@@ -261,18 +261,43 @@ sapply(int_hegs_rpr, class)
 
 #--------------------------------#
 
-#- Save permanent analysis file -#
+#- Perform Qualitative Coding -#
 
 #--------------------------------#
 
-saveRDS(int_hegs_rpr, here("data","derived","public","analysis_hegs_rpr.rds"))
-
 #-Export open response definitions and reproductions to .csv for further coding
 analysis_Q6_coding <- int_hegs_rpr %>% select(c(ResponseId,Q3_recoded,Q4,Q6))
-write.csv(analysis_Q6_coding,here("data","derived","public","analysis_Q6_coding.csv"))
+#write.csv(analysis_Q6_coding,here("data","derived","public","analysis_Q6_coding.csv"))
 
 analysis_Q10_coding  <- int_hegs_rpr %>% 
                   filter(Q9_7 == "Yes") %>% 
                   select(c(ResponseId,Q3_recoded,Q4,Q10))
-write.csv(analysis_Q10_coding,here("data","derived","public","analysis_10_coding.csv"))
+#write.csv(analysis_Q10_coding,here("data","derived","public","analysis_10_coding.csv"))
 
+#-Read in final coding sheets and restrict to variables of interest
+q10_coding <- read.csv(here("data","derived","public","final_full_q10_coding.csv"))
+q10_coding <- q10_coding  %>% select(ResponseId, consensus, starts_with("X"))
+
+
+#-Merge qualitative coding back to main analysis file and construct additional variables
+survey_resp <- left_join(int_hegs_rpr,q10_coding, by ="ResponseId")
+
+survey_resp <- survey_resp %>% mutate(rp_conservative = ifelse(Q11_1 == "All" | Q11_2 == "All", 1, 0),
+                                      rp_liberal = ifelse(rp_conservative == 1 | (Q11_1 == "Some" | Q11_2 == "Some"), 1, 0),
+                                      access_some_data = ifelse(Q12_1 %in% c("Yes, all", "Yes, some"), 1, 0),
+                                      access_some_code = ifelse(Q12_2 %in% c("Yes, all", "Yes, some"), 1, 0),
+                                      access_some_data_code = ifelse(access_some_code == 1 & access_some_data == 1, 1, 0),
+                                      access_all_data_code = ifelse(Q12_1 == "Yes, all" & Q12_2 == "Yes, all",1,0),
+                                      Q10_recoded = as.factor(consensus))
+levels(survey_resp$Q10_recoded) <- c("Verification/Peer-Review",
+                                     "Self-check",
+                                     "Replication",
+                                     "Teaching/Learning",
+                                     "Missing")
+
+table(survey_resp$rp_conservative,survey_resp$rp_liberal)
+survey_resp %>% 
+  select(Q11_1,Q11_2) %>% 
+  filter(survey_resp$rp_conservative == 0 & survey_resp$rp_liberal == 0)
+
+saveRDS(survey_resp, here("data","derived","public","analysis_hegs_rpr.rds"))
