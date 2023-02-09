@@ -269,6 +269,35 @@ t1flex(rp_table7) %>%
   save_as_docx(path = here("results","tables","MSWord","Table7_RP_reasons.docx"),
                pr_section = sect_properties)
 
+#- Exploratory analysis about access to data and code with respect to reproduction results
+all_partial_reproduction <- reproduction_analysis %>% filter(Q11_2 == "All")
+some_partial_reproduction <- reproduction_analysis %>% filter(Q11_2 == "Some")
+all_identical_reproduction <- reproduction_analysis %>% filter(Q11_1 == "All")
+some_identical_reproduction <- reproduction_analysis %>% filter(Q11_1 == "Some")
+
+table1::label(all_partial_reproduction$Q12_1) <- "Access to study's data"
+table1::label(some_partial_reproduction$Q12_1) <- "Access to study's data"
+table1::label(all_identical_reproduction$Q12_1) <- "Access to study's data"
+table1::label(some_identical_reproduction$Q12_1) <- "Access to study's data"
+
+table1::label(all_partial_reproduction$Q12_2) <- "Access to study's code"
+table1::label(some_partial_reproduction$Q12_2) <- "Access to study's code"
+table1::label(all_identical_reproduction$Q12_2) <- "Access to study's code"
+table1::label(some_identical_reproduction$Q12_2) <- "Access to study's code"
+
+all_partial <- table1::table1(~Q12_1 | Q12_2 , data = all_partial_reproduction) 
+some_partial <- table1::table1(~Q12_1 | Q12_2 , data = some_partial_reproduction)
+all_identical <- table1::table1(~Q12_1 | Q12_2 , data = all_identical_reproduction)
+some_identical <- table1::table1(~Q12_1 | Q12_2 , data = some_identical_reproduction)
+
+
+write.table(all_partial, here("results","tables","Data_Code_Matrix_all_partial.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(some_partial, here("results","tables","Data_Code_Matrix_some_partial.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(all_identical, here("results","tables","Data_Code_Matrix_all_identical.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(some_identical, here("results","tables","Data_Code_Matrix_some_identical.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+
+
 #---------------------------------------------------------------------------------------
 #- Table 8) Barriers -#
 table1::label(survey_resp$Q14_1) <- "Fraud (e.g., fabricated or falsified results)"
@@ -306,7 +335,7 @@ t1flex(Q4_table8) %>%
 #---------------------------------------------------------------------------------------
 #- Summary Table for Results Section -#
 
-#- Summary measure on familiarity, practices, and barriers
+#- Summary measure on definitions, familiarity, practices, and barriers
 #------- Familiarity : threshold is "somewhat"  (Q7a + Q7b + Q7c + Q7d + Q7e)
 #------- Practices :   threshold is "most of the time" (Q7a_1 + Q7b_1 + Q7c_1 + Q7d_1 + Q7e_1)
 #------- Barriers :    threshold is "occasionally"  (Q14_1 + Q14_2 + Q14_3 + Q14_4 + Q14_5)
@@ -387,21 +416,23 @@ table(survey_resp$Q7b_1,survey_resp$Q7b_1_bin)
 table(survey_resp$Q14_1,survey_resp$Q14_1_bin)
 
 # Summary measures
-survey_resp <- survey_resp %>% mutate(familiar  = Q7a_bin + Q7b_bin + Q7c_bin + Q7d_bin + Q7e_bin,
+survey_resp <- survey_resp %>% mutate(definitions = definition_sum,
+                                      familiar  = Q7a_bin + Q7b_bin + Q7c_bin + Q7d_bin + Q7e_bin,
                                       practices = Q7a_1_bin + Q7b_1_bin + Q7c_1_bin + Q7d_1_bin + Q7e_1_bin,
                                       barriers = Q14_1_bin + Q14_2_bin + Q14_3_bin + Q14_4_bin + Q14_5_bin + Q14_6_bin
                                       + Q14_7_bin + Q14_8_bin + Q14_9_bin + Q14_10_bin + Q14_11_bin + Q14_12_bin)
+table(survey_resp$definitions)
 table(survey_resp$familiar)
 table(survey_resp$practices)
 table(survey_resp$barriers)
 
-
+table1::label(survey_resp$defimitions) <- "Definition of reproducibility"
 table1::label(survey_resp$familiar) <-  "Familiarity with reproducible practices"
 table1::label(survey_resp$practices) <- "Experience with reproducible practices"
 table1::label(survey_resp$barriers) <-  "Barriers to reproducibility"
 
-Q3_table9 <- table1::table1(~familiar + practices + barriers| Q3_recoded, data = survey_resp)
-Q4_table9 <- table1::table1(~familiar + practices + barriers | Q4, data = survey_resp)
+Q3_table9 <- table1::table1(~definitions + familiar + practices + barriers| Q3_recoded, data = survey_resp)
+Q4_table9 <- table1::table1(~definitions + familiar + practices + barriers | Q4, data = survey_resp)
 
 # Output tables using write table and flextable
 write.table(Q3_table9 , here("results","tables","Table9_Master_Table_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')

@@ -278,9 +278,12 @@ analysis_Q10_coding  <- int_hegs_rpr %>%
 q10_coding <- read.csv(here("data","derived","public","final_full_q10_coding.csv"))
 q10_coding <- q10_coding  %>% select(ResponseId, consensus, starts_with("X"))
 
+q6_coding <- read.csv(here("data","derived","public","final_full_q6_coding.csv"))
+q6_coding <- q6_coding  %>% select(ResponseId, ends_with("_rec"), Rejection, Missing.x)
 
 #-Merge qualitative coding back to main analysis file and construct additional variables
 survey_resp <- left_join(int_hegs_rpr,q10_coding, by ="ResponseId")
+survey_resp <- left_join(survey_resp,q6_coding, by ="ResponseId")
 
 survey_resp <- survey_resp %>% mutate(rp_conservative = ifelse(Q11_1 == "All" | Q11_2 == "All", 1, 0),
                                       rp_liberal = ifelse(rp_conservative == 1 | (Q11_1 == "Some" | Q11_2 == "Some"), 1, 0),
@@ -288,7 +291,8 @@ survey_resp <- survey_resp %>% mutate(rp_conservative = ifelse(Q11_1 == "All" | 
                                       access_some_code = ifelse(Q12_2 %in% c("Yes, all", "Yes, some"), 1, 0),
                                       access_some_data_code = ifelse(access_some_code == 1 & access_some_data == 1, 1, 0),
                                       access_all_data_code = ifelse(Q12_1 == "Yes, all" & Q12_2 == "Yes, all",1,0),
-                                      Q10_recoded = as.factor(consensus))
+                                      Q10_recoded = as.factor(consensus),
+                                      definition_sum = dat_rec + pro_rec + res_rec + con_rec)
 levels(survey_resp$Q10_recoded) <- c("Verification/Peer-Review",
                                      "Self-check",
                                      "Replication",
