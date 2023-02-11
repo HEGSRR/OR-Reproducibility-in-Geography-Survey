@@ -397,7 +397,13 @@ table(survey_resp$familiar)
 table(survey_resp$practices)
 table(survey_resp$barriers)
 
-table1::label(survey_resp$defimitions) <- "Definition of reproducibility"
+table(survey_resp$Q5,survey_resp$definition_sum)
+table(survey_resp$label,survey_resp$definition_sum)
+
+survey_resp %>% filter(label=="Omit") %>% select(definition_sum)
+
+
+table1::label(survey_resp$definitions) <- "Definition of reproducibility"
 table1::label(survey_resp$familiar) <-  "Familiarity with reproducible practices"
 table1::label(survey_resp$practices) <- "Experience with reproducible practices"
 table1::label(survey_resp$barriers) <-  "Barriers to reproducibility"
@@ -420,4 +426,19 @@ t1flex(Q4_table9) %>%
 
 #---------------------------------------------------------------------------------------
 
+def_sample <- survey_resp %>% filter(Q5 != "Not at all")
+table1::label(def_sample$definition_label) <- "Type of definition"
 
+Q3_table10 <- table1::table1(~definition_label | Q3_recoded , data = def_sample)
+Q4_table10 <- table1::table1(~definition_label | Q4, data = def_sample)
+
+write.table(Q3_table10 , here("results","tables","Table10_def_types_discipline.csv"), col.names = T, row.names=F, append= T, sep=',')
+write.table(Q4_table10 , here("results","tables","Table10_def_types_method.csv"), col.names = T, row.names=F, append= T, sep=',')
+
+t1flex(Q3_table10) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table10_def_type_discipline.docx"),
+               pr_section = sect_properties)
+
+t1flex(Q4_table10) %>% 
+  save_as_docx(path = here("results","tables","MSWord","Table10_def_type_method.docx"),
+               pr_section = sect_properties)

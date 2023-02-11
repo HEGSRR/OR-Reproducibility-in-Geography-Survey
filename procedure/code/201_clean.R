@@ -292,14 +292,20 @@ survey_resp <- survey_resp %>% mutate(rp_conservative = ifelse(Q11_1 == "All" | 
                                       access_some_data_code = ifelse(access_some_code == 1 & access_some_data == 1, 1, 0),
                                       access_all_data_code = ifelse(Q12_1 == "Yes, all" & Q12_2 == "Yes, all",1,0),
                                       Q10_recoded = as.factor(consensus),
-                                      definition_sum = ifelse(label == "Omit", NA, dat_rec + pro_rec + res_rec + con_rec),
+                                      definition_sum = ifelse(Q5 == "Not at all", NA, dat_rec + pro_rec + res_rec + con_rec),
                                       definition_label = label)
+
+
 levels(survey_resp$Q10_recoded) <- c("Verification/Peer-Review",
                                      "Self-check",
                                      "Replication",
                                      "Teaching/Learning",
                                      "Missing")
 
+#Check coding
+# ensure no responses wher Q5= "Not at all" are included in def_sum
+table(survey_resp$definition_sum,survey_resp$Q5) 
+# confirm that 3 individuals neither achieved a conservative nor liberal reproduction
 table(survey_resp$rp_conservative,survey_resp$rp_liberal)
 survey_resp %>% 
   select(Q11_1,Q11_2) %>% 
