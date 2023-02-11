@@ -269,35 +269,6 @@ t1flex(rp_table7) %>%
   save_as_docx(path = here("results","tables","MSWord","Table7_RP_reasons.docx"),
                pr_section = sect_properties)
 
-#- Exploratory analysis about access to data and code with respect to reproduction results
-all_partial_reproduction <- reproduction_analysis %>% filter(Q11_2 == "All")
-some_partial_reproduction <- reproduction_analysis %>% filter(Q11_2 == "Some")
-all_identical_reproduction <- reproduction_analysis %>% filter(Q11_1 == "All")
-some_identical_reproduction <- reproduction_analysis %>% filter(Q11_1 == "Some")
-
-table1::label(all_partial_reproduction$Q12_1) <- "Access to study's data"
-table1::label(some_partial_reproduction$Q12_1) <- "Access to study's data"
-table1::label(all_identical_reproduction$Q12_1) <- "Access to study's data"
-table1::label(some_identical_reproduction$Q12_1) <- "Access to study's data"
-
-table1::label(all_partial_reproduction$Q12_2) <- "Access to study's code"
-table1::label(some_partial_reproduction$Q12_2) <- "Access to study's code"
-table1::label(all_identical_reproduction$Q12_2) <- "Access to study's code"
-table1::label(some_identical_reproduction$Q12_2) <- "Access to study's code"
-
-all_partial <- table1::table1(~Q12_1 | Q12_2 , data = all_partial_reproduction) 
-some_partial <- table1::table1(~Q12_1 | Q12_2 , data = some_partial_reproduction)
-all_identical <- table1::table1(~Q12_1 | Q12_2 , data = all_identical_reproduction)
-some_identical <- table1::table1(~Q12_1 | Q12_2 , data = some_identical_reproduction)
-
-
-write.table(all_partial, here("results","tables","Data_Code_Matrix_all_partial.csv"), col.names = T, row.names=F, append= T, sep=',')
-write.table(some_partial, here("results","tables","Data_Code_Matrix_some_partial.csv"), col.names = T, row.names=F, append= T, sep=',')
-write.table(all_identical, here("results","tables","Data_Code_Matrix_all_identical.csv"), col.names = T, row.names=F, append= T, sep=',')
-write.table(some_identical, here("results","tables","Data_Code_Matrix_some_identical.csv"), col.names = T, row.names=F, append= T, sep=',')
-
-
-
 #---------------------------------------------------------------------------------------
 #- Table 8) Barriers -#
 table1::label(survey_resp$Q14_1) <- "Fraud (e.g., fabricated or falsified results)"
