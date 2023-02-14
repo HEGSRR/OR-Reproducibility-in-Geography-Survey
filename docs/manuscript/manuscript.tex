@@ -43,6 +43,8 @@
 \usepackage{tabularx}
 \usepackage{booktabs,caption}
 \usepackage{threeparttable}
+
+\usepackage{lscape}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -73,10 +75,10 @@ Reproducible Research, Epistemology, Geographic Research Methods
 \end{keywords}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \section*{Introduction}
 Reproducibility as a characteristic of a study that lends it credibility v. Reproducibility as a error correcting function of science. 
 
-\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Assessing the Reproducibility of Research}
@@ -93,7 +95,7 @@ However, such assessments are resource and time intensive, which makes them diff
 Constrained to a limited number of studies, direct assessments offer only suggestive evidence about the reproducibility of unevaluated studies and the prevalence of reproducible research practices. 
 In contrast, comparatively less resource intensive indirect assessments that simply catalog reproducible research practices can be more easily scaled.
 By evaluating many studies, indirect assessments provide evidence of how common reproducible research practices are and, by extension, how reproducible work in a field of study is likely to be.
-The trade off being that indirect assessments do not offer as detailed a look into why a particular result in a specific instance could, or could not, be obtained.
+
 
 Despite their growing number, the available body of direct and indirect reproducibility assessments currently provides insufficient evidence to conclusively evaluate the reproducibility of research generally, or disciplinary research specifically \citep{NASEM2019}.
 This knowledge gap exists because neither direct nor indirect reproducibility assessments have been designed so the results of the sample of studies evaluated can be extended to the population of research as a whole. 
@@ -107,7 +109,7 @@ These surveys have also commonly failed to systematically report the methodologi
 While it may not be possible to determine the extent of irreproducibility across or within disciplines from available studies, it is possible to draw lessons about potential sources of irreproducibility.
 The available evidence suggests inadequate record keeping, opaque reporting, unavailable research components, and a lack of incentives are likely important factors contributing to the irreproducibility of research \citep{NASEM2019}. 
 Prominent attempts to reproduce research in economics \citep{chang2015economics}, computer science \citep{moraila2014measuring}, and psychology \citep{open2015estimating} have all been able to reproduce only a small portion of studies because original authors did not share data or adequate information about their procedures. 
-Systematic reviews of publications in prominent outlets \citep{byrne_2017,stodden2018empirical} suggest these issues are likely widespread, 
+Systematic reviews of publications in prominent outlets \citep{byrne_2017,stodden2018empirical} suggest these issues are likely widespread. 
 Reproducibility surveys paint a similar picture. 
 Recent surveys suggest that the majority of scientists have either not tried, or tried and failed to reproduce another scientist's work \citep{baker20161, boulbes2018survey}. 
 Moreover, a sizable portion of the researchers responding to these surveys admit to engaging in questionable research practices linked to the publication of false positive results and low reproducibility rates \citep{fanelli2009many, fraser2018questionable}.
@@ -230,25 +232,29 @@ We have indicated throughout our results section which analysis can and cannot b
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Analytical Approach}
+
+%%%%%%%%%%%
+\subsubsection*{Statistical Approach}
 We conduct two statistical analyses of the survey response\endnote{The full methodological details of our statistical analyses, and a complete history of our response coding a variable construction is included in the Github repository linked to OSF repository that accompanies this paper. All of the results presented in this paper can be independently reproduced using the materials in that repository.}.
 First, we create descriptive statistical summaries of the participant response to address how geographic researchers define reproducibility, their familiarity and experience with reproducible research practice, and the barriers to reproducibility they perceive in the discipline.
 Second, we conducted an analysis of the experience of the subset of geographic researchers who reported attempting independent reproductions of prior work during the last two years that identified what motivated reproduction attempts, how successful those attempts were, and what factors hindered success.
+Given the topical and epistemological variation that exists among geographic researchers, we examined differences by disciplinary subfield and methodological approach as part of each analysis.
 
 %%%%%%%%%%%
 \subsubsection*{Variable Construction}
 For our first analysis, we constructed summary measures that aggregated researcher responses to questions linked to 1) definitions of reproducibility, 2) familiarity with and 3) use of reproducible research practices, and 4) potential barriers to reproducibility. 
 
-\textit{Definition:} Before providing a common definition, we asked each participant to provide their own definition of reproducibility.
-We measured the similarity of the definition provided by each participant to the definition of adopted by the \citet{NASEM2019}. 
-The NASEM defines reproducibile research as having four characteristics --- same data, same procedure, same results, and same context.
-To make this comparison, two of the authors independently coded the definition provided by each respondent for the presence/absence of each of the four characteristics included in the NASEM definition.
+\textit{Definition:} Before providing a common definition of reproducibility, we asked each participant to provide their own definition.
+We measured the similarity of each provided definition to the definition of adopted by the \citet{NASEM2019}. 
+The NASEM defines reproducible research as having four characteristics --- same data, same procedure, same results, and same context.
+To make this comparison, two of the authors independently coded each provided definition for the presence/absence of each of the four characteristics included in the NASEM definition.
 Disagreements in the assignment of codes were resolved through discussion between the two authors. 
 As a final check, the third author reviewed rectified coding and resolved any remaining disputes.
 To create an aggregate measure of agreement the final coded response for each participant was then summed across the four characteristics, creating definition similarity \textit{d} with domain [0, 4].
 
 \textit{Familiarity and Experience:} We measured participant familiarity and experience with five reproduciblity enhancing research practices; the use of --- open source software, research notebooks, data sharing, code sharing, and pre-registration. 
 We created a summary measure of research familiarity with these practices, \textit{f}, by summing the number of reproducible practices a researcher was 'somewhat' or 'very' familiar with.
-To assess researcher experience with reproducible practices, we created \textit{p}, which counts the number of reproducible practices a researcher reported using 'most of the time' or 'always' when conducting their own research. 
+To assess researcher experience with these same five practices, we created \textit{p}, which counts the number of practices a researcher reported using 'most of the time' or 'always' when conducting their own research. 
 Both \textit{f} and \textit{p} have domains [0,5]. 
 
 \textit{Barriers:} Finally, we asked asked respondents to identify how frequently they believe 12 factors contributed to a lack of reproducibility in the discipline. 
@@ -256,14 +262,10 @@ From those responses, we created a summary measure, \textit{b} with domain [0,12
 
 Our second analysis examines only researchers that reported attempting a reproduction in the past two years. 
 We asked each of these researchers what motivated their reproduction attempt. 
-
-%%%%%%%%%%%
-\subsubsection*{Analytical Methods}
-Given the topical and epistemological variation that exists among geographic researchers, we examined group-wise differences in each aggregated measure by disciplinary subfield and methodological approach.
-
-Second, we conducted an analysis of the experience of geographic researchers who have attempted reproductions of prior work. 
-We examine what motivates geographic researchers to attempt to reproductions and how successful researchers attempting reproductions were at recreating existing results. 
-We also investigate why researchers were unable to reproduce results.
+Two of the authors independently assigned these responses to groups with the following motivations - i) verification/check of published research, ii) an internal check of their own research to verify their work and increase the transparency of their work, ii) a desire to learn from past work, or use the reproduction in teaching. 
+Some authors provided motivation linked to the replication of results in new geographic contexts. 
+Because these responses did not match our provided definition of reproduction, we removed these from the subsample. 
+We identified disagreements in motivation assignments, and the third author again resolved all disputes in consultation with the two assigning authors. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -273,9 +275,8 @@ We also investigate why researchers were unable to reproduce results.
 \subsection*{Survey Response Demographics}
 A total of \textit{n}=218 of the authors we contacted completed the online survey with information sufficient for analysis. 
 The contact rate for the survey was 13.9 percent, the response rate was 10.8 percent, yielding a cooperation rate of 77.6 percent. 
-The refusal rate was 3.1 percent.
-\endnote{All outcome rates are reported using \citet{aaporstandards} standards. 
-The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}
+The refusal rate was 3.1 percent\endnote{All outcome rates are reported using \citet{aaporstandards} standards. 
+The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}.
 Respondents were predominantly male (65.1\%) and between the ages of 35 and 55 (62.4\%). 
 The majority of respondents were also academics, but were well balanced across career levels as no one category made up more that 30 percent of the sample.
 Respondents were similarly well balanced across the disciplinary subfields - human geography (30.7\%), physical geography (29.8\%), nature and society (10.1\%), geographic methods and GIScience (28.0\%); and methodological approaches - quantitative (42.2\%), qualitative (18.3\%), and mixed-methods (39.0\%) research.
@@ -284,89 +285,33 @@ Respondents were similarly well balanced across the disciplinary subfields - hum
 \subsection*{Researcher Perspectives on Reproducibility}
 A primary aim of our survey was to establish how geographic researchers conceptualize reproducibility and their current level of knowledge and experience with reproducibility enhancing research practices.
 Nearly all researchers reported being at least somewhat familiar with the term reproducibility (89.0\%) with half reporting being very familiar with the term (53.6\%).
-A majority of researchers also believe reproducibility is compatible with epistemologies used in discipline (72.0\%). 
+A majority of researchers also believe reproducibility is compatible with epistemologies used in the discipline (58.2\%). 
 However, researchers estimated that only half of the results published in the discipline were reproducible, albeit with wide variance ($\overline{rep}=50.6\%$, $\sigma=24.7\%$), and reported limited familiarity with and use of many reproducible research practices. 
-Few respondents reported attempting to reproduce the work of other researchers (\%) with fewer still attempting to publish those reproduction studies (\%). 
+Few respondents reported attempting to reproduce the work of other researchers (14.7\%) with fewer still attempting to publish those reproduction studies (6.8\%). 
 
-Table 1 presents our summary measures for each topic, as well as those measures by subgroup.
+Table \ref{tab:overview} summarizes how  researchers define reproducibility (\textit{d}), their familiarity with (\textit{f}) and use of (\textit{p}) reproducible research practices, and the factors they see as barriers (\textit{b}) to reproducibility in geography. 
+We present the mean and standard deviation for the overall sample and for each subfield and methodological approach.
+The following sub-sections discuss each of these topics in turn.
 
-\begin{table}[h]
-    \centering
-    \begin{threeparttable}
-    \caption{Descriptive summary of survey results}
-    \begin{tabular}{l c c c c c c c c c c}
-         \hline
-                    & \multicolumn{4}{1}{Subfield}  & & \multicolumn{3}{1}{Approach} & & \\
-         Measure    & HU & PH & NS & MT            & & QN & QL & MX              & & Overall \\
-         \hline
-         Definition (\textit{d}) & \begin{tabular}[c]{@{}c@{}}1.76\\ (1.17)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}1.68\\ (1.12)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}1.97\\ (1.08)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}1.77\\ (1.10)\end{tabular} & 
-                        & 
-                        \begin{tabular}[c]{@{}c@{}}1.89\\ (1.14)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}1.53\\ (1.28)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}1.78\\ (1.06)\end{tabular} & 
-                        & 
-                        \begin{tabular}[c]{@{}c@{}}1.77\\ (1.15)\end{tabular} \\
-         Familiarity (\textit{f}) &  \begin{tabular}[c]{@{}c@{}}2.35\\ (1.36)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}3.71\\ (0.98)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}2.28\\ (1.76)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}3.97\\ (0.86)\end{tabular} &
-                        &
-                        \begin{tabular}[c]{@{}c@{}}3.75\\ (0.98)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}1.75\\ (1.30)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}3.56\\ (1.22)\end{tabular} &
-                        &
-                        \begin{tabular}[c]{@{}c@{}}3.26\\ (1.36)\end{tabular}\\
-         
-         Experience (\textit{p}) &  \begin{tabular}[c]{@{}c@{}}0.60\\ (0.80)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}2.06\\ (1.18)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}1.18\\ (0.96)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}1.85\\ (1.38)\end{tabular} &
-                        &
-                        \begin{tabular}[c]{@{}c@{}}1.63\\ (1.32)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}0.48\\ (0.68)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}1.69\\ (1.24)\end{tabular} &
-                        &
-                        \begin{tabular}[c]{@{}c@{}}1.44\\ (1.28)\end{tabular}\\
-         
-         Barriers (\textit{b})   &  \begin{tabular}[c]{@{}c@{}}7.32\\ (3.57)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}8.31\\ (3.00)\end{tabular} & 
-                        \begin{tabular}[c]{@{}c@{}}7.44\\ (3.20)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}9.31\\ (2.79)\end{tabular} &
-                        &
-                        \begin{tabular}[c]{@{}c@{}}8.78\\ (2.80)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}5.97\\ (3.83)\end{tabular} &
-                        \begin{tabular}[c]{@{}c@{}}8.58\\ (2.96)\end{tabular} &
-                        &
-                        \begin{tabular}[c]{@{}c@{}}8.20\\ (3.24)\end{tabular}\\
-                     & & & & & & & & & &\\
-         N           & 67 & 65 & 22 & 61 & & 92 & 40 & 85 & & 218 \\
-         Missing     & 14 & 4  & 4  & 6  & & 6 & 9 & 14 & & 29 \\
-        \hline
-    \end{tabular}
-    \begin{tablenotes}
-        \footnotesize
-        \item \textit{HU} Human Geography, \textit{PH} Physical Geography, \textit{NS} Nature and Society, \textit{MT} GIScience and Methods; \textit{QN} Quantitative, \textit{QL} Qualitative, \textit{MX} Mixed Methods.
-    \end{tablenotes}
-    \label{tab:overview}
-    \end{threeparttable}
-\end{table}
+\begin{center}
+\textbf{Insert Table \ref{tab:overview} About Here}
+\end{center}
+
 
 %%%%%%%%%%%
 \subsubsection*{Definitions and Importance of Reproducibility}
-Geographic researchers provided definitions of reproducibility that generally explicitly included one to two ($\overline{d}=1.77$) of the four characteristics from the definition adopted by the NASEM.
+A total of \textit{$n_{d}$}=181 (83.0\%) of our survey respondents provided an interpretable definition of reproducibility.  
+On average, geographic researchers provided definitions of reproducibility that generally explicitly included one to two ($\overline{d}=1.83$) of the four characteristics from the definition adopted by the NASEM.
 This level of inclusion was consistent across subfields and methodological approaches.
 The availability and use of the same research procedures (80.7\%) and results (74.0\%) were the characteristics of reproducibility most frequently identified by researchers. 
 Less than half of respondents explicitly included use of the same data (38.1\%) or the need to work in the same context (17.7\%) in their definitions. 
 This patterns was also consistent across subfields and approaches, with a slightly greater emphasis on data and procedural consistency and availability amongst quantitative and methods focused researchers.
-The lower inclusion of data and context in definitions matched the conflation of reproduction and replication by a minority of researchers (\%). 
+The lower inclusion of data and context in definitions matched the conflation of reproduction and replication by a minority of researchers (20.4\%). 
 
-Researchers defined reproducibility in relation to two epistemic functions.
-Just over half of respondents (52.5\%) defined reproducibility as a means of assessing prior work for errors or inconsistencies.
+Researchers definitions of reproducibility were connected to two epistemic functions.
+Just under half of respondents (45.9\%) defined reproducibility as a means of assessing prior work for errors or inconsistencies.
 Nearly all other researchers (40.9\%) tied reproducibilty to the need for transparency in research so others could independently expand upon past studies.
-Both of these functions were supported by respondents across our sample. 
+Identification of reproducibility with both of these functions was supported by responses to related questions from our entire sample. 
 Overall, a majority of researchers also identified reproducibility as an important for validating (75.2\%) and establishing the credibility (72.5\%) of research.  
 Respondents also saw reproducing studies as important to reducing the presence of persistent errors in the discipline (77.5\%) and to increasing trust in research findings (78.45\%).
 Matching the emphasis placed on research transparency, respondents identified reproducibility as important to research efficiency (63.3\%) and the communication of findings to academics (68.8\%) and practitioners (64.7\%). 
@@ -392,7 +337,7 @@ The reproducibility of research is on the minds of geographic researchers.
 The majority of survey respondents reported thinking about the reproducibility of their own research (80.7\%), discussing reproducibility with a colleague (70.6\%), and questioning the reproducibility of published work (57.3\%) in the past two years. 
 More than half of the researchers we surveyed (52.8\%) also reported considering reproducibility while peer reviewing a grant proposal or publication during the same time frame. 
 
-Geographic researchers are on average familiar with multiple reproducible research practices ($\overline{f}=3.26$, Table \ref{tab:overview}), but reported limited use of these practices in their own work ($\overline{p}=1.44$).
+Geographic researchers are on average familiar with multiple reproducible research practices ($\overline{f}=3.26$), but reported limited use of these practices in their own work ($\overline{p}=1.44$).
 More than half of all researchers reported familiarity with with data sharing (86.7\%), open source software (85.3\%), field and lab notebooks (67.0\%), and code sharing (59.2\% ).
 However, while familiar with these practice, a far smaller number of researchers reported using these practices regularly in their own work. 
 Less than half of the researchers surveyed reported sharing their data (44.5\%), using open source software (38.1\%), or using field or lab notebooks to record their work (40.0\%), or sharing their code (18.8\%) most or all of the time. 
@@ -405,7 +350,7 @@ When grouped by methodological approach, quantitative and mixed-methods research
 
 Differences in researcher familiarity and use of specific reproducible research practices across subfields and approaches were greatest for practices more typical of quantitative workflows. 
 For example, quantitiative and mixed-methods researchers reported familiarity with open source software (QT=96.7\%, MX=89.5\%) and code sharing (QT=81.5\%, MX=55.7\%).
-In contrast, a smaller percentage of qualitative researchers reported familiarity with these same practices (OS=52.5\%, Code=12.5\%).
+In contrast, a smaller percentage of qualitative researchers reported familiarity with open source software (52.5\%) and code sharing (12.5\%).
 However, even among quantitiative and mixed-methods researchers familiarity with reproducible research practices did not translate into regular use of those practices.
 Just over half of quantitative (51.2\%) and mixed-methods (51.8\%) researchers reported sharing their data most of the time.
 Less than a third of these same researchers reported sharing their code most of the time. 
@@ -413,11 +358,170 @@ These rates were lower for qualitative geographers, of which only a small subset
 
 \subsubsection*{Barriers to Reproducible Research}
 Aligning with the differences we observed between researcher familiarity with reproducibility enhancing research practices and researcher use of those same practices, respondents to our survey identified numerous factors contributing to a lack or reproducible research across the discipline ($\overline{b}=8.20$). 
-Geographic researchers working in different subfields and with different methodological approaches each identified a similar number of barriers to reproducibility (Table \ref{tab:overview}).
+Geographic researchers working in different subfields and with different methodological approaches each identified a similar number of barriers to reproducibility.
 Qualitative geographers may be the one group that deviates from this consistent pattern. 
 These researchers identified fewer barriers to reproducibility on average, but with a greater variance that left us unable to distinguish this group from any other ($\overline{b_{QL}}=5.97, \sigma_{QL}=3.83$).
-To examine differences in researcher beliefs about specific factors potentially hindering reproducibility in the discipline, we divided the 12 factors we examined into three groups --- those related to the research environment, the availability of research artifacts, and study-specific characteristics (Table \ref{tab:barriers}). 
+To examine differences in researcher beliefs about specific factors potentially hindering reproducibility in the discipline, we divided the 12 factors we examined into three groups --- those related to the research environment, the availability of research artifacts, and study-specific characteristics. 
 
+\begin{center}
+\textbf{Insert Table \ref{tab:barriers} About Here}
+\end{center}
+
+Geographic researchers identified the incentive structure of the researcher environment as an important barrier to reproducibility in the discipline.
+A majority of geographic researchers identified both the pressure to publish (71.5\%) and insufficient oversight of the research process (71.1\%) as barriers to reproducibility.
+A high percentage of physical, methods-focused, quantitative, and mixed-methods researchers identified these factors as barriers. 
+Qualtiative geographers were least concerned with these factors, but a majority of these researchers still identified both factors as barriers to reproducibility in the field.
+Contrary to alarms raised in some of the reproducibility literature, a minority of geographic researchers (28.4\%) believe that the fabrication of data, the manipulation of research results, and similar forms of fraud are a cause of irreproducibility in the discipline.
+
+Researchers identified the unavailability of research artifacts (e.g., data, code) as a second barrier to reproducibility, but the importance placed on different artifacts varied by subfield and methodological approach.
+A higher percentage physical and methods-focused researchers identified all five of the artifacts we investigated as common barriers to reproducibility as compared to human and nature-society researchers.
+A similar gap existed between qualitative researchers and those identifying as mixed-methods researchers or quantitative researchers. 
+The largest differences between these groups existed in researchers beliefs about how often the availability of research protocols/code and the use of restricted data or software impacted reproducibility.
+More than three-quarters of physical (77.0\%) and methods-focused (86.9\%) geographers identified the availability of protocols/code as contributing to irreproducibility, whereas less than two-thirds of human (59.7\%) and nature-society (50.0\%) identified this same factor. 
+Only a large percentage of methods-focused researchers (82.0\%) identified the use of restricted data/software as a common contributor to irreproducibility in the discipline.
+A similar gap existed between qualitative researchers, a minority of which identified code availability or the use of restricted data/software as contributing to irreproducibility, and quantiative and mixed-methods researchers, the majority of which saw these factors as frequent causes of irreproducibility.  
+
+A majority of researchers identified geographic variation (71.5\%), researcher positionality (64.2\%), and chance (62.3\%) as study-specific factors limiting the reproducibility of geographic research.
+Minor variations in the emphasis placed on these factors exist across subfields and approaches. 
+A higher percentage of nature-society (81.8\%) and physical (80.0\%) researchers emphasized the important role the spatial variation and complexity of geographic processes can play when attempting to reproduce geographic research, but this factor was also recognized by researchers across subfields and approaches. 
+A smaller percentage of physical geographers placed emphasis on the impact of researcher positionality may have on reproducibility (50.8\%) when compared to all other subfields.  
+Differences between the computational environment used to conduct an original study and a reproduction attempt was generally not seen as a factor contributing to a lack of reproducibility in the discipline. 
+The exception being methods-focused (68.9\%) and quantitative researchers (63.1\%\%), which aligns with the research practices used in these areas of research.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Attempted Reproductions}
+A total of 102 of the researchers that responded to our survey (46.8\%) reported attempting a reproduction study during the past two years.
+However, 23 of those reported reproduction attempts were of the researcher own work, while another 13 were in fact replications of prior work in new locations.
+In the end, only \textit{$n_{a}$}=32 (14.7\%) of all respondents reported attempting to reproduce a study originally conducted by another researcher during the past two years.
+
+This subset of 32 participants formed the basis for our second analysis of researcher practices and experiences when attempting reproductions of the work of others.
+Reproduction attempts were predominantly made by geographic researchers that self-identified as working in physical geography (43.8\%) and geographic methods and Methods (37.5\%).
+Respondents attempting reproductions were also focused on quantitative (68.8\%) and mixed-methods (41.2\%) approaches. 
+Only a quarter (25\%) of the researchers attempting reproductions reported submitting any of their findings for publication.
+
+In most instances, researchers reported some ability to access the research artifacts used in the study they were attempting to reproduce and the ability to recreate at least some of the results of that study.  
+The majority of researchers that attempted reproductions (87.5\%) were able to access at least some of the data used in the original study, but few researchers (12.5\%) reported access to all of the original data.
+Researchers also reported the ability to access at least some information about study procedures (68.8\%) and its computational environment (59.4\%), but limited ability to access all procedural (9.4\%) and computational information (12.5\%). 
+Despite these limitations, nearly all researchers reported at least partially reproducing some results (81.3\%), but less than half reported being able to at least partially reproduce all results (21.9\%).
+Few researchers were able to identically reproduce all results (9.4\%).  
+
+How much access researchers had to study data and procedural information impacted their ability to reproduce results. 
+If geographic researchers had access to at least some of the data and procedures used in the study they were attempting to reproduce, they were able to at least partially reproduce some results in nearly all cases (90.5\%), but were able at least partially reproduce all results only a fraction of the time (14.3\%).
+Accessibility to data and procedures appears to be equally important in raising the chances of reproducing all results. 
+Given access to some or all procedural information, having access to all data doubled a researcher's chances of reproducing all results (69.5\%) when compared to having access to only some of the data (27.5\%). 
+We observed the same doubling effect when reversing this relationship. 
+Given access to some or all of a study's data, having access to all the procedural information doubled a researcher's chances of reproducing all results (70.0\%) when compared to having access to only some of the procedures (30.0\%).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Discussion}
+
+\begin{itemize}
+    \item Geographic researcher closely link replication and reproduction. This isn't surprising as geographic researchers often have training from other disciplines and variation in the use of the two term, and their outright reversal in meaning, is well documented. It is likely that this is the root of the conflation. This muddling of the definition has important implications ...
+    \item The reproducibility literature emphasizes quantitative, particularly computational, forms of research. This emphasis necessarily carried over into our survey instrument, which may automatically lower response scores for researchers not working in these areas (e.g., qualitative, human geography). This reality may automatically deflate the aggregate measures of certain sub-group. We can use the response to Q8f as a filter to explore this issue. These scores do reflect their present level of understanding, but the practices may not be relevant to their methods or epistomologies. This fact suggests a meed to examine what reproducibility means in the context of geography's qual, NS, and human traditions.
+    \item A standing question is how should geographic research approaches be designed to efficiently generate reliable knowledge.
+    \item Add discussion about limitation of creating strata for the sample frame being limited so we could not post-stratify.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conclusion}
+
+\begin{itemize}
+    \item Overall story is that collectively geographers are aware of reproducible research practices, but don't have a matching amount of direct experience using those practices. There are also many perceived barriers to conducting reproducible research.
+\end{itemize}
+
+\theendnotes
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgement(s)}
+We thank Tyler Hoffman for providing technical assistance in the development and execution of a set of trial queries using the Scopus API.
+
+\section*{Funding}
+This material is based on work supported by the National Science Foundation under Grant No. \textbf{BCS-2049837}.
+
+\section*{Notes on contributor(s)}
+\textbf{Kedron:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Supervision, Project Administration, Funding Acquisition. \textbf{Holler:} Conceptualization, Methodology, Data Curation, Writing - Review and Editing, Funding Acquisition. \textbf{Bardin:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Data Curation, Software.
+
+
+
+\newpage
+\bibliography{references}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{landscape}
+\begin{table}[h]
+    \centering
+    \begin{threeparttable}
+    \caption{Descriptive summary of survey results}
+    \begin{tabular}{l c c c c c c c c c c c c}
+         \hline
+                    & \multicolumn{4}{1}{Subfield}  & & \multicolumn{3}{1}{Approach} & &         &   & \\
+         Measure    & HU & PH & NS & MT             & & QN & QL & MX                 & & Overall & N & Missing \\
+         \hline
+         Definition (\textit{d}) & \begin{tabular}[c]{@{}c@{}}1.84\\ (1.14)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}1.73\\ (1.11)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}1.86\\ (1.06)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}2.00\\ (1.09)\end{tabular} & 
+                        & 
+                        \begin{tabular}[c]{@{}c@{}}1.91\\ (1.13)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}1.69\\ (1.26)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}1.82\\ (1.04)\end{tabular} & 
+                        & 
+                        \begin{tabular}[c]{@{}c@{}}1.83\\ (1.12)\end{tabular} &
+                        181 &
+                        30 \\
+         Familiarity (\textit{f}) &  \begin{tabular}[c]{@{}c@{}}2.36\\ (1.36)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}3.71\\ (0.98)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}2.82\\ (1.76)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}3.97\\ (0.86)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}3.75\\ (0.98)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}1.75\\ (1.30)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}3.46\\ (1.22)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}3.26\\ (1.36)\end{tabular} &
+                        218 &
+                        0 \\
+         Experience (\textit{p}) &  \begin{tabular}[c]{@{}c@{}}0.60\\ (0.80)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}2.06\\ (1.18)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}1.18\\ (0.96)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}1.85\\ (1.38)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}1.63\\ (1.32)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}0.48\\ (0.68)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}1.69\\ (1.24)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}1.44\\ (1.28)\end{tabular}
+                        &
+                        218 &
+                        0 \\         
+         Barriers (\textit{b})   &  \begin{tabular}[c]{@{}c@{}}7.32\\ (3.57)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}8.31\\ (3.00)\end{tabular} & 
+                        \begin{tabular}[c]{@{}c@{}}7.44\\ (3.20)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}9.31\\ (2.79)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}8.78\\ (2.80)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}5.97\\ (3.83)\end{tabular} &
+                        \begin{tabular}[c]{@{}c@{}}8.58\\ (2.96)\end{tabular} &
+                        &
+                        \begin{tabular}[c]{@{}c@{}}8.20\\ (3.24)\end{tabular} &
+                        182 &
+                        29 \\
+        \hline
+    \end{tabular}
+    \begin{tablenotes}
+        \footnotesize
+        \item \textit{HU} Human Geography, \textit{PH} Physical Geography, \textit{NS} Nature and Society, \textit{MT} GIScience and Methods; \textit{QN} Quantitative, \textit{QL} Qualitative, \textit{MX} Mixed Methods.
+    \end{tablenotes}
+    \label{tab:overview}
+    \end{threeparttable}
+\end{table}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \begin{table}[h]
     \centering
     \begin{threeparttable}
@@ -456,94 +560,7 @@ To examine differences in researcher beliefs about specific factors potentially 
     \label{tab:barriers}
     \end{threeparttable}
 \end{table}
-
-Geographic researchers identified the incentive structure of the researcher environment as an important barrier to reproducibility in the discipline.
-A majority of geographic researchers identified both the pressure to publish (71.5\%) and insufficient oversight of the research process (71.1\%) as barriers to reproducibility.
-A high percentage of physical, methods-focused, quantitative, and mixed-methods researchers identified these factors as barriers. 
-Qualtiative geographers were least concerned with these factors, but a majority of these researchers still identified both factors as barriers to reproducibility in the field.
-Contrary to alarms raised in some of the reproducibility literature, a minority of geographic researchers (28.4\%) believe that the fabrication of data, the manipulation of research results, and similar forms of fraud are a cause of irreproducibility in the discipline.
-
-Researchers identified the unavailability of research artifacts (e.g., data, code) as a second barrier to reproducibility, but the importance placed on different artifacts varied by subfield and methodological approach.
-A higher percentage physical and methods-focused researchers identified all five of the artifacts we investigated as common barriers to reproducibility as compared to human and nature-society researchers.
-A similar gap existed between qualitative researchers and those identifying as mixed-methods researchers or quantitative researchers. 
-The largest differences between these groups existed in researchers beliefs about how often the availability of research protocols/code and the use of restricted data or software impacted reproducibility.
-More than three-quarters of physical (77.0\%) and methods-focused (86.9\%) geographers identified the availability of protocols/code as contributing to irreproducibility, whereas less than two-thirds of human (59.7\%) and nature-society (50.0\%) identified this same factor. 
-Only a large percentage of methods-focused researchers (82.0\%) identified the use of restricted data/software as a common contributor to irreproducibility in the discipline.
-A similar gap existed between qualitative researchers, a minority of which identified code availability or the use of restricted data/software as contributing to irreproducibility, and quantiative and mixed-methods researchers, the majority of which saw these factors as frequent causes of irreproducibility.  
-
-A majority of researchers identified geographic variation (71.5\%), researcher positionality (64.2\%), and chance (62.3\%) as study-specific factors limiting the reproducibility of geographic research.
-Minor variations in the emphasis placed on these factors exist across subfields and approaches. 
-A higher percentage of nature-society (81.8\%) and physical (80.0\%) researchers emphasized the important role the spatial variation and complexity of geographic processes can play when attempting to reproduce geographic research, but this factor was also recognized by researchers across subfields and approaches. 
-A smaller percentage of physical geographers placed emphasis on the impact of researcher positionality may have on reproducibility (50.8\%) when compared to all other subfields.  
-Differences between the computational environment used to conduct an original study and a reproduction attempt was generally not seen as a factor contributing to a lack of reproducibility in the discipline. 
-The exception being methods-focused (68.9\%) and quantitative researchers (63.1\%\%), which aligns with the research practices used in these areas of research.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Actual Reproductions}
-A total of \textit{$n_{2}$}=102 (46.7\%) of the authors that responded to our survey reported attempting to reproduce a study in the past two years.
-This subset of participants formed the basis for our second analysis of researcher practices and experiences when attempting reproductions.
-Reproduction attempts were predominantly made by geographic researchers that self-identified as working in physical geography (42.2\%) and geographic methods and GIScience (35.3\%).
-Respondents attempting reproductions were also focused on quantitative (52.0\%) and mixed-methods (46.1\%) approaches. 
-Only two respondents that self-identified as qualitative researchers attempted to reproduce a study in the past two years.
-Approximately half (49\%) of the researchers attempting reproductions reported submitting their findings for publication.
-
-WHY DID RESEARCHERS ATTEMPT REPRODUCTION - Q10
-\begin{itemize}
-    \item to check results - surprising, as part of peer-review, of related interest
-    \item to check their own results and make them more accessible
-    \item to learn more about methods and/or transfer them into their own work
-\end{itemize}
-
-In most instances, researchers reported some ability to access the research artifacts used in the study they were attempting to reproduce and the ability to recreate at least some of the results of that study.  
-The majority of researchers that attempted reproductions (82\%) were able to access at least some of the data used in the original study, but few researchers (27\%) reported access to all of the original data.
-Researchers also reported the ability to access at least some information about study procedures (69\%) and its computational environment (60\%), but limited ability to access all procedural (20\%) and computational information (15\%). 
-Nearly all researchers reported at least partially reproducing some results (96\%), but less than half reported being able to at least partially reproduce all results (38\%).
-Few researchers were able to identically reproduce all results (20\%).  
-
-How much access researchers had to study data and procedural information impacted their ability to reproduce results. 
-If geographic researchers had access to at least some of the data and procedures used in the study they were attempting to reproduce, they were able to at least partially reproduce some results in all cases, but were able at least partially reproduce all results less than half of the time (42.9\%).
-With complete access to all data and procedures, researchers reported the ability to at least partially reproduce all results 68.4 percent of the time.
-Accessibility to data and procedures appears to be equally important in raising the chances of reproducing all results. 
-Given access to some or all procedural information, having access to all data doubled a researcher's chances of reproducing all results (69.5\%) when compared to having access to only some of the data (27.5\%). 
-We observed the same doubling effect when reversing this relationship. 
-Given access to some or all of a study's data, having access to all the procedural information doubled a researcher's chances of reproducing all results (70.0\%) when compared to having access to only some of the procedures (30.0\%).
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Discussion}
-
-\begin{itemize}
-    \item Geographic researcher closely link replication and reproduction. This isn't surprising as geographic researchers often have training from other disciplines and variation in the use of the two term, and their outright reversal in meaning, is well documented. It is likely that this is the root of the conflation. This muddling of the definition has important implications ...
-    \item The reproducibility literature emphasizes quantitative, particularly computational, forms of research. This emphasis necessarily carried over into our survey instrument, which may automatically lower response scores for researchers not working in these areas (e.g., qualitative, human geography). This reality may automatically deflate the aggregate measures of certain sub-group. We can use the response to Q8f as a filter to explore this issue. These scores do reflect their present level of understanding, but the practices may not be relevant to their methods or epistomologies. This fact suggests a meed to examine what reproducibility means in the context of geography's qual, NS, and human traditions.
-    \item A standing question is how should geographic research approaches be designed to efficiently generate reliable knowledge.
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Conclusion}
-
-\begin{itemize}
-    \item Overall story is that collectively geographers are aware of reproducible research practices, but don't have a matching amount of direct experience using those practices. There are also many perceived barriers to conducting reproducible research.
-\end{itemize}
-
-\theendnotes
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Acknowledgement(s)}
-We thank Tyler Hoffman for providing technical assistance in the development and execution of a set of trial queries using the Scopus API.
-
-\section*{Funding}
-This material is based on work supported by the National Science Foundation under Grant No. \textbf{BCS-2049837}.
-
-\section*{Notes on contributor(s)}
-\textbf{Kedron:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Supervision, Project Administration, Funding Acquisition. \textbf{Holler:} Conceptualization, Methodology, Data Curation, Writing - Review and Editing, Funding Acquisition. \textbf{Bardin:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Data Curation, Software.
-
-
-
-\newpage
-\bibliography{references}
-
 \newpage
 \noindent PETER KEDRON is an Associate Professor in the School of Geographical Science and Urban Planning and core faculty member in the Spatial Analysis Research Center (SPARC) at Arizona State University, Tempe, AZ, 85283, US. Email: Peter.Kedron@asu.edu. His research interests include spatial analysis, geographic information science, economic geography, and the accumulation of knowledge about geographic phenomena. \\  
   
