@@ -1,0 +1,43 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Assessing the Reproducibility of Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{The Evidence Currently Available from Reproducibility Assessments}
+The reproducibility of research can be assessed directly by attempting to recreate the results of selected studies, or indirectly by reviewing the availability of the research components (e.g., data and code) or surveying those working in that field about their research practices. 
+Direct assessments of reproducibility provide insight into how a particular study was conducted and why a consistent result could, or could not, be obtained.  
+However, such assessments are resource and time intensive, which makes it difficult to gather information from numerous studies. 
+Constrained to a limited number of studies, direct assessments offer only suggestive evidence about the reproducibility of unevaluated studies and the prevalence of reproducible research practices. 
+In contrast, comparatively less resource intensive indirect assessments that catalog reproducible research practices across many studies offer less insight into individual studies, but provide evidence of how common reproducible research practices are and, by extension, how reproducible work in a field of study is likely to be.
+
+Across many disciplines, direct assessments of reproducibility remain relatively rare and attempted reproductions in the biomedical sciences \citep{iqbal2016reproducible}, economics \citep{chang2015economics}, computer science \citep{moraila2014measuring}, and psychology \citep{open2015estimating} have all been able to recreate only a portion of results. 
+Within geography, the small number of available reproduction attempts similarly suggest that many studies cannot be fully reproduced, or are simply missing the components needed to attempt a reproduction \citep{nust2018, Kedron2021ssrn, konkol2019, ostermann2021, Nust_AGILE_2022}.
+For example, \citet{ostermann2021}'s attempt to reproduce the computational analyses of 75 papers published in the GIScience conference series found that most results could not be recreated, or could only be recreated with significant effort. 
+\citet{konkol2019}'s attempt to reproduce 41 geocomputational studies likewise found that 39 of the papers had coding issues that hindered reproduction and that 47 percent of the figures created using the original data and code deviated from the those published in some significant way (e.g., graphs with different curves). 
+A series of reproduction attempts by \citet{Kedron_MollaloRP, Kedron_SaffaryRP, Kedron_VijayanRP} and \citet{paez2022reproducibility} show that the issues hindering the reproduction of results extend beyond computation and into the conceptualization and design of geographic research.
+While indicative, these studies provide only suggestive evidence of underlying problems, not a comprehensive assessment of the prevalence or sources of these issues.
+
+Indirect reproducibility assessments offer a wider view of what and how common these underlying issues may be. 
+The available evidence from reviews of studies across the sciences suggests inadequate record keeping, opaque reporting, unavailable research components, and a lack of incentives are likely important factors contributing to the irreproducibility of research \citep{NASEM2019}. 
+Systematic reviews of publications in prominent outlets \citep{byrne_2017,stodden2018empirical} suggest these issues are likely widespread. 
+Reproducibility surveys paint a similar picture. 
+Recent surveys suggest that the majority of scientists have either not tried, or tried and failed to reproduce another scientist's work \citep{baker20161, boulbes2018survey}. 
+Moreover, a sizable portion of the researchers responding to these surveys admit to engaging in questionable research practices linked to the publication of false positive results and low reproducibility rates \citep{fanelli2009many, fraser2018questionable}.
+These findings match researcher perceptions, which link irreproducibility to causes ranging from natural variation to outright fraud \citep{ranstam2000fraud, anderson2007normative, baker20161}. 
+
+To date only a handful studies have attempted to indirectly measure the reproducibility of geographic research.
+In a survey of remote sensing editors and working group officers of the International Society for Photogrammetry and Remote Sensing, \citet{balz2020reproducibility} asked respondents whether they believe a reproducibility crises existed in their sub-field, but not what the causes of such a crisis might be.
+In a richer treatment of the issue, \citet{konkol2019} surveyed of participants from the 2016 European Geosciences Union General Assembly to assess the frequency with which researchers published their work in ways that enabled computational reproducibility. 
+Those authors found that only 33 percent of respondents included links to the data used in their analyses and only 12 percent provided their analytical code. 
+The authors also found that only seven percent of respondents ever attempted to reproduce the work of other researchers.
+Similarly, in a literature review of volunteered geographic information research, \citet{ostermann2017} found the computational reproducibility of work in the sub-field limited by the availability of original data, metadata, source code, or pseudocode.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Limitations of the Currently Available Evidence}
+Despite their growing number, the available body of reproducibility assessments currently provides insufficient evidence to conclusively evaluate the reproducibility of research generally, or disciplinary research specifically \citep{NASEM2019}.
+This knowledge gap exists because neither direct nor indirect reproducibility assessments have been designed so the results obtained from the sample of studies evaluated can be extended to the population of research as a whole.
+Most reproducibility reviews sample studies from conveniently accessible archives, such as conference paper series \citep{gundersen2018state, ostermann2017}, or target specific journals and disciplinary repositories \citep{stodden2018empirical, stodden2018enabling, byrne_2017}.
+These assessments have also tended to focus on evaluating the computational components of research such as data and code availability, as this information is easier to identify and assess at scale when compared to components like field procedures or qualitative analysis that may be included only in text. 
+
+Surveys of researcher practices and attitudes on reproducibility face similar challenges. 
+Rather than carefully defining researcher populations of interest, existing surveys have drawn data non-randomly from self-selecting populations that are convenient to survey (e.g., members of professional association, conference attendees), but are not necessarily representative of researchers active in a particular field. 
+These surveys have also commonly failed to systematically report the methodological details (e.g., response rate) needed to assess and address potential bias in survey response. 
