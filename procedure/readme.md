@@ -13,5 +13,6 @@ code |	203_results.R |	create and save results tables |
 environment |	r_environment.txt |	computational environment information |
 protocol | AAPOR-distribution-codes.pdf |	distribution codes for survey response |
 protocol |	Reproducibility-Survey-Instrument.pdf |	Survey instrument |
+protocol | Survey-Disposition.xlsx | disposition codes assigned to respondents
 protocol |	price_terms_and_conditions.pdf | prize terms |
 protocol |	reproducibility_survey_information_sheet.pdf|	Info sheet provided to participants |
