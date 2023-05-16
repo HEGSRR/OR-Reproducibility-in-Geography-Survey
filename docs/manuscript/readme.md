@@ -1,3 +1,3 @@
 # Manuscript
 
-Store compiled manuscript for submission and publication here.
+Manuscript files compiled and linked to [Overleaf](https://www.overleaf.com) project.
