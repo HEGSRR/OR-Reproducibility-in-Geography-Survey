@@ -1,7 +1,7 @@
 # Procedure
 
-Directory |	File | Name	| Purpose |
--- | -- | -- | -- |
+Directory |	File | Purpose	|
+-- | -- | -- |
 code |	101_scopus_pulls.R |	read in raw data from SCOPUS exports and combine into a single data frame |
 code |	102_hegs_sample_frame.R |	Create sample frame and randomly draw sample |
 code |	103_followup_emails.R |	Generate mailing list for followups |
