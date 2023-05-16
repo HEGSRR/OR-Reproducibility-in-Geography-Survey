@@ -1,28 +1,21 @@
-# Title of Study
-
-This study is a reproduction/replication of:
-
-> Insert full citation to original study
+# Reproducible Research Practices and Barriers to Reproducible Research in Geography: Insights from a Survey
 
 ## Abstract
 
-> Briefly describe the study. If the study is a reproduction or replication, the full citation of the original study should be included here with digital object identifier (DOI) to the study and, if applicable, any preregistration, code or data repositories. Delete this instruction from the final repository.
+> While the number of reproduction and replication studies undertaken in the social and behavioral sciences continues to rise, such studies have not yet become commonplace in geography. Existing attempts to reproduce geographic research suggest that many studies cannot be fully reproduced, or are simply missing components needed to attempt a reproduction. Despite this suggestive evidence, we have not yet systematically assessed geographers' perceptions of reproducibility, the use of reproducible research practices across the discipline's diverse research traditions, or identified the factors that have kept geographers from conducting more reproduction studies. This study addresses each of these questions by surveying active geographic researchers selected using probability sampling techniques from a rigorously constructed sampling frame. Our results identify a clear division in perception of reproducibility among geographic sub-fields. We also find varying levels of familiarity with reproducible research practices and a perceived lack of incentives to attempt and publish reproduction studies. In contrast, many researchers did report attempting to reproduce their own work but not publishing those efforts, which suggests a foundation exists for the examination and expansion of reproducibility in the field.
 
 ## Authors
 
-- First Name, Last Name
-- First Name, Last Name
+- [Peter Kedron](https://peterkedron.com/)
+- [Joseph Holler](https://github.com/josephholler)
+- [Sarah Bardin](https://github.com/SarahBardin)
 
 ## Repository Documents
 
-> Link your reports, manuscripts, presentations, publication DOIs, preregistrations, etc. here. Delete this instruction and unused list items from your final repository. Adjust the file names and paths and add additional items as necessary.
-
-- Preregistration: https://osf.io/my_study
-- Publication: https://doi.org/my_study
-- Pre-analysis plan: [docs/report/preanalysis.pdf](docs/report/preanalysis.pdf)
-- Study report: [docs/report/report.pdf](docs/report/report.pdf)
-- Manuscript: [docs/manuscript/manuscript.pdf](docs/manuscript/manuscript.pdf)
-- Presentation: [docs/presentation/presentation.pdf](docs/presentation/presentation.pdf)
+- OSF Preregistration: https://osf.io/6zjcp
+- OSF Project: https://osf.io/5yeq8/
+- Working Preprint: [docs/manuscript/manuscript.pdf](docs/manuscript)
+- Publication: Manuscript in review
 
 ## Repository Contents
 
