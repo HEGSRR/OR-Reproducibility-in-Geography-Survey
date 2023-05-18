@@ -50,6 +50,11 @@ hegs_rpr_deidentified <- raw_rpr_responses %>%
                                 DistributionChannel,
                                 UserLanguage))
 
+# save plain text file of questions
+sink(here("data", "metadata", "questions.txt"))
+print(raw_rpr_survey_questions, n=1000)
+sink()
+
 saveRDS(hegs_rpr_deidentified, here("data","raw","public","raw_hegs_rpr.rds"))
 
                         
