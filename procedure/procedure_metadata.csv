@@ -1,6 +1,15 @@
 Directory,File Name,Purpose
-code,script1.R,download and preprocess data
-protocol,survey_irb.pdf,Institutional review board protocol for survey sampling and instrument
-protocol,mapworkshop.pdf,participatory mapping workshop protocol
-code,script2.R,run analysis
-code,script3.R,generate visualizations for results
+code,101_scopus_pulls.R,read in raw data from SCOPUS exports and combine into a single data frame
+code,102_hegs_sample_frame.R,Create sample frame and randomly draw sample
+code,103_followup_emails.R,Generate mailing list for followups
+code,200_deidentify.R,download and deidentify survey response (survey key and ID removed)
+code,201b_Q6_coding.R,process individual response coding
+code,201c_Q10_coding.R,process individual response coding
+code,202_preprocess.R,generate raw descriptive tables
+code,203_results.R,create and save results tables
+environment,r_environment.txt,computational environment information
+protocol,AAPOR-distribution-codes.pdf,distribution codes for survey response
+protocol,Survey-Disposition.xlsx,AAPOR disposition codes assigned to sample
+protocol,Reproducibility-Survey-Instrument.pdf,Survey instrument
+protocol,price_terms_and_conditions.pdf,prize terms
+protocol,reproducibility_survey_information_sheet.pdf,Info sheet provided to participants

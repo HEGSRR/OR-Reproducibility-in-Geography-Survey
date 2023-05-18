@@ -1,2 +1,2 @@
 # Code
-Store computational code-based research procedures here. Document an index of files stored here in the root [procedures](../) folder.
+Computational code-based research procedures here. Files indexed in the root [procedures](../) folder.
