@@ -65,7 +65,8 @@ int_hegs_rpr <- int_hegs_rpr %>%
                           0))
 
 # isolate incomplete surveys
-unfinished <- filter(int_hegs_rpr, include == 0) %>% select(Q3, Q3_5_TEXT, Q3_recoded)
+unfinished <- filter(int_hegs_rpr, include == 0) %>% select(Q3, Q3_5_TEXT, Q3_recoded, Q4)
+write.csv(unfinished, here("data", "derived", "public", "incomplete_responses.csv"))
 
 int_hegs_rpr <- raw_hegs_rpr %>% filter(include == 1)
 summary(int_hegs_rpr$Progress)
