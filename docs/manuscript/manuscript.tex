@@ -3,6 +3,7 @@
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
+\usepackage{doi}
 \usepackage{natbib}
 \bibliographystyle{chicago}
 \setcitestyle{authoryear,open={(},close={)}}
@@ -224,6 +225,8 @@ A total of \textit{n}=218 of the authors we contacted completed the online surve
 The contact rate for the survey was 13.9 percent and the cooperation rate was 77.6 percent, yielding an overall response rate of 10.8 percent. 
 The refusal rate was 3.1 percent\endnote{All outcome rates are reported using \citet{aaporstandards} standards. 
 The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}.
+Another \textit{$n_{nc}$}=40 authors started the survey, but did not complete enough of the survey to be included in the analysis.
+
 Respondents were predominantly male (65.1\%) and between the ages of 35 and 55 (62.4\%). 
 The majority of respondents were academics, and they were balanced across career levels from graduate students to full professors as no one career level made up more that 30 percent of the sample.
 Respondents were balanced across the disciplinary subfields--- physical geography (29.8\%), geographic methods and GIScience (28.0\%), nature and society (10.1\%), and human geography (30.7\%); and methodological approaches---quantitative (42.2\%), mixed methods (39.0\%), and qualitative (18.3\%).
@@ -439,7 +442,13 @@ However, we believe the number of individuals falling into this category will be
 
 \textit{Self-selection Bias}. A related concern is that it may be the case that geographic researchers more familiar with reproducible research practices, or those working in subfields more involved with the current reproduciblity debate (e.g., quantitative, computational research) were more likely to respond to our survey. 
 Conversely, it may also be the case that researchers working in subfields traditionally associated with critiques of a positivist scientific approach (e.g., qualitative, human geography) were less likely to participate in our survey. 
-While self-selection bias may shape our data, we believe its presence is a limited concern because it is likely to only amplify some of our key findings. 
+We attempted to partially quantify this issue by examining the characteristics of the 40 researchers who started our survey but did not complete enough of the survey to be included in the final analysis. 
+The percentage of incomplete responses for each disciplinary subfield and methodological approach broadly matched the percentages we observed for each subgroup in our completed responses.
+The only deviation we observed from the complete survey percentages was for researchers that identified as geographic methods and GIScience (28.3\%) and quantiative (22.5\%) researchers. 
+These values suggest that, at least among researchers that stated the survey, self-selection was not a significant issue.
+This analysis of course does not measure researchers who elected to never start the survey.
+
+While we cannot definitively eliminate the possibility of self-selection bias from our survey, we believe its presence may be a limited concern because it is likely to only amplify some of our key findings. 
 Namely, that reproducible research practices have yet to be widely adopted in the field and that relatively few geographers are attempting and sharing independent reproduction studies.
 Nonetheless, we believe concerns about self-selection should motivate a closer examination of reproducibility within the subfields and approaches for which we obtained the smallest samples --- qualitative, human geography, and nature society.  
 
@@ -476,10 +485,10 @@ This material is based on work supported by the National Science Foundation unde
 \section*{Notes on contributor(s)}
 \textbf{Kedron:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Supervision, Project Administration, Funding Acquisition. \textbf{Holler:} Conceptualization, Methodology, Data Curation, Writing - Review and Editing, Funding Acquisition. \textbf{Bardin:} Conceptualization, Methodology, Writing - Original Draft, Writing - Review and Editing, Data Curation, Software.
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \bibliography{references}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \begin{landscape}
