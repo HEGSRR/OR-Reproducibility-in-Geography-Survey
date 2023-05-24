@@ -71,6 +71,34 @@ write.csv(unfinished, here("data", "derived", "public", "incomplete_responses.cs
 int_hegs_rpr <- raw_hegs_rpr %>% filter(include == 1)
 summary(int_hegs_rpr$Progress)
 
+complete <- table(int_hegs_rpr$Q3_recoded, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 1) %>% 
+  select(Var1, complete = Freq)
+
+incomplete <- table(int_hegs_rpr$Q3_recoded, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 0) %>% 
+  select(Var1, incomplete = Freq)
+
+completeness_subfield <- complete %>% 
+  left_join(incomplete, by = "Var1") %>% 
+  mutate(pct = complete / (complete + incomplete) * 100)
+
+complete <- table(int_hegs_rpr$Q4, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 1) %>% 
+  select(Var1, complete = Freq)
+
+incomplete <- table(int_hegs_rpr$Q4, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 0) %>% 
+  select(Var1, incomplete = Freq)
+
+completeness_method <- complete %>% 
+  left_join(incomplete, by = "Var1") %>% 
+  mutate(pct = complete / (complete + incomplete) * 100)
+
 
 
 #---------------------------------------------------------------------------------------------------------------------------
