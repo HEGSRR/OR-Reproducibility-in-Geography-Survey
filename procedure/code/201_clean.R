@@ -17,12 +17,11 @@ writeLines(capture.output(sessionInfo()),here("procedure","environment","r_envir
 
 #--------------------------------------------#
 
-#- Read in and limit data file to completes -#
+#- Read in data file to completes -#
 
 #--------------------------------------------#
 raw_hegs_rpr <- readRDS(here("data","raw","public","raw_hegs_rpr.rds"))
-int_hegs_rpr <- raw_hegs_rpr %>% filter(Progress > 70 & Q1 != "Under 18")
-  summary(int_hegs_rpr$Progress)
+
 
 #------------------------------------#
 
@@ -30,11 +29,12 @@ int_hegs_rpr <- raw_hegs_rpr %>% filter(Progress > 70 & Q1 != "Under 18")
 
 #------------------------------------#
   
-table(toupper(int_hegs_rpr$Q3_5_TEXT))
+table(toupper(raw_hegs_rpr$Q3_5_TEXT))
 
 #-Open response areas of specialization to recode-#
 hum_list  <- c("ECONOMIC GEOGRAPHY","POLITICAL GEOGRAPHY", "POLITICAL SCIENCE", "SOCIO-ANTHROPOLOGY", "MOBILITIES",
-              "SOCIOLOGY","TRANSPORT GEOGRAPHY","TRANSPORTATION","TRANSPORTATION ENGINEERING", "URBAN GEOGRAPHY")
+              "SOCIOLOGY","TRANSPORT GEOGRAPHY","TRANSPORTATION","TRANSPORTATION ENGINEERING", "URBAN GEOGRAPHY",
+              "GEOGRAPHY OF INNOVATION")
 
 phys_list <- c("BIOGEOGRAPHY","PALEOBOTANY","PALEOCLIMATOLOGY")
 
@@ -43,7 +43,7 @@ nat_list  <- c("CITY PLANNING, SUSTAINABILITY TRANSFORMATIONS","ENVIRONMENTAL AR
 gis_list  <- c("GEOSPATIAL INFORMATION SCIENCE", "SPATIAL ECONOMETRICS", "CARTOGRAPHY","REMOTE SENSING",
               "REMOTE SENSING OF ENVIRONMENT")
 
-int_hegs_rpr <- int_hegs_rpr %>% 
+int_hegs_rpr <- raw_hegs_rpr %>% 
                   mutate(Q3_recoded = as.factor(ifelse(toupper(Q3_5_TEXT) %in% hum_list, 1, 
                                         ifelse(toupper(Q3_5_TEXT) %in% phys_list, 2, 
                                             ifelse(toupper(Q3_5_TEXT) %in% nat_list, 3, 
@@ -57,6 +57,48 @@ levels(int_hegs_rpr$Q3_recoded) <- c("Human",
 
 table(int_hegs_rpr$Q3_recoded,int_hegs_rpr$Q3)
 ## Note: 2 respondents skipped Q3 and 1 respondent who indicated "other" did not specify what their subfield is
+
+# Add field for competed surveys, where include = 1 for completed or 0 for incomplete
+int_hegs_rpr <- int_hegs_rpr %>% 
+  mutate(include = ifelse(Progress > 70 & Q1 != "Under 18",
+                          1,
+                          0))
+
+# isolate incomplete surveys
+unfinished <- filter(int_hegs_rpr, include == 0) %>% select(Q3, Q3_5_TEXT, Q3_recoded, Q4)
+write.csv(unfinished, here("data", "derived", "public", "incomplete_responses.csv"))
+
+int_hegs_rpr <- int_hegs_rpr %>% filter(include == 1)
+summary(int_hegs_rpr$Progress)
+
+complete <- table(int_hegs_rpr$Q3_recoded, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 1) %>% 
+  select(Var1, complete = Freq)
+
+incomplete <- table(int_hegs_rpr$Q3_recoded, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 0) %>% 
+  select(Var1, incomplete = Freq)
+
+completeness_subfield <- complete %>% 
+  left_join(incomplete, by = "Var1") %>% 
+  mutate(pct = complete / (complete + incomplete) * 100)
+
+complete <- table(int_hegs_rpr$Q4, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 1) %>% 
+  select(Var1, complete = Freq)
+
+incomplete <- table(int_hegs_rpr$Q4, int_hegs_rpr$include) %>% 
+  as.data.frame() %>% 
+  filter(Var2 == 0) %>% 
+  select(Var1, incomplete = Freq)
+
+completeness_method <- complete %>% 
+  left_join(incomplete, by = "Var1") %>% 
+  mutate(pct = complete / (complete + incomplete) * 100)
+
 
 
 #---------------------------------------------------------------------------------------------------------------------------
