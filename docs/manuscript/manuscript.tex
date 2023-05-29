@@ -222,8 +222,8 @@ We similarly analyzed barriers to the reproduction of results by creating statis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Results}
 A total of \textit{n}=218 of the authors we contacted completed the online survey with information sufficient for analysis. 
-The contact rate for the survey was 13.9 percent and the cooperation rate was 77.6 percent, yielding an overall response rate of 10.8 percent. 
-The refusal rate was 3.1 percent\endnote{All outcome rates are reported using \citet{aaporstandards} standards. 
+The contact rate for the survey was 13.9 percent and the cooperation rate was 78.7 percent, yielding an overall response rate of 10.9 percent. 
+The refusal rate was 2.9 percent\endnote{All outcome rates are reported using \citet{aaporstandards} standards. 
 The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}.
 Another \textit{n}=40 authors started the survey, but did not complete enough of the survey to be included in the analysis.
 
@@ -239,7 +239,12 @@ More pointedly, the majority of survey respondents reported thinking about the r
 More than half of the researchers we surveyed (52.8\%) also reported considering reproducibility while peer reviewing a grant proposal or publication during the same time frame. 
 However, researchers estimated that only 50.6 percent of the results published in the discipline were reproducible, albeit with a large standard deviation of 24.7 percent that suggests a great deal of uncertainty about the true value. 
 Few respondents reported attempting to reproduce the work of other researchers (14.7\%) with fewer still attempting to publish those reproduction studies (6.8\%). 
-Strikingly, only a small majority of respondents believe reproducibility is compatible with epistemologies used in their disciplinary subfields (58.2\%). 
+
+Strikingly, only 58 percent of respondents believe reproducibility is compatible with the epistemologies used in their disciplinary subfields.
+In total, 28 percent of respondents indicated that reproducibility was incompatible with the epistemologies of their subfields, with an additional 12 percent of respondents indicated that they did not know whether reproducibility was epistomologically compatible. 
+About half of the respondents specializing in human geography (49\%) and nature and society (50\%) indicated that reproducibility was incompatible with the epistomologies of their subfields. 
+Respondents conducting primarily qualitative research were similarly skeptical of the epistemological role of reproducibility in their subfields.
+75 percent of qualitative researchers indicated that reproducibility was incompatible with the epistomologies of their subfields.
 
 Table \ref{tab:overview} summarizes how researchers define reproducibility, their familiarity with reproducible research practices and experience using them, and the factors they see as barriers to reproducibility in geography. 
 We present the mean and standard deviation for the overall sample and for each subfield and methodological approach.
@@ -298,10 +303,15 @@ In this context, are individual researchers aware of the research practices need
 %%%%%%%%%%%
 \subsubsection*{Familiarity and Experience with Reproducible Research Practices}
 Geographic researchers were familiar with an average of 3.26 different reproducible research practices, but only reported experience using an average of 1.44 of these practices in their own work.
+Table \ref{tab:familar-use} presents researcher familiarity and use of five different reproducible research practices.
 More than half of all researchers reported familiarity with with data sharing (86.7\%), open source software (85.3\%), field and lab notebooks (67.0\%), and code sharing (59.2\%).
 However, a far smaller number of researchers reported using these ``familiar" practices regularly in their own work. 
 Less than half of the researchers surveyed reported sharing their data (44.5\%), using open source software (38.1\%), using field or lab notebooks to record their work (40.0\%), or sharing their code (18.8\%) most or all of the time. 
 Only a small subset of researchers reported familiarity with the pre-registration of research designs and protocols (27.5\%), or regular use of this practice (2.7\%).
+
+\begin{center}
+\textbf{Insert Table \ref{tab:familar-use} About Here}
+\end{center}
 
 Researcher familiarity and use of reproducible research practices varied by disciplinary subfield and methodological approach. 
 Researchers that identified as physical geographers or methodologists and GIScientists reported being familiar with one to two more reproducible researcher practices than human geographers and those focused on nature and society.
@@ -309,7 +319,7 @@ Researcher practices similarly diverged by subfield, but no subset of researcher
 When grouped by methodological approach, quantitative and mixed-methods researchers on average reported familiarity with and use of two more reproducible research practices when compared to qualitative researchers.
 
 Differences in researcher familiarity and use of specific reproducible research practices across subfields and approaches was greatest for practices more typical of quantitative workflows. 
-For example, 96.7 percent of quantitative and 89.5 percent of mixed-methods researchers reported familiarity with open source software, while 52.5 percent of qualitative researchers with the same resources.
+For example, 96.7 percent of quantitative and 89.5 percent of mixed-methods researchers reported familiarity with open source software, while 52.5 percent of qualitative researchers reported familiarity with the same resources.
 These differences were greater for code sharing practices. 
 Just 12.5 percent of qualitative researchers reported familiarity with code sharing, while 81.5 percent of quantitative and 55.7 percent of mixed-methods researchers reported familiarity with the same practice.
 However, even among quantitiative and mixed-methods researchers, familiarity with reproducible research practices did not translate into regular use of those practices.
@@ -559,30 +569,74 @@ This material is based on work supported by the National Science Foundation unde
     \centering
     \begin{threeparttable}
     \caption{Barriers to Reproducibility}
-    \begin{tabular}{l c c c c c c c c c c}
+    \begin{tabular}{l c c c c c c c c c c c}
          \hline
-                    & \multicolumn{4}{1}{Subfield}  & & \multicolumn{3}{1}{Approach} & & \\
-         Barrier    & PH & MT & NS & HU            & & QN & MX & QL              & & Overall \\
+                    & \multicolumn{4}{1}{Subfield}  & & \multicolumn{3}{1}{Approach} & & & \\
+         Barrier                            & PH & MT & NS & HU                   & & QN & MX & QL           & & Overall & Missing \\
          \hline
-         \textit{Research Environment}      & & & & & & & & & & \\
-         Pressure to Publish                & 83.1\% & 75.0\% & 54.5\% & 61.2\% & & 77.3\% & 75.3\% & 47.5\% & & 71.5\% \\
-         Insufficient oversight             & 81.6\% & 82.0\% & 63.6\% & 56.7\% & & 82.6\% & 74.2\% & 40.0\% & & 71.1\% \\
-         Fraud                              & 32.3\% & 39.3\% & 9.1\%  & 22.4\% & & 29.4\% & 31.8\% & 20.0\% & & 28.4\% \\
-                                            & & & & & & & & & &\\
-         \textit{Artifact Availability}     & & & & & & & & & & \\
-         Insufficient metadata              & 76.9\% & 78.7\% & 59.1\% & 62.6\% & & 79.4\% & 72.9\% & 45.0\% & & 80.2\% \\
-         Unavailable Data                   & 89.3\% & 78.6\% & 59.1\% & 65.7\% & & 87.0\% & 81.2\% & 42.5\% & & 75.2\% \\
-         Unavailable protocol/code          & 77.0\% & 86.9\% & 50.0\% & 59.7\% & & 87.0\% & 70.6\% & 37.5\% & & 71.1\% \\
-         Published incomplete results       & 73.8\% & 78.7\% & 63.7\% & 56.7\% & & 78.2\% & 72.9\% & 37.2\% & & 68.4\% \\
-         Use restricted data/software       & 56.9\% & 82.0\% & 40.9\% & 44.8\% & & 70.7\% & 56.5\% & 32.5\% & & 57.8\% \\
-                                            & & & & & & & & & &\\
-         \textit{Study Characteristics}     & & & & & & & & & & \\
-         Geographic variation               & 80.0\% & 72.2\% & 81.8\% & 61.2\% & & 79.4\% & 74.1\% & 40.0\% &  & 71.5\% \\
-         Researcher positionality           & 50.8\% & 70.5\% & 72.8\% & 70.2\% & & 56.5\% & 65.9\% & 80.0\% &  & 64.2\% \\
-         Chance                             & 66.2\% & 65.6\% & 68.2\% & 55.2\% & & 67.4\% & 64.4\% & 52.5\% &  & 62.3\% \\
-         Different computation              & 53.8\% & 68.9\% & 31.8\% & 38.8\% & & 63.1\% & 56.5\% & 25.0\% &  & 50.9\% \\
-                                            & & & & & & & & & &\\
-         N                                  & 65 & 61 & 22 & 67 & & 92 & 85 & 40 & & 218 \\
+         \textit{Open Source Software}      & & & & & & & & & & & \\
+         Familiarity with                   & 90.8\% & 100.0\% & 72.7\% & 71.7\% & & 96.7\% & 89.5\% & 52.5\% & & 85.3\% & 0 \\
+         Use of                             & 47.4\% & 59.0\% & 31.8\% & 13.4\% & & 47.8\% & 41.1\% & 10.0\% & & 36.1\% & 0 \\
+                                            & & & & & & & & & & &\\
+         \textit{Lab and Field Notebooks}   & & & & & & & & & & & \\
+         Familiarity with                   & 90.8\% & 78.0\% & 63.7\% & 35.8\% & & 75.0\% & 71.8\% & 40.0\% & & 67.0\% & 0 \\
+         Use of                             & 63.0\% & 44.2\% & 40.9\% & 14.9\% & & 40.2\% & 39.4\% & 20.0\% & & 40.0\% & 2 \\
+                                            & & & & & & & & & & & \\
+         \textit{Sharing and Archiving Data}     & & & & & & & & & & & \\
+         Familiarity with                   & 95.4\% & 95.4\% & 72.7\% & 71.7\% & & 93.5\% & 92.9\% & 57.5\% & & 86.7\% & 0 \\
+         Use of                             & 63.0\% & 44.2\% & 40.9\% & 20.9\% & & 51.1\% & 51.8\% & 13.0\% & & 44.5\% & 0 \\
+                                            & & & & & & & & & & & \\
+         \textit{Sharing of Code/Scripts}     & & & & & & & & & & & \\
+         Familiarity with                   & 64.6\% & 83.6\% & 45.4\% & 38.8\% & & 71.5\% & 57.7\% & 12.5\% & & 59.2\% & 0 \\
+         Use of                             & 20.0\% & 32.8\% & 4.5\% & 10.5\% & & 22.8\% & 21.1\% & 5.0\% & & 18.8\% & 1 \\
+                                            & & & & & & & & & & & \\
+         \textit{Research Pre-registration}     & & & & & & & & & & & \\
+         Familiarity with                   & 29.2\% & 27.2\% & 29.2\% & 17.9\% & & 28.3\% & 34.2\% & 12.5\% &  & 27.5\% & 0\\
+         Use of                             & 4.6\% & 4.9\% & 0.0\% & 0.0\% & & 1.1\% & 5.9\% & 0.0\% &  & 2.7\% & 0 \\
+                                            & & & & & & & & & & & \\
+         N                                  & 65 & 61 & 22 & 67 & & 92 & 85 & 40 & & 218 & 0 \\
+        \hline
+    \end{tabular}
+    \begin{tablenotes}
+        \footnotesize
+        \item Cells report the percentage of respondents reporting being `somewhat' or `very' familiar with a reproducible research practice, or using those practices `most of the time' of `always'. Acronyms indicate: \textit{PH} Physical Geography, \textit{MT} GIScience and Methods, \textit{NS} Nature and Society, \textit{HU} Human Geography; \textit{QN} Quantitative, \textit{MX} Mixed Methods, \textit{QL} Qualitative. 
+    \end{tablenotes}
+    \label{tab:familar-use}
+    \end{threeparttable}
+\end{table}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{landscape}
+\begin{table}[h]
+    \centering
+    \begin{threeparttable}
+    \caption{Barriers to Reproducibility}
+    \begin{tabular}{l c c c c c c c c c c c}
+         \hline
+                    & \multicolumn{4}{1}{Subfield}  & & \multicolumn{3}{1}{Approach} & & &\\
+         Barrier    & PH & MT & NS & HU            & & QN & MX & QL              & & Overall & Missing\\
+         \hline
+         \textit{Research Environment}      & & & & & & & & & & &\\
+         Pressure to Publish                & 83.1\% & 75.0\% & 54.5\% & 61.2\% & & 77.3\% & 75.3\% & 47.5\% & & 71.5\% & 11 \\
+         Insufficient oversight             & 81.6\% & 82.0\% & 63.6\% & 56.7\% & & 82.6\% & 74.2\% & 40.0\% & & 71.1\% & 13 \\
+         Fraud                              & 32.3\% & 39.3\% & 9.1\%  & 22.4\% & & 29.4\% & 31.8\% & 20.0\% & & 28.4\% & 13 \\
+                                            & & & & & & & & & & &\\
+         \textit{Artifact Availability}     & & & & & & & & & & &\\
+         Insufficient metadata              & 76.9\% & 78.7\% & 59.1\% & 62.6\% & & 79.4\% & 72.9\% & 45.0\% & & 80.2\% & 15\\
+         Unavailable Data                   & 89.3\% & 78.6\% & 59.1\% & 65.7\% & & 87.0\% & 81.2\% & 42.5\% & & 75.2\% & 15 \\
+         Unavailable protocol/code          & 77.0\% & 86.9\% & 50.0\% & 59.7\% & & 87.0\% & 70.6\% & 37.5\% & & 71.1\% & 14 \\
+         Published incomplete results       & 73.8\% & 78.7\% & 63.7\% & 56.7\% & & 78.2\% & 72.9\% & 37.2\% & & 68.4\% & 14 \\
+         Use restricted data/software       & 56.9\% & 82.0\% & 40.9\% & 44.8\% & & 70.7\% & 56.5\% & 32.5\% & & 57.8\% & 19\\
+                                            & & & & & & & & & & &\\
+         \textit{Study Characteristics}     & & & & & & & & & & &\\
+         Geographic variation               & 80.0\% & 72.2\% & 81.8\% & 61.2\% & & 79.4\% & 74.1\% & 40.0\% &  & 71.5\% & 16 \\
+         Researcher positionality           & 50.8\% & 70.5\% & 72.8\% & 70.2\% & & 56.5\% & 65.9\% & 80.0\% &  & 64.2\% & 19\\
+         Chance                             & 66.2\% & 65.6\% & 68.2\% & 55.2\% & & 67.4\% & 64.4\% & 52.5\% &  & 62.3\% & 19 \\
+         Different computation              & 53.8\% & 68.9\% & 31.8\% & 38.8\% & & 63.1\% & 56.5\% & 25.0\% &  & 50.9\% & 18 \\
+                                            & & & & & & & & & & &\\
+         N                                  & 65 & 61 & 22 & 67 & & 92 & 85 & 40 & & 218 & 0 \\
         \hline
     \end{tabular}
     \begin{tablenotes}
