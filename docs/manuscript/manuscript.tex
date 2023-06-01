@@ -3,12 +3,12 @@
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\usepackage{doi}
-\usepackage{natbib}
+% \usepackage{doi}
+% \usepackage{natbib}
 %\bibliographystyle{natbib}
-\bibliographystyle{chicago}
-\setcitestyle{authoryear,open={(},close={)}}
-\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+% \bibliographystyle{chicago}
+% \setcitestyle{authoryear,open={(},close={)}}
+% \renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
 
 \usepackage{hyperref}
 \hypersetup{
@@ -18,6 +18,21 @@
     urlcolor=blue,
     citecolor=blue,
 }
+
+\usepackage[
+    backend=biber,
+    style=apa,
+    sorting=nyt,
+    autocite=inline,
+    natbib=false,
+    url=false, 
+    doi=true,
+    eprint=false
+    hyperref=auto
+    ]{biblatex}
+
+\addbibresource{references.bib}
+\newcommand{\citep}{\parencite}
 
 \usepackage{titlesec}
 \titleformat*{\section}{\Large\bfseries}
@@ -101,7 +116,7 @@ Finally, reproducibility assessments have focused on evaluating the computationa
 Reproducibility surveys and reproduction attempts in the geographic literature face these same challenges. 
 The few available reproducibility surveys in the discipline have relied on convenience samples drawn from specialist conferences and have only focused on computationally-intensive forms of geographic research \citep{balz2020reproducibility, konkol2019, ostermann2017}. 
 The small number of published attempts to reproduce geographic research have similarly focused on the computational reproducibility of conference papers \citep{Nust-AGILE_2018, Nust_AGILE_2020, Nust_AGILE_2021, Nust_AGILE_2022, ostermann2021} or on specific topics such as COVID-19 \citep{Holler2023disability, Kedron2022dimaggio, Kedron2023Beyond, paez2022reproducibility}. 
-More recent reproduction attempts by \citet{Kedron2023Beyond} show that the factors hindering the recreation of results and the evaluation of claims likely extend beyond computation into the conceptualization and design of geographic research.
+More recent reproduction attempts by \textcite{Kedron2023Beyond} show that the factors hindering the recreation of results and the evaluation of claims likely extend beyond computation into the conceptualization and design of geographic research.
 
 Geographers continue to debate the role of reproduction studies in the discipline \citep{brunsdon2016, goodchild2021Annals, kedron2022replication, kedron2021IJGIS, singleton2016, sui2021, Wainwright2021}, examine the reproducibility of individual studies \citep{Nust_AGILE_2022, ostermann2021}, and build the infrastructure needed to support reproducible research \citep{nust2019, wilson2021, yin2019cybergis, Kedron_Holler_Bardin_Hilgendorf_2022}. 
 And yet, we still have not systematically assessed the use of reproducible research practices across the discipline's diverse research traditions, or identified the factors that have hindered geographers from adopting reproducible research practices and conducting reproduction studies. 
@@ -116,11 +131,11 @@ Finally, we discuss the implications of our survey results and limitation of our
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Data and Methods}
-Complete documentation of the procedures, survey instrument, and other materials used in this study are available through the Survey of Reproducibility in Geographic Research project (\citet{Kedron_Holler_Bardin_Hilgendorf_2022} - \url{https://osf.io/5yeq8/}) hosted by the Open Science Framework (OSF).
+Complete documentation of the procedures, survey instrument, and other materials used in this study are available through the Survey of Reproducibility in Geographic Research project (\textcite{Kedron_Holler_Bardin_Hilgendorf_2022} - \url{https://osf.io/5yeq8/}) hosted by the Open Science Framework (OSF).
 The OSF project connects to a GitHub repository which hosts the anonymized dataset and code used to create all results and supplemental materials along with a complete history of their development. 
 All of the results presented in this paper can be independently reproduced using the materials in that repository.
 We encourage interested readers to critically evaluate and build on these materials.
-Before the start of data collection, we registered a preanalysis plan for the survey with OSF Registries (\citet{Kedron_Survey_PAP} - \url{https://osf.io/6zjcp}). 
+Before the start of data collection, we registered a preanalysis plan for the survey with OSF Registries (\textcite{Kedron_Survey_PAP} - \url{https://osf.io/6zjcp}). 
 The survey was conducted under the approval and supervision of the Arizona State Institutional Review Board - \textit{STUDY00014232}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,10 +143,10 @@ The survey was conducted under the approval and supervision of the Arizona State
 Our target population of interest is researchers who have recently published in the field of geography. 
 We followed a 4-step procedure to create a sampling frame for our survey that captures this diverse population of researchers and the approaches they use when studying geography. 
 
-First, beginning at the publication level, we identified journals indexed as either geography or physical geography by the Web of Science's Journal Citation Reports that also had a 5-year impact factor greater than 1.5.
+First, beginning at the publication level, we identified journals indexed as either geography or physical geography by the Web of Science's Journal Citation Reports \citep{WOS} that also had a 5-year impact factor greater than 1.5.
 From those journals, we created a database of all articles published between 2017 and 2021.  
 
-Second, we used Arizona State University's institutional subscription to the \citet{Scopus} to extract journal information (e.g., subject area), article information (e.g., citation counts), and author information (e.g., corresponding status) for each publication. 
+Second, we used Arizona State University's institutional subscription to the \textcite{Scopus} to extract journal information (e.g., subject area), article information (e.g., citation counts), and author information (e.g., corresponding status) for each publication. 
 Because our intention was to capture individuals actively publishing new geographic research, we retained publications indexed by Scopus as \textit{document type = ``Article''} and removed all other publication types (e.g., editorials) from our article database. 
 We also removed articles with missing authorship information. 
 
@@ -153,7 +168,7 @@ A similar proportion (32.0\%) were most recently a corresponding author for an a
 \subsection*{Survey Instrument}
 The survey first established eligibility based on age and geographic research activity in the past five years and asked researchers to report their primary subfield and methodology.
 We asked each participant to assess their familiarity with the term ``reproducibility'' and to provide their own definition. 
-We then provided a definition based on the \citet{NASEM2019} to establish a common understanding of reproducibility for the remainder of the survey.
+We then provided a definition based on the \textcite{NASEM2019} to establish a common understanding of reproducibility for the remainder of the survey.
 Remaining questions assessed familiarity and use of reproducible research practices (22 questions), perceptions of the reproducibility of geographic research (2 questions), and beliefs about reproducibility with regards to its significance (17 questions) and barriers (13 questions).
 For researchers who reported attempting reproductions, we asked them to elaborate on their motivations and outcomes (9 questions).
 
@@ -168,7 +183,7 @@ A simple random sample of 2,000 researchers was drawn without replacement from o
 Researchers received their initial invitation on May 17, 2022. 
 Two reminder emails were sent to researchers that had not yet completed the survey on May 26 and May 31, 2022.
 
-The online survey was administered through \href{https://www.qualtrics.com/}{Qualtrics}. 
+The online survey was administered through Qualtrics. 
 Participation in the survey was entirely voluntary. 
 Each researcher that opted to participate in the survey was provided with IRB-approved consent documentation and linked to the internet survey instrument. 
 Participants were also given the option to provide an email address for eligibility for one of three  prizes of 90 USD, selected randomly after the data collection period.
@@ -189,7 +204,7 @@ Second, we analyzed researchers' experiences with reproducing prior studies incl
 
 \textit{Defining Reproducibility:} 
 We coded participants' qualitative definitions of ``reproducibility'' following two procedures.
-First, we measured the similarity of each provided definition to the definition adopted by the \citet{NASEM2019}. 
+First, we measured the similarity of each provided definition to the definition adopted by the \textcite{NASEM2019}. 
 The NASEM defines reproducible research as having four characteristics --- same data, same procedure, same results, and same conditions.
 To make this comparison, each of the authors independently coded each respondent definition for the presence/absence of each of the four characteristics included in the NASEM definition.
 Disagreements in the assignment of codes were resolved through discussion between the three authors.
@@ -225,7 +240,7 @@ We similarly analyzed barriers to the reproduction of results by creating statis
 \section*{Results}
 A total of \textit{n}=218 of the authors we contacted completed the online survey with information sufficient for analysis. 
 The contact rate for the survey was 13.9 percent and the cooperation rate was 78.7 percent, yielding an overall response rate of 10.9 percent. 
-The refusal rate was 2.9 percent\endnote{All outcome rates are reported using \citet{aaporstandards} standards. 
+The refusal rate was 2.9 percent\endnote{All outcome rates are reported using \textcite{aaporstandards} standards. 
 The outcome rates used were - response rate 2, cooperation rate 2, refusal rate 1, and contact rate 1.}.
 Another \textit{n}=40 authors started the survey, but did not complete enough of the survey to be included in the analysis.
 
@@ -399,7 +414,7 @@ On the whole, awareness of reproducible research practices and the infrastructur
 
 Our findings also suggest that geographic researchers do not share a single definition of reproducibility. 
 While researchers share beliefs about the epistemological functions of independent reproductions, they provide definitions that contain different requirements for similarity across studies in terms of data, procedures, results, and context.  
-Moreover, a subset of researchers define reproducibility as what the \citet{NASEM2019} defines as replicability---the ability to obtain consistent results across studies designed to answer the same question, each of which has obtained its own data.
+Moreover, a subset of researchers define reproducibility as what the \textcite{NASEM2019} defines as replicability---the ability to obtain consistent results across studies designed to answer the same question, each of which has obtained its own data.
 The interchangeable use of reproducibility and replicability, or the outright reversal of definitions we observed in our sample, has also been documented across the sciences \citep{barba2018terminologies, plesser2018reproducibility}. 
 Given that geography has no established standard use of either term and that many geographic researchers are also trained in other disciplines, it is likely that researchers at least partially inform their definition of reproducibility using concepts prominent in their cognate fields.
 
@@ -486,7 +501,8 @@ This material is based on work supported by the National Science Foundation unde
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\bibliography{references}
+%\bibliography{references}
+\printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
