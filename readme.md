@@ -14,6 +14,7 @@ While the number of reproduction and replication studies undertaken in the socia
 
 - OSF Preregistration: https://osf.io/6zjcp
 - OSF Project: https://osf.io/5yeq8/
+- OSF Preprint: https://osf.io/nyrq9/
 - Working Preprint: [docs/manuscript/manuscript.pdf](docs/manuscript)
 - Publication: Manuscript in review
 
