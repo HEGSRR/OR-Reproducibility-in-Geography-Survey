@@ -1,0 +1,121 @@
+---
+title: "Preprocessing"
+output: 
+  html_document:
+    theme: flatly
+    df_print: paged
+date: "2023-07-12"
+---
+
+Making sense of the survey data.
+
+The file `analysis_hegs_rpr.csv` was saved from `data\derived\public\analysis_hegs_rpr.rds`.
+
+```{r import, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  fig.retina = 4,
+  fig.showtext = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+# all your themes are belong to us
+# library(ggthemes)
+library(readr)
+library(tidyverse)
+library(magrittr)
+# library(showtext)
+# font_add_google("Fira Sans", "Fira Sans")
+
+analysis <- read_csv("analysis_hegs_rpr.csv", col_select = starts_with("Q"))
+```
+
+## Groups
+
+Dropping NAs for brevity
+
+```{r drop na}
+analysis %<>%
+  drop_na(Q3_recoded, Q4) %>%
+  filter(Q3_recoded != "Other")
+```
+
+
+Question 3: primary subfield of research
+
+```{r q3 groups}
+analysis %>%
+  group_by(Q3_recoded) %>%
+  summarise(n = n())
+```
+
+Question 4: type of research
+
+```{r q4 groups}
+analysis %>%
+  group_by(Q4) %>%
+  summarise(n = n())
+```
+
+
+```{r q19 groups}
+analysis %>%
+  group_by(Q19_recoded) %>%
+  summarise(n = n())
+```
+
+
+## Word cloud
+
+~~Per group?~~
+
+```{r DRY wordcloud}
+column_to_cloud <- function(
+    col, threshold,
+    my_palette = c(
+      "#cdb4db",
+      "#6d597a",
+      "#b56576",
+      "#e56b6f",
+      "#eaac8b"
+    )) {
+  require(tidytext)
+  word_counts <- analysis %>%
+    drop_na(all_of(col)) %>%
+    unnest_tokens("word", col) %>%
+    anti_join(stop_words, by = "word") %>%
+    count(word) %>%
+    filter(n >= threshold)
+
+  require(wordcloud2)
+  wordcloud2(
+    word_counts,
+    color = rep_len(
+      my_palette,
+      nrow(word_counts)
+    )
+  ) %>%
+    return()
+}
+```
+
+
+Question 10: Thinking about the reproduction(s) you attempted in the last 2 years, what made you decide to attempt the reproduction(s)?
+
+Question 6: What is your understanding of the term "reproducibility" in the context of your own research?
+
+Question 12a: If you were not able to submit all of the findings of your reproduction(s) for publication, why not?
+
+Question 15: Please list any other factors that you believe contribute to a lack of reproducibility in research in your subfield.
+
+Question 17a: Please list any benefits or important function of reproducibility in your subfield not mentioned above.
+
+```{r word clouds}
+clouds <- list()
+clouds$q6 <- column_to_cloud("Q6", 6)
+clouds$q10 <- column_to_cloud("Q10", 4)
+clouds$q12a <- column_to_cloud("Q12a", 2)
+clouds$q15 <- column_to_cloud("Q15", 4)
+clouds$q17a <- column_to_cloud("Q17a", 2)
+saveRDS(clouds, file = "clouds.rds")
+```
