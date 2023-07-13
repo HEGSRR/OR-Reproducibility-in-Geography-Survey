@@ -84,3 +84,6 @@ $RECYCLE.BIN/
 
 # Icloud
 *.icloud
+
+# Posit Connect
+rsconnect/
