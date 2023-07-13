@@ -26,8 +26,10 @@ library(tidyverse)
 library(magrittr)
 # library(showtext)
 # font_add_google("Fira Sans", "Fira Sans")
+```
 
-analysis <- read_csv("analysis_hegs_rpr.csv", col_select = starts_with("Q"))
+```{r data}
+analysis <- read_csv("data/analysis_hegs_rpr.csv", col_select = starts_with("Q"))
 ```
 
 ## Groups
@@ -57,6 +59,9 @@ analysis %>%
   summarise(n = n())
 ```
 
+Q19: demographics
+
+Potentially split into professor - not professor
 
 ```{r q19 groups}
 analysis %>%
@@ -67,11 +72,18 @@ analysis %>%
 
 ## Word cloud
 
-~~Per group?~~
+Q6
+Q10
+Q12a
+Q15
+Q17a
+
+Potentially per group, but only for Q6
 
 ```{r DRY wordcloud}
 column_to_cloud <- function(
-    col, threshold,
+    col, nrows = 30,
+    data = analysis,
     my_palette = c(
       "#cdb4db",
       "#6d597a",
@@ -80,12 +92,16 @@ column_to_cloud <- function(
       "#eaac8b"
     )) {
   require(tidytext)
-  word_counts <- analysis %>%
+  word_counts <- data %>%
     drop_na(all_of(col)) %>%
     unnest_tokens("word", col) %>%
+    # https://bookdown.org/psonkin18/berkshire/tokenize.html#text-normalization---stemming-and-lemmatization
+    # doesn't work - why is `reproduct` different from `reproduc`?
+    # mutate(word = SnowballC::wordStem(word, language = "english")) %>%
     anti_join(stop_words, by = "word") %>%
     count(word) %>%
-    filter(n >= threshold)
+    arrange(desc(n)) %>%
+    slice(1:nrows)
 
   require(wordcloud2)
   wordcloud2(
@@ -99,23 +115,62 @@ column_to_cloud <- function(
 }
 ```
 
-
-Question 10: Thinking about the reproduction(s) you attempted in the last 2 years, what made you decide to attempt the reproduction(s)?
-
-Question 6: What is your understanding of the term "reproducibility" in the context of your own research?
-
-Question 12a: If you were not able to submit all of the findings of your reproduction(s) for publication, why not?
-
-Question 15: Please list any other factors that you believe contribute to a lack of reproducibility in research in your subfield.
-
-Question 17a: Please list any benefits or important function of reproducibility in your subfield not mentioned above.
-
 ```{r word clouds}
-clouds <- list()
-clouds$q6 <- column_to_cloud("Q6", 6)
-clouds$q10 <- column_to_cloud("Q10", 4)
-clouds$q12a <- column_to_cloud("Q12a", 2)
-clouds$q15 <- column_to_cloud("Q15", 4)
-clouds$q17a <- column_to_cloud("Q17a", 2)
-saveRDS(clouds, file = "clouds.rds")
+cloud_cols <- list("Q6", "Q10", "Q12a", "Q15", "Q17a")
+clouds <- map(cloud_cols, column_to_cloud) %>%
+  set_names(cloud_cols)
+saveRDS(clouds, file = "data/clouds.rds")
 ```
+
+```{r q6 cloud}
+subfields <- list("Human", "Methods", "Nature/society", "Physical")
+types <- list("Quantitative", "Qualitative", "Mixed Methods")
+
+clouds_q6_q3 <- map(
+  subfields, ~ analysis %>%
+    filter(Q3_recoded == .x) %>%
+    column_to_cloud("Q6", data = .)
+) %>%
+  set_names(subfields)
+
+clouds_q6_q4 <- map(
+  types, ~ analysis %>%
+    filter(Q4 == .x) %>%
+    column_to_cloud("Q6", data = .)
+) %>%
+  set_names(types)
+
+clouds_q6 <- append(clouds_q6_q3, clouds_q6_q4)
+clouds_q6$Everyone <- clouds$Q6
+saveRDS(clouds_q6, file = "data/clouds_q6.rds")
+```
+
+
+## Likert charts
+Q8
+
+Q9 (maybe)
+
+Q11
+Q12
+
+Q14
+
+Q17
+
+## Density plots
+Include animations?
+
+Q5 (maybe put with Q6's word cloud)
+
+Q7 (many parts)
+
+Q13 (percentages)
+
+## Bar plot
+Or something simple
+Include animations
+
+Q16
+
+## Demographics
