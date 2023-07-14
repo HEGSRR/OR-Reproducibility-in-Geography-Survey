@@ -24,8 +24,8 @@ knitr::opts_chunk$set(
 library(readr)
 library(tidyverse)
 library(magrittr)
-# library(showtext)
-# font_add_google("Fira Sans", "Fira Sans")
+library(showtext)
+font_add_google("Fira Sans", "Fira Sans")
 ```
 
 ```{r data}
@@ -151,7 +151,32 @@ Include animations?
 Q5
 
 ```{r q5}
+four_levels = list(
+  "To a great extent" = 1,
+  "Somewhat" = 0.66,
+  "Very little" = 0.33,
+  "Not at all" = 0
+)
 
+analysis %>%
+  mutate(Q5_num = as.numeric(four_levels[Q5])) %>%
+  ggplot() +
+  scale_x_continuous(
+    breaks = as.numeric(four_levels),
+    labels = str_wrap(names(four_levels), width = 9)
+  ) +
+  geom_density(aes(x = Q5_num), adjust = 1.6) +
+  theme_minimal() +
+  theme(
+    text = element_text(family = "Fira Sans", size = 16),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  labs(
+    title = "How familiar are you with the term \"reproducibility\"?",
+    subtitle = "In the context of conducting research",
+    x = "", y = ""
+  )
 ```
 
 
