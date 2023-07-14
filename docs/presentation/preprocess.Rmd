@@ -119,7 +119,7 @@ column_to_cloud <- function(
 cloud_cols <- list("Q6", "Q10", "Q12a", "Q15", "Q17a")
 clouds <- map(cloud_cols, column_to_cloud) %>%
   set_names(cloud_cols)
-saveRDS(clouds, file = "data/clouds.rds")
+# saveRDS(clouds, file = "data/clouds.rds")
 ```
 
 ```{r q6 cloud}
@@ -142,9 +142,22 @@ clouds_q6_q4 <- map(
 
 clouds_q6 <- append(clouds_q6_q3, clouds_q6_q4)
 clouds_q6$Everyone <- clouds$Q6
-saveRDS(clouds_q6, file = "data/clouds_q6.rds")
+# saveRDS(clouds_q6, file = "data/clouds_q6.rds")
 ```
 
+## Density plots
+Include animations?
+
+Q5
+
+```{r q5}
+
+```
+
+
+Q7 (many parts)
+
+Q13 (percentages)
 
 ## Likert charts
 Q8
@@ -157,15 +170,6 @@ Q12
 Q14
 
 Q17
-
-## Density plots
-Include animations?
-
-Q5 (maybe put with Q6's word cloud)
-
-Q7 (many parts)
-
-Q13 (percentages)
 
 ## Bar plot
 Or something simple
