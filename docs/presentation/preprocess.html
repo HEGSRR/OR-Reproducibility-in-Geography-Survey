@@ -1661,7 +1661,8 @@ library(tidyverse)
 library(magrittr)
 library(showtext)
 font_add_google(&quot;Fira Sans&quot;, &quot;Fira Sans&quot;)</code></pre>
-<pre class="r"><code>analysis &lt;- read_csv(&quot;data/analysis_hegs_rpr.csv&quot;, col_select = starts_with(&quot;Q&quot;))</code></pre>
+<pre class="r"><code>analysis &lt;- read_csv(&quot;data/analysis_hegs_rpr.csv&quot;, col_select = starts_with(&quot;Q&quot;))
+source(&quot;data/constants.R&quot;)</code></pre>
 <div id="groups" class="section level2">
 <h2>Groups</h2>
 <p>Dropping NAs for brevity</p>
@@ -1733,14 +1734,10 @@ font_add_google(&quot;Fira Sans&quot;, &quot;Fira Sans&quot;)</code></pre>
   ) %&gt;%
     return()
 }</code></pre>
-<pre class="r"><code>cloud_cols &lt;- list(&quot;Q6&quot;, &quot;Q10&quot;, &quot;Q12a&quot;, &quot;Q15&quot;, &quot;Q17a&quot;)
-clouds &lt;- map(cloud_cols, column_to_cloud) %&gt;%
+<pre class="r"><code>clouds &lt;- map(cloud_cols, column_to_cloud) %&gt;%
   set_names(cloud_cols)
 # saveRDS(clouds, file = &quot;data/clouds.rds&quot;)</code></pre>
-<pre class="r"><code>subfields &lt;- list(&quot;Human&quot;, &quot;Methods&quot;, &quot;Nature/society&quot;, &quot;Physical&quot;)
-types &lt;- list(&quot;Quantitative&quot;, &quot;Qualitative&quot;, &quot;Mixed Methods&quot;)
-
-clouds_q6_q3 &lt;- map(
+<pre class="r"><code>clouds_q6_q3 &lt;- map(
   subfields, ~ analysis %&gt;%
     filter(Q3_recoded == .x) %&gt;%
     column_to_cloud(&quot;Q6&quot;, data = .)
@@ -1762,14 +1759,7 @@ clouds_q6$Everyone &lt;- clouds$Q6
 <h2>Density plots</h2>
 <p>Include animations?</p>
 <p>Q5</p>
-<pre class="r"><code>four_levels = list(
-  &quot;To a great extent&quot; = 1,
-  &quot;Somewhat&quot; = 0.66,
-  &quot;Very little&quot; = 0.33,
-  &quot;Not at all&quot; = 0
-)
-
-analysis %&gt;%
+<pre class="r"><code>analysis %&gt;%
   mutate(Q5_num = as.numeric(four_levels[Q5])) %&gt;%
   ggplot() +
   scale_x_continuous(

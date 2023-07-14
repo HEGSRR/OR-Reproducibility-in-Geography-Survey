@@ -30,6 +30,7 @@ font_add_google("Fira Sans", "Fira Sans")
 
 ```{r data}
 analysis <- read_csv("data/analysis_hegs_rpr.csv", col_select = starts_with("Q"))
+source("data/constants.R")
 ```
 
 ## Groups
@@ -116,16 +117,12 @@ column_to_cloud <- function(
 ```
 
 ```{r word clouds}
-cloud_cols <- list("Q6", "Q10", "Q12a", "Q15", "Q17a")
 clouds <- map(cloud_cols, column_to_cloud) %>%
   set_names(cloud_cols)
 # saveRDS(clouds, file = "data/clouds.rds")
 ```
 
 ```{r q6 cloud}
-subfields <- list("Human", "Methods", "Nature/society", "Physical")
-types <- list("Quantitative", "Qualitative", "Mixed Methods")
-
 clouds_q6_q3 <- map(
   subfields, ~ analysis %>%
     filter(Q3_recoded == .x) %>%
@@ -151,13 +148,6 @@ Include animations?
 Q5
 
 ```{r q5}
-four_levels = list(
-  "To a great extent" = 1,
-  "Somewhat" = 0.66,
-  "Very little" = 0.33,
-  "Not at all" = 0
-)
-
 analysis %>%
   mutate(Q5_num = as.numeric(four_levels[Q5])) %>%
   ggplot() +
