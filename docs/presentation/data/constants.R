@@ -33,19 +33,3 @@ cloud_questions <- list(
     "Please list any benefits or important function of reproducibility in your subfield not mentioned above."
   )
 )
-
-# Level mappings for density plot ####
-four_levels <- list(
-  "To a great extent" = 1,
-  "Somewhat" = 0.66,
-  "Very little" = 0.33,
-  "Not at all" = 0
-)
-
-five_levels <- list(
-  "Always" = 1,
-  "Most of the time" = 0.75,
-  "Some of the time" = 0.5,
-  "Rarely" = 0.25,
-  "Never" = 0
-)

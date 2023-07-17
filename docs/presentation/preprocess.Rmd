@@ -29,7 +29,7 @@ font_add_google("Fira Sans", "Fira Sans")
 ```
 
 ```{r data}
-analysis <- read_csv("data/analysis_hegs_rpr.csv", col_select = starts_with("Q"))
+analysis <- read_csv("data/analysis_hegs_rpr.csv")
 source("data/constants.R")
 ```
 
@@ -142,12 +142,9 @@ clouds_q6$Everyone <- clouds$Q6
 # saveRDS(clouds_q6, file = "data/clouds_q6.rds")
 ```
 
-## Density plots
-Include animations?
+## ~~Density plots~~
 
-Q5
-
-```{r q5}
+```{r q5, eval=FALSE, include=FALSE}
 analysis %>%
   mutate(Q5_num = as.numeric(four_levels[Q5])) %>%
   ggplot() +
@@ -168,6 +165,18 @@ analysis %>%
     x = "", y = ""
   )
 ```
+
+## Bar charts
+Include animations?
+
+```{r}
+analysis %>%
+  count(dat_rec)
+```
+
+
+
+
 
 
 Q7 (many parts)
