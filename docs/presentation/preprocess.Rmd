@@ -167,15 +167,12 @@ analysis %>%
 ```
 
 ## Bar charts
-Include animations?
-
+Order Q5 and Q7 responses
 ```{r}
-analysis %>%
-  count(dat_rec)
+analysis %<>%
+  mutate(across(all_of(four_level_cols), ~ factor(., levels = four_levels))) %>%
+  mutate(across(all_of(five_level_cols), ~ factor(., levels = five_levels)))
 ```
-
-
-
 
 
 
@@ -202,3 +199,10 @@ Include animations
 Q16
 
 ## Demographics
+
+## Save
+```{r}
+analysis %>%
+  saveRDS("data/analysis.rds", compress = FALSE)
+```
+

@@ -1760,14 +1760,10 @@ clouds_q6$Everyone &lt;- clouds$Q6
 </div>
 <div id="bar-charts" class="section level2">
 <h2>Bar charts</h2>
-<p>Include animations?</p>
-<pre class="r"><code>analysis %&gt;%
-  count(dat_rec)</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["dat_rec"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"0","2":"146"},{"1":"1","2":"69"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+<p>Order Q5 and Q7 responses</p>
+<pre class="r"><code>analysis %&lt;&gt;%
+  mutate(across(all_of(four_level_cols), ~ factor(., levels = four_levels))) %&gt;%
+  mutate(across(all_of(five_level_cols), ~ factor(., levels = five_levels)))</code></pre>
 <p>Q7 (many parts)</p>
 <p>Q13 (percentages)</p>
 </div>
@@ -1786,6 +1782,11 @@ clouds_q6$Everyone &lt;- clouds$Q6
 </div>
 <div id="demographics" class="section level2">
 <h2>Demographics</h2>
+</div>
+<div id="save" class="section level2">
+<h2>Save</h2>
+<pre class="r"><code>analysis %&gt;%
+  saveRDS(&quot;data/analysis.rds&quot;, compress = FALSE)</code></pre>
 </div>
 
 
