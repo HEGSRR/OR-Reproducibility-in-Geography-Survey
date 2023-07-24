@@ -8,6 +8,13 @@ geo_groups <- list(
   "Type" = types
 )
 
+# Columns to cast as factors
+four_levels <- c("Not at all", "Very little", "Somewhat", "To a great extent")
+four_level_cols <- c("Q5", "Q7a", "Q7b", "Q7c", "Q7d", "Q7e")
+
+five_levels <- c("Never", "Rarely", "Some of the time", "Most of the time", "Always")
+five_level_cols <- c("Q7a_1", "Q7a_3", "Q7b_1", "Q7c_1", "Q7c_2", "Q7c_3", "Q7d_1", "Q7d_2", "Q7e_1")
+
 # Questions for the word cloud ####
 cloud_cols <- list("Q6", "Q10", "Q12a", "Q15", "Q17a")
 cloud_questions <- list(
@@ -33,3 +40,21 @@ cloud_questions <- list(
     "Please list any benefits or important function of reproducibility in your subfield not mentioned above."
   )
 )
+
+# Function for subplot
+# Modified from original by Dan Powers <danielp@takomaparkmd.gov> under MIT License
+# https://github.com/dpowerstp/plotlywrappers/blob/76d6bb1d5890c81b4fef00472bc1064926f6aa53/R/subplot_title.R
+subplot_title <- function(plot, title, .x = 0.05, .y = 1.1) {
+  plot %>%
+    plotly::add_annotations(
+      text = title,
+      x = .x,
+      y = .y,
+      yref = "paper",
+      xref = "paper",
+      xanchor = "left",
+      yanchor = "top",
+      showarrow = FALSE,
+      font = list(family = "Fira Sans", size = 24)
+    )
+}
