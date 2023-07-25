@@ -43,6 +43,30 @@ function(request) {
       plotlyOutput("q5", height = "80vh"),
     ),
 
+    # Concepts ####
+    tabPanel(
+      "Concepts",
+      icon = icon("comments"),
+      tabsetPanel(
+        id = "q7_panel",
+        tabPanel(
+          "Open source",
+        ),
+        tabPanel(
+          "Notebooks",
+        ),
+        tabPanel(
+          "Data archive",
+        ),
+        tabPanel(
+          "Sharing code",
+        ),
+        tabPanel(
+          "Pre-register",
+        ),
+      ),
+    ),
+
     # Word Cloud ####
     tabPanel(
       "Word Cloud",
