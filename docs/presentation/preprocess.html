@@ -1645,7 +1645,7 @@ display: none;
 
 
 <p>Making sense of the survey data.</p>
-<p>The file <code>analysis_hegs_rpr.csv</code> was saved from
+<p>The file <code>analysis_hegs_rpr.csv</code> is from
 <code>data\derived\public\analysis_hegs_rpr.rds</code>.</p>
 <pre class="r"><code>knitr::opts_chunk$set(
   fig.retina = 4,
@@ -1656,12 +1656,11 @@ display: none;
 
 # all your themes are belong to us
 # library(ggthemes)
-library(readr)
 library(tidyverse)
 library(magrittr)
 library(showtext)
 font_add_google(&quot;Fira Sans&quot;, &quot;Fira Sans&quot;)</code></pre>
-<pre class="r"><code>analysis &lt;- read_csv(&quot;data/analysis_hegs_rpr.csv&quot;)
+<pre class="r"><code>analysis &lt;- readRDS(&quot;../../data/derived/public/analysis_hegs_rpr.rds&quot;)
 source(&quot;data/constants.R&quot;)</code></pre>
 <div id="groups" class="section level2">
 <h2>Groups</h2>
@@ -1675,7 +1674,7 @@ source(&quot;data/constants.R&quot;)</code></pre>
   summarise(n = n())</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q3_recoded"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Human","2":"67"},{"1":"Methods","2":"61"},{"1":"Nature/society","2":"22"},{"1":"Physical","2":"65"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Q3_recoded"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Human","2":"67"},{"1":"Physical","2":"65"},{"1":"Nature/society","2":"22"},{"1":"Methods","2":"61"},{"1":"NA","2":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Question 4: type of research</p>
@@ -1684,7 +1683,7 @@ source(&quot;data/constants.R&quot;)</code></pre>
   summarise(n = n())</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q4"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Mixed Methods","2":"85"},{"1":"Qualitative","2":"40"},{"1":"Quantitative","2":"90"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Q4"],"name":[1],"type":["ord"],"align":["right"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Quantitative","2":"91"},{"1":"Qualitative","2":"40"},{"1":"Mixed Methods","2":"85"},{"1":"NA","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Q19: demographics</p>
@@ -1694,7 +1693,7 @@ source(&quot;data/constants.R&quot;)</code></pre>
   summarise(n = n())</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q19_recoded"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Assistant professor/lecturer","2":"24"},{"1":"Associate professor/lecturer","2":"59"},{"1":"Full professor/lecturer","2":"42"},{"1":"Graduate student (PhD, masters)","2":"18"},{"1":"Laboratory director/head","2":"1"},{"1":"Other (specify)","2":"6"},{"1":"Post-doctoral fellow","2":"26"},{"1":"Research scientist","2":"28"},{"1":"Technician/research assistant","2":"2"},{"1":"NA","2":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Q19_recoded"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Full professor/lecturer","2":"43"},{"1":"Associate professor/lecturer","2":"60"},{"1":"Assistant professor/lecturer","2":"24"},{"1":"Laboratory director/head","2":"1"},{"1":"Research scientist","2":"28"},{"1":"Post-doctoral fellow","2":"26"},{"1":"Graduate student (PhD, masters)","2":"18"},{"1":"Technician/research assistant","2":"2"},{"1":"Other (specify)","2":"6"},{"1":"NA","2":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
