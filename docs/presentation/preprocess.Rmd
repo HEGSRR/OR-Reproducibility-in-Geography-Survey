@@ -166,11 +166,28 @@ analysis %>%
 ```
 
 ## Bar charts
+Cast 5 levels to 4
+```{r eval=FALSE, include=FALSE}
+analysis %<>%
+  mutate(
+    across(
+      all_of(five_level_cols),
+      ~ case_when(
+        . == "Never" ~ "Not at all",
+        . == "Rarely" ~ "Very little",
+        . == "Some of the time" ~ "Somewhat",
+        . %in% c("Most of the time", "Always") ~ "To a great extent"
+      )
+    )
+  )
+```
+
+
 Order Q5 and Q7 responses
 ```{r}
 analysis %<>%
   mutate(across(all_of(four_level_cols), ~ factor(., levels = four_levels))) %>%
-  mutate(across(all_of(five_level_cols), ~ factor(., levels = five_levels)))
+  mutate(across(all_of(five_level_cols), ~ factor(., levels = four_levels)))
 ```
 
 

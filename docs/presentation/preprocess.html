@@ -1759,10 +1759,11 @@ clouds_q6$Everyone &lt;- clouds$Q6
 </div>
 <div id="bar-charts" class="section level2">
 <h2>Bar charts</h2>
+<p>Cast 5 levels to 4</p>
 <p>Order Q5 and Q7 responses</p>
 <pre class="r"><code>analysis %&lt;&gt;%
   mutate(across(all_of(four_level_cols), ~ factor(., levels = four_levels))) %&gt;%
-  mutate(across(all_of(five_level_cols), ~ factor(., levels = five_levels)))</code></pre>
+  mutate(across(all_of(five_level_cols), ~ factor(., levels = four_levels)))</code></pre>
 <p>Q7 (many parts)</p>
 <p>Q13 (percentages)</p>
 </div>
