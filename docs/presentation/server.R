@@ -52,53 +52,31 @@ function(input, output, session) {
 
     fig3 <- d() %>%
       count(label) %>%
+      mutate(
+        label = label %>%
+          str_replace("/", " & ") %>%
+          str_wrap(width = 20)
+      ) %>%
       plot_ly(
         x = ~label,
         y = ~n,
         type = "bar",
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       ) %>%
-      plotly::layout(
-        xaxis = list(
-          ticktext = c(
-            "Data Collection", "Experiment", "Omit",
-            "Standard", "Transparency\n& Extension"
-          ),
-          tickvals = c(
-            "Data Collection", "Experiment", "Omit",
-            "Standard", "Transparency/Extension"
-          )
-        )
-      ) %>%
       subplot_title("What is important in reproducibility?")
 
     plotly::subplot(fig1, fig2, fig3, nrows = 1, shareY = TRUE) %>%
-      plotly::layout(
+      plt_layout(
         showlegend = FALSE,
-        xaxis = list(title = FALSE),
-        yaxis = list(title = FALSE),
-        font = list(family = "Fira Sans", size = 16),
-        hoverlabel = list(
-          font = list(family = "Fira Sans", size = 16)
-        ),
         # top margins
         margin = list(t = 100)
       ) %>%
-      # https://github.com/plotly/plotly.js/blob/master/src/plot_api/plot_config.js
-      plotly::config(
-        displaylogo = FALSE,
-        showTips = FALSE,
-        toImageButtonOptions = list(
-          format = "png",
-          filename = paste0(
-            "repro_awareness_",
-            input$group %>%
-              tolower() %>%
-              gsub("[^a-z0-9]", "_", .)
-          ),
-          # height = 500,
-          # width = 700,
-          scale = 4
+      plt_config(
+        filename = paste0(
+          "repro_awareness_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
         )
       )
   })

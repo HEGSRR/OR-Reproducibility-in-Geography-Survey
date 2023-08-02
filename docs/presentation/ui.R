@@ -40,7 +40,7 @@ function(request) {
     tabPanel(
       "Awareness",
       icon = icon("lightbulb"),
-      plotlyOutput("q5", height = "80vh"),
+      plotlyOutput("q5", height = plot_height),
     ),
 
     # Concepts ####
@@ -89,7 +89,7 @@ function(request) {
               9,
               wordcloud2Output(
                 "cloud",
-                height = "80vh"
+                height = plot_height
               ),
             ),
           ),
@@ -98,7 +98,7 @@ function(request) {
           "Q6 (groupwise)",
           wordcloud2Output(
             "cloud_q6",
-            height = "80vh"
+            height = plot_height
           ),
         )
       ),

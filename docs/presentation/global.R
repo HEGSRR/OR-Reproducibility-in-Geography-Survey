@@ -3,9 +3,13 @@ library(shiny)
 library(plotly)
 library(tidyverse)
 library(wordcloud2)
+library(stringr)
 
 # theme to match HTML
 thematic::thematic_shiny(font = "auto")
+
+# plot height as CSS
+plot_height = "80vh"
 
 source("data/constants.R")
 

@@ -60,3 +60,35 @@ subplot_title <- function(plot, title, .x = 0.05, .y = 1.1) {
       font = list(family = "Fira Sans", size = 24)
     )
 }
+
+# Plotly styling ####
+plt_layout <- function(plt, ...) {
+  plotly::layout(
+    plt,
+    xaxis = list(title = FALSE),
+    yaxis = list(title = FALSE),
+    font = list(family = "Fira Sans", size = 16),
+    hoverlabel = list(
+      font = list(family = "Fira Sans", size = 16)
+    ),
+    ...
+  )
+}
+
+# Plotly config ####
+# # https://github.com/plotly/plotly.js/blob/master/src/plot_api/plot_config.js
+plt_config <- function(plt, filename = "", ...) {
+  plotly::config(
+    plt,
+    displaylogo = FALSE,
+    showTips = FALSE,
+    toImageButtonOptions = list(
+      format = "png",
+      filename = filename,
+      # height = 500,
+      # width = 700,
+      scale = 4
+    ),
+    ...
+  )
+}
