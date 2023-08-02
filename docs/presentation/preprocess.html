@@ -1760,6 +1760,18 @@ clouds_q6$Everyone &lt;- clouds$Q6
 <div id="bar-charts" class="section level2">
 <h2>Bar charts</h2>
 <p>Cast 5 levels to 4</p>
+<pre class="r"><code>analysis %&lt;&gt;%
+  mutate(
+    across(
+      all_of(five_level_cols),
+      ~ case_when(
+        . == &quot;Never&quot; ~ &quot;Not at all&quot;,
+        . == &quot;Rarely&quot; ~ &quot;Very little&quot;,
+        . == &quot;Some of the time&quot; ~ &quot;Somewhat&quot;,
+        . %in% c(&quot;Most of the time&quot;, &quot;Always&quot;) ~ &quot;To a great extent&quot;
+      )
+    )
+  )</code></pre>
 <p>Order Q5 and Q7 responses</p>
 <pre class="r"><code>analysis %&lt;&gt;%
   mutate(across(all_of(four_level_cols), ~ factor(., levels = four_levels))) %&gt;%

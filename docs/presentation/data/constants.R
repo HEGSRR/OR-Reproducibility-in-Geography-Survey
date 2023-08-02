@@ -1,5 +1,7 @@
-# Group definitions ####
 library(shiny)
+library(plotly)
+
+# Group definitions ####
 subfields <- list("Human", "Methods", "Nature/society", "Physical")
 types <- list("Quantitative", "Qualitative", "Mixed Methods")
 geo_groups <- list(
@@ -8,7 +10,7 @@ geo_groups <- list(
   "Type" = types
 )
 
-# Columns to cast as factors
+# Columns to cast as factors ####
 four_levels <- c("Not at all", "Very little", "Somewhat", "To a great extent")
 four_level_cols <- c("Q5", "Q7a", "Q7b", "Q7c", "Q7d", "Q7e")
 
@@ -41,7 +43,7 @@ cloud_questions <- list(
   )
 )
 
-# Function for subplot
+# Function for subplot ####
 # Modified from original by Dan Powers <danielp@takomaparkmd.gov> under MIT License
 # https://github.com/dpowerstp/plotlywrappers/blob/76d6bb1d5890c81b4fef00472bc1064926f6aa53/R/subplot_title.R
 subplot_title <- function(plot, title, .x = 0.05, .y = 1.1) {

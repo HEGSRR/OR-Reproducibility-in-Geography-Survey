@@ -167,7 +167,7 @@ analysis %>%
 
 ## Bar charts
 Cast 5 levels to 4
-```{r eval=FALSE, include=FALSE}
+```{r}
 analysis %<>%
   mutate(
     across(
