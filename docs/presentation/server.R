@@ -39,15 +39,15 @@ function(input, output, session) {
         colors = mako4,
         # https://community.plotly.com/t/33731
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
-      ) %>%
-      subplot_title("Familiarity with \"reproducibility\"")
+      )
 
     fig2 <- d() %>%
       summarize(across(c(dat_rec, pro_rec, res_rec, con_rec), sum)) %>%
       pivot_longer(cols = everything()) %>%
       add_column(label = c(
         "Same data", "Same procedure", "Same result", "Same condition"
-        )) %>%
+      )) %>%
+      mutate(label = str_wrap(label, width = width)) %>%
       plot_ly(
         x = ~label,
         y = ~value,
@@ -55,15 +55,14 @@ function(input, output, session) {
         colors = pal5,
         type = "bar",
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
-      ) %>%
-      subplot_title("Reproducibility in terms of...")
+      )
 
     fig3 <- d() %>%
       count(label) %>%
       mutate(
         label = label %>%
           str_replace("/", " & ") %>%
-          str_wrap(width = 20)
+          str_wrap(width = width)
       ) %>%
       plot_ly(
         x = ~label,
@@ -72,15 +71,10 @@ function(input, output, session) {
         color = ~label,
         colors = pal5,
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
-      ) %>%
-      subplot_title("What is important in reproducibility?")
+      )
 
     plotly::subplot(fig1, fig2, fig3, nrows = 1, shareY = TRUE) %>%
-      plt_layout(
-        showlegend = FALSE,
-        # top margins
-        margin = list(t = 100)
-      ) %>%
+      plt_layout(showlegend = FALSE) %>%
       plt_config(
         filename = paste0(
           "repro_awareness_",
@@ -127,7 +121,7 @@ function(input, output, session) {
       filter(value != 0) %>%
       group_by(value) %>%
       summarise(n = n()) %>%
-      mutate(value = str_wrap(value, width = 20)) %>%
+      mutate(value = str_wrap(value, width = width)) %>%
       plot_ly(
         x = ~value,
         y = ~n,
@@ -140,7 +134,7 @@ function(input, output, session) {
       plt_layout(showlegend = FALSE) %>%
       plt_config(filename = "repro_oss_usage")
   })
-  
+
   output$q7oss_env <- renderPlotly({
     d() %>%
       drop_na(Q7a_3) %>%

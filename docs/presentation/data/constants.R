@@ -77,7 +77,7 @@ plt_layout <- function(plt, ...) {
 
 # Plotly config ####
 # # https://github.com/plotly/plotly.js/blob/master/src/plot_api/plot_config.js
-plt_config <- function(plt, filename = "", ...) {
+plt_config <- function(plt, filename, ...) {
   plotly::config(
     plt,
     displaylogo = FALSE,

@@ -45,7 +45,31 @@ tagList(
     tabPanel(
       "Awareness",
       icon = icon("lightbulb"),
-      plotlyOutput("q5", height = plot_full_height),
+      fluidRow(
+        column(
+          4,
+          h4(
+            "How ", strong("familiar"),
+            "are you with the term \"reproducibility\"?"
+          ),
+        ),
+        column(
+          4,
+          h4(
+            "You ", strong("understand"),
+            "\"reproducibility\" in terms of..."
+          ),
+        ),
+        column(
+          4,
+          h4(
+            "What is ", strong("important"),
+            "in the context of \"reproducibility\"?"
+          ),
+        ),
+        class = "plotly-titles",
+      ),
+      plotlyOutput("q5", height = plot_height),
     ),
 
     # Concepts ####
@@ -82,7 +106,7 @@ tagList(
                 "You use ",
                 strong("open source software"),
                 "for ...?"
-                ),
+              ),
               plotlyOutput("q7oss_parts", height = plot_height),
             ),
             column(
