@@ -91,6 +91,73 @@ function(input, output, session) {
       )
   })
 
+  # Q7 open source ####
+  output$q7oss <- renderPlotly({
+    Q7a_1 <- d() %>%
+      drop_na(Q7a_1) %>%
+      count(Q7a_1)
+
+    d() %>%
+      drop_na(Q7a) %>%
+      count(Q7a) %>%
+      plot_ly(
+        x = ~Q7a,
+        y = ~n,
+        type = "bar",
+        name = "Familiar",
+        # marker = list(color = "#1b9e77"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7a_1,
+        y = ~n,
+        data = Q7a_1,
+        name = "Use",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      plt_layout(barmode = "group") %>%
+      plt_config(filename = "repro_oss")
+  })
+
+  output$q7oss_parts <- renderPlotly({
+    d() %>%
+      select(starts_with("Q7a_2")) %>%
+      pivot_longer(cols = everything()) %>%
+      filter(value != 0) %>%
+      group_by(value) %>%
+      summarise(n = n()) %>%
+      mutate(value = str_wrap(value, width = 20)) %>%
+      plot_ly(
+        x = ~value,
+        y = ~n,
+        color = ~value,
+        colors = pal4,
+        type = "bar",
+        name = "Used for",
+        hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
+      ) %>%
+      plt_layout(showlegend = FALSE) %>%
+      plt_config(filename = "repro_oss_usage")
+  })
+  
+  output$q7oss_env <- renderPlotly({
+    d() %>%
+      drop_na(Q7a_3) %>%
+      count(Q7a_3) %>%
+      plot_ly(
+        x = ~Q7a_3,
+        y = ~n,
+        color = ~Q7a_3,
+        type = "bar",
+        # name = "Familiar",
+        colors = mako4,
+        hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
+      ) %>%
+      plt_layout(showlegend = FALSE) %>%
+      plt_config(filename = "repro_oss_env")
+  })
+
 
   # Word cloud ####
   output$cloud <- renderWordcloud2(clouds[[input$cloud]])

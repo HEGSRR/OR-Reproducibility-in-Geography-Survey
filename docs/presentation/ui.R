@@ -56,6 +56,47 @@ tagList(
         id = "q7_panel",
         tabPanel(
           "Open source",
+          fluidRow(
+            column(
+              4,
+              h5(
+                "How familiar are you with ",
+                strong("open source software", .noWS = "after"), "?",
+                br(),
+                "How often do you use ",
+                strong("open source software", .noWS = "after"), "?"
+              ),
+              plotlyOutput("q7oss", height = plot_height),
+              p(
+                "\"Use\" is recoded for visualization as follows:", br(),
+                "Never -> Not at all", br(),
+                "Rarely -> Very little", br(),
+                "Some of the time -> Somewhat", br(),
+                "Most of the time -> To a great extent", br(),
+                "Always -> To a great extent",
+              ),
+            ),
+            column(
+              4,
+              h5(
+                "You use ",
+                strong("open source software"),
+                "for ...?"
+                ),
+              plotlyOutput("q7oss_parts", height = plot_height),
+            ),
+            column(
+              4,
+              h5(
+                "How often do you ",
+                strong("document or share"),
+                "information related to
+                the computational processing environment
+                used in your own research?"
+              ),
+              plotlyOutput("q7oss_env", height = plot_height),
+            ),
+          ),
         ),
         tabPanel(
           "Notebooks",
