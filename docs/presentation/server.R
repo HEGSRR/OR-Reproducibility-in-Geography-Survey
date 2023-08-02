@@ -35,6 +35,8 @@ function(input, output, session) {
         x = ~Q5,
         y = ~n,
         type = "bar",
+        color = ~Q5,
+        colors = mako4,
         # https://community.plotly.com/t/33731
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       ) %>%
@@ -42,9 +44,15 @@ function(input, output, session) {
 
     fig2 <- d() %>%
       summarize(across(c(dat_rec, pro_rec, res_rec, con_rec), sum)) %>%
+      pivot_longer(cols = everything()) %>%
+      add_column(label = c(
+        "Same data", "Same procedure", "Same result", "Same condition"
+        )) %>%
       plot_ly(
-        x = c("Same data", "Same procedure", "Same result", "Same condition"),
-        y = as.numeric(.),
+        x = ~label,
+        y = ~value,
+        color = ~label,
+        colors = pal5,
         type = "bar",
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       ) %>%
@@ -61,6 +69,8 @@ function(input, output, session) {
         x = ~label,
         y = ~n,
         type = "bar",
+        color = ~label,
+        colors = pal5,
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       ) %>%
       subplot_title("What is important in reproducibility?")

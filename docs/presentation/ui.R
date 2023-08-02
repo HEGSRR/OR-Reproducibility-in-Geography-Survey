@@ -1,5 +1,10 @@
-# UI function ####
-function(request) {
+# UI tags ####
+tagList(
+  # head
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+    tags$link(rel = "shortcut icon", href = "favicon.png"),
+  ),
   navbarPage(
     title = "RPr in Geo",
 
@@ -17,7 +22,7 @@ function(request) {
     header = # conditionalPanel(
     # condition = "input.activeTab !== 'Word Cloud'",
       selectInput(
-        "group", h5("Choose a group:", style = "margin-top: 20px;"),
+        "group", h5("Choose a group:"),
         geo_groups,
       ),
     # ),
@@ -40,7 +45,7 @@ function(request) {
     tabPanel(
       "Awareness",
       icon = icon("lightbulb"),
-      plotlyOutput("q5", height = plot_height),
+      plotlyOutput("q5", height = plot_full_height),
     ),
 
     # Concepts ####
@@ -89,7 +94,7 @@ function(request) {
               9,
               wordcloud2Output(
                 "cloud",
-                height = plot_height
+                height = plot_full_height
               ),
             ),
           ),
@@ -98,7 +103,7 @@ function(request) {
           "Q6 (groupwise)",
           wordcloud2Output(
             "cloud_q6",
-            height = plot_height
+            height = plot_full_height
           ),
         )
       ),
@@ -116,4 +121,4 @@ function(request) {
       ),
     ),
   )
-}
+)
