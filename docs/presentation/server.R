@@ -86,7 +86,7 @@ function(input, output, session) {
   })
 
   # Q7 open source ####
-  output$q7oss <- renderPlotly({
+  output$q7a <- renderPlotly({
     Q7a_1 <- d() %>%
       drop_na(Q7a_1) %>%
       count(Q7a_1)
@@ -155,7 +155,7 @@ function(input, output, session) {
   })
 
   # Q7 notebooks ####
-  output$q7nb <- renderPlotly({
+  output$q7b <- renderPlotly({
     Q7b_1 <- d() %>%
       drop_na(Q7b_1) %>%
       count(Q7b_1)
@@ -191,7 +191,7 @@ function(input, output, session) {
   })
 
   # Q7 archive ####
-  output$q7arch <- renderPlotly({
+  output$q7c <- renderPlotly({
     Q7c_1 <- d() %>%
       drop_na(Q7c_1) %>%
       count(Q7c_1)
@@ -251,7 +251,7 @@ function(input, output, session) {
   })
 
   # Q7 codeshare ####
-  output$q7code <- renderPlotly({
+  output$q7d <- renderPlotly({
     Q7d_1 <- d() %>%
       drop_na(Q7d_1) %>%
       count(Q7d_1)
@@ -299,7 +299,7 @@ function(input, output, session) {
   })
 
   # Q7 pre-reg ####
-  output$q7reg <- renderPlotly({
+  output$q7e <- renderPlotly({
     Q7e_1 <- d() %>%
       drop_na(Q7e_1) %>%
       count(Q7e_1)

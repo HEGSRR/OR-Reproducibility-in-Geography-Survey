@@ -30,7 +30,7 @@ tagList(
     # About ####
     tabPanel(
       "About",
-      icon = icon("file-alt"),
+      icon = icon("info-circle"),
       fluidRow(
         column(
           12,
@@ -44,7 +44,7 @@ tagList(
     # Awareness ####
     tabPanel(
       "Awareness",
-      icon = icon("lightbulb"),
+      icon = icon("bullhorn"),
       fluidRow(
         class = "plotly-titles",
         column(
@@ -75,7 +75,7 @@ tagList(
     # Concepts ####
     tabPanel(
       "Concepts",
-      icon = icon("comments"),
+      icon = icon("lightbulb"),
       tabsetPanel(
         id = "q7_panel",
         tabPanel(
@@ -111,7 +111,7 @@ tagList(
               ),
             ),
           ),
-          plotlyOutput("q7oss", height = plot_height) %>% spin(),
+          plotlyOutput("q7a", height = plot_height) %>% spin(),
           p(
             "\"Use\" is recoded for visualization as follows:", br(),
             "Never -> Not at all", br(),
@@ -134,7 +134,7 @@ tagList(
                 "How ", strong("often"),
                 "do you use lab, field, or computational notebooks?",
               ),
-              plotlyOutput("q7nb", height = plot_height) %>% spin(),
+              plotlyOutput("q7b", height = plot_height) %>% spin(),
             ),
           ),
         ),
@@ -158,7 +158,7 @@ tagList(
               "do you use spatial metadata standards ",
               "when publicly sharing or archiving data in your own research?",
             ),
-            plotlyOutput("q7arch", height = plot_height) %>% spin(),
+            plotlyOutput("q7c", height = plot_height) %>% spin(),
           ),
         ),
         tabPanel(
@@ -177,7 +177,7 @@ tagList(
               "do you use version control software (e.g., Git) ",
               "to facilitate sharing code or scripts in your research?",
             ),
-            plotlyOutput("q7code", height = plot_height) %>% spin(),
+            plotlyOutput("q7d", height = plot_height) %>% spin(),
           ),
         ),
         tabPanel(
@@ -193,9 +193,33 @@ tagList(
                 "How ", strong("often"),
                 "do you use pre-registering for research designs or protocols?",
               ),
-              plotlyOutput("q7reg", height = plot_height) %>% spin(),
+              plotlyOutput("q7e", height = plot_height) %>% spin(),
             ),
           ),
+        ),
+      ),
+    ),
+    
+    # Opinions ####
+    tabPanel(
+      "Opinions",
+      icon = icon("comments"),
+      fluidRow(
+        column(
+          6,
+          h5("Opinions"),
+        ),
+      ),
+    ),
+    
+    # Practices ####
+    tabPanel(
+      "Practices",
+      icon = icon("bullseye"),
+      fluidRow(
+        column(
+          6,
+          h5("Practices"),
         ),
       ),
     ),
@@ -234,18 +258,6 @@ tagList(
             height = plot_full_height
           ),
         )
-      ),
-    ),
-
-    # More Stuff ####
-    tabPanel(
-      "More Stuff",
-      icon = icon("file-alt"),
-      fluidRow(
-        column(
-          6,
-          h1("More Stuff"),
-        ),
       ),
     ),
   )
