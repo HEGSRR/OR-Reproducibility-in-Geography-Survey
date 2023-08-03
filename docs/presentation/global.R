@@ -4,6 +4,7 @@ library(plotly)
 library(stringr)
 library(tidyverse)
 library(wordcloud2)
+library(shinycssloaders)
 
 # theme to match HTML
 thematic::thematic_shiny(font = "auto")
@@ -25,6 +26,17 @@ plot_height <- "60vh"
 
 # text width for axis labels
 width <- 20
+
+# spinner
+spin <- function(plt) {
+  shinycssloaders::withSpinner(
+    plt,
+    type = 4,
+    color = "#1D5B79",
+    size = 2,
+    hide.ui = FALSE
+  )
+}
 
 source("data/constants.R")
 

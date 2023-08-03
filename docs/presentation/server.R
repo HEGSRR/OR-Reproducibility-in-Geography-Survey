@@ -91,7 +91,7 @@ function(input, output, session) {
       drop_na(Q7a_1) %>%
       count(Q7a_1)
 
-    d() %>%
+    plt1 <- d() %>%
       drop_na(Q7a) %>%
       count(Q7a) %>%
       plot_ly(
@@ -110,12 +110,9 @@ function(input, output, session) {
         # marker = list(color = "#d95f02"),
         hovertemplate = "<b>%{x}</b>\n%{y} people"
       ) %>%
-      plt_layout(barmode = "group") %>%
-      plt_config(filename = "repro_oss")
-  })
+      plt_layout(barmode = "group", showlegend = TRUE)
 
-  output$q7oss_parts <- renderPlotly({
-    d() %>%
+    plt2 <- d() %>%
       select(starts_with("Q7a_2")) %>%
       pivot_longer(cols = everything()) %>%
       filter(value != 0) %>%
@@ -130,13 +127,9 @@ function(input, output, session) {
         type = "bar",
         name = "Used for",
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
-      ) %>%
-      plt_layout(showlegend = FALSE) %>%
-      plt_config(filename = "repro_oss_usage")
-  })
+      )
 
-  output$q7oss_env <- renderPlotly({
-    d() %>%
+    plt3 <- d() %>%
       drop_na(Q7a_3) %>%
       count(Q7a_3) %>%
       plot_ly(
@@ -147,9 +140,94 @@ function(input, output, session) {
         # name = "Familiar",
         colors = mako4,
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
-      ) %>%
+      )
+
+    plotly::subplot(plt1, plt2, plt3, nrows = 1, shareY = TRUE) %>%
       plt_layout(showlegend = FALSE) %>%
-      plt_config(filename = "repro_oss_env")
+      plt_config(
+        filename = paste0(
+          "repro_oss_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
+        )
+      )
+  })
+
+  # Q7 notebooks ####
+  output$q7nb <- renderPlotly({
+    Q7b_1 <- d() %>%
+      drop_na(Q7b_1) %>%
+      count(Q7b_1)
+
+    d() %>%
+      drop_na(Q7b) %>%
+      count(Q7b) %>%
+      plot_ly(
+        x = ~Q7b,
+        y = ~n,
+        type = "bar",
+        name = "Familiar",
+        # marker = list(color = "#1b9e77"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7b_1,
+        y = ~n,
+        data = Q7b_1,
+        name = "Use",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      plt_layout(barmode = "group") %>%
+      plt_config(
+        filename = paste0(
+          "repro_nb_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
+        )
+      )
+  })
+
+  # Q7 archive ####
+
+  # Q7 codeshare ####
+
+  # Q7 pre-reg ####
+  output$q7reg <- renderPlotly({
+    Q7e_1 <- d() %>%
+      drop_na(Q7e_1) %>%
+      count(Q7e_1)
+
+    d() %>%
+      drop_na(Q7e) %>%
+      count(Q7e) %>%
+      plot_ly(
+        x = ~Q7e,
+        y = ~n,
+        type = "bar",
+        name = "Familiar",
+        # marker = list(color = "#1b9e77"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7e_1,
+        y = ~n,
+        data = Q7e_1,
+        name = "Use",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      plt_layout(barmode = "group") %>%
+      plt_config(
+        filename = paste0(
+          "repro_prereg_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
+        )
+      )
   })
 
 

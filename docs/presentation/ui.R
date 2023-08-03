@@ -46,6 +46,7 @@ tagList(
       "Awareness",
       icon = icon("lightbulb"),
       fluidRow(
+        class = "plotly-titles",
         column(
           4,
           h4(
@@ -67,9 +68,8 @@ tagList(
             "in the context of \"reproducibility\"?"
           ),
         ),
-        class = "plotly-titles",
       ),
-      plotlyOutput("q5", height = plot_height),
+      plotlyOutput("q5", height = plot_height) %>% spin(),
     ),
 
     # Concepts ####
@@ -81,23 +81,15 @@ tagList(
         tabPanel(
           "Open source",
           fluidRow(
+            class = "plotly-titles",
             column(
               4,
               h5(
-                "How familiar are you with ",
-                strong("open source software", .noWS = "after"), "?",
+                "How ", strong("familiar"),
+                "are you with open source software?",
                 br(),
-                "How often do you use ",
-                strong("open source software", .noWS = "after"), "?"
-              ),
-              plotlyOutput("q7oss", height = plot_height),
-              p(
-                "\"Use\" is recoded for visualization as follows:", br(),
-                "Never -> Not at all", br(),
-                "Rarely -> Very little", br(),
-                "Some of the time -> Somewhat", br(),
-                "Most of the time -> To a great extent", br(),
-                "Always -> To a great extent",
+                "How ", strong("often"),
+                "do you use open source software?",
               ),
             ),
             column(
@@ -107,7 +99,6 @@ tagList(
                 strong("open source software"),
                 "for ...?"
               ),
-              plotlyOutput("q7oss_parts", height = plot_height),
             ),
             column(
               4,
@@ -118,12 +109,33 @@ tagList(
                 the computational processing environment
                 used in your own research?"
               ),
-              plotlyOutput("q7oss_env", height = plot_height),
             ),
+          ),
+          plotlyOutput("q7oss", height = plot_height) %>% spin(),
+          p(
+            "\"Use\" is recoded for visualization as follows:", br(),
+            "Never -> Not at all", br(),
+            "Rarely -> Very little", br(),
+            "Some of the time -> Somewhat", br(),
+            "Most of the time -> To a great extent", br(),
+            "Always -> To a great extent",
           ),
         ),
         tabPanel(
           "Notebooks",
+          fluidRow(
+            column(
+              6,
+              h5(
+                "How ", strong("familiar"),
+                "are you with lab, field, or computational notebooks?",
+                br(),
+                "How ", strong("often"),
+                "do you use lab, field, or computational notebooks?",
+              ),
+              plotlyOutput("q7nb", height = plot_height) %>% spin(),
+            ),
+          ),
         ),
         tabPanel(
           "Data archive",
@@ -133,6 +145,19 @@ tagList(
         ),
         tabPanel(
           "Pre-register",
+          fluidRow(
+            column(
+              6,
+              h5(
+                "How ", strong("familiar"),
+                "are you with pre-registering research designs or protocols?",
+                br(),
+                "How ", strong("often"),
+                "do you use pre-registering for research designs or protocols?",
+              ),
+              plotlyOutput("q7reg", height = plot_height) %>% spin(),
+            ),
+          ),
         ),
       ),
     ),
