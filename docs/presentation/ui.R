@@ -127,6 +127,7 @@ tagList(
             column(
               6,
               h5(
+                class = "plotly-titles",
                 "How ", strong("familiar"),
                 "are you with lab, field, or computational notebooks?",
                 br(),
@@ -139,9 +140,45 @@ tagList(
         ),
         tabPanel(
           "Data archive",
+          column(
+            8,
+            h5(
+              class = "plotly-titles",
+              "How ", strong("familiar"),
+              "are you with sharing or archiving data?",
+              br(),
+              "How ", strong("often"),
+              "do you publicly share or archive data in your own research?",
+              br(),
+              "How ", strong("often"),
+              "do you use digital object identifiers (DOIs) ",
+              "when public sharing or archiving data in your own research?",
+              br(),
+              "How ", strong("often"),
+              "do you use spatial metadata standards ",
+              "when publicly sharing or archiving data in your own research?",
+            ),
+            plotlyOutput("q7arch", height = plot_height) %>% spin(),
+          ),
         ),
         tabPanel(
           "Sharing code",
+          column(
+            8,
+            h5(
+              class = "plotly-titles",
+              "How ", strong("familiar"),
+              "are you with publicly sharing code or scripts?",
+              br(),
+              "How ", strong("often"),
+              "do you publicly share code or scripts in your own research?",
+              br(),
+              "How ", strong("often"),
+              "do you use version control software (e.g., Git) ",
+              "to facilitate sharing code or scripts in your research?",
+            ),
+            plotlyOutput("q7code", height = plot_height) %>% spin(),
+          ),
         ),
         tabPanel(
           "Pre-register",
@@ -149,6 +186,7 @@ tagList(
             column(
               6,
               h5(
+                class = "plotly-titles",
                 "How ", strong("familiar"),
                 "are you with pre-registering research designs or protocols?",
                 br(),

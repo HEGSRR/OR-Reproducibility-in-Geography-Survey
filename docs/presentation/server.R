@@ -106,11 +106,11 @@ function(input, output, session) {
         x = ~Q7a_1,
         y = ~n,
         data = Q7a_1,
-        name = "Use",
+        name = "Use OSS",
         # marker = list(color = "#d95f02"),
         hovertemplate = "<b>%{x}</b>\n%{y} people"
       ) %>%
-      plt_layout(barmode = "group", showlegend = TRUE)
+      plt_layout(barmode = "group")
 
     plt2 <- d() %>%
       select(starts_with("Q7a_2")) %>%
@@ -175,7 +175,7 @@ function(input, output, session) {
         x = ~Q7b_1,
         y = ~n,
         data = Q7b_1,
-        name = "Use",
+        name = "Use notebooks",
         # marker = list(color = "#d95f02"),
         hovertemplate = "<b>%{x}</b>\n%{y} people"
       ) %>%
@@ -191,8 +191,112 @@ function(input, output, session) {
   })
 
   # Q7 archive ####
+  output$q7arch <- renderPlotly({
+    Q7c_1 <- d() %>%
+      drop_na(Q7c_1) %>%
+      count(Q7c_1)
+    
+    Q7c_2 <- d() %>%
+      drop_na(Q7c_2) %>%
+      count(Q7c_2)
+    
+    Q7c_3 <- d() %>%
+      drop_na(Q7c_3) %>%
+      count(Q7c_3)
+    
+    d() %>%
+      drop_na(Q7c) %>%
+      count(Q7c) %>%
+      plot_ly(
+        x = ~Q7c,
+        y = ~n,
+        type = "bar",
+        name = "Familiar",
+        # marker = list(color = "#1b9e77"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7c_1,
+        y = ~n,
+        data = Q7c_1,
+        name = "Archive data",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7c_2,
+        y = ~n,
+        data = Q7c_2,
+        name = "Use DOIs",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7c_3,
+        y = ~n,
+        data = Q7c_3,
+        name = "Use spatial metadata standards",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      plt_layout(barmode = "group") %>%
+      plt_config(
+        filename = paste0(
+          "repro_arch_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
+        )
+      )
+  })
 
   # Q7 codeshare ####
+  output$q7code <- renderPlotly({
+    Q7d_1 <- d() %>%
+      drop_na(Q7d_1) %>%
+      count(Q7d_1)
+    
+    Q7d_2 <- d() %>%
+      drop_na(Q7d_2) %>%
+      count(Q7d_2)
+
+    d() %>%
+      drop_na(Q7d) %>%
+      count(Q7d) %>%
+      plot_ly(
+        x = ~Q7d,
+        y = ~n,
+        type = "bar",
+        name = "Familiar",
+        # marker = list(color = "#1b9e77"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7d_1,
+        y = ~n,
+        data = Q7d_1,
+        name = "Share scripts",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      add_bars(
+        x = ~Q7d_2,
+        y = ~n,
+        data = Q7d_2,
+        name = "Use version control",
+        # marker = list(color = "#d95f02"),
+        hovertemplate = "<b>%{x}</b>\n%{y} people"
+      ) %>%
+      plt_layout(barmode = "group") %>%
+      plt_config(
+        filename = paste0(
+          "repro_code_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
+        )
+      )
+  })
 
   # Q7 pre-reg ####
   output$q7reg <- renderPlotly({
@@ -215,7 +319,7 @@ function(input, output, session) {
         x = ~Q7e_1,
         y = ~n,
         data = Q7e_1,
-        name = "Use",
+        name = "Use pre-registering",
         # marker = list(color = "#d95f02"),
         hovertemplate = "<b>%{x}</b>\n%{y} people"
       ) %>%
