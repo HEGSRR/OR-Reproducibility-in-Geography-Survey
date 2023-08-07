@@ -220,6 +220,20 @@ tagList(
             ),
           ),
         ),
+        tabPanel(
+          "Published results",
+          fluidRow(
+            column(
+              8,
+              h5(
+                class = "plotly-titles",
+                "In your opinion, what percentage of the",
+                "published results are reproducible within...?",
+              ),
+              plotlyOutput("q13", height = plot_height) %>% spin(),
+            ),
+          ),
+        ),
       ),
     ),
 
