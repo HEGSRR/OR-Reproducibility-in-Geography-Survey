@@ -30,7 +30,7 @@ tagList(
     # About ####
     tabPanel(
       "About",
-      icon = icon("info-circle"),
+      icon = icon("info"),
       fluidRow(
         column(
           12,

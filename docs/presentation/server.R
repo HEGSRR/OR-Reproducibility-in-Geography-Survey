@@ -35,8 +35,6 @@ function(input, output, session) {
         x = ~Q5,
         y = ~n,
         type = "bar",
-        color = ~Q5,
-        colors = mako4,
         # https://community.plotly.com/t/33731
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       )
@@ -51,8 +49,6 @@ function(input, output, session) {
       plot_ly(
         x = ~label,
         y = ~value,
-        color = ~label,
-        colors = pal5,
         type = "bar",
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       )
@@ -68,8 +64,6 @@ function(input, output, session) {
         x = ~label,
         y = ~n,
         type = "bar",
-        color = ~label,
-        colors = pal5,
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       )
 
@@ -122,8 +116,6 @@ function(input, output, session) {
       plot_ly(
         x = ~value,
         y = ~n,
-        color = ~value,
-        colors = pal4,
         type = "bar",
         name = "Used for",
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
@@ -135,10 +127,8 @@ function(input, output, session) {
       plot_ly(
         x = ~Q7a_3,
         y = ~n,
-        color = ~Q7a_3,
         type = "bar",
         # name = "Familiar",
-        colors = mako4,
         hovertemplate = "<b>%{x}</b>\n%{y} people<extra></extra>"
       )
 
