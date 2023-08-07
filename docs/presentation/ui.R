@@ -199,19 +199,30 @@ tagList(
         ),
       ),
     ),
-    
+
     # Opinions ####
     tabPanel(
       "Opinions",
       icon = icon("comments"),
-      fluidRow(
-        column(
-          6,
-          h5("Opinions"),
+      tabsetPanel(
+        id = "op_panel",
+        tabPanel(
+          "Views",
+          fluidRow(
+            column(
+              8,
+              h5(
+                class = "plotly-titles",
+                "To what extent do you agree with the following",
+                "statements about research in your subfield?",
+              ),
+              plotlyOutput("q8", height = plot_height) %>% spin(),
+            ),
+          ),
         ),
       ),
     ),
-    
+
     # Practices ####
     tabPanel(
       "Practices",

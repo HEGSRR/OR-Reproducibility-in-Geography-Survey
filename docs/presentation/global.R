@@ -9,6 +9,9 @@ library(shinycssloaders)
 # theme to match HTML
 thematic::thematic_shiny(font = "auto")
 
+# colors for likert
+pal <- c("#DF4949", "#E27A3F", "#BEBEBE", "#45B29D", "#334D5C")
+
 # plot height as CSS
 plot_full_height <- "80vh"
 plot_height <- "60vh"

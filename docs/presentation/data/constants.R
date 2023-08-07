@@ -17,6 +17,19 @@ four_level_cols <- c("Q5", "Q7a", "Q7b", "Q7c", "Q7d", "Q7e")
 five_levels <- c("Never", "Rarely", "Some of the time", "Most of the time", "Always")
 five_level_cols <- c("Q7a_1", "Q7a_3", "Q7b_1", "Q7c_1", "Q7c_2", "Q7c_3", "Q7d_1", "Q7d_2", "Q7e_1")
 
+# Q8 Levels of agreement ####
+agree_levels <- c("Strongly disagree", "Disagree", "Don't know", "Agree", "Strongly agree")
+
+# Q8 questions text ####
+q8_text <- c(
+  Q8_1 = "Failing to reproduce a result often means the original finding is false.",
+  Q8_2 = "Failing to reproduce a result rarely detracts from the validity of the original study.",
+  Q8_3 = "If a researcher does not share the data used in their study, I trust the results less.",
+  Q8_4 = "It is important for students to attempt reproductions as part of their training.",
+  Q8_5 = "To be credible, research must be reproducible.",
+  Q8_6 = "Reproducibility is incompatible with the epistemologies within my subfield."
+)
+
 # Questions for the word cloud ####
 cloud_cols <- list("Q6", "Q10", "Q12a", "Q15", "Q17a")
 cloud_questions <- list(
@@ -62,14 +75,16 @@ subplot_title <- function(plot, title, .x = 0.05, .y = 1.1) {
 }
 
 # Plotly styling ####
+fira <- list(family = "Fira Sans", size = 16)
+
 plt_layout <- function(plt, ...) {
   plotly::layout(
     plt,
-    xaxis = list(title = FALSE),
-    yaxis = list(title = FALSE),
-    font = list(family = "Fira Sans", size = 16),
+    xaxis = list(title = FALSE, titlefont = fira, tickfont = fira),
+    yaxis = list(title = FALSE, titlefont = fira, tickfont = fira),
+    font = fira,
     hoverlabel = list(
-      font = list(family = "Fira Sans", size = 16)
+      font = fira
     ),
     ...
   )

@@ -185,15 +185,15 @@ function(input, output, session) {
     Q7c_1 <- d() %>%
       drop_na(Q7c_1) %>%
       count(Q7c_1)
-    
+
     Q7c_2 <- d() %>%
       drop_na(Q7c_2) %>%
       count(Q7c_2)
-    
+
     Q7c_3 <- d() %>%
       drop_na(Q7c_3) %>%
       count(Q7c_3)
-    
+
     d() %>%
       drop_na(Q7c) %>%
       count(Q7c) %>%
@@ -245,7 +245,7 @@ function(input, output, session) {
     Q7d_1 <- d() %>%
       drop_na(Q7d_1) %>%
       count(Q7d_1)
-    
+
     Q7d_2 <- d() %>%
       drop_na(Q7d_2) %>%
       count(Q7d_2)
@@ -317,6 +317,70 @@ function(input, output, session) {
       plt_config(
         filename = paste0(
           "repro_prereg_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
+        )
+      )
+  })
+
+  # Q8 likert ####
+  output$q8 <- renderPlotly({
+    plt <- d() %>%
+      # make data for likert
+      pivot_longer(cols = starts_with("Q8")) %>%
+      group_by(name, value) %>%
+      summarise(n = n()) %>%
+      mutate(value = factor(value, levels = agree_levels)) %>%
+      replace_na(list(value = "Don't know")) %>%
+      group_by(name) %>%
+      mutate(perc = n / sum(n)) %>%
+      mutate(
+        yeah = ifelse(any(value == "Agree"), perc[value == "Agree"], 0),
+        idk = ifelse(any(value == "Don't know"), perc[value == "Don't know"] / 2, 0),
+        nah = ifelse(any(value == "Disagree"), perc[value == "Disagree"], 0),
+        start = case_match(
+          value,
+          "Strongly agree" ~ yeah + idk,
+          "Agree" ~ idk,
+          "Don't know" ~ -idk,
+          "Disagree" ~ -idk - perc,
+          "Strongly disagree" ~ -idk - nah - perc,
+        )
+      ) %>%
+      ungroup() %>%
+      dplyr::select(-c(yeah, nah, idk)) %>%
+      # ggplot
+      ggplot() +
+      geom_segment(aes(
+        x = name, y = start,
+        xend = name, yend = start + perc,
+        colour = value,
+        text = paste0(
+          "<b>", value, "</b><br>",
+          n, " people<br>",
+          round(perc * 100, 2), " %"
+        )
+      ), linewidth = 12) +
+      geom_hline(yintercept = 0, color = c("#646464")) +
+      coord_flip() +
+      scale_color_manual("Response", values = pal, guide = "legend") +
+      labs(title = "", y = "Percent", x = "") +
+      scale_x_discrete(labels = str_wrap(q8_text, width = 40)) +
+      scale_y_continuous(labels = scales::percent) +
+      theme_minimal() +
+      theme(
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank()
+      )
+    # plotly
+    ggplotly(plt, tooltip = "text") %>%
+      plt_layout(
+        legend = list(font = fira)
+      ) %>%
+      plt_config(
+        filename = paste0(
+          "repro_views_",
           input$group %>%
             tolower() %>%
             gsub("[^a-z0-9]", "_", .)
