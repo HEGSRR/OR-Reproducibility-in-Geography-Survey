@@ -77,7 +77,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 open source ####
   output$q7a <- renderPlotly({
@@ -142,7 +143,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 notebooks ####
   output$q7b <- renderPlotly({
@@ -178,7 +180,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 archive ####
   output$q7c <- renderPlotly({
@@ -238,7 +241,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 codeshare ####
   output$q7d <- renderPlotly({
@@ -286,7 +290,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 pre-reg ####
   output$q7e <- renderPlotly({
@@ -322,7 +327,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q8 likert ####
   output$q8 <- renderPlotly({
@@ -386,7 +392,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q13 percentages ####
 
@@ -430,7 +437,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
 
 
