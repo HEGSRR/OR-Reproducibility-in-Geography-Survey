@@ -77,7 +77,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 open source ####
   output$q7a <- renderPlotly({
@@ -142,7 +143,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 notebooks ####
   output$q7b <- renderPlotly({
@@ -178,7 +180,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 archive ####
   output$q7c <- renderPlotly({
@@ -238,7 +241,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 codeshare ####
   output$q7d <- renderPlotly({
@@ -286,7 +290,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q7 pre-reg ####
   output$q7e <- renderPlotly({
@@ -322,7 +327,8 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q8 likert ####
   output$q8 <- renderPlotly({
@@ -386,7 +392,55 @@ function(input, output, session) {
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
+
+  # Q13 percentages ####
+
+  output$q13 <- renderPlotly({
+    all_geo <- d()$Q13_1 %>%
+      density(na.rm = TRUE)
+
+    subfield <- d()$Q13_2 %>%
+      density(na.rm = TRUE)
+
+    plot_ly(
+      x = ~ all_geo$x,
+      y = ~ all_geo$y,
+      type = "scatter",
+      mode = "lines",
+      fill = "tozeroy",
+      name = "Geography",
+      hovertemplate = "%{x:.2f}%\n%{y:.2%}"
+    ) %>%
+      add_trace(
+        x = ~ subfield$x,
+        y = ~ subfield$y,
+        type = "scatter",
+        mode = "lines",
+        fill = "tozeroy",
+        name = "Your primary\nsubfield"
+      ) %>%
+      plt_layout(
+        legend = list(font = fira)
+      ) %>%
+      plotly::layout(
+        xaxis = list(range = list(0, 100), ticksuffix = "%"),
+        yaxis = list(tickformat = ".1%"),
+        hovermode = "x"
+      ) %>%
+      plt_config(
+        filename = paste0(
+          "repro_published_",
+          input$group %>%
+            tolower() %>%
+            gsub("[^a-z0-9]", "_", .)
+        )
+      )
+  }) %>%
+    bindCache(input$group)
+
+
 
 
   # Word cloud ####
