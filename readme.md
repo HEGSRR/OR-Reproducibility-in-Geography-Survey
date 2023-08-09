@@ -10,11 +10,12 @@ While the number of reproduction and replication studies undertaken in the socia
 - [Joseph Holler](https://github.com/josephholler)
 - [Sarah Bardin](https://github.com/SarahBardin)
 
-## Repository Documents
+## Repository Relates to:
 
 - OSF Preregistration: https://osf.io/6zjcp
 - OSF Project: https://osf.io/5yeq8/
 - OSF Preprint: https://osf.io/nyrq9/
+- Data Visualization: https://OSF.IO/B47XU
 - Working Preprint: [docs/manuscript/manuscript.pdf](docs/manuscript)
 - Publication: Manuscript in review
 
