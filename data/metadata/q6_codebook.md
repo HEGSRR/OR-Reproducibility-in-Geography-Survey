@@ -25,7 +25,7 @@ Relevant identifier and population information is contained in the first columns
 - `label`: Definitions were classified as one of four possible archetypes of motivations for conducting a replication study.
   - `Data Collection`: improve the transparency and consistency of data collection
   - `Standard`: facilitate assessment of prior work, most in line with the NASEM 2019 definition
-  - `Experiment`: assess experimental research
+  - `Experiment`: assess repeatability of experiments in research
   - `Transparency`: improve transparency and facilitate further extension of work
 - `replication_flag`: Does the definition more closely align with the NASEM 2019 definition of "replication", in which a study is repeated with new data or new context, than it does "reproducibility"?
   - `0`: No
