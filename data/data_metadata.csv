@@ -2,5 +2,6 @@ path,file_name,metadata_files
 raw/public,raw_hegs_rpr.rds,HEGS-Reproducibility.qsf; data/raw/public/raw_rpr_survey_metadata.rds; data/raw/public/raw_rpr_survey_questions.rds;
 raw/public,raw_rpr_survey_metadata.rds,n/a - metadata for raw_hes_rpr.rds
 raw/public,raw_rpr_survey_questions.rds,n/a - metadata for raw_hes_rpr.rds
-derived/public,final_full_Q6_coding.csv,codebook TBD
-derived/public,final_full_Q10_coding.csv,codebook TBD
+derived/public,final_full_Q6_coding.csv,q6_codebook.md
+derived/public,final_full_Q10_coding.csv,q10_codebook.md
+derived/public,incomplete_responses.csv,incomplete_responses.md

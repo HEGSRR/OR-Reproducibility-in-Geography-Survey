@@ -1,41 +1,41 @@
-"","Q3","Q3_5_TEXT","Q3_recoded","Q4"
-"1","NA",NA,"NA","NA"
-"2","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"3","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"4","Geographic methods, GIS, spatial statistics",NA,"Methods","Mixed Methods"
-"5","Other (specify)","Geography of innovation","Human","Qualitative"
-"6","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"7","NA",NA,"NA","Quantitative"
-"8","Human geography",NA,"Human","Qualitative"
-"9","Nature and society",NA,"Nature/society","Mixed Methods"
-"10","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"11","Human geography",NA,"Human","Mixed Methods"
-"12","Physical geography, earth and environmental sciences",NA,"Physical","Quantitative"
-"13","NA",NA,"NA","NA"
-"14","NA",NA,"NA","NA"
-"15","Human geography",NA,"Human","Qualitative"
-"16","NA",NA,"NA","Quantitative"
-"17","Human geography",NA,"Human","Mixed Methods"
-"18","Nature and society",NA,"Nature/society","Mixed Methods"
-"19","NA",NA,"NA","NA"
-"20","NA",NA,"NA","NA"
-"21","Other (specify)","Archaeology","Nature/society","Quantitative"
-"22","NA",NA,"NA","NA"
-"23","Physical geography, earth and environmental sciences",NA,"Physical","Quantitative"
-"24","Other (specify)","Economic geography","Human","Quantitative"
-"25","Human geography",NA,"Human","Qualitative"
-"26","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"27","NA",NA,"NA","NA"
-"28","NA",NA,"NA","NA"
-"29","Human geography",NA,"Human","Quantitative"
-"30","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"31","Nature and society",NA,"Nature/society","Mixed Methods"
-"32","Human geography",NA,"Human","Qualitative"
-"33","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"34","Physical geography, earth and environmental sciences",NA,"Physical","Qualitative"
-"35","Physical geography, earth and environmental sciences",NA,"Physical","Quantitative"
-"36","NA",NA,"NA","NA"
-"37","Human geography",NA,"Human","Quantitative"
-"38","Human geography",NA,"Human","Mixed Methods"
-"39","Physical geography, earth and environmental sciences",NA,"Physical","Mixed Methods"
-"40","Geographic methods, GIS, spatial statistics",NA,"Methods","Mixed Methods"
+RowID,Q3,Q3_5_TEXT,Q3_recoded,Q4
+1,NA,NA,NA,NA
+2,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+3,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+4,"Geographic methods, GIS, spatial statistics",NA,Methods,Mixed Methods
+5,Other (specify),Geography of innovation,Human,Qualitative
+6,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+7,NA,NA,NA,Quantitative
+8,Human geography,NA,Human,Qualitative
+9,Nature and society,NA,Nature/society,Mixed Methods
+10,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+11,Human geography,NA,Human,Mixed Methods
+12,"Physical geography, earth and environmental sciences",NA,Physical,Quantitative
+13,NA,NA,NA,NA
+14,NA,NA,NA,NA
+15,Human geography,NA,Human,Qualitative
+16,NA,NA,NA,Quantitative
+17,Human geography,NA,Human,Mixed Methods
+18,Nature and society,NA,Nature/society,Mixed Methods
+19,NA,NA,NA,NA
+20,NA,NA,NA,NA
+21,Other (specify),Archaeology,Nature/society,Quantitative
+22,NA,NA,NA,NA
+23,"Physical geography, earth and environmental sciences",NA,Physical,Quantitative
+24,Other (specify),Economic geography,Human,Quantitative
+25,Human geography,NA,Human,Qualitative
+26,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+27,NA,NA,NA,NA
+28,NA,NA,NA,NA
+29,Human geography,NA,Human,Quantitative
+30,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+31,Nature and society,NA,Nature/society,Mixed Methods
+32,Human geography,NA,Human,Qualitative
+33,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+34,"Physical geography, earth and environmental sciences",NA,Physical,Qualitative
+35,"Physical geography, earth and environmental sciences",NA,Physical,Quantitative
+36,NA,NA,NA,NA
+37,Human geography,NA,Human,Quantitative
+38,Human geography,NA,Human,Mixed Methods
+39,"Physical geography, earth and environmental sciences",NA,Physical,Mixed Methods
+40,"Geographic methods, GIS, spatial statistics",NA,Methods,Mixed Methods
