@@ -157,7 +157,9 @@ tagList(
           "Notebooks",
           fluidRow(
             column(
-              6,
+              12,
+              # col-sm-12
+              class = "col-lg-10 col-xl-8",
               h4(
                 class = "plotly-titles",
                 "How ", strong("familiar"),
@@ -173,7 +175,9 @@ tagList(
         tabPanel(
           "Data archive",
           column(
-            8,
+            12,
+            # col-sm-12
+            class = "col-lg-10 col-xl-8",
             h4(
               class = "plotly-titles",
               "How ", strong("familiar"),
@@ -196,7 +200,9 @@ tagList(
         tabPanel(
           "Sharing code",
           column(
-            8,
+            12,
+            # col-sm-12
+            class = "col-lg-10 col-xl-8",
             h4(
               class = "plotly-titles",
               "How ", strong("familiar"),
@@ -216,7 +222,9 @@ tagList(
           "Pre-register",
           fluidRow(
             column(
-              6,
+              12,
+              # col-sm-12
+              class = "col-lg-10 col-xl-8",
               h4(
                 class = "plotly-titles",
                 "How ", strong("familiar"),
@@ -242,7 +250,8 @@ tagList(
           "Views",
           fluidRow(
             column(
-              8,
+              class = "col-xxl-8",
+              12,
               h4(
                 class = "plotly-titles",
                 "To what extent do you agree with the following",
@@ -256,7 +265,9 @@ tagList(
           "Published results",
           fluidRow(
             column(
-              8,
+              12,
+              # col-sm-12
+              class = "col-xxl-8",
               h4(
                 class = "plotly-titles",
                 "In your opinion, what percentage of the",
