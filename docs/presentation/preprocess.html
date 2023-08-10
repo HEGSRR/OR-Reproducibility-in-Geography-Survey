@@ -1752,7 +1752,24 @@ clouds_q6_q4 &lt;- map(
 
 clouds_q6 &lt;- append(clouds_q6_q3, clouds_q6_q4)
 clouds_q6$Everyone &lt;- clouds$Q6
-# saveRDS(clouds_q6, file = &quot;data/clouds_q6.rds&quot;)</code></pre>
+saveRDS(clouds_q6, file = &quot;data/clouds_q6.rds&quot;)</code></pre>
+<pre class="r"><code>clouds_q10_q3 &lt;- map(
+  subfields, ~ analysis %&gt;%
+    filter(Q3_recoded == .x) %&gt;%
+    column_to_cloud(&quot;Q10&quot;, data = .)
+) %&gt;%
+  set_names(subfields)
+
+clouds_q10_q4 &lt;- map(
+  types, ~ analysis %&gt;%
+    filter(Q4 == .x) %&gt;%
+    column_to_cloud(&quot;Q10&quot;, data = .)
+) %&gt;%
+  set_names(types)
+
+clouds_q10 &lt;- append(clouds_q10_q3, clouds_q10_q4)
+clouds_q10$Everyone &lt;- clouds$Q10
+saveRDS(clouds_q10, file = &quot;data/clouds_q10.rds&quot;)</code></pre>
 </div>
 <div id="density-plots" class="section level2">
 <h2><del>Density plots</del></h2>
@@ -1776,24 +1793,16 @@ clouds_q6$Everyone &lt;- clouds$Q6
 <pre class="r"><code>analysis %&lt;&gt;%
   mutate(across(all_of(four_level_cols), ~ factor(., levels = four_levels))) %&gt;%
   mutate(across(all_of(five_level_cols), ~ factor(., levels = four_levels)))</code></pre>
-<p>Q7 (many parts)</p>
-<p>Q13 (percentages)</p>
-</div>
-<div id="likert-charts" class="section level2">
-<h2>Likert charts</h2>
-<p>Q8</p>
-<p>Q9 (maybe)</p>
-<p>Q11 Q12</p>
-<p>Q14</p>
-<p>Q17</p>
-</div>
-<div id="bar-plot" class="section level2">
-<h2>Bar plot</h2>
-<p>Or something simple Include animations</p>
-<p>Q16</p>
-</div>
-<div id="demographics" class="section level2">
-<h2>Demographics</h2>
+<p>Rename Q6 labels</p>
+<pre class="r"><code>analysis %&lt;&gt;%
+  mutate(label = case_match(
+    label,
+    &quot;Omit&quot; ~ NA,
+    &quot;Standard&quot; ~ &quot;Assess Prior Work&quot;,
+    &quot;Experiment&quot; ~ &quot;Repeatable Experiments&quot;,
+    &quot;Data Collection&quot; ~ &quot;Data Collection&quot;,
+    &quot;Transparency/Extension&quot; ~ &quot;Transparency/Extension&quot;
+  ))</code></pre>
 </div>
 <div id="save" class="section level2">
 <h2>Save</h2>

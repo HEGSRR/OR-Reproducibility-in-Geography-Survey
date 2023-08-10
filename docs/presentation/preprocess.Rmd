@@ -138,7 +138,27 @@ clouds_q6_q4 <- map(
 
 clouds_q6 <- append(clouds_q6_q3, clouds_q6_q4)
 clouds_q6$Everyone <- clouds$Q6
-# saveRDS(clouds_q6, file = "data/clouds_q6.rds")
+saveRDS(clouds_q6, file = "data/clouds_q6.rds")
+```
+
+```{r q10 cloud}
+clouds_q10_q3 <- map(
+  subfields, ~ analysis %>%
+    filter(Q3_recoded == .x) %>%
+    column_to_cloud("Q10", data = .)
+) %>%
+  set_names(subfields)
+
+clouds_q10_q4 <- map(
+  types, ~ analysis %>%
+    filter(Q4 == .x) %>%
+    column_to_cloud("Q10", data = .)
+) %>%
+  set_names(types)
+
+clouds_q10 <- append(clouds_q10_q3, clouds_q10_q4)
+clouds_q10$Everyone <- clouds$Q10
+# saveRDS(clouds_q10, file = "data/clouds_q10.rds")
 ```
 
 ## ~~Density plots~~
@@ -190,31 +210,20 @@ analysis %<>%
   mutate(across(all_of(five_level_cols), ~ factor(., levels = four_levels)))
 ```
 
+Rename Q6 labels
+```{r}
+analysis %<>%
+  mutate(label = case_match(
+    label,
+    "Omit" ~ NA,
+    "Standard" ~ "Assess Prior Work",
+    "Experiment" ~ "Repeatable Experiments",
+    "Data Collection" ~ "Data Collection",
+    "Transparency/Extension" ~ "Transparency/Extension"
+  ))
+```
 
 
-Q7 (many parts)
-
-Q13 (percentages)
-
-## Likert charts
-Q8
-
-Q9 (maybe)
-
-Q11
-Q12
-
-Q14
-
-Q17
-
-## Bar plot
-Or something simple
-Include animations
-
-Q16
-
-## Demographics
 
 ## Save
 ```{r}
