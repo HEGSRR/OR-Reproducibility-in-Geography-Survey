@@ -224,9 +224,60 @@ analysis %<>%
 ```
 
 
+## Q8 Likert
+```{r}
+q8_to_likert <- function(data = analysis) {
+  data %>%
+    # make data for likert
+    pivot_longer(cols = starts_with("Q8")) %>%
+    group_by(name, value) %>%
+    summarise(n = n()) %>%
+    mutate(value = factor(value, levels = agree_levels)) %>%
+    replace_na(list(value = "Don't know")) %>%
+    group_by(name) %>%
+    mutate(perc = n / sum(n)) %>%
+    mutate(
+      yeah = ifelse(any(value == "Agree"), perc[value == "Agree"], 0),
+      idk = ifelse(any(value == "Don't know"), perc[value == "Don't know"] / 2, 0),
+      nah = ifelse(any(value == "Disagree"), perc[value == "Disagree"], 0),
+      start = case_match(
+        value,
+        "Strongly agree" ~ yeah + idk,
+        "Agree" ~ idk,
+        "Don't know" ~ -idk,
+        "Disagree" ~ -idk - perc,
+        "Strongly disagree" ~ -idk - nah - perc,
+      )
+    ) %>%
+    ungroup() %>%
+    dplyr::select(-c(yeah, nah, idk))
+}
+```
+
+
+```{r Q8}
+q8_q3 <- map(
+  subfields, ~ analysis %>%
+    filter(Q3_recoded == .x) %>%
+    q8_to_likert()
+) %>%
+  set_names(subfields)
+
+q8_q4 <- map(
+  types, ~ analysis %>%
+    filter(Q4 == .x) %>%
+    q8_to_likert()
+) %>%
+  set_names(types)
+
+q8 <- append(q8_q3, q8_q4)
+q8$Everyone <- q8_to_likert()
+saveRDS(q8, file = "data/q8.rds")
+```
+
 
 ## Save
 ```{r}
 analysis %>%
-  saveRDS("data/analysis.rds", compress = FALSE)
+  saveRDS("data/analysis.rds")
 ```

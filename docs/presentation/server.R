@@ -332,30 +332,7 @@ function(input, output, session) {
 
   # Q8 likert ####
   output$q8 <- renderPlotly({
-    plt <- d() %>%
-      # make data for likert
-      pivot_longer(cols = starts_with("Q8")) %>%
-      group_by(name, value) %>%
-      summarise(n = n()) %>%
-      mutate(value = factor(value, levels = agree_levels)) %>%
-      replace_na(list(value = "Don't know")) %>%
-      group_by(name) %>%
-      mutate(perc = n / sum(n)) %>%
-      mutate(
-        yeah = ifelse(any(value == "Agree"), perc[value == "Agree"], 0),
-        idk = ifelse(any(value == "Don't know"), perc[value == "Don't know"] / 2, 0),
-        nah = ifelse(any(value == "Disagree"), perc[value == "Disagree"], 0),
-        start = case_match(
-          value,
-          "Strongly agree" ~ yeah + idk,
-          "Agree" ~ idk,
-          "Don't know" ~ -idk,
-          "Disagree" ~ -idk - perc,
-          "Strongly disagree" ~ -idk - nah - perc,
-        )
-      ) %>%
-      ungroup() %>%
-      dplyr::select(-c(yeah, nah, idk)) %>%
+    plt <- q8[[input$group]] %>%
       # ggplot
       ggplot() +
       geom_segment(aes(
