@@ -45,36 +45,68 @@ tagList(
     tabPanel(
       "Awareness",
       icon = icon("bullhorn"),
-      fluidRow(
-        class = "plotly-titles",
-        column(
-          4,
+      tabsetPanel(
+        id = "awareness-panel",
+        tabPanel(
+          "Question 5",
+          fluidRow(
+            class = "plotly-titles",
+            column(
+              4,
+              h4(
+                "How ", strong("familiar"),
+                "are you with the term \"reproducibility\"?"
+              ),
+            ),
+            column(
+              4,
+              h4(
+                "You ", strong("understand"),
+                "\"reproducibility\" in terms of..."
+              ),
+            ),
+            column(
+              4,
+              h4(
+                "What is the main", strong("motivation"),
+                "of \"reproducibility\"?"
+              ),
+            ),
+          ),
+          plotlyOutput("q5", height = plot_height) %>% spin(),
+        ),
+        tabPanel(
+          "Question 6",
           h4(
-            "How ", strong("familiar"),
-            "are you with the term \"reproducibility\"?"
+            class = "plotly-titles",
+            "What is your ", strong("understanding"),
+            "of the term \"reproducibility\"",
+            "in the context of your own research?",
+          ),
+          wordcloud2Output(
+            "cloud_q6",
+            height = plot_height
           ),
         ),
-        column(
-          4,
+        tabPanel(
+          "Question 10",
           h4(
-            "You ", strong("understand"),
-            "\"reproducibility\" in terms of..."
+            class = "plotly-titles",
+            "Thinking about the reproduction(s) you attempted in the last 2 years,",
+            "What made you decide to ", strong("attempt"),
+            "the reproduction(s)?",
           ),
-        ),
-        column(
-          4,
-          h4(
-            "What is ", strong("important"),
-            "in the context of \"reproducibility\"?"
+          wordcloud2Output(
+            "cloud_q10",
+            height = plot_height
           ),
         ),
       ),
-      plotlyOutput("q5", height = plot_height) %>% spin(),
     ),
 
-    # Concepts ####
+    # Practices ####
     tabPanel(
-      "Concepts",
+      "Practices",
       icon = icon("lightbulb"),
       tabsetPanel(
         id = "q7_panel",
@@ -84,7 +116,7 @@ tagList(
             class = "plotly-titles",
             column(
               4,
-              h5(
+              h4(
                 "How ", strong("familiar"),
                 "are you with open source software?",
                 br(),
@@ -94,7 +126,7 @@ tagList(
             ),
             column(
               4,
-              h5(
+              h4(
                 "You use ",
                 strong("open source software"),
                 "for ...?"
@@ -102,7 +134,7 @@ tagList(
             ),
             column(
               4,
-              h5(
+              h4(
                 "How often do you ",
                 strong("document or share"),
                 "information related to
@@ -126,7 +158,7 @@ tagList(
           fluidRow(
             column(
               6,
-              h5(
+              h4(
                 class = "plotly-titles",
                 "How ", strong("familiar"),
                 "are you with lab, field, or computational notebooks?",
@@ -142,7 +174,7 @@ tagList(
           "Data archive",
           column(
             8,
-            h5(
+            h4(
               class = "plotly-titles",
               "How ", strong("familiar"),
               "are you with sharing or archiving data?",
@@ -165,7 +197,7 @@ tagList(
           "Sharing code",
           column(
             8,
-            h5(
+            h4(
               class = "plotly-titles",
               "How ", strong("familiar"),
               "are you with publicly sharing code or scripts?",
@@ -185,7 +217,7 @@ tagList(
           fluidRow(
             column(
               6,
-              h5(
+              h4(
                 class = "plotly-titles",
                 "How ", strong("familiar"),
                 "are you with pre-registering research designs or protocols?",
@@ -211,7 +243,7 @@ tagList(
           fluidRow(
             column(
               8,
-              h5(
+              h4(
                 class = "plotly-titles",
                 "To what extent do you agree with the following",
                 "statements about research in your subfield?",
@@ -225,7 +257,7 @@ tagList(
           fluidRow(
             column(
               8,
-              h5(
+              h4(
                 class = "plotly-titles",
                 "In your opinion, what percentage of the",
                 "published results are reproducible within...?",
@@ -237,52 +269,15 @@ tagList(
       ),
     ),
 
-    # Practices ####
+    # Experience ####
     tabPanel(
-      "Practices",
+      "Experience",
       icon = icon("bullseye"),
       fluidRow(
         column(
           6,
-          h5("Practices"),
+          h4("Experience"),
         ),
-      ),
-    ),
-
-    # Word Cloud ####
-    tabPanel(
-      "Word Cloud",
-      icon = icon("cloud"),
-      tabsetPanel(
-        id = "clouds",
-        tabPanel(
-          "Overall",
-          fluidRow(
-            column(
-              3,
-              radioButtons(
-                "cloud",
-                label = h4("Choose a question:"),
-                choiceNames = cloud_questions,
-                choiceValues = cloud_cols
-              ),
-            ),
-            column(
-              9,
-              wordcloud2Output(
-                "cloud",
-                height = plot_full_height
-              ),
-            ),
-          ),
-        ),
-        tabPanel(
-          "Q6 (groupwise)",
-          wordcloud2Output(
-            "cloud_q6",
-            height = plot_full_height
-          ),
-        )
       ),
     ),
   )

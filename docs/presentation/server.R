@@ -443,7 +443,7 @@ function(input, output, session) {
 
 
 
-  # Word cloud ####
-  output$cloud <- renderWordcloud2(clouds[[input$cloud]])
+  # Q6 & Q10 word clouds ####
   output$cloud_q6 <- renderWordcloud2(clouds_q6[[input$group]])
+  output$cloud_q10 <- renderWordcloud2(clouds_q10[[input$group]])
 }

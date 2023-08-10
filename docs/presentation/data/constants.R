@@ -31,7 +31,7 @@ q8_text <- c(
 )
 
 # Questions for the word cloud ####
-cloud_cols <- list("Q6", "Q10", "Q12a", "Q15", "Q17a")
+cloud_cols <- list("Q6", "Q10")
 cloud_questions <- list(
   p(
     icon("circle-question"), strong("Question 6"), br(),
