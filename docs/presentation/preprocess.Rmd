@@ -138,7 +138,7 @@ clouds_q6_q4 <- map(
 
 clouds_q6 <- append(clouds_q6_q3, clouds_q6_q4)
 clouds_q6$Everyone <- clouds$Q6
-saveRDS(clouds_q6, file = "data/clouds_q6.rds")
+# saveRDS(clouds_q6, file = "data/clouds_q6.rds")
 ```
 
 ```{r q10 cloud}
@@ -272,12 +272,21 @@ q8_q4 <- map(
 
 q8 <- append(q8_q3, q8_q4)
 q8$Everyone <- q8_to_likert()
-saveRDS(q8, file = "data/q8.rds")
+# saveRDS(q8, file = "data/q8.rds")
 ```
 
 
 ## Save
 ```{r}
 analysis %>%
+  select(
+    Q3_recoded, Q4, Q5,
+    dat_rec, pro_rec, res_rec, con_rec, label,
+    starts_with("Q7"),
+    Q13_1, Q13_2,
+    starts_with("Q9"),
+    starts_with("Q14"),
+    starts_with("Q17_")
+  ) %>%
   saveRDS("data/analysis.rds")
 ```

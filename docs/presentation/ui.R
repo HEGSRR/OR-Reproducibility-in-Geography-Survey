@@ -53,10 +53,10 @@ tagList(
             
             The survey inquires researchers about their:
             
-            1) understanding and awareness of reproducibility;
-            2) awareness and implementation of reproducible research practices;
-            3) opinions and perceptions about the role of reproducibility in geography and their subfield; and
-            4) experience attempting reproductions of prior studies.
+            1) understanding and **awareness** of reproducibility;
+            2) awareness and implementation of reproducible research **practices**;
+            3) **opinions** and perceptions about the role of reproducibility in geography and their subfield; and
+            4) **experience** attempting reproductions of prior studies.
             
             Within each of these themes, responses can be viewed in aggregate (**Everyone**).
             
