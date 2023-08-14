@@ -482,7 +482,7 @@ function(input, output, session) {
       pivot_longer(starts_with("Q14"), values_to = "Response") %>%
       group_by(name) %>%
       mutate(
-        Response = fct_na_value_to_level(Response, "Don't know"),
+        Response = fct_na_value_to_level(Response, "No response"),
       ) %>%
       dplyr::count(Response) %>%
       mutate(perc = n / sum(n)) %>%
@@ -542,7 +542,7 @@ function(input, output, session) {
       pivot_longer(starts_with("Q17_"), values_to = "Response") %>%
       group_by(name) %>%
       mutate(
-        Response = fct_na_value_to_level(Response, "Don't know"),
+        Response = fct_na_value_to_level(Response, "No response"),
       ) %>%
       dplyr::count(Response) %>%
       mutate(perc = n / sum(n)) %>%

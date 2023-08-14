@@ -14,6 +14,7 @@ pal <- c("#DF4949", "#E27A3F", "#BEBEBE", "#45B29D", "#334D5C")
 
 # plot height as CSS
 plot_height <- "60vh"
+plot_full_height <- "80vh"
 
 # text width for axis labels
 width <- 20
