@@ -30,6 +30,47 @@ q8_text <- c(
   Q8_6 = "Reproducibility is incompatible with the epistemologies within my subfield."
 )
 
+# Q9 questions text ####
+q9_text <- c(
+  Q9_1 = "Thought about the reproducibility of your research",
+  Q9_2 = "Spoke with colleagues about reproducibility",
+  Q9_3 = "Questioned the reproducibility of published research",
+  Q9_4 = "Published original data with your study",
+  Q9_5 = "Published code and/or protocols with your study",
+  Q9_6 = "Considered reproducibility while peer reviewing a grant or publication",
+  Q9_7 = "Attempted to reproduce your own or someone else's research"
+)
+
+# Q14 questions text ####
+q14_text <- c(
+  Q14_1 = "Fraud (e.g., fabricated or falsified results)",
+  Q14_2 = "Pressure to publish for career advancement",
+  Q14_3 = "Insufficient oversight or mentoring",
+  Q14_4 = "Lack of publishing raw data",
+  Q14_5 = "Lack of publishing research protocols or computer code",
+  Q14_6 = "Lack of publishing full results",
+  Q14_7 = "Differences in the software processing environment",
+  Q14_8 = "Use of proprietary data or software",
+  Q14_9 = "Complexity and variability of geographic systems",
+  Q14_10 = "Random effects",
+  Q14_11 = "Insufficient documentation about study data (metadata)",
+  Q14_12 = "Researcher positionality"
+)
+
+# Q17 questions text ####
+q17_text <- c(
+  Q17_1 = "Validating research findings",
+  Q17_2 = "Reducing the risk of errors in the research process",
+  Q17_3 = "Increasing trust in study results",
+  Q17_4 = "Preventing duplication of efforts in future research projects",
+  Q17_5 = "Establishing credibility of research in geography",
+  Q17_6 = "Establishing credibility of research in your primary subfield",
+  Q17_7 = "Communicating research to academics",
+  Q17_8 = "Communicating research to practitioners",
+  Q17_9 = "Training geography students",
+  Q17_10 = "Meta-analyses"
+)
+
 # Questions for the word cloud ####
 cloud_cols <- list("Q6", "Q10")
 

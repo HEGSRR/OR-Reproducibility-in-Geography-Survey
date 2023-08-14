@@ -34,9 +34,8 @@ tagList(
       fluidRow(
         column(
           12,
-          h1("Debugging"),
-          verbatimTextOutput("ver"),
-          DT::DTOutput("table"),
+          h1("About"),
+          p("Here is some text"),
         ),
       ),
     ),
@@ -50,7 +49,6 @@ tagList(
         tabPanel(
           "Question 5",
           fluidRow(
-            class = "plotly-titles",
             column(
               4,
               h4(
@@ -78,7 +76,6 @@ tagList(
         tabPanel(
           "Question 6",
           h4(
-            class = "plotly-titles",
             "What is your ", strong("understanding"),
             "of the term \"reproducibility\"",
             "in the context of your own research?",
@@ -91,7 +88,6 @@ tagList(
         tabPanel(
           "Question 10",
           h4(
-            class = "plotly-titles",
             "Thinking about the reproduction(s) you attempted in the last 2 years,",
             "What made you decide to ", strong("attempt"),
             "the reproduction(s)?",
@@ -113,15 +109,16 @@ tagList(
         tabPanel(
           "Open source",
           fluidRow(
-            class = "plotly-titles",
             column(
               4,
               h4(
                 "How ", strong("familiar"),
-                "are you with open source software?",
-                br(),
+                "are you with open source software?"
+              ),
+              h4(
                 "How ", strong("often"),
                 "do you use open source software?",
+                class = "no-mt"
               ),
             ),
             column(
@@ -158,16 +155,20 @@ tagList(
           fluidRow(
             column(
               12,
-              # col-sm-12
-              class = "col-lg-10 col-xl-8",
               h4(
-                class = "plotly-titles",
                 "How ", strong("familiar"),
-                "are you with lab, field, or computational notebooks?",
-                br(),
+                "are you with lab, field, or computational notebooks?"
+              ),
+              h4(
                 "How ", strong("often"),
                 "do you use lab, field, or computational notebooks?",
+                class = "no-mt",
               ),
+            ),
+            column(
+              12,
+              # col-sm-12
+              class = "col-lg-10 col-xl-8",
               plotlyOutput("q7b", height = plot_height) %>% spin(),
             ),
           ),
@@ -176,24 +177,32 @@ tagList(
           "Data archive",
           column(
             12,
-            # col-sm-12
-            class = "col-lg-10 col-xl-8",
             h4(
-              class = "plotly-titles",
               "How ", strong("familiar"),
-              "are you with sharing or archiving data?",
-              br(),
+              "are you with sharing or archiving data?"
+            ),
+            h4(
               "How ", strong("often"),
               "do you publicly share or archive data in your own research?",
-              br(),
+              class = "no-mt"
+            ),
+            h4(
               "How ", strong("often"),
               "do you use digital object identifiers (DOIs) ",
               "when public sharing or archiving data in your own research?",
-              br(),
+              class = "no-mt"
+            ),
+            h4(
               "How ", strong("often"),
               "do you use spatial metadata standards ",
               "when publicly sharing or archiving data in your own research?",
+              class = "no-mt"
             ),
+          ),
+          column(
+            12,
+            # col-sm-12
+            class = "col-lg-10 col-xl-8",
             plotlyOutput("q7c", height = plot_height) %>% spin(),
           ),
         ),
@@ -201,20 +210,26 @@ tagList(
           "Sharing code",
           column(
             12,
-            # col-sm-12
-            class = "col-lg-10 col-xl-8",
             h4(
-              class = "plotly-titles",
               "How ", strong("familiar"),
-              "are you with publicly sharing code or scripts?",
-              br(),
+              "are you with publicly sharing code or scripts?"
+            ),
+            h4(
               "How ", strong("often"),
               "do you publicly share code or scripts in your own research?",
-              br(),
+              class = "no-mt"
+            ),
+            h4(
               "How ", strong("often"),
               "do you use version control software (e.g., Git) ",
               "to facilitate sharing code or scripts in your research?",
+              class = "no-mt"
             ),
+          ),
+          column(
+            12,
+            # col-sm-12
+            class = "col-lg-10 col-xl-8",
             plotlyOutput("q7d", height = plot_height) %>% spin(),
           ),
         ),
@@ -223,16 +238,20 @@ tagList(
           fluidRow(
             column(
               12,
-              # col-sm-12
-              class = "col-lg-10 col-xl-8",
               h4(
-                class = "plotly-titles",
                 "How ", strong("familiar"),
                 "are you with pre-registering research designs or protocols?",
-                br(),
+              ),
+              h4(
                 "How ", strong("often"),
                 "do you use pre-registering for research designs or protocols?",
+                class = "no-mt"
               ),
+            ),
+            column(
+              12,
+              # col-sm-12
+              class = "col-lg-10 col-xl-8",
               plotlyOutput("q7e", height = plot_height) %>% spin(),
             ),
           ),
@@ -250,10 +269,10 @@ tagList(
           "Views",
           fluidRow(
             column(
-              class = "col-xxl-8",
               12,
+              # col-sm-12
+              class = "col-xxl-8",
               h4(
-                class = "plotly-titles",
                 "To what extent do you agree with the following",
                 "statements about research in your subfield?",
               ),
@@ -269,11 +288,40 @@ tagList(
               # col-sm-12
               class = "col-xxl-8",
               h4(
-                class = "plotly-titles",
                 "In your opinion, what percentage of the",
                 "published results are reproducible within...?",
               ),
               plotlyOutput("q13", height = plot_height) %>% spin(),
+            ),
+          ),
+        ),
+        tabPanel(
+          "Importance",
+          fluidRow(
+            column(
+              12,
+              # col-sm-12
+              class = "col-xxl-10",
+              h4(
+                "How important is reproducibility within your subfield for...?",
+              ),
+              plotlyOutput("q17", height = plot_height) %>% spin(),
+            ),
+          ),
+        ),
+        tabPanel(
+          "Barriers",
+          fluidRow(
+            column(
+              12,
+              # col-sm-12
+              class = "col-xxl-10",
+              h4(
+                "In your opinion,",
+                "how frequently do each of these factors contribute",
+                "to a lack of reproducibility in research in your subfield?",
+              ),
+              plotlyOutput("q14", height = plot_height) %>% spin(),
             ),
           ),
         ),
@@ -286,8 +334,11 @@ tagList(
       icon = icon("bullseye"),
       fluidRow(
         column(
-          6,
-          h4("Experience"),
+          12,
+          # col-sm-12
+          class = "col-xxl-10",
+          h4("In the last 2 years, have you...?"),
+          plotlyOutput("q9", height = plot_height) %>% spin(),
         ),
       ),
     ),
