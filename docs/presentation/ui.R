@@ -49,7 +49,7 @@ tagList(
       tabsetPanel(
         id = "awareness-panel",
         tabPanel(
-          "Question 5",
+          "Concept",
           fluidRow(
             column(
               4,
@@ -76,7 +76,7 @@ tagList(
           plotlyOutput("q5", height = plot_height) %>% spin(),
         ),
         tabPanel(
-          "Question 6",
+          "Definition",
           h4(
             "What is your ", strong("understanding"),
             "of the term “reproducibility”",
@@ -88,7 +88,7 @@ tagList(
           ),
         ),
         tabPanel(
-          "Question 10",
+          "Motivation",
           h4(
             "Thinking about the reproduction(s)",
             "you attempted in the last 2 years,",
