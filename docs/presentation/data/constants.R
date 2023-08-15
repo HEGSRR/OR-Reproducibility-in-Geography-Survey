@@ -125,3 +125,59 @@ plt_config <- function(plt, filename, ...) {
     ...
   )
 }
+
+
+# Function for bar plots
+plt_bar <- function(data, prefix, names, pal, label_width, filename) {
+  plt <- data %>%
+    pivot_longer(starts_with(prefix), values_to = "Response") %>%
+    group_by(name) %>%
+    mutate(
+      Response = fct_na_value_to_level(Response, "No response"),
+    ) %>%
+    dplyr::count(Response) %>%
+    mutate(perc = n / sum(n)) %>%
+    ggplot(aes(
+      x = fct_rev(name),
+      y = n,
+      fill = Response,
+      text = paste0(
+        "<b>", Response, "</b><br>",
+        n, " people<br>",
+        round(perc * 100, 2), " %"
+      )
+    )) +
+    geom_col(
+      position = position_fill(reverse = TRUE),
+      width = 0.8
+    ) +
+    coord_flip() +
+    scale_fill_manual(
+      values = pal
+    ) +
+    scale_x_discrete(
+      expand = c(0, 0),
+      labels = str_wrap(rev(names), width = label_width)
+    ) +
+    scale_y_continuous(labels = scales::percent) +
+    theme(
+      axis.title.x = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      panel.border = element_blank(),
+      panel.background = element_blank(),
+      text = element_text(family = "Fira Sans"),
+      legend.position = "bottom",
+      legend.title = element_blank()
+    )
+  # plotly
+  ggplotly(plt, tooltip = "text") %>%
+    plt_layout(
+      legend = list(font = fira)
+    ) %>%
+    plt_config(
+      filename = filename
+    )
+}
+

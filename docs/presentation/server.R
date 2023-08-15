@@ -395,7 +395,8 @@ function(input, output, session) {
         type = "scatter",
         mode = "lines",
         fill = "tozeroy",
-        name = "Your primary\nsubfield"
+        name = "Your primary\nsubfield",
+        line = list(dash = "dash")
       ) %>%
       plt_layout(
         legend = list(font = fira)
@@ -419,181 +420,49 @@ function(input, output, session) {
 
   # Q9 practices ####
   output$q9 <- renderPlotly({
-    plt <- d() %>%
-      pivot_longer(starts_with("Q9"), values_to = "Response") %>%
-      group_by(name) %>%
-      mutate(
-        Response = fct_na_value_to_level(Response, "Don't know")
-      ) %>%
-      dplyr::count(Response) %>%
-      mutate(perc = n / sum(n)) %>%
-      ggplot(aes(
-        x = fct_rev(name),
-        y = n,
-        fill = Response,
-        text = paste0(
-          "<b>", Response, "</b><br>",
-          n, " people<br>",
-          round(perc * 100, 2), " %"
-        )
-      )) +
-      geom_col(
-        position = position_fill(reverse = TRUE),
-        width = 0.8
-      ) +
-      coord_flip() +
-      scale_fill_manual(
-        values = c("#EF5645", "#D9D9D9", "#7F7F7F")
-      ) +
-      scale_x_discrete(
-        expand = c(0, 0),
-        labels = str_wrap(rev(q9_text), width = 40)
-      ) +
-      scale_y_continuous(labels = scales::percent) +
-      theme(
-        axis.title.x = element_blank(),
-        axis.title.y = element_blank(),
-        axis.line.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.border = element_blank(),
-        panel.background = element_blank(),
-        text = element_text(family = "Fira Sans"),
-        legend.position = "bottom",
-        legend.title = element_blank()
-      )
-    # plotly
-    ggplotly(plt, tooltip = "text") %>%
-      plt_layout(
-        legend = list(font = fira)
-      ) %>%
-      plt_config(
-        filename = paste0(
+    d() %>%
+      plt_bar(
+        "Q9", q9_text, pal3, width_long,
+        paste0(
           "repro_practices_",
           input$group %>%
             tolower() %>%
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
   # Q14 barriers ####
   output$q14 <- renderPlotly({
-    plt <- d() %>%
-      pivot_longer(starts_with("Q14"), values_to = "Response") %>%
-      group_by(name) %>%
-      mutate(
-        Response = fct_na_value_to_level(Response, "No response"),
-      ) %>%
-      dplyr::count(Response) %>%
-      mutate(perc = n / sum(n)) %>%
-      ggplot(aes(
-        x = fct_rev(name),
-        y = n,
-        fill = Response,
-        text = paste0(
-          "<b>", Response, "</b><br>",
-          n, " people<br>",
-          round(perc * 100, 2), " %"
-        )
-      )) +
-      geom_col(
-        position = position_fill(reverse = TRUE),
-        width = 0.8
-      ) +
-      coord_flip() +
-      scale_fill_manual(
-        values = c("#CD2311", "#EF5645", "#D9D9D9", "#F2F2F2", "#7F7F7F")
-      ) +
-      scale_x_discrete(
-        expand = c(0, 0),
-        labels = str_wrap(rev(q14_text), width = 40)
-      ) +
-      scale_y_continuous(labels = scales::percent) +
-      theme(
-        axis.title.x = element_blank(),
-        axis.title.y = element_blank(),
-        axis.line.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.border = element_blank(),
-        panel.background = element_blank(),
-        text = element_text(family = "Fira Sans"),
-        legend.position = "bottom",
-        legend.title = element_blank()
-      )
-    # plotly
-    ggplotly(plt, tooltip = "text") %>%
-      plt_layout(
-        legend = list(font = fira)
-      ) %>%
-      plt_config(
-        filename = paste0(
+    d() %>%
+      plt_bar(
+        "Q14", q14_text, pal5, width_long,
+        paste0(
           "repro_barriers_",
           input$group %>%
             tolower() %>%
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
-  
-  
+  }) %>%
+    bindCache(input$group)
+
+
   # Q17 importance ####
   output$q17 <- renderPlotly({
-    plt <- d() %>%
-      pivot_longer(starts_with("Q17_"), values_to = "Response") %>%
-      group_by(name) %>%
-      mutate(
-        Response = fct_na_value_to_level(Response, "No response"),
-      ) %>%
-      dplyr::count(Response) %>%
-      mutate(perc = n / sum(n)) %>%
-      ggplot(aes(
-        x = fct_rev(name),
-        y = n,
-        fill = Response,
-        text = paste0(
-          "<b>", Response, "</b><br>",
-          n, " people<br>",
-          round(perc * 100, 2), " %"
-        )
-      )) +
-      geom_col(
-        position = position_fill(reverse = TRUE),
-        width = 0.8
-      ) +
-      coord_flip() +
-      scale_fill_manual(
-        values = c("#CD2311", "#EF5645", "#D9D9D9", "#F2F2F2", "#7F7F7F")
-      ) +
-      scale_x_discrete(
-        expand = c(0, 0),
-        labels = str_wrap(rev(q17_text), width = 40)
-      ) +
-      scale_y_continuous(labels = scales::percent) +
-      theme(
-        axis.title.x = element_blank(),
-        axis.title.y = element_blank(),
-        axis.line.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.border = element_blank(),
-        panel.background = element_blank(),
-        text = element_text(family = "Fira Sans"),
-        legend.position = "bottom",
-        legend.title = element_blank()
-      )
-    # plotly
-    ggplotly(plt, tooltip = "text") %>%
-      plt_layout(
-        legend = list(font = fira)
-      ) %>%
-      plt_config(
-        filename = paste0(
+    d() %>%
+      plt_bar(
+        "Q17_", q17_text, pal5, width_long,
+        paste0(
           "repro_importance_",
           input$group %>%
             tolower() %>%
             gsub("[^a-z0-9]", "_", .)
         )
       )
-  })
+  }) %>%
+    bindCache(input$group)
 
 
   # Q6 & Q10 word clouds ####
