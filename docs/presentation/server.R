@@ -328,7 +328,7 @@ function(input, output, session) {
 
   # Q8 likert ####
   output$q8 <- renderPlotly({
-    plt <- q8[[input$group]] %>%
+    plt <- gen$q8[[input$group]] %>%
       # ggplot
       ggplot() +
       geom_segment(aes(
@@ -466,6 +466,6 @@ function(input, output, session) {
 
 
   # Q6 & Q10 word clouds ####
-  output$cloud_q6 <- renderWordcloud2(clouds_q6[[input$group]])
-  output$cloud_q10 <- renderWordcloud2(clouds_q10[[input$group]])
+  output$cloud_q6 <- renderWordcloud2(gen$q6[[input$group]])
+  output$cloud_q10 <- renderWordcloud2(gen$q10[[input$group]])
 }
