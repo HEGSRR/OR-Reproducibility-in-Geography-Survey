@@ -101,6 +101,12 @@ column_to_cloud <- function(
 }
 ```
 
+```{r word clouds}
+clouds <- map(cloud_cols, column_to_cloud) %>%
+  set_names(cloud_cols)
+# saveRDS(clouds, file = "data/clouds.rds")
+```
+
 ```{r q6 cloud}
 clouds_q6_q3 <- map(
   subfields, ~ analysis %>%
