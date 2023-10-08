@@ -3,10 +3,12 @@ code,101_scopus_pulls.R,read in raw data from SCOPUS exports and combine into a 
 code,102_hegs_sample_frame.R,Create sample frame and randomly draw sample
 code,103_followup_emails.R,Generate mailing list for followups
 code,200_deidentify.R,download and deidentify survey response (survey key and ID removed)
+code,201_clean.R,clean survey data
 code,201b_Q6_coding.R,process individual response coding
 code,201c_Q10_coding.R,process individual response coding
 code,202_preprocess.R,generate raw descriptive tables
 code,203_results.R,create and save results tables
+code,aag_fig.R,create figures for conference presentation
 environment,r_environment.txt,computational environment information
 protocol,AAPOR-distribution-codes.pdf,distribution codes for survey response
 protocol,Survey-Disposition.xlsx,AAPOR disposition codes assigned to sample
