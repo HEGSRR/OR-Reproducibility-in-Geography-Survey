@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this template, please cite it as below."
+message: "Please cite this research as the following publication."
 authors:
 - family-names: "Kedron"
   given-names: "Peter"
@@ -7,14 +7,17 @@ authors:
 - family-names: "Holler"
   given-names: "Joseph"
   orcid: "https://orcid.org/0000-0002-2381-2699"
-title: "Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences"
-version: 0.1
-doi: 10.17605/OSF.IO/5FGMC
-date-released: 2021-08-22
+- family-names: "Bardin"
+  given-names: "Sarah"
+  orcid: "https://orcid.org/0000-0001-8657-1725"
+title: "Reproducible Research Practices and Barriers to Reproducible Research in Geography: Insights from a Survey"
+version: 1.0
+doi: 10.1080/24694452.2023.2276115
+date-released: 2023-12-01
 url: "https://github.com/HEGSRR/HEGSRR-Template"
 license: BSD 3-Clause
 preferred-citation:
-  type: generic
+  type: article
   authors:
   - family-names: "Kedron"
     given-names: "Peter"
@@ -22,7 +25,11 @@ preferred-citation:
   - family-names: "Holler"
     given-names: "Joseph"
     orcid: "https://orcid.org/0000-0002-2381-2699"
-  title: "Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences"
+  - family-names: "Bardin"
+    given-names: "Sarah"
+    orcid: "https://orcid.org/0000-0001-8657-1725"
+  title: "Reproducible Research Practices and Barriers to Reproducible Research in Geography: Insights from a Survey"
   doi: 10.17605/OSF.IO/W29MQ
-  year: 2021
+  year: 2023
+  journal: Annals of the American Association of Geographers
   url: "https://github.com/HEGSRR/HEGSRR-Template"
